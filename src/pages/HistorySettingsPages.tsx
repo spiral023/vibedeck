@@ -11,6 +11,7 @@ import {
   FileJson,
   History,
   RefreshCw,
+  Settings,
   Trash2,
   Upload,
 } from 'lucide-react';
@@ -322,7 +323,10 @@ export function SettingsPage() {
   return (
     <div className="space-y-8 max-w-3xl">
       <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }}>
-        <h1 className="text-3xl font-bold tracking-tight lg:text-4xl">Einstellungen</h1>
+        <h1 className="text-3xl font-bold tracking-tight lg:text-4xl flex items-center gap-3">
+          <Settings className="h-8 w-8 text-primary" />
+          Einstellungen
+        </h1>
         <p className="mt-2 text-lg text-muted-foreground">
           Konfiguriere VibeDeck nach deinen Vorlieben.
         </p>

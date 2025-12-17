@@ -13,6 +13,7 @@ import {
   ChevronDown,
   Copy,
   ExternalLink,
+  FolderKanban,
   PlayCircle,
   Zap,
 } from 'lucide-react';
@@ -38,7 +39,10 @@ export function WorkflowsPage() {
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
       >
-        <h1 className="text-3xl font-bold tracking-tight lg:text-4xl">Workflows</h1>
+        <h1 className="text-3xl font-bold tracking-tight lg:text-4xl flex items-center gap-3">
+          <FolderKanban className="h-8 w-8 text-primary" />
+          Workflows
+        </h1>
         <p className="mt-2 text-lg text-muted-foreground">
           Strukturierte Arbeitsabläufe für wiederkehrende Aufgaben.
         </p>

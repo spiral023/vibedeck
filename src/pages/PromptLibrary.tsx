@@ -1,7 +1,7 @@
 import { useMemo, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Search, SlidersHorizontal, X, Heart, Check } from 'lucide-react';
+import { Search, SlidersHorizontal, X, Heart, Check, Library } from 'lucide-react';
 import Fuse from 'fuse.js';
 import { prompts, getAllTags, getAllCategories } from '@/data/prompts';
 import { PromptCard } from '@/components/prompts/PromptCard';
@@ -111,24 +111,15 @@ export function PromptLibrary() {
   return (
     <div className="space-y-8">
       {/* Header */}
-      <div>
-        <motion.h1
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="text-3xl font-bold tracking-tight lg:text-4xl"
-        >
+      <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }}>
+        <h1 className="text-3xl font-bold tracking-tight lg:text-4xl flex items-center gap-3">
+          <Library className="h-8 w-8 text-primary" />
           Prompt Bibliothek
-        </motion.h1>
-        <motion.p
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.1 }}
-          className="mt-2 text-lg text-muted-foreground"
-        >
+        </h1>
+        <p className="mt-2 text-lg text-muted-foreground">
           Durchsuche und entdecke {prompts.length} kuratierte Prompts für deine Projekte.
-        </motion.p>
-      </div>
-
+        </p>
+      </motion.div>
       {/* Search and Filters */}
       <motion.div
         initial={{ opacity: 0, y: 10 }}
