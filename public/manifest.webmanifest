@@ -1,0 +1,16 @@
+{
+  "name": "VibeDeck",
+  "short_name": "VibeDeck",
+  "description": "AI Prompt Library und Workflow Manager",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0e17",
+  "theme_color": "#14b8a6",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "64x64",
+      "type": "image/x-icon"
+    }
+  ]
+}
