@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
@@ -6,9 +6,9 @@ import {
   Box,
   Compass,
   Factory,
+  FileText,
   FolderKanban,
   History,
-  Home,
   Lightbulb,
   Library,
   Menu,
@@ -35,6 +35,7 @@ const navItems: NavItem[] = [
   { label: 'Prompt Factory', href: '/prompt-factory', icon: Factory },
   { label: 'Prompt Bibliothek', href: '/prompt-library', icon: Library, badge: 'Neu' },
   { label: 'Workflows', href: '/workflows', icon: FolderKanban },
+  { label: 'Help Bibliothek', href: '/help-library', icon: FileText },
   { label: 'UI Bibliotheken', href: '/ui-libraries', icon: Box },
   { label: 'Tool Directory', href: '/tool-directory', icon: Compass },
   { label: 'Wissensbasis', href: '/knowledge', icon: BookOpen },
@@ -47,40 +48,50 @@ const navItems: NavItem[] = [
 
 export function Sidebar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [isLargeScreen, setIsLargeScreen] = useState(false);
   const location = useLocation();
+
+  useEffect(() => {
+    const checkScreen = () => setIsLargeScreen(window.innerWidth >= 1024);
+    checkScreen();
+    window.addEventListener('resize', checkScreen);
+    return () => window.removeEventListener('resize', checkScreen);
+  }, []);
 
   return (
     <>
       {/* Mobile menu button */}
-      <button
-        onClick={() => setIsOpen(true)}
-        className="fixed left-4 top-4 z-50 rounded-xl bg-card/80 p-2.5 backdrop-blur-xl border border-border/50 shadow-md lg:hidden focus-ring"
-        aria-label="Menü öffnen"
-      >
-        <Menu className="h-5 w-5" />
-      </button>
+      {!isLargeScreen && (
+        <button
+          onClick={() => setIsOpen(true)}
+          className="fixed left-4 top-4 z-50 rounded-xl bg-card p-2.5 border border-border/50 shadow-md lg:hidden focus-ring"
+          aria-label="Menü öffnen"
+        >
+          <Menu className="h-5 w-5" />
+        </button>
+      )}
 
       {/* Overlay */}
       <AnimatePresence>
-        {isOpen && (
+        {isOpen && !isLargeScreen && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={() => setIsOpen(false)}
-            className="fixed inset-0 z-40 bg-background/80 backdrop-blur-sm lg:hidden"
+            className="fixed inset-0 z-40 bg-background/80 backdrop-blur-sm"
           />
         )}
       </AnimatePresence>
 
       {/* Sidebar */}
-      <motion.aside
-        initial={false}
-        animate={{ x: isOpen ? 0 : '-100%' }}
-        transition={{ type: 'spring', damping: 25, stiffness: 300 }}
+      <aside
         className={cn(
-          'fixed left-0 top-0 z-50 h-full w-72 border-r border-border/50 bg-sidebar backdrop-blur-xl',
-          'lg:translate-x-0 lg:static lg:z-auto'
+          'h-screen w-72 border-r border-border/50 bg-sidebar flex-shrink-0',
+          isLargeScreen
+            ? 'relative'
+            : 'fixed left-0 top-0 z-50 transition-transform duration-300',
+          !isLargeScreen && !isOpen && '-translate-x-full'
         )}
       >
         <div className="flex h-full flex-col">
@@ -95,13 +106,15 @@ export function Sidebar() {
               </div>
               <span className="text-xl font-semibold tracking-tight">VibeDeck</span>
             </NavLink>
-            <button
-              onClick={() => setIsOpen(false)}
-              className="rounded-lg p-2 hover:bg-accent lg:hidden focus-ring"
-              aria-label="Menü schließen"
-            >
-              <X className="h-5 w-5" />
-            </button>
+            {!isLargeScreen && (
+              <button
+                onClick={() => setIsOpen(false)}
+                className="rounded-lg p-2 hover:bg-accent focus-ring"
+                aria-label="Menü schließen"
+              >
+                <X className="h-5 w-5" />
+              </button>
+            )}
           </div>
 
           {/* Navigation */}
@@ -152,7 +165,7 @@ export function Sidebar() {
             </div>
           </div>
         </div>
-      </motion.aside>
+      </aside>
     </>
   );
 }
