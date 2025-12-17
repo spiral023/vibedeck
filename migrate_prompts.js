@@ -1,6 +1,7 @@
-import type { Prompt } from '@/types/prompt';
+const fs = require('fs');
+const path = require('path');
 
-export const prompts: Prompt[] = [
+const prompts = [
   {
     id: 'react-component-generator',
     title: 'React Komponenten Generator',
@@ -275,25 +276,12 @@ Erkläre mir wie ein Lehrer, was passiert ist und wie ich es lösen kann.`,
   },
 ];
 
-export function getPromptById(id: string): Prompt | undefined {
-  return prompts.find(p => p.id === id);
-}
-
-export function getPromptIndex(): Prompt[] {
-  return [...prompts].sort((a, b) => {
-    if (a.category !== b.category) {
-      return a.category.localeCompare(b.category);
-    }
-    return a.title.localeCompare(b.title);
-  });
-}
-
-export function getAllTags(): string[] {
-  const tags = new Set<string>();
-  prompts.forEach(p => p.tags.forEach(t => tags.add(t)));
-  return Array.from(tags).sort();
-}
-
-export function getAllCategories(): string[] {
-  return ['Build', 'Browse', 'Ship', 'Learn'];
-}
+function generateMarkdown(prompt) {
+  // Extract body and remove it from frontmatter data
+  const { body, ...frontmatterData } = prompt;
+  
+  // Format variables array to YAML string
+  const variablesYaml = frontmatterData.variables.map(v => {
+    return `  - name: ${v.name}
+    label: ${v.label}
+    default: ${v.default ? `"${v.default}"
