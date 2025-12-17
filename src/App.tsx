@@ -14,10 +14,13 @@ import { ToolDirectoryPage } from "@/pages/ToolDirectoryPage";
 import { RulesGeneratorPage } from "@/pages/RulesGeneratorPage";
 import { HistoryPage, SettingsPage } from "@/pages/HistorySettingsPages";
 import { PromptBuilderPage } from "@/pages/PromptBuilderPage";
+import { PromptFactoryPage } from "@/pages/PromptFactoryPage";
 import { HelpLibraryPage, HelpTemplateDetailPage } from "@/pages/HelpLibraryPage";
-import { ScaffoldPage } from "@/components/ScaffoldPage";
+import { KnowledgePage } from "@/pages/KnowledgePage";
+import { HostingPage } from "@/pages/HostingPage";
+import { SuperpowersPage } from "@/pages/SuperpowersPage";
+import { IdeaLabPage } from "@/pages/IdeaLabPage";
 import NotFound from "./pages/NotFound";
-import { Factory, BookOpen, Server, Zap, Lightbulb } from "lucide-react";
 
 const queryClient = new QueryClient();
 
@@ -31,7 +34,7 @@ function AppContent() {
         <Route element={<Layout />}>
           <Route path="/" element={<HomePage />} />
           <Route path="/prompt-builder" element={<PromptBuilderPage />} />
-          <Route path="/prompt-factory" element={<ScaffoldPage title="Prompt Factory" description="Generiere Prompts automatisch basierend auf deinen Anforderungen." icon={Factory} />} />
+          <Route path="/prompt-factory" element={<PromptFactoryPage />} />
           <Route path="/prompt-library" element={<PromptLibrary />} />
           <Route path="/prompt-library/:id" element={<PromptDetail />} />
           <Route path="/workflows" element={<WorkflowsPage />} />
@@ -41,10 +44,10 @@ function AppContent() {
           <Route path="/rules-generator" element={<RulesGeneratorPage />} />
           <Route path="/help-library" element={<HelpLibraryPage />} />
           <Route path="/help-library/:id" element={<HelpTemplateDetailPage />} />
-          <Route path="/knowledge" element={<ScaffoldPage title="Wissensbasis" description="Dokumentation und Best Practices für AI-gestützte Entwicklung." icon={BookOpen} />} />
-          <Route path="/hosting" element={<ScaffoldPage title="Hosting" description="Vergleiche und Empfehlungen für Hosting-Plattformen." icon={Server} />} />
-          <Route path="/superpowers" element={<ScaffoldPage title="Superpowers" description="Erweiterte Techniken und Tipps für Power-User." icon={Zap} />} />
-          <Route path="/idea-lab" element={<ScaffoldPage title="Ideen Lab" description="Experimentiere mit neuen Ideen und Konzepten." icon={Lightbulb} />} />
+          <Route path="/knowledge" element={<KnowledgePage />} />
+          <Route path="/hosting" element={<HostingPage />} />
+          <Route path="/superpowers" element={<SuperpowersPage />} />
+          <Route path="/idea-lab" element={<IdeaLabPage />} />
           <Route path="/history" element={<HistoryPage />} />
           <Route path="/settings" element={<SettingsPage />} />
         </Route>
