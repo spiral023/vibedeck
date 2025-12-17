@@ -53,17 +53,13 @@ export function ToolDirectoryPage() {
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
       >
-        <div className="flex items-center gap-3">
-          <div className="rounded-xl bg-primary/10 p-3">
-            <Compass className="h-6 w-6 text-primary" />
-          </div>
-          <div>
-            <h1 className="text-3xl font-bold tracking-tight lg:text-4xl">Tool Directory</h1>
-            <p className="text-muted-foreground">
-              Essenzielle Tools für moderne Webentwicklung.
-            </p>
-          </div>
-        </div>
+        <h1 className="text-3xl font-bold tracking-tight lg:text-4xl flex items-center gap-3">
+          <Compass className="h-8 w-8 text-primary" />
+          Tool Directory
+        </h1>
+        <p className="mt-2 text-lg text-muted-foreground">
+          Essenzielle Tools für moderne Webentwicklung.
+        </p>
       </motion.div>
 
       {toolCategories.map((category, catIndex) => (
