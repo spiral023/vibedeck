@@ -58,6 +58,88 @@ Dieser Workflow führt dich durch den gesamten Prozess der Feature-Entwicklung.
 - Hole früh Feedback ein`,
     updatedDate: '2024-12-15',
   },
+  {
+    id: 'bug-fix-workflow',
+    title: 'Bug beheben',
+    description: 'Systematischer Workflow zur Identifikation und Behebung von Bugs.',
+    category: 'Ship',
+    tags: ['Debugging', 'Bugfix', 'Qualität'],
+    steps: [
+      {
+        order: 1,
+        title: 'Bug reproduzieren',
+        description: 'Stelle sicher, dass der Bug konsistent reproduzierbar ist.',
+      },
+      {
+        order: 2,
+        title: 'Ursache analysieren',
+        promptRef: 'code-reviewer',
+        description: 'Analysiere den Code, um die Ursache zu finden.',
+      },
+      {
+        order: 3,
+        title: 'Fix implementieren',
+        description: 'Implementiere die Lösung mit minimalen Änderungen.',
+      },
+      {
+        order: 4,
+        title: 'Testen',
+        description: 'Teste den Fix gründlich inkl. Regression.',
+      },
+      {
+        order: 5,
+        title: 'Git Workflow',
+        promptRef: 'git-workflow-helper',
+        description: 'Committe und pushe die Änderungen korrekt.',
+      },
+    ],
+    changelog: [
+      { date: '2024-12-12', note: 'Workflow erstellt' },
+    ],
+    body: `## Bug-Fix Best Practices
+
+- Schreibe erst einen fehlschlagenden Test
+- Fixe nur den Bug, keine anderen Änderungen
+- Dokumentiere die Ursache`,
+    updatedDate: '2024-12-12',
+  },
+  {
+    id: 'learning-workflow',
+    title: 'Neues Konzept lernen',
+    description: 'Strukturierter Ansatz zum Erlernen neuer technischer Konzepte.',
+    category: 'Learn',
+    tags: ['Lernen', 'Konzepte', 'Bildung'],
+    steps: [
+      {
+        order: 1,
+        title: 'Konzept verstehen',
+        promptRef: 'concept-explainer',
+        description: 'Lass dir das Konzept auf deinem Level erklären.',
+      },
+      {
+        order: 2,
+        title: 'Praktisch anwenden',
+        description: 'Baue ein kleines Beispielprojekt.',
+      },
+      {
+        order: 3,
+        title: 'Vertiefen',
+        description: 'Erkunde fortgeschrittene Aspekte und Edge Cases.',
+      },
+      {
+        order: 4,
+        title: 'Dokumentieren',
+        description: 'Erstelle eigene Notizen und Cheatsheets.',
+      },
+    ],
+    changelog: [
+      { date: '2024-12-08', note: 'Workflow erstellt' },
+    ],
+    body: `## Lernmethodik
+
+Dieser Workflow basiert auf der Feynman-Technik und aktivem Lernen.`,
+    updatedDate: '2024-12-08',
+  },
 ];
 
 export function getWorkflowById(id: string): Workflow | undefined {

@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { ExternalLink, Box, Palette, Code2, Layers } from 'lucide-react';
+import { ExternalLink, Box, Palette, Code2, Layers, Boxes, Paintbrush, Sparkles, Wand2 } from 'lucide-react';
 
 const libraries = [
   {
@@ -28,7 +28,35 @@ const libraries = [
     description: 'Produktionsreife Animationsbibliothek für React.',
     url: 'https://framer.com/motion',
     category: 'Animation',
+    icon: Wand2,
+  },
+  {
+    name: 'Headless UI',
+    description: 'Vollständig ungestylete, zugängliche UI-Komponenten.',
+    url: 'https://headlessui.com',
+    category: 'Primitives',
+    icon: Boxes,
+  },
+  {
+    name: 'Lucide Icons',
+    description: 'Wunderschöne & konsistente Icon-Bibliothek.',
+    url: 'https://lucide.dev',
+    category: 'Icons',
+    icon: Sparkles,
+  },
+  {
+    name: 'Recharts',
+    description: 'Komposable Chart-Bibliothek für React.',
+    url: 'https://recharts.org',
+    category: 'Charts',
     icon: Code2,
+  },
+  {
+    name: 'React Hook Form',
+    description: 'Performante, flexible und erweiterbare Formulare.',
+    url: 'https://react-hook-form.com',
+    category: 'Forms',
+    icon: Paintbrush,
   },
 ];
 
@@ -39,13 +67,16 @@ export function UILibrariesPage() {
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
       >
-        <h1 className="text-3xl font-bold tracking-tight lg:text-4xl">UI Bibliotheken</h1>
+        <h1 className="text-3xl font-bold tracking-tight lg:text-4xl flex items-center gap-3">
+          <Box className="h-8 w-8 text-primary" />
+          UI Bibliotheken
+        </h1>
         <p className="mt-2 text-lg text-muted-foreground">
           Kuratierte Sammlung moderner UI-Bibliotheken für React-Projekte.
         </p>
       </motion.div>
 
-      <div className="grid gap-5 sm:grid-cols-2">
+      <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
         {libraries.map((lib, index) => (
           <motion.a
             key={lib.name}
