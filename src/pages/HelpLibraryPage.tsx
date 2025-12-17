@@ -120,8 +120,8 @@ export function HelpTemplateDetailPage() {
   const template = id ? getHelpTemplateById(id) : undefined;
   const { addEntry } = useHistoryStore();
 
-  const form = useForm({
-    defaultValues: template?.variables.reduce((acc, v) => ({
+  const form = useForm<Record<string, string>>({
+    defaultValues: template?.variables.reduce<Record<string, string>>((acc, v) => ({
       ...acc,
       [v.name]: v.default || '',
     }), {}) || {},
@@ -219,7 +219,7 @@ export function HelpTemplateDetailPage() {
                   </code>
                 </label>
                 <input
-                  {...form.register(variable.name as any)}
+                  {...form.register(variable.name)}
                   placeholder={variable.placeholder || variable.default}
                   className="w-full rounded-lg border border-border bg-background px-3 py-2 text-sm focus:border-primary focus:outline-none"
                 />
