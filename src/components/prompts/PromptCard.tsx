@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { ArrowRight, Check, Heart, Package } from 'lucide-react';
 import type { Prompt } from '@/types/prompt';
@@ -35,7 +35,7 @@ export function PromptCard({ prompt, index = 0 }: PromptCardProps) {
       transition={{ duration: 0.3, delay: index * 0.05 }}
     >
       <Link
-        to={`/prompt-library/${prompt.id}`}
+        href={`/prompt-library/${prompt.id}`}
         className="group block h-full"
       >
         <div className={cn(

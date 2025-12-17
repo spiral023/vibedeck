@@ -1,5 +1,8 @@
+'use client';
+
 import { useState, useEffect } from 'react';
-import { NavLink, useLocation } from 'react-router-dom';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   BookOpen,
@@ -49,7 +52,7 @@ const navItems: NavItem[] = [
 export function Sidebar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isLargeScreen, setIsLargeScreen] = useState(false);
-  const location = useLocation();
+  const pathname = usePathname();
 
   useEffect(() => {
     const checkScreen = () => setIsLargeScreen(window.innerWidth >= 1024);
@@ -98,7 +101,7 @@ export function Sidebar() {
         <div className="flex h-full flex-col">
           {/* Header */}
           <div className="flex items-center justify-between border-b border-border/50 px-4 py-3.5">
-            <NavLink to="/" className="flex items-center gap-2.5 group" onClick={() => setIsOpen(false)}>
+            <Link href="/" className="flex items-center gap-2.5 group" onClick={() => setIsOpen(false)}>
               <div className="relative">
                 <div className="absolute inset-0 rounded-lg bg-primary/20 blur-md group-hover:bg-primary/30 transition-colors" />
                 <div className="relative flex h-9 w-9 items-center justify-center rounded-lg bg-gradient-to-br from-primary to-primary/80 shadow-sm">
@@ -106,7 +109,7 @@ export function Sidebar() {
                 </div>
               </div>
               <span className="text-lg font-semibold tracking-tight">VibeDeck</span>
-            </NavLink>
+            </Link>
             {!isLargeScreen && (
               <button
                 onClick={() => setIsOpen(false)}
@@ -122,13 +125,13 @@ export function Sidebar() {
           <nav className="flex-1 overflow-y-auto px-2.5 py-3 scrollbar-thin">
             <ul className="space-y-0.5">
               {navItems.map((item) => {
-                const isActive = location.pathname === item.href || 
-                  (item.href !== '/' && location.pathname.startsWith(item.href));
+                const isActive = pathname === item.href || 
+                  (item.href !== '/' && pathname?.startsWith(item.href));
                 
                 return (
                   <li key={item.href}>
-                    <NavLink
-                      to={item.href}
+                    <Link
+                      href={item.href}
                       onClick={() => setIsOpen(false)}
                       className={cn(
                         'flex items-center gap-2.5 rounded-lg px-3 py-2.5 text-[13px] font-medium transition-all duration-150',
@@ -145,7 +148,7 @@ export function Sidebar() {
                           {item.badge}
                         </span>
                       )}
-                    </NavLink>
+                    </Link>
                   </li>
                 );
               })}
@@ -155,20 +158,20 @@ export function Sidebar() {
           {/* Footer */}
           <div className="border-t border-border/50 p-3">
             <div className="flex items-center justify-between gap-2">
-              <NavLink
-                to="/settings"
+              <Link
+                href="/settings"
                 onClick={() => setIsOpen(false)}
                 className={cn(
                   'flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium transition-all duration-150',
                   'hover:bg-accent focus-ring active:scale-[0.98]',
-                  location.pathname === '/settings'
+                  pathname === '/settings'
                     ? 'bg-primary/10 text-primary'
                     : 'text-muted-foreground hover:text-foreground'
                 )}
               >
                 <Settings className="h-4 w-4" />
                 <span>Einstellungen</span>
-              </NavLink>
+              </Link>
               <ThemeToggle />
             </div>
           </div>

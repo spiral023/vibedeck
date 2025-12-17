@@ -1,5 +1,5 @@
 import { useEffect, useCallback, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useRouter } from 'next/navigation';
 import { Command } from 'cmdk';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
@@ -51,15 +51,15 @@ const navigationItems = [
 ];
 
 export function CommandPalette({ open, onOpenChange }: CommandPaletteProps) {
-  const navigate = useNavigate();
+  const router = useRouter();
   const { theme, setTheme } = useThemeStore();
   const { entries, getLatestEntry } = useHistoryStore();
   const [search, setSearch] = useState('');
 
   const handleSelect = useCallback((path: string) => {
-    navigate(path);
+    router.push(path);
     onOpenChange(false);
-  }, [navigate, onOpenChange]);
+  }, [router, onOpenChange]);
 
   const handleThemeChange = useCallback((newTheme: 'dark' | 'light' | 'system') => {
     setTheme(newTheme);
