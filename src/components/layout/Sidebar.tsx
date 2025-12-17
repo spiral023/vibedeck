@@ -60,11 +60,11 @@ export function Sidebar() {
 
   return (
     <>
-      {/* Mobile menu button */}
+      {/* Mobile menu button - larger touch target */}
       {!isLargeScreen && (
         <button
           onClick={() => setIsOpen(true)}
-          className="fixed left-4 top-4 z-50 rounded-xl bg-card p-2.5 border border-border/50 shadow-md lg:hidden focus-ring"
+          className="fixed left-3 top-3 z-50 flex h-11 w-11 items-center justify-center rounded-xl bg-card/95 backdrop-blur-sm border border-border/50 shadow-lg lg:hidden focus-ring active:scale-95 transition-transform"
           aria-label="Menü öffnen"
         >
           <Menu className="h-5 w-5" />
@@ -78,6 +78,7 @@ export function Sidebar() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
             onClick={() => setIsOpen(false)}
             className="fixed inset-0 z-40 bg-background/80 backdrop-blur-sm"
           />
@@ -87,29 +88,29 @@ export function Sidebar() {
       {/* Sidebar */}
       <aside
         className={cn(
-          'h-screen w-72 border-r border-border/50 bg-sidebar flex-shrink-0',
+          'h-screen w-[280px] border-r border-border/50 bg-sidebar flex-shrink-0 will-change-transform',
           isLargeScreen
             ? 'relative'
-            : 'fixed left-0 top-0 z-50 transition-transform duration-300',
+            : 'fixed left-0 top-0 z-50 transition-transform duration-300 ease-out shadow-2xl',
           !isLargeScreen && !isOpen && '-translate-x-full'
         )}
       >
         <div className="flex h-full flex-col">
           {/* Header */}
-          <div className="flex items-center justify-between border-b border-border/50 px-5 py-4">
-            <NavLink to="/" className="flex items-center gap-3 group">
+          <div className="flex items-center justify-between border-b border-border/50 px-4 py-3.5">
+            <NavLink to="/" className="flex items-center gap-2.5 group" onClick={() => setIsOpen(false)}>
               <div className="relative">
-                <div className="absolute inset-0 rounded-xl bg-primary/20 blur-lg group-hover:bg-primary/30 transition-colors" />
-                <div className="relative flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-primary to-primary/80">
-                  <Rocket className="h-5 w-5 text-primary-foreground" />
+                <div className="absolute inset-0 rounded-lg bg-primary/20 blur-md group-hover:bg-primary/30 transition-colors" />
+                <div className="relative flex h-9 w-9 items-center justify-center rounded-lg bg-gradient-to-br from-primary to-primary/80 shadow-sm">
+                  <Rocket className="h-4.5 w-4.5 text-primary-foreground" />
                 </div>
               </div>
-              <span className="text-xl font-semibold tracking-tight">VibeDeck</span>
+              <span className="text-lg font-semibold tracking-tight">VibeDeck</span>
             </NavLink>
             {!isLargeScreen && (
               <button
                 onClick={() => setIsOpen(false)}
-                className="rounded-lg p-2 hover:bg-accent focus-ring"
+                className="flex h-9 w-9 items-center justify-center rounded-lg hover:bg-accent focus-ring active:scale-95 transition-transform"
                 aria-label="Menü schließen"
               >
                 <X className="h-5 w-5" />
@@ -118,8 +119,8 @@ export function Sidebar() {
           </div>
 
           {/* Navigation */}
-          <nav className="flex-1 overflow-y-auto px-3 py-4">
-            <ul className="space-y-1">
+          <nav className="flex-1 overflow-y-auto px-2.5 py-3 scrollbar-thin">
+            <ul className="space-y-0.5">
               {navItems.map((item) => {
                 const isActive = location.pathname === item.href || 
                   (item.href !== '/' && location.pathname.startsWith(item.href));
@@ -130,17 +131,17 @@ export function Sidebar() {
                       to={item.href}
                       onClick={() => setIsOpen(false)}
                       className={cn(
-                        'flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-medium transition-all duration-200',
-                        'hover:bg-accent focus-ring',
+                        'flex items-center gap-2.5 rounded-lg px-3 py-2.5 text-[13px] font-medium transition-all duration-150',
+                        'hover:bg-accent/80 focus-ring active:scale-[0.98]',
                         isActive
-                          ? 'bg-primary/10 text-primary'
+                          ? 'bg-primary/10 text-primary shadow-sm'
                           : 'text-muted-foreground hover:text-foreground'
                       )}
                     >
-                      <item.icon className={cn('h-5 w-5 flex-shrink-0', isActive && 'text-primary')} />
-                      <span className="flex-1">{item.label}</span>
+                      <item.icon className={cn('h-[18px] w-[18px] flex-shrink-0', isActive && 'text-primary')} />
+                      <span className="flex-1 truncate">{item.label}</span>
                       {item.badge && (
-                        <span className="rounded-full bg-primary/15 px-2 py-0.5 text-xs font-medium text-primary">
+                        <span className="rounded-md bg-primary/15 px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-primary">
                           {item.badge}
                         </span>
                       )}
@@ -152,11 +153,18 @@ export function Sidebar() {
           </nav>
 
           {/* Footer */}
-          <div className="border-t border-border/50 p-4">
-            <div className="flex items-center justify-between">
+          <div className="border-t border-border/50 p-3">
+            <div className="flex items-center justify-between gap-2">
               <NavLink
                 to="/settings"
-                className="flex items-center gap-2 rounded-xl px-3 py-2 text-sm text-muted-foreground hover:bg-accent hover:text-foreground focus-ring"
+                onClick={() => setIsOpen(false)}
+                className={cn(
+                  'flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium transition-all duration-150',
+                  'hover:bg-accent focus-ring active:scale-[0.98]',
+                  location.pathname === '/settings'
+                    ? 'bg-primary/10 text-primary'
+                    : 'text-muted-foreground hover:text-foreground'
+                )}
               >
                 <Settings className="h-4 w-4" />
                 <span>Einstellungen</span>
