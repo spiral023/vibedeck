@@ -1,11 +1,12 @@
 import { useMemo, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Search, SlidersHorizontal, X } from 'lucide-react';
+import { Search, SlidersHorizontal, X, Heart, Check } from 'lucide-react';
 import Fuse from 'fuse.js';
 import { prompts, getAllTags, getAllCategories } from '@/data/prompts';
 import { PromptCard } from '@/components/prompts/PromptCard';
 import { CategoryBadge, TagBadge } from '@/components/ui/badges';
+import { usePromptStatusStore } from '@/stores/prompt-status-store';
 import { cn } from '@/lib/utils';
 import type { Category, Complexity } from '@/types/prompt';
 
@@ -19,11 +20,14 @@ const complexityOptions: { value: Complexity | 'all'; label: string }[] = [
 export function PromptLibrary() {
   const [searchParams, setSearchParams] = useSearchParams();
   const [showFilters, setShowFilters] = useState(false);
+  const { favorites, done } = usePromptStatusStore();
 
   const query = searchParams.get('q') || '';
   const categoryFilter = searchParams.get('category') as Category | null;
   const complexityFilter = searchParams.get('complexity') as Complexity | 'all' | null;
   const tagsFilter = searchParams.get('tags')?.split(',').filter(Boolean) || [];
+  const favoritesOnly = searchParams.get('favorites') === 'true';
+  const doneFilter = searchParams.get('done') as 'done' | 'not_done' | null;
 
   const allTags = useMemo(() => getAllTags(), []);
   const allCategories = useMemo(() => getAllCategories() as Category[], []);
@@ -63,8 +67,20 @@ export function PromptLibrary() {
       );
     }
 
+    // Apply favorites filter
+    if (favoritesOnly) {
+      results = results.filter(p => favorites[p.id]);
+    }
+
+    // Apply done filter
+    if (doneFilter === 'done') {
+      results = results.filter(p => done[p.id]);
+    } else if (doneFilter === 'not_done') {
+      results = results.filter(p => !done[p.id]);
+    }
+
     return results;
-  }, [query, categoryFilter, complexityFilter, tagsFilter, fuse]);
+  }, [query, categoryFilter, complexityFilter, tagsFilter, favoritesOnly, doneFilter, fuse, favorites, done]);
 
   const updateParams = (key: string, value: string | null) => {
     const newParams = new URLSearchParams(searchParams);
@@ -87,7 +103,10 @@ export function PromptLibrary() {
     setSearchParams({});
   };
 
-  const hasActiveFilters = query || categoryFilter || complexityFilter || tagsFilter.length > 0;
+  const hasActiveFilters = query || categoryFilter || complexityFilter || tagsFilter.length > 0 || favoritesOnly || doneFilter;
+
+  const favoritesCount = Object.keys(favorites).length;
+  const doneCount = Object.keys(done).length;
 
   return (
     <div className="space-y-8">
@@ -154,9 +173,42 @@ export function PromptLibrary() {
             <span className="hidden sm:inline">Filter</span>
             {hasActiveFilters && (
               <span className="flex h-5 w-5 items-center justify-center rounded-full bg-primary text-xs text-primary-foreground">
-                {(categoryFilter ? 1 : 0) + (complexityFilter && complexityFilter !== 'all' ? 1 : 0) + tagsFilter.length}
+                {(categoryFilter ? 1 : 0) + (complexityFilter && complexityFilter !== 'all' ? 1 : 0) + tagsFilter.length + (favoritesOnly ? 1 : 0) + (doneFilter ? 1 : 0)}
               </span>
             )}
+          </button>
+        </div>
+
+        {/* Quick filters */}
+        <div className="flex flex-wrap gap-2">
+          <button
+            onClick={() => updateParams('favorites', favoritesOnly ? null : 'true')}
+            className={cn(
+              'flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-sm font-medium transition-colors',
+              favoritesOnly
+                ? 'bg-red-500/15 text-red-400 border border-red-500/30'
+                : 'bg-secondary text-secondary-foreground hover:bg-secondary/80'
+            )}
+          >
+            <Heart className={cn('h-4 w-4', favoritesOnly && 'fill-current')} />
+            Favoriten ({favoritesCount})
+          </button>
+          <button
+            onClick={() => {
+              const next = doneFilter === 'done' ? 'not_done' : doneFilter === 'not_done' ? null : 'done';
+              updateParams('done', next);
+            }}
+            className={cn(
+              'flex items-center gap-1.5 rounded-lg px-3 py-1.5 text-sm font-medium transition-colors',
+              doneFilter === 'done'
+                ? 'bg-green-500/15 text-green-400 border border-green-500/30'
+                : doneFilter === 'not_done'
+                  ? 'bg-amber-500/15 text-amber-400 border border-amber-500/30'
+                  : 'bg-secondary text-secondary-foreground hover:bg-secondary/80'
+            )}
+          >
+            <Check className={cn('h-4 w-4', doneFilter === 'done' && 'stroke-[3]')} />
+            {doneFilter === 'done' ? 'Erledigt' : doneFilter === 'not_done' ? 'Offen' : 'Status'} ({doneCount})
           </button>
         </div>
 
