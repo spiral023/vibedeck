@@ -1,6 +1,6 @@
 import { Suspense } from 'react';
 import { notFound } from 'next/navigation';
-import { getWorkflowById } from '@/data/workflows';
+import { getWorkflowById } from '@/lib/workflows';
 import { getPromptById } from '@/lib/prompts';
 import { WorkflowDetailClient } from './client';
 

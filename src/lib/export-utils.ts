@@ -6,7 +6,7 @@ export const ExportSchemaVersion = 1;
 const GlobalVariablesSchema = z.record(z.string().optional());
 
 const ExportDataSchema = z.object({
-  schemaVersion: z.number(),
+  schemaVersion: z.literal(ExportSchemaVersion),
   exportedAt: z.string(),
   settings: z.object({
     themeMode: z.enum(['dark', 'light', 'system']),
