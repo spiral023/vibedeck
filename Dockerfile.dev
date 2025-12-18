@@ -1,0 +1,19 @@
+# Dockerfile für VibeDeck Entwicklungsumgebung
+FROM node:20-alpine
+
+WORKDIR /app
+
+# Kopiere package.json
+COPY package*.json ./
+
+# Installiere alle Dependencies (inkl. devDependencies)
+RUN npm install --legacy-peer-deps
+
+# Kopiere den Rest der Anwendung
+COPY . .
+
+# Exponiere Port
+EXPOSE 3000
+
+# Starte Development Server
+CMD ["npm", "run", "dev"]

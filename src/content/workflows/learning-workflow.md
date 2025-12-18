@@ -20,7 +20,6 @@ steps:
 changelog:
   - date: '2024-12-08'
     note: 'Workflow erstellt'
-updatedDate: '2024-12-08'
 ---
 
 ## Lernmethodik

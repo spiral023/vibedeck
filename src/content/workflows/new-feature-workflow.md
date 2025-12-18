@@ -25,13 +25,12 @@ steps:
   - order: 6
     title: 'Deployment vorbereiten'
     promptRef: 'deployment-checklist'
-    description: 'Erstelle und befolge die Deployment-Checkliste.',
+    description: 'Erstelle und befolge die Deployment-Checkliste.'
 changelog:
   - date: '2024-12-10'
     note: 'Workflow erstellt'
   - date: '2024-12-15'
     note: 'Code Review Schritt hinzugefügt'
-updatedDate: '2024-12-15'
 ---
 
 ## Workflow Beschreibung

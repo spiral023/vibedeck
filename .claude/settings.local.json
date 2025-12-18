@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(node debug-workflows.js:*)",
+      "Bash(node debug-workflows.cjs:*)"
+    ]
+  }
+}

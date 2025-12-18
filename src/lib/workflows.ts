@@ -10,7 +10,7 @@ export function getAllWorkflows(): Workflow[] {
     return [];
   }
 
-  const fileNames = fs.readdirSync(workflowsDirectory);
+  const fileNames = fs.readdirSync(workflowsDirectory).filter(name => name.endsWith('.md'));
   const allWorkflows = fileNames.map((fileName) => {
     const id = fileName.replace(/\.md$/, '');
     const fullPath = path.join(workflowsDirectory, fileName);

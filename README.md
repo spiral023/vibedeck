@@ -99,6 +99,73 @@ npm run build
 npm start
 ```
 
+### 🐳 Docker Installation
+
+VibeDeck kann auch als Docker Container lokal gestartet werden.
+
+#### Voraussetzungen
+
+- Docker Desktop (Windows/Mac) oder Docker Engine (Linux)
+- Docker Compose
+
+#### Mit Docker Compose (Empfohlen)
+
+```bash
+# Repository klonen
+git clone <YOUR_GIT_URL>
+cd vibedeck
+
+# Production-Version starten
+docker compose up -d
+
+# Logs anzeigen
+docker compose logs -f
+
+# Container stoppen
+docker compose down
+```
+
+Die Anwendung ist unter [http://localhost:3000](http://localhost:3000) verfügbar.
+
+#### Development-Version mit Docker
+
+```bash
+# Development-Container starten (mit Hot Reload)
+docker compose --profile dev up vibedeck-dev
+
+# Läuft auf Port 3001
+```
+
+#### Manuell mit Docker
+
+```bash
+# Image bauen
+docker build -t vibedeck .
+
+# Container starten
+docker run -d -p 3000:3000 --name vibedeck vibedeck
+
+# Container stoppen
+docker stop vibedeck
+docker rm vibedeck
+```
+
+#### Docker-Befehle
+
+```bash
+# Container neu bauen (nach Code-Änderungen)
+docker compose up -d --build
+
+# Container-Status prüfen
+docker compose ps
+
+# In Container einsteigen
+docker compose exec vibedeck sh
+
+# Alle Container und Images entfernen
+docker compose down --rmi all
+```
+
 ---
 
 ## 💻 Verwendung
