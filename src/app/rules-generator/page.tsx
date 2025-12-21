@@ -443,45 +443,181 @@ function ContextMetaPromptGenerator() {
 
   const generatedPrompt = useMemo(() => {
     const lang = config.language === 'de';
+    const isAgentsFile = config.targetFile === 'AGENTS.md';
     const detailed = config.detailLevel === 'ausfuehrlich';
+    const focusLabels = config.focusAreas
+      .map((area) => focusOptions.find((o) => o.id === area)?.label)
+      .filter((label): label is string => Boolean(label));
+    const extraNotes = config.notes.trim();
+
+    if (lang && isAgentsFile) {
+      let prompt = `Du bist ein "Repo-Onboarding-Automat" und sollst eine praezise, kurze AGENTS.md erstellen
+(README fuer Coding-Agents / Agent-Harnesses).
+
+ZIEL
+Erzeuge eine Root-Datei AGENTS.md, die einen Agenten in <2 Minuten arbeitsfaehig macht:
+- WHY: Wozu ist das Projekt da? (1-4 Saetze)
+- WHAT: Tech-Stack + Repo-Landkarte
+- HOW: Der "Happy Path": Wie setup/build/test/lint man wirklich? (nur verifizierte Kommandos)
+
+HARTREGELN (Anti-Halluzinations- und Anti-Bloat-Policy)
+- NICHTS erfinden: keine Kommandos/Tools/Versionen/Pfade ausdenken.
+- Nur "High-signal" Kommandos aufnehmen (die, die man wirklich staendig braucht).
+  Keine endlosen Listen "fuer alle Faelle".
+- Keine langen Code-Style-Guidelines und keine Code-Snippets, ausser absolut notwendig.
+  Agent != Linter: nutze deterministische Tools (formatter/linter/typecheck/test) statt Textregeln.
+- Wenn etwas unklar ist: schreibe "Unklar/TODO" + wo man es nachschlagen muss (Dateipfad).
+- Halte AGENTS.md kurz: Ziel <300 Zeilen, harte Obergrenze 500 Zeilen.
+- Wenn deutsch als Sprache genutzt wird achte auf korrektes Encoding (de-DE / UTF-8)
+
+PROGRESSIVE DISCLOSURE
+Wenn das Repo komplex ist:
+- Lege/empfehle zusaetzliche, thematische Agent-Dokus an (z.B. agent_docs/...),
+  statt alles in AGENTS.md zu packen.
+- In AGENTS.md: nur eine kurze Liste dieser Dateien + wofuer sie sind.
+- "Prefer pointers to copies": Verweise auf die autoritativen Stellen im Repo
+  (Datei/Abschnitt, ggf. file:line, wenn verfuegbar) statt Inhalte zu duplizieren.
+
+VORGEHEN (Repo-Scan)
+1) Scanne diese Quellen nach der Wahrheit:
+   - README*, CONTRIBUTING*, docs/*
+   - package.json (+ scripts), pnpm/yarn/npm lockfiles
+   - Makefile, justfile, taskfile
+   - pyproject.toml/poetry.lock/requirements*.txt
+   - docker-compose*.yml, Dockerfile, scripts/*
+   - .github/workflows/*
+   - tooling configs: eslint/prettier/biome, ruff/black/isort/mypy, tsconfig, etc.
+2) Extrahiere:
+   - Projektzweck (WHY)
+   - Stack & Struktur (WHAT)
+   - Minimale Build/Test/Lint/Run-Kommandos (HOW) -> nur verifizierte "Happy Path"-Kommandos
+3) Identifiziere "Schmerzpunkte"/Fallstricke (max. 5 Bulletpoints): z.B. Monorepo, env vars, DB-Migrationen.
+4) Erstelle (oder schlage vor) agent_docs/* fuer seltene/komplexe Themen.
+
+AUSGABEFORMAT
+Gib NUR den Inhalt der AGENTS.md aus (Markdown), ohne Zusatzkommentar ausserhalb.
+
+AGENTS.md STRUKTUR (kompakt, universell, high-signal)
+
+# AGENTS.md
+
+## WHY (Purpose)
+- 1-4 Saetze: Was ist das Projekt, fuer wen, welcher Nutzen?
+
+## WHAT (Map)
+- Stack (nur verifizierbar)
+- Repo-Landkarte:
+  - /app ... (kurz: wofuer)
+  - /packages ... (kurz: wofuer)
+  - zentrale Entry Points / "edit here first"
+
+## HOW (Happy path)
+- Setup (Dependencies installieren)
+- Dev/Run
+- Build
+- Tests
+- Lint/Format/Typecheck
+-> Jede Zeile muss durch Repo-Fakten gedeckt sein (package scripts, Make targets, docs, CI).
+
+## CI & Verifikation
+- Welche Workflows sind massgeblich: .github/workflows/<datei>.yml
+- Wie man lokal "aehnlich" prueft (nur wenn verifizierbar)
+
+## Secrets & Konfiguration
+- Wo env vars / config liegen (nur wenn im Repo ersichtlich)
+- Was niemals committet werden soll (nur wenn im Repo erkennbar)
+
+## Arbeitsabsprachen (universell, max 6 Bullets)
+- Kleine Schritte, Tests laufen lassen, kein massiver Refactor ohne Not
+- Keine Dependency-Bumps ohne Grund
+- Keine Formatierungsarbeit "per Hand" -> nutze formatter/linter, wenn vorhanden
+
+## Progressive Disclosure: weitere Agent-Dokus
+- agent_docs/<file>.md - wann lesen?
+(Optional: "Schlage vor, welche davon du fuer die Aufgabe lesen willst, bevor du sie liest.")
+
+QUALITAETS-CHECK (vor Ausgabe)
+- Ist die Datei kurz genug?
+- Sind alle Kommandos/Pfade real?
+- Gibt es unnoetige, nur selten relevante Regeln? -> raus damit.
+- Sind WHY/WHAT/HOW klar und schnell konsumierbar?
+
+BEGINNE JETZT und liefere die fertige AGENTS.md.`;
+
+      if (focusLabels.length || extraNotes) {
+        prompt += `
+
+ZUSAETZLICHE HINWEISE (aus der UI)
+`;
+        if (focusLabels.length) {
+          prompt += `Fokus-Bereiche:
+${focusLabels.map((label) => `- ${label}`).join('\n')}
+`;
+        }
+        if (extraNotes) {
+          prompt += `
+${extraNotes}`;
+        }
+      }
+
+      return prompt;
+    }
 
     let prompt = lang
-      ? `Erstelle eine ${config.targetFile} Datei für dieses Projekt.`
+      ? `Erstelle eine ${config.targetFile} Datei fuer dieses Projekt.`
       : `Create a ${config.targetFile} file for this project.`;
 
     prompt += '\n\n';
 
     if (detailed) {
       prompt += lang
-        ? `Die Datei soll ausführlich und umfassend sein. Erkläre Entscheidungen und gib Kontext.`
+        ? `Die Datei soll ausfuehrlich und umfassend sein. Erklaere Entscheidungen und gib Kontext.`
         : `The file should be comprehensive and detailed. Explain decisions and provide context.`;
     } else {
       prompt += lang
-        ? `Die Datei soll prägnant und fokussiert sein. Nur die wichtigsten Informationen.`
+        ? `Die Datei soll praegnant und fokussiert sein. Nur die wichtigsten Informationen.`
         : `The file should be concise and focused. Only the most important information.`;
     }
 
     prompt += '\n\n';
-    prompt += lang ? `Fokussiere auf:\n` : `Focus on:\n`;
+    prompt += lang ? `Fokussiere auf:
+` : `Focus on:
+`;
 
     config.focusAreas.forEach((area) => {
       const option = focusOptions.find((o) => o.id === area);
       if (option) {
-        prompt += `- ${option.label}\n`;
+        prompt += `- ${option.label}
+`;
       }
     });
 
-    if (config.notes) {
-      prompt += `\n${lang ? 'Zusätzliche Hinweise' : 'Additional notes'}:\n${config.notes}`;
+    if (extraNotes) {
+      prompt += `
+${lang ? 'Zusaetzliche Hinweise' : 'Additional notes'}:
+${extraNotes}`;
     }
 
-    prompt += `\n\n${lang ? 'Erforderliche Abschnitte' : 'Required sections'}:\n`;
+    prompt += `
+
+${lang ? 'Erforderliche Abschnitte' : 'Required sections'}:
+`;
     prompt += lang
-      ? `1. Projekt-Übersicht\n2. Technologie-Stack\n3. Verzeichnisstruktur\n4. Entwicklungs-Workflow\n5. Konventionen und Standards`
-      : `1. Project Overview\n2. Technology Stack\n3. Directory Structure\n4. Development Workflow\n5. Conventions and Standards`;
+      ? `1. Projekt-Uebersicht
+2. Technologie-Stack
+3. Verzeichnisstruktur
+4. Entwicklungs-Workflow
+5. Konventionen und Standards`
+      : `1. Project Overview
+2. Technology Stack
+3. Directory Structure
+4. Development Workflow
+5. Conventions and Standards`;
 
     return prompt;
   }, [config]);
+
+
 
   const handleCopy = async () => {
     const success = await copyToClipboard(generatedPrompt);

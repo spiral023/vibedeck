@@ -179,7 +179,7 @@ docker compose -f {{compose_file}} run --rm {{service_name}} sh -c "cd {{working
 ### Einzelnes Paket im Backend Container
 
 ```bash
-docker compose -f {{compose_file}} exec {{service_name}} pip install unidecode
+docker compose -f {{compose_file}} exec {{service_name}} pip install paketname
 ```
 
 ### Tests und Infos

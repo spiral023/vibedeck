@@ -1,13 +1,13 @@
 'use client';
 
-import { useMemo, useCallback, useState } from 'react';
+import { useMemo, useCallback, useState, useEffect, useRef, isValidElement, cloneElement, Fragment, type ReactNode } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { useForm } from 'react-hook-form';
 import { motion } from 'framer-motion';
 import ReactMarkdown from 'react-markdown';
 import { toast } from 'sonner';
-import { ArrowLeft, ChevronDown, ChevronUp, Copy, Download } from 'lucide-react';
+import { ArrowLeft, ChevronDown, ChevronUp, Copy, Download, Search, X } from 'lucide-react';
 import { useHistoryStore } from '@/stores/history-store';
 import { resolvePlaceholders } from '@/lib/placeholder-utils';
 import { copyToClipboard } from '@/lib/copy-utils';
@@ -17,10 +17,66 @@ interface HelpTemplateDetailClientProps {
   template: HelpTemplate;
 }
 
+function escapeRegExp(value: string) {
+  return value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+}
+
+function highlightText(text: string, query: string) {
+  if (!query) return text;
+  const regex = new RegExp(escapeRegExp(query), 'gi');
+  const matches = text.match(regex);
+  if (!matches) return text;
+
+  const parts = text.split(regex);
+  const nodes: ReactNode[] = [];
+  parts.forEach((part, index) => {
+    if (part) {
+      nodes.push(part);
+    }
+    const match = matches[index];
+    if (match) {
+      nodes.push(
+        <mark
+          key={`match-${index}`}
+          data-search-match="true"
+          className="rounded bg-amber-400/30 px-0.5 text-amber-200"
+        >
+          {match}
+        </mark>
+      );
+    }
+  });
+
+  return nodes;
+}
+
+function highlightChildren(children: ReactNode, query: string): ReactNode {
+  if (!query) return children;
+  if (typeof children === 'string') {
+    return highlightText(children, query);
+  }
+  if (Array.isArray(children)) {
+    return children.map((child, index) => (
+      <Fragment key={index}>{highlightChildren(child, query)}</Fragment>
+    ));
+  }
+  if (isValidElement(children)) {
+    const childProps = children.props as { children?: ReactNode };
+    if (!childProps.children) return children;
+    return cloneElement(children, {
+      ...children.props,
+      children: highlightChildren(childProps.children, query),
+    });
+  }
+  return children;
+}
+
 export function HelpTemplateDetailClient({ template }: HelpTemplateDetailClientProps) {
   const router = useRouter();
   const { addEntry } = useHistoryStore();
   const [showVariables, setShowVariables] = useState(true);
+  const [previewQuery, setPreviewQuery] = useState('');
+  const previewRef = useRef<HTMLDivElement>(null);
 
   const form = useForm<Record<string, string>>({
     defaultValues: template.variables.reduce<Record<string, string>>((acc, v) => ({
@@ -34,6 +90,52 @@ export function HelpTemplateDetailClient({ template }: HelpTemplateDetailClientP
   const resolvedContent = useMemo(() => {
     return resolvePlaceholders(template.template, formValues);
   }, [template, formValues]);
+
+  const normalizedQuery = previewQuery.trim();
+
+  const matchCount = useMemo(() => {
+    if (!normalizedQuery) return 0;
+    const regex = new RegExp(escapeRegExp(normalizedQuery), 'gi');
+    return resolvedContent.match(regex)?.length ?? 0;
+  }, [resolvedContent, normalizedQuery]);
+
+  const markdownComponents = useMemo(() => {
+    if (!normalizedQuery) return undefined;
+    const wrap = (Tag: keyof JSX.IntrinsicElements) =>
+      ({ children, ...props }: { children?: ReactNode }) => (
+        <Tag {...(props as JSX.IntrinsicElements[typeof Tag])}>
+          {highlightChildren(children, normalizedQuery)}
+        </Tag>
+      );
+
+    return {
+      p: wrap('p'),
+      li: wrap('li'),
+      blockquote: wrap('blockquote'),
+      h1: wrap('h1'),
+      h2: wrap('h2'),
+      h3: wrap('h3'),
+      h4: wrap('h4'),
+      h5: wrap('h5'),
+      h6: wrap('h6'),
+      td: wrap('td'),
+      th: wrap('th'),
+      strong: wrap('strong'),
+      em: wrap('em'),
+      a: wrap('a'),
+      code: wrap('code'),
+    };
+  }, [normalizedQuery]);
+
+  useEffect(() => {
+    if (!normalizedQuery) return;
+    const container = previewRef.current;
+    if (!container) return;
+    const firstMatch = container.querySelector('mark[data-search-match="true"]');
+    if (firstMatch instanceof HTMLElement) {
+      firstMatch.scrollIntoView({ block: 'center' });
+    }
+  }, [normalizedQuery, resolvedContent]);
 
   const handleCopy = useCallback(async () => {
     const success = await copyToClipboard(resolvedContent);
@@ -152,9 +254,38 @@ export function HelpTemplateDetailClient({ template }: HelpTemplateDetailClientP
             </div>
           </div>
 
-          <div className="rounded-2xl border border-border/50 bg-card/50 p-5 max-h-[600px] overflow-y-auto">
+          <div className="flex flex-wrap items-center gap-3">
+            <div className="relative flex-1 min-w-[220px]">
+              <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+              <input
+                type="text"
+                value={previewQuery}
+                onChange={(event) => setPreviewQuery(event.target.value)}
+                placeholder="In der Vorschau suchen..."
+                className="h-10 w-full rounded-lg border border-border bg-background pl-9 pr-10 text-sm focus:border-primary focus:outline-none"
+              />
+              {previewQuery && (
+                <button
+                  type="button"
+                  onClick={() => setPreviewQuery('')}
+                  className="absolute right-2 top-1/2 -translate-y-1/2 rounded-md p-1 text-muted-foreground hover:text-foreground"
+                  aria-label="Suche loeschen"
+                >
+                  <X className="h-4 w-4" />
+                </button>
+              )}
+            </div>
+            <span className="text-xs text-muted-foreground">
+              {normalizedQuery ? `${matchCount} Treffer` : 'Suche optional'}
+            </span>
+          </div>
+
+          <div
+            ref={previewRef}
+            className="rounded-2xl border border-border/50 bg-card/50 p-5 max-h-[600px] overflow-y-auto"
+          >
             <div className="prose prose-sm prose-neutral dark:prose-invert max-w-none">
-              <ReactMarkdown>{resolvedContent}</ReactMarkdown>
+              <ReactMarkdown components={markdownComponents}>{resolvedContent}</ReactMarkdown>
             </div>
           </div>
         </motion.section>
