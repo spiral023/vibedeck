@@ -93,7 +93,7 @@ export function Sidebar() {
         className={cn(
           'h-screen w-[280px] border-r border-border/50 bg-sidebar flex-shrink-0 will-change-transform',
           isLargeScreen
-            ? 'relative'
+            ? 'sticky top-0'
             : 'fixed left-0 top-0 z-50 transition-transform duration-300 ease-out shadow-2xl',
           !isLargeScreen && !isOpen && '-translate-x-full'
         )}

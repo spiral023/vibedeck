@@ -1,13 +1,13 @@
 'use client';
 
-import { useMemo, useCallback } from 'react';
+import { useMemo, useCallback, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 import { useForm } from 'react-hook-form';
 import { motion } from 'framer-motion';
 import ReactMarkdown from 'react-markdown';
 import { toast } from 'sonner';
-import { ArrowLeft, Copy, Download } from 'lucide-react';
+import { ArrowLeft, ChevronDown, ChevronUp, Copy, Download } from 'lucide-react';
 import { useHistoryStore } from '@/stores/history-store';
 import { resolvePlaceholders } from '@/lib/placeholder-utils';
 import { copyToClipboard } from '@/lib/copy-utils';
@@ -20,6 +20,7 @@ interface HelpTemplateDetailClientProps {
 export function HelpTemplateDetailClient({ template }: HelpTemplateDetailClientProps) {
   const router = useRouter();
   const { addEntry } = useHistoryStore();
+  const [showVariables, setShowVariables] = useState(true);
 
   const form = useForm<Record<string, string>>({
     defaultValues: template.variables.reduce<Record<string, string>>((acc, v) => ({
@@ -80,37 +81,56 @@ export function HelpTemplateDetailClient({ template }: HelpTemplateDetailClientP
         <p className="mt-2 text-muted-foreground">{template.notes}</p>
       </motion.div>
 
-      <div className="grid gap-8 lg:grid-cols-2">
+      <div className="space-y-6">
         {/* Variables form */}
-        <motion.div
-          initial={{ opacity: 0, x: -10 }}
-          animate={{ opacity: 1, x: 0 }}
-          className="space-y-4"
+        <motion.section
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="rounded-2xl border border-border/50 bg-card/50"
         >
-          <h2 className="text-xl font-semibold">Variablen</h2>
-          <div className="rounded-2xl border border-border/50 bg-card/50 p-5 space-y-4">
-            {template.variables.map((variable) => (
-              <div key={variable.name}>
-                <label className="mb-1.5 block text-sm font-medium">
-                  {variable.label}
-                  <code className="ml-2 rounded bg-secondary px-1.5 py-0.5 text-xs font-mono">
-                    {'{{' + variable.name + '}}'}
-                  </code>
-                </label>
-                <input
-                  {...form.register(variable.name)}
-                  placeholder={variable.placeholder || variable.default}
-                  className="w-full rounded-lg border border-border bg-background px-3 py-2 text-sm focus:border-primary focus:outline-none"
-                />
-              </div>
-            ))}
-          </div>
-        </motion.div>
+          <button
+            onClick={() => setShowVariables((prev) => !prev)}
+            className="flex w-full items-center justify-between p-5 text-left"
+          >
+            <h2 className="text-xl font-semibold">Variablen</h2>
+            {showVariables ? (
+              <ChevronUp className="h-5 w-5 text-muted-foreground" />
+            ) : (
+              <ChevronDown className="h-5 w-5 text-muted-foreground" />
+            )}
+          </button>
+
+          {showVariables && (
+            <div className="border-t border-border/50 p-5 space-y-4">
+              {template.variables.length === 0 ? (
+                <p className="text-sm text-muted-foreground">
+                  Keine Variablen vorhanden.
+                </p>
+              ) : (
+                template.variables.map((variable) => (
+                  <div key={variable.name}>
+                    <label className="mb-1.5 block text-sm font-medium">
+                      {variable.label}
+                      <code className="ml-2 rounded bg-secondary px-1.5 py-0.5 text-xs font-mono">
+                        {'{{' + variable.name + '}}'}
+                      </code>
+                    </label>
+                    <input
+                      {...form.register(variable.name)}
+                      placeholder={variable.placeholder || variable.default}
+                      className="w-full rounded-lg border border-border bg-background px-3 py-2 text-sm focus:border-primary focus:outline-none"
+                    />
+                  </div>
+                ))
+              )}
+            </div>
+          )}
+        </motion.section>
 
         {/* Preview */}
-        <motion.div
-          initial={{ opacity: 0, x: 10 }}
-          animate={{ opacity: 1, x: 0 }}
+        <motion.section
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
           className="space-y-4"
         >
           <div className="flex items-center justify-between">
@@ -137,7 +157,7 @@ export function HelpTemplateDetailClient({ template }: HelpTemplateDetailClientP
               <ReactMarkdown>{resolvedContent}</ReactMarkdown>
             </div>
           </div>
-        </motion.div>
+        </motion.section>
       </div>
     </div>
   );
