@@ -101,9 +101,9 @@ export function HelpTemplateDetailClient({ template }: HelpTemplateDetailClientP
 
   const markdownComponents = useMemo(() => {
     if (!normalizedQuery) return undefined;
-    const wrap = (Tag: keyof JSX.IntrinsicElements) =>
-      ({ children, ...props }: { children?: ReactNode }) => (
-        <Tag {...(props as JSX.IntrinsicElements[typeof Tag])}>
+    const wrap = (Tag: any) =>
+      ({ children, ...props }: any) => (
+        <Tag {...props}>
           {highlightChildren(children, normalizedQuery)}
         </Tag>
       );

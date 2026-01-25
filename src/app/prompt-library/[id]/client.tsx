@@ -13,8 +13,6 @@ import {
   ArrowLeft,
   Calendar,
   ChevronDown,
-  ChevronUp,
-  Clipboard,
   Copy,
   ExternalLink,
   GitBranch,
@@ -26,7 +24,6 @@ import {
   Zap,
 } from 'lucide-react';
 import { CategoryBadge, ComplexityBadge, TagBadge } from '@/components/ui/badges';
-import { TokenEstimator } from '@/components/prompts/TokenEstimator';
 import { useSettingsStore } from '@/stores/settings-store';
 import { usePromptStatusStore } from '@/stores/prompt-status-store';
 import { useHistoryStore, type CopyFormat } from '@/stores/history-store';
@@ -53,7 +50,6 @@ export function PromptDetailClient({ prompt }: PromptDetailClientProps) {
   const { addEntry } = useHistoryStore();
   
   const [selectedVariant, setSelectedVariant] = useState<'beginner' | 'intermediate' | 'expert'>('intermediate');
-  const [showPrePrompt, setShowPrePrompt] = useState(true);
   const [editingRole, setEditingRole] = useState(false);
   const [customRole, setCustomRole] = useState('');
   
@@ -168,18 +164,6 @@ export function PromptDetailClient({ prompt }: PromptDetailClientProps) {
       toast.error('Kopieren fehlgeschlagen');
     }
   }, [prompt, resolvedText, selectedVariant, formValues, addEntry]);
-  
-  // Copy pre-prompt
-  const handleCopyPrePrompt = useCallback(async () => {
-    if (!prompt) return;
-    
-    const success = await copyToClipboard(prompt.pre_prompt);
-    if (success) {
-      toast.success('Pre-Prompt kopiert');
-    } else {
-      toast.error('Kopieren fehlgeschlagen');
-    }
-  }, [prompt]);
   
   // Save custom role
   const handleSaveRole = () => {
@@ -323,41 +307,6 @@ export function PromptDetailClient({ prompt }: PromptDetailClientProps) {
             </motion.section>
           )}
 
-          {/* Pre-prompt - Collapsible */}
-          <motion.section
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-            className="rounded-2xl border border-border/50 bg-card/50"
-          >
-            <button
-              onClick={() => setShowPrePrompt(!showPrePrompt)}
-              className="flex w-full items-center justify-between p-5 text-left"
-            >
-              <h2 className="text-xl font-semibold">System-Prompt (Pre-Prompt)</h2>
-              {showPrePrompt ? (
-                <ChevronUp className="h-5 w-5 text-muted-foreground" />
-              ) : (
-                <ChevronDown className="h-5 w-5 text-muted-foreground" />
-              )}
-            </button>
-            
-            {showPrePrompt && (
-              <div className="border-t border-border/50 p-5">
-                <div className="prose prose-sm prose-neutral dark:prose-invert max-w-none mb-4">
-                  <ReactMarkdown>{prompt.pre_prompt}</ReactMarkdown>
-                </div>
-                <button
-                  onClick={handleCopyPrePrompt}
-                  className="flex items-center gap-2 rounded-lg bg-secondary px-3 py-2 text-sm font-medium text-secondary-foreground hover:bg-secondary/80 focus-ring"
-                >
-                  <Clipboard className="h-4 w-4" />
-                  Pre-Prompt kopieren
-                </button>
-              </div>
-            )}
-          </motion.section>
-
           {/* Variant selector */}
           <motion.section
             initial={{ opacity: 0, y: 10 }}
@@ -488,9 +437,6 @@ export function PromptDetailClient({ prompt }: PromptDetailClientProps) {
               ))}
             </div>
           </motion.section>
-
-          {/* Token Estimator */}
-          <TokenEstimator text={resolvedText} />
 
           {/* Notes (Markdown body) */}
           {prompt.body && (

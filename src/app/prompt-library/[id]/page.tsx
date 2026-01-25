@@ -1,7 +1,14 @@
 import { Suspense } from 'react';
 import { notFound } from 'next/navigation';
-import { getPromptById } from '@/lib/prompts';
+import { getPromptById, getAllPrompts } from '@/lib/prompts';
 import { PromptDetailClient } from './client';
+
+export async function generateStaticParams() {
+  const prompts = getAllPrompts();
+  return prompts.map((prompt) => ({
+    id: prompt.id,
+  }));
+}
 
 interface PageProps {
   params: Promise<{ id: string }>;

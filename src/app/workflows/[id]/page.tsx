@@ -1,8 +1,15 @@
 import { Suspense } from 'react';
 import { notFound } from 'next/navigation';
-import { getWorkflowById } from '@/lib/workflows';
+import { getWorkflowById, getAllWorkflows } from '@/lib/workflows';
 import { getPromptById } from '@/lib/prompts';
 import { WorkflowDetailClient } from './client';
+
+export async function generateStaticParams() {
+  const workflows = getAllWorkflows();
+  return workflows.map((workflow) => ({
+    id: workflow.id,
+  }));
+}
 
 interface PageProps {
   params: Promise<{ id: string }>;

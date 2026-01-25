@@ -1,7 +1,14 @@
 import { Suspense } from 'react';
 import { notFound } from 'next/navigation';
-import { getHelpTemplateById } from '@/lib/help';
+import { getHelpTemplateById, getAllHelpTemplates } from '@/lib/help';
 import { HelpTemplateDetailClient } from './client';
+
+export async function generateStaticParams() {
+  const templates = getAllHelpTemplates();
+  return templates.map((template) => ({
+    id: template.id,
+  }));
+}
 
 interface PageProps {
   params: Promise<{ id: string }>;
