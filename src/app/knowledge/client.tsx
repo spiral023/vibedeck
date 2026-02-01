@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { motion } from 'framer-motion';
-import ReactMarkdown from 'react-markdown';
+import Link from 'next/link';
 import { BookOpen, Code2, Database, FileCode, Layers, Lock, Rocket, Search, Zap, Image } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { type KnowledgeArticle } from '@/types/knowledge';
@@ -13,6 +13,7 @@ const categories = [
   { id: 'patterns', label: 'Patterns' },
   { id: 'security', label: 'Sicherheit' },
   { id: 'performance', label: 'Performance' },
+  { id: 'advanced', label: 'Fortgeschritten' },
 ];
 
 const iconMap: Record<string, React.ElementType> = {
@@ -35,7 +36,6 @@ interface KnowledgeClientProps {
 export function KnowledgeClient({ articles }: KnowledgeClientProps) {
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [searchQuery, setSearchQuery] = useState('');
-  const [selectedArticle, setSelectedArticle] = useState<string | null>(null);
 
   const filtered = articles.filter((article) => {
     const matchesCategory = selectedCategory === 'all' || article.category === selectedCategory;
@@ -43,44 +43,6 @@ export function KnowledgeClient({ articles }: KnowledgeClientProps) {
       article.description.toLowerCase().includes(searchQuery.toLowerCase());
     return matchesCategory && matchesSearch;
   });
-
-  const currentArticle = selectedArticle ? articles.find(a => a.id === selectedArticle) : null;
-
-  if (currentArticle) {
-    const Icon = iconMap[currentArticle.icon] || BookOpen;
-
-    return (
-      <div className="space-y-6">
-        <button
-          onClick={() => setSelectedArticle(null)}
-          className="text-sm text-muted-foreground hover:text-foreground"
-        >
-          ← Zurück zur Übersicht
-        </button>
-
-        <motion.article
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="prose prose-neutral dark:prose-invert max-w-none"
-        >
-          <div className="not-prose mb-6">
-            <div className="flex items-center gap-3 mb-4">
-              <div className="rounded-xl bg-primary/10 p-3">
-                <Icon className="h-6 w-6 text-primary" />
-              </div>
-              <div>
-                <h1 className="text-3xl font-bold">{currentArticle.title}</h1>
-                <p className="text-muted-foreground">{currentArticle.readTime} Lesezeit</p>
-              </div>
-            </div>
-          </div>
-          <div className="prose prose-sm prose-neutral dark:prose-invert max-w-none">
-            <ReactMarkdown>{currentArticle.content}</ReactMarkdown>
-          </div>
-        </motion.article>
-      </div>
-    );
-  }
 
   return (
     <div className="space-y-8">
@@ -129,29 +91,29 @@ export function KnowledgeClient({ articles }: KnowledgeClientProps) {
         {filtered.map((article, index) => {
           const Icon = iconMap[article.icon] || BookOpen;
           return (
-            <motion.button
+            <motion.div
               key={article.id}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.05 }}
-              onClick={() => setSelectedArticle(article.id)}
-              className="text-left group"
             >
-              <div className="h-full rounded-2xl border border-border/50 bg-card/50 p-5 transition-all hover:border-primary/30 hover:bg-card">
-                <div className="mb-4 flex items-center justify-between">
-                  <div className="rounded-xl bg-primary/10 p-2.5">
-                    <Icon className="h-5 w-5 text-primary" />
+              <Link href={`/knowledge/${article.id}`} className="block h-full group">
+                <div className="h-full rounded-2xl border border-border/50 bg-card/50 p-5 transition-all hover:border-primary/30 hover:bg-card">
+                  <div className="mb-4 flex items-center justify-between">
+                    <div className="rounded-xl bg-primary/10 p-2.5">
+                      <Icon className="h-5 w-5 text-primary" />
+                    </div>
+                    <span className="text-xs text-muted-foreground">{article.readTime}</span>
                   </div>
-                  <span className="text-xs text-muted-foreground">{article.readTime}</span>
+                  <h3 className="font-semibold group-hover:text-primary transition-colors">
+                    {article.title}
+                  </h3>
+                  <p className="mt-2 text-sm text-muted-foreground line-clamp-2">
+                    {article.description}
+                  </p>
                 </div>
-                <h3 className="font-semibold group-hover:text-primary transition-colors">
-                  {article.title}
-                </h3>
-                <p className="mt-2 text-sm text-muted-foreground line-clamp-2">
-                  {article.description}
-                </p>
-              </div>
-            </motion.button>
+              </Link>
+            </motion.div>
           );
         })}
       </div>

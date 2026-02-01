@@ -32,3 +32,20 @@ export function getAllKnowledgeArticles(): KnowledgeArticle[] {
     return a.title.localeCompare(b.title);
   });
 }
+
+export function getKnowledgeArticle(id: string): KnowledgeArticle | null {
+  const fullPath = path.join(knowledgeDirectory, `${id}.md`);
+  
+  if (!fs.existsSync(fullPath)) {
+    return null;
+  }
+
+  const fileContents = fs.readFileSync(fullPath, 'utf8');
+  const matterResult = matter(fileContents);
+
+  return {
+    id,
+    ...matterResult.data,
+    content: matterResult.content,
+  } as KnowledgeArticle;
+}
