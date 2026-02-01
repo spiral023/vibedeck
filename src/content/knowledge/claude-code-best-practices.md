@@ -1,88 +1,90 @@
 ---
-title: "Claude Code Best Practices: 50 Tipps"
-description: "Die ultimative Liste von 50 Claude Code Tipps für effektiveres Arbeiten, basierend auf den offiziellen Best Practices und Experten-Erfahrungen."
+title: "Claude Code Best Practices"
+description: "Tipps und Muster, um das Beste aus Claude Code herauszuholen – von der Umgebungskonfiguration bis zur Skalierung paralleler Sitzungen."
 category: fundamentals
-icon: Rocket
-readTime: 12 Min
+icon: Sparkles
+readTime: 15 Min
 ---
 
-> **Hinweis**: Dieser Artikel basiert auf einem [Tweet von AI Edge](https://x.com/aiedge_/status/2014740607248564332) vom 23. Januar 2026.
+> **Quelle:** Dieser Artikel basiert auf den offiziellen [Anthropic Docs](https://code.claude.com/docs/en/best-practices).
 
-![Claude Code Best Practices Header](/images/knowledge/claude-code-best-practices/header.jpg)
+Claude Code ist eine agentische Coding-Umgebung. Anders als ein Chatbot, der nur Fragen beantwortet, kann Claude Code Dateien lesen, Befehle ausführen und Änderungen vornehmen.
 
-AI Edge hat die neuen Claude Code Best Practices Dokumente gelesen und mit persönlichen Erfahrungen ergänzt. Hier sind 50 Rapid-Fire Tipps, um besser mit Claude zu bauen.
+Die meisten Best Practices basieren auf einer Einschränkung: **Claudes Kontextfenster füllt sich schnell**, und die Leistung nimmt ab, wenn es voll ist.
 
-## Foundational Tips (Grundlagen)
+## 1. Gib Claude eine Möglichkeit zur Verifizierung
 
-*   **50. Clear Task Framing:** Sag Claude *genau*, was es tun soll, bevor du irgendetwas anderes sagst.
-*   **49. Front Load Instructions:** Packe die wichtigste Anweisung immer ganz nach oben in den Prompt.
-*   **48. Gib Claude eine Möglichkeit zur Überprüfung:** Füge Tests, Screenshots oder erwartete Outputs hinzu. Das ist der effektivste Hebel überhaupt.
-*   **47. Prompt Struktur:** `[Rolle] + [Aufgabe] + [Kontext]`.
-*   **46. Chrome Extension:** Nutze die Extension, um UI-Änderungen direkt visuell verifizieren zu lassen.
-*   **45. Explore -> Plan -> Code:** Erst recherchieren (ggf. mit anderen LLMs), dann Plan Mode (`Shift+Tab`), dann erst Code ausführen.
-*   **44. Spezifischer Kontext:** Je präziser, desto besser. Claude kann Kontext nur inferieren, wenn du ihn gibst.
-*   **43. Assume Zero Context:** Geh davon aus, dass Claude nichts über dein Projekt weiß.
-*   **42. Rich Context:** Nutze `@`, um Dateien, Daten und Bilder zu verlinken.
-*   **41. CLAUDE.md Tip:** Starte mit `/init`, um eine Basis-Datei zu generieren.
+Claude arbeitet deutlich besser, wenn es seine eigene Arbeit überprüfen kann (Tests ausführen, Screenshots vergleichen, Outputs validieren). Ohne klare Erfolgskriterien bist du der einzige Feedback-Loop.
 
-![New Best Practices for Claude Code](/images/knowledge/claude-code-best-practices/best-practices-cover.jpg)
+*   **Verifikationskriterien:** Statt "fixe den Bug", sage: "Der Build schlägt mit Fehler X fehl. Fixe ihn und verifiziere, dass der Build erfolgreich durchläuft."
+*   **Visuelle Verifizierung:** Nutze die Chrome-Extension, um UI-Änderungen zu prüfen.
+*   **Tests:** "Schreibe eine `validateEmail` Funktion. Testfälle: `user@example.com` ist true, `invalid` ist false. Führe die Tests nach der Implementierung aus."
 
-## Projects & Skills (Projekte & Fähigkeiten)
+## 2. Erst erforschen, dann planen, dann coden
 
-*   **40. Project Instructions:** Nutze Projekt-Level-Instruktionen für langfristiges Verhalten statt Prompts zu wiederholen.
-*   **39. Project Memory:** Bearbeite den "Memory"-Tab, um zu steuern, was Claude behalten oder vergessen soll.
-*   **38. Claude Skills:** Verwandle wiederholbare Workflows in Skills.
-*   **37. Skill from Examples:** Paste einen guten Output und bitte Claude, daraus einen Skill zu machen.
-*   **36. Skill Versioning:** Dupliziere und versioniere Skills, statt live an ihnen zu arbeiten.
-*   **35. Project Hygiene:** Bereinige regelmäßig Memory und Dateien, um "Drift" zu vermeiden.
-*   **34. Context Bleed:** Nutze separate Projekte für unabhängige Workstreams.
-*   **33. Skills Repo:** Bibliothek mit 80.000+ Skills: [skillsmp.com](https://skillsmp.com/)
-*   **32. Skills Library:** Offizielle Library: [mcpservers.org/claude-skills](https://mcpservers.org/claude-skills)
-*   **31. Memory Location:** Projekt-Memory liegt in `./CLAUDE.md` oder `./.claude/CLAUDE.md`.
+Lasse Claude nicht sofort loscoden. Nutze den **Plan Mode**, um Recherche und Ausführung zu trennen.
 
-## Underrated Mini Tips (Geheimtipps)
+1.  **Explore (Plan Mode):** Claude liest Dateien und beantwortet Fragen.
+2.  **Plan (Plan Mode):** Claude erstellt einen detaillierten Implementierungsplan.
+3.  **Implement (Normal Mode):** Claude schreibt Code basierend auf dem Plan.
+4.  **Commit:** Claude erstellt einen Commit und PR.
 
-*   **30. Model Stacking:** Nutze andere LLMs für Planung und Mega-Prompts, bevor du Claude Code öffnest (spart Tokens).
-*   **29. Custom Subagents:** Definiere spezialisierte Assistenten in `.claude/agents/` für isolierte Aufgaben.
-*   **28. Output Scoring:** Bitte Claude, seine eigene Antwort gegen deine Kriterien zu bewerten.
-*   **27. Install Plugins:** Nutze `/plugin`, um Skills und Tools ohne Konfiguration zu installieren.
-*   **26. Learn In-App:** Es gibt Kurse direkt in Claude Code ([ccforeveryone.com](https://ccforeveryone.com/)).
-*   **25. Claude Interviews:** Lass dich von Claude interviewen (`AskUserQuestion`), um Anforderungen zu klären.
-*   **24. Correct Often:** Stoppe Claude sofort (`ESC`), wenn es vom Weg abkommt.
-*   **23. Clear:** Nutze `/clear` für eine frische Session.
-*   **22. Rewind:** `ESC` (doppelt) oder `/rewind` öffnet das Checkpoint-Menü.
-*   **21. Multiple Sessions:** Nutze Claude Desktop für parallele lokale Sessions oder Claude Web für isolierte VMs.
+> **Tipp:** Bei kleinen Änderungen (Typo, Log-Line) überspringe den Plan.
 
-## Debugging & Failure Patterns (Fehlerbehebung)
+## 3. Spezifischer Kontext in Prompts
 
-*   **20. Step Isolation:** Führe nur den kaputten Schritt neu aus, nicht alles.
-*   **19. Error Reproduction:** Bitte Claude, den Fehler absichtlich zu reproduzieren, um ihn zu verstehen.
-*   **18. Rollback Prompts:** Gehe zum letzten guten Prompt zurück.
-*   **17. Over-Specified CLAUDE.md:** Wenn die Datei zu lang ist, ignoriert Claude sie. **Fix:** Alles löschen, was Claude ohnehin richtig macht.
-*   **16. Context Switching:** Aufgaben vermischt? **Fix:** `/clear` zwischen Aufgaben.
-*   **15. Over-Correcting:** Nach zwei Fehlversuchen: `/clear` und den Prompt neu schreiben.
-*   **14. Step-by-Step Replay:** Lass Claude erklären, wie es zur Lösung kam.
-*   **13. Infinite Exploration:** "Untersuche X" ohne Scope führt zu Chaos. **Fix:** Scope eng setzen oder Subagents nutzen.
-*   **12. Debugging Project:** Erstelle ein separates Projekt nur zum Debuggen.
-*   **11. Context Window:** Behalte die Token-Nutzung im Blick ([Doku](https://code.claude.com/docs/en/costs#reduce-token-usage)).
+Je präziser deine Anweisungen, desto weniger Korrekturen sind nötig.
 
-## Final Tips (Abschluss)
+*   **Scope:** Nenne spezifische Dateien und Szenarien.
+*   **Quellen:** "Durchsuche die Git-History von `Factory.ts`, um zu verstehen, warum die API so ist."
+*   **Muster:** "Schau dir `Widget.ts` an und implementiere das neue Widget nach demselben Muster."
+*   **Symptome:** Beschreibe das Symptom, die wahrscheinliche Ursache und wie "gefixt" aussieht.
 
-*   **10. Notion Database:** Verbinde Notion, um deine besten Prompts zu speichern.
-*   **9. Anthropic Learn:** [anthropic.com/learn](https://www.anthropic.com/learn)
-*   **8. Coursera:** Offizielle Kurse.
-*   **7. Boris' Setup:** Wie der Creator von Claude Code sein Setup nutzt.
+Nutze `@`, um Dateien zu referenzieren, pipe Daten (`cat error.log | claude`) oder paste Bilder.
 
-![Boris Claude Code Setup](/images/knowledge/claude-code-best-practices/boris-setup.png)
+## 4. Umgebung konfigurieren
 
-*   **6. Official Best Practices:** [code.claude.com/docs/en/best-practices](https://code.claude.com/docs/en/best-practices)
-*   **5. Safe Autonomous Mode:** Nutze `claude --dangerously-skip-permissions` für ununterbrochene Workflows (z.B. Linting).
-*   **4. Slow & Steady:** Nimm dir Zeit für den Plan. Dann erst Execute.
-*   **3. Claude Superpowers:** GitHub Repo: [github.com/obra/superpowers](https://github.com/obra/superpowers)
-*   **2. Hooks:** Perfekt für Aktionen, die *immer* passieren müssen (Linting, Testing).
-*   **1. Extend Claude:** [code.claude.com/docs/en/features-overview](https://code.claude.com/docs/en/features-overview)
+### Effektive CLAUDE.md
 
----
+`CLAUDE.md` gibt Claude persistenten Kontext, den es nicht aus dem Code allein ableiten kann.
 
-**Fazit:**
-Claude Code ist mächtig, aber nur so gut wie der Pilot. Nutze Planung, halte den Kontext sauber und automatisiere wiederkehrende Aufgaben mit Skills und Hooks.
+*   **Inhalt:** Bash-Befehle, Code-Style-Regeln (die nicht offensichtlich sind), Workflow-Regeln.
+*   **Kürze:** Halte sie kurz (< 300 Zeilen). Bloated `CLAUDE.md` führt dazu, dass Claude Anweisungen ignoriert.
+*   **Import:** Nutze `@pfad/zu/datei`, um andere Markdown-Dateien einzubinden.
+
+### Permissions & CLI Tools
+
+*   **Permissions:** Nutze `/permissions` für Allow-Lists oder `/sandbox` für Sicherheit ohne nervige Bestätigungen.
+*   **CLI Tools:** Installiere Tools wie `gh` (GitHub CLI), damit Claude effizient mit externen Diensten interagieren kann.
+
+### MCP, Hooks & Skills
+
+*   **MCP:** Verbinde Datenbanken, Issue-Tracker etc. via `claude mcp add`.
+*   **Hooks:** Garantiere Aktionen (z.B. "Führe ESLint nach jedem Edit aus") via `/hooks`.
+*   **Skills:** Erstelle wiederverwendbare Workflows in `.claude/skills/SKILL.md`.
+
+## 5. Effektiv kommunizieren
+
+*   **Stelle Fragen:** Nutze Claude zum Onboarding ("Wie funktioniert das Logging?", "Was macht diese Zeile?").
+*   **Interview-Modus:** Lass Claude DICH interviewen, um Specs für neue Features zu erstellen. ("Interviewe mich mit dem `AskUserQuestion` Tool, um eine Spec für Feature X zu erstellen.")
+
+## 6. Session Management
+
+*   **Früh korrigieren:** Nutze `Esc`, um Claude zu stoppen.
+*   **Rewind:** `Esc` doppelt drücken oder `/rewind` nutzen, um Fehler rückgängig zu machen.
+*   **Kontext managen:** Nutze `/clear` zwischen Aufgaben.
+*   **Subagents:** "Nutze Subagents, um X zu untersuchen", um den Hauptkontext sauber zu halten.
+*   **Resume:** `claude --resume` um alte Sessions fortzusetzen.
+
+## 7. Automatisieren und Skalieren
+
+*   **Headless Mode:** `claude -p "prompt"` für Scripts und CI.
+*   **Parallele Sessions:** Lasse eine Session Tests schreiben, eine andere den Code.
+*   **Fan-out:** Iteriere mit einem Script über viele Dateien und starte für jede eine Claude-Instanz.
+
+## Häufige Fehler (Anti-Patterns)
+
+*   **Kitchen Sink Session:** Alles in einer Session -> Kontext voll -> Performance sinkt. **Fix:** `/clear` nutzen.
+*   **Over-specified CLAUDE.md:** Zu viele Regeln -> werden ignoriert. **Fix:** Kürzen.
+*   **Trust-then-verify Gap:** Code sieht gut aus, funktioniert aber nicht. **Fix:** Immer Tests/Verifikation fordern.
+*   **Infinite Exploration:** Claude liest hunderte Dateien. **Fix:** Subagents nutzen oder Scope einschränken.
