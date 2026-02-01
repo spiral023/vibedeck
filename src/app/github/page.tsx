@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { ExternalLink, Github, Box, Cloud, Brain, Type, Image, Code2, Cog, Bot, Server, FileText, Plug, Container } from 'lucide-react';
+import { ExternalLink, Github, Box, Cloud, Brain, Type, Image, Code2, Cog, Bot, Server, FileText, Plug, Container, Zap } from 'lucide-react';
 
 const repos = [
   {
@@ -99,6 +99,38 @@ const repos = [
     category: 'Docker',
     icon: Container,
     author: 'Haxxnet',
+  },
+  {
+    name: 'everything-claude-code',
+    description: 'Umfassende Sammlung von Claude Code Konfigurationen, Agents, Skills, Hooks und MCP-Configs.',
+    url: 'https://github.com/affaan-m/everything-claude-code',
+    category: 'Claude',
+    icon: Code2,
+    author: 'affaan-m',
+  },
+  {
+    name: 'awesome-claude-skills',
+    description: 'Eine kuratierte Liste von fantastischen Skills für Claude Code, unterteilt in Kategorien wie Entwicklung, Datenanalyse und Sicherheit.',
+    url: 'https://github.com/BehiSecc/awesome-claude-skills',
+    category: 'Claude',
+    icon: Bot,
+    author: 'BehiSecc',
+  },
+  {
+    name: 'Claude Skills',
+    description: 'Offizielle Sammlung von Anthropic für Claude Skills, inklusive Tools für Dokumente, Entwicklung und Automatisierung.',
+    url: 'https://github.com/anthropics/skills',
+    category: 'Claude',
+    icon: Bot,
+    author: 'anthropics',
+  },
+  {
+    name: 'Full Stack FastAPI',
+    description: 'Ein modernes Full-stack Projekt-Template mit FastAPI, React, SQLModel, PostgreSQL, Docker und automatischer CI/CD.',
+    url: 'https://github.com/fastapi/full-stack-fastapi-template',
+    category: 'Template',
+    icon: Zap,
+    author: 'fastapi',
   },
 ];
 
