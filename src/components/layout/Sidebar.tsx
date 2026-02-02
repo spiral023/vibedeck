@@ -15,6 +15,7 @@ import {
   History,
   Lightbulb,
   Library,
+  Layers,
   Menu,
   Rocket,
   Server,
@@ -36,6 +37,7 @@ interface NavItem {
 
 const navItems: NavItem[] = [
   { label: 'Prompt Builder', href: '/prompt-builder', icon: Wrench },
+  { label: 'Prompt Composer', href: '/prompt-composer', icon: Layers },
   { label: 'Prompt Factory', href: '/prompt-factory', icon: Factory },
   { label: 'Prompt Bibliothek', href: '/prompt-library', icon: Library, badge: 'Neu' },
   { label: 'Workflows', href: '/workflows', icon: FolderKanban },

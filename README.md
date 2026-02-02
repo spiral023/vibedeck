@@ -99,6 +99,18 @@ npm run build
 npm start
 ```
 
+### Deployment
+
+#### Cloudflare Pages (statischer Export)
+
+```bash
+# Build erzeugt den Export-Ordner "out"
+npm run build
+
+# Deploy zu Cloudflare Pages
+npx wrangler pages deploy out
+```
+
 ### 🐳 Docker Installation
 
 VibeDeck kann auch als Docker Container lokal gestartet werden.
