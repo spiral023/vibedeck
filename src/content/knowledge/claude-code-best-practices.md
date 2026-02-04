@@ -1,90 +1,79 @@
 ---
-title: "Claude Code Best Practices"
-description: "Tipps und Muster, um das Beste aus Claude Code herauszuholen – von der Umgebungskonfiguration bis zur Skalierung paralleler Sitzungen."
+title: "Best Practices für Claude Code"
+description: "Tipps und Muster, um das Beste aus Claude Code herauszuholen – von der Konfiguration der Umgebung bis hin zur Skalierung über parallele Sessions."
 category: fundamentals
-icon: Sparkles
+icon: Rocket
 readTime: 15 Min
 ---
 
-> **Quelle:** Dieser Artikel basiert auf den offiziellen [Anthropic Docs](https://code.claude.com/docs/en/best-practices).
+> **Original-Quelle:** [Anthropic Claude Code Docs](https://code.claude.com/docs/en/best-practices)
 
-Claude Code ist eine agentische Coding-Umgebung. Anders als ein Chatbot, der nur Fragen beantwortet, kann Claude Code Dateien lesen, Befehle ausführen und Änderungen vornehmen.
+Claude Code ist eine agentenbasierte Coding-Umgebung. Im Gegensatz zu einem Chatbot, der Fragen beantwortet und wartet, kann Claude Code deine Dateien lesen, Befehle ausführen, Änderungen vornehmen und autonom an Problemen arbeiten, während du zuschaust, korrigierst oder dich ganz zurückziehst.
 
-Die meisten Best Practices basieren auf einer Einschränkung: **Claudes Kontextfenster füllt sich schnell**, und die Leistung nimmt ab, wenn es voll ist.
+Dies ändert deine Arbeitsweise: Anstatt Code selbst zu schreiben und Claude um Review zu bitten, beschreibst du, was du willst, und Claude findet heraus, wie es gebaut wird.
 
-## 1. Gib Claude eine Möglichkeit zur Verifizierung
+## Das Kontext-Fenster: Deine wichtigste Ressource
 
-Claude arbeitet deutlich besser, wenn es seine eigene Arbeit überprüfen kann (Tests ausführen, Screenshots vergleichen, Outputs validieren). Ohne klare Erfolgskriterien bist du der einzige Feedback-Loop.
+Die meisten Best Practices basieren auf einer Einschränkung: Claudes Kontext-Fenster füllt sich schnell, und die Performance sinkt, wenn es voll ist. Es enthält die gesamte Konversation, alle gelesenen Dateien und Befehlsausgaben. Ein voller Kontext führt dazu, dass Claude Anweisungen "vergisst" oder mehr Fehler macht.
 
-*   **Verifikationskriterien:** Statt "fixe den Bug", sage: "Der Build schlägt mit Fehler X fehl. Fixe ihn und verifiziere, dass der Build erfolgreich durchläuft."
-*   **Visuelle Verifizierung:** Nutze die Chrome-Extension, um UI-Änderungen zu prüfen.
-*   **Tests:** "Schreibe eine `validateEmail` Funktion. Testfälle: `user@example.com` ist true, `invalid` ist false. Führe die Tests nach der Implementierung aus."
+## Gib Claude Möglichkeiten, seine Arbeit zu prüfen
 
-## 2. Erst erforschen, dann planen, dann coden
+> **Tipp:** Integriere Tests, Screenshots oder erwartete Ausgaben, damit Claude sich selbst prüfen kann. Dies ist der effektivste Hebel für gute Ergebnisse.
 
-Lasse Claude nicht sofort loscoden. Nutze den **Plan Mode**, um Recherche und Ausführung zu trennen.
+Claude arbeitet drastisch besser, wenn er seinen eigenen Erfolg validieren kann.
 
-1.  **Explore (Plan Mode):** Claude liest Dateien und beantwortet Fragen.
-2.  **Plan (Plan Mode):** Claude erstellt einen detaillierten Implementierungsplan.
-3.  **Implement (Normal Mode):** Claude schreibt Code basierend auf dem Plan.
-4.  **Commit:** Claude erstellt einen Commit und PR.
+| Strategie | Schlechtes Beispiel | Gutes Beispiel |
+| :--- | :--- | :--- |
+| **Verifikationskriterien angeben** | "implementiere eine Funktion zur E-Mail-Validierung" | "schreibe eine `validateEmail` Funktion. Testfälle: `user@example.com` ist true, `invalid` ist false. Führe die Tests nach der Implementierung aus." |
+| **UI-Änderungen visuell prüfen** | "mache das Dashboard schöner" | "[Screenshot einfügen] implementiere dieses Design. Erstelle einen Screenshot des Ergebnisses und vergleiche ihn mit dem Original. Liste Unterschiede auf und behebe sie." |
+| **Ursachen statt Symptome beheben** | "der Build schlägt fehl" | "der Build schlägt mit diesem Fehler fehl: [Error einfügen]. Behebe ihn und verifiziere den Erfolg. Behandle die Ursache, unterdrücke nicht den Fehler." |
 
-> **Tipp:** Bei kleinen Änderungen (Typo, Log-Line) überspringe den Plan.
+## Erst erkunden, dann planen, dann coden
 
-## 3. Spezifischer Kontext in Prompts
+Lasse Claude nicht sofort loslegen. Nutze den **Plan Mode**, um Recherche von der Ausführung zu trennen.
 
-Je präziser deine Anweisungen, desto weniger Korrekturen sind nötig.
+1.  **Erkunden (Explore):** Claude liest Dateien und versteht den Kontext (z.B. "verstehe, wie wir Sessions handhaben").
+2.  **Planen (Plan):** Fordere einen detaillierten Implementierungsplan an. (Nutze `Ctrl+G`, um den Plan im Editor zu verfeinern).
+3.  **Implementieren (Implement):** Wechsle in den Normal Mode und lass Claude den Plan abarbeiten.
+4.  **Commit:** Lass Claude eine aussagekräftige Commit-Nachricht schreiben und eine PR erstellen.
 
-*   **Scope:** Nenne spezifische Dateien und Szenarien.
-*   **Quellen:** "Durchsuche die Git-History von `Factory.ts`, um zu verstehen, warum die API so ist."
-*   **Muster:** "Schau dir `Widget.ts` an und implementiere das neue Widget nach demselben Muster."
-*   **Symptome:** Beschreibe das Symptom, die wahrscheinliche Ursache und wie "gefixt" aussieht.
+## Spezifischen Kontext in Prompts liefern
 
-Nutze `@`, um Dateien zu referenzieren, pipe Daten (`cat error.log | claude`) oder paste Bilder.
+Je präziser deine Anweisungen, desto weniger Korrekturen sind nötig. Referenziere Dateien mit `@`, erwähne Constraints und zeige Beispiel-Patterns.
 
-## 4. Umgebung konfigurieren
+*   **Scope definieren:** "schreibe einen Test für `foo.py` für den Logout-Fall. Vermeide Mocks."
+*   **Quellen angeben:** "nutze die Git-Historie von `ExecutionFactory`, um zu verstehen, warum die API so aufgebaut ist."
+*   **Patterns referenzieren:** "schau dir `HotDogWidget.php` als Vorlage für das neue Widget an."
 
-### Effektive CLAUDE.md
+## Erstelle eine effektive CLAUDE.md
 
-`CLAUDE.md` gibt Claude persistenten Kontext, den es nicht aus dem Code allein ableiten kann.
+Nutze `/init`, um eine Starter-Datei zu erstellen. **CLAUDE.md** wird bei jeder Session geladen und sollte Projektkonventionen enthalten, die Claude nicht allein aus dem Code ableiten kann.
 
-*   **Inhalt:** Bash-Befehle, Code-Style-Regeln (die nicht offensichtlich sind), Workflow-Regeln.
-*   **Kürze:** Halte sie kurz (< 300 Zeilen). Bloated `CLAUDE.md` führt dazu, dass Claude Anweisungen ignoriert.
-*   **Import:** Nutze `@pfad/zu/datei`, um andere Markdown-Dateien einzubinden.
+*   **Beinhaltet:** Spezielle Bash-Befehle, Coding-Styles (z.B. ES-Module statt CommonJS), Test-Setups.
+*   **Ausschließen:** Dinge, die Claude selbst lesen kann, Standard-Konventionen der Sprache, lange Tutorials.
+*   **Pruning:** Halte die Datei kurz. Wenn sie zu lang wird, gehen Regeln verloren.
 
-### Permissions & CLI Tools
+## Nutze CLI-Tools und MCP-Server
 
-*   **Permissions:** Nutze `/permissions` für Allow-Lists oder `/sandbox` für Sicherheit ohne nervige Bestätigungen.
-*   **CLI Tools:** Installiere Tools wie `gh` (GitHub CLI), damit Claude effizient mit externen Diensten interagieren kann.
+*   **CLI-Tools:** Installiere Tools wie `gh` (GitHub), `aws` oder `gcloud`. Claude kann diese nutzen, um PRs zu erstellen, Issues zu lesen oder Infrastruktur zu verwalten.
+*   **MCP-Server:** Nutze `claude mcp add`, um Tools wie Notion, Figma oder Datenbanken direkt anzubinden.
 
-### MCP, Hooks & Skills
+## Session-Management
 
-*   **MCP:** Verbinde Datenbanken, Issue-Tracker etc. via `claude mcp add`.
-*   **Hooks:** Garantiere Aktionen (z.B. "Führe ESLint nach jedem Edit aus") via `/hooks`.
-*   **Skills:** Erstelle wiederverwendbare Workflows in `.claude/skills/SKILL.md`.
+*   **Früh korrigieren:** Nutze `Esc`, um Claude zu stoppen, wenn er in die falsche Richtung läuft.
+*   **Rewind:** Nutze `/rewind` oder `Esc + Esc`, um zu Checkpoints zurückzukehren.
+*   **Clear:** Nutze `/clear`, um den Kontext zwischen völlig unzusammenhängenden Aufgaben zu leeren.
+*   **Fortsetzen:** Nutze `claude --continue` oder `--resume`, um an alten Konversationen weiterzuarbeiten.
 
-## 5. Effektiv kommunizieren
+## Automatisieren und Skalieren
 
-*   **Stelle Fragen:** Nutze Claude zum Onboarding ("Wie funktioniert das Logging?", "Was macht diese Zeile?").
-*   **Interview-Modus:** Lass Claude DICH interviewen, um Specs für neue Features zu erstellen. ("Interviewe mich mit dem `AskUserQuestion` Tool, um eine Spec für Feature X zu erstellen.")
+*   **Headless Mode:** Nutze `claude -p "prompt"` in CI-Pipelines oder Scripts.
+*   **Parallele Sessions:** Nutze mehrere Sessions für Writer/Reviewer Patterns (eine Session schreibt Code, die andere prüft ihn unvoreingenommen).
+*   **Fan-out:** Verteile große Migrationen über Schleifen auf viele parallele Claude-Invocations.
 
-## 6. Session Management
+## Häufige Fehler vermeiden
 
-*   **Früh korrigieren:** Nutze `Esc`, um Claude zu stoppen.
-*   **Rewind:** `Esc` doppelt drücken oder `/rewind` nutzen, um Fehler rückgängig zu machen.
-*   **Kontext managen:** Nutze `/clear` zwischen Aufgaben.
-*   **Subagents:** "Nutze Subagents, um X zu untersuchen", um den Hauptkontext sauber zu halten.
-*   **Resume:** `claude --resume` um alte Sessions fortzusetzen.
-
-## 7. Automatisieren und Skalieren
-
-*   **Headless Mode:** `claude -p "prompt"` für Scripts und CI.
-*   **Parallele Sessions:** Lasse eine Session Tests schreiben, eine andere den Code.
-*   **Fan-out:** Iteriere mit einem Script über viele Dateien und starte für jede eine Claude-Instanz.
-
-## Häufige Fehler (Anti-Patterns)
-
-*   **Kitchen Sink Session:** Alles in einer Session -> Kontext voll -> Performance sinkt. **Fix:** `/clear` nutzen.
-*   **Over-specified CLAUDE.md:** Zu viele Regeln -> werden ignoriert. **Fix:** Kürzen.
-*   **Trust-then-verify Gap:** Code sieht gut aus, funktioniert aber nicht. **Fix:** Immer Tests/Verifikation fordern.
-*   **Infinite Exploration:** Claude liest hunderte Dateien. **Fix:** Subagents nutzen oder Scope einschränken.
+*   **Die "Kitchen Sink" Session:** Zu viele verschiedene Aufgaben in einer Session -> Kontextmüll. **Fix:** `/clear`.
+*   **Endlose Korrekturen:** Claude macht denselben Fehler immer wieder. **Fix:** `/clear` und einen besseren Initial-Prompt schreiben.
+*   **Die überladene CLAUDE.md:** Wichtige Regeln gehen im Rauschen unter. **Fix:** Radikal kürzen.
+*   **Infinite Exploration:** Claude liest hunderte Dateien ohne Ziel. **Fix:** Scope eng fassen oder Subagents für die Recherche nutzen.
