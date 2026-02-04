@@ -8,6 +8,11 @@ VibeDeck ist eine Next.js-Anwendung mit einer Wissensdatenbank (Knowledge Base),
 - **Content**: Markdown-Dateien in `src/content/knowledge/`.
 - **Assets**: Bilder werden in `public/images/knowledge/` gespeichert.
 
+## System & Shell
+
+- **PowerShell 7**: Nutze `pwsh` für Shell-Befehle.
+- **Verkettung**: Nutze `;` statt `&&` (z.B. `pwsh -Command "cmd1; cmd2"`). Das ist robuster und vermeidet Parsing-Fehler.
+
 ## Workflow: Tweets in Wissensartikel umwandeln
 
 Dieser Workflow beschreibt, wie du effektiv Tweets (z.B. Tutorials, Threads) in strukturierte Wissensartikel überführst.
