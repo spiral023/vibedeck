@@ -1,12 +1,12 @@
 ---
 name: knowledge-curator
 description: Use this skill to convert web content (Tweets, Blogs, Threads) into high-quality VibeDeck knowledge base articles using Markdown.
-version: 1.0.0
+version: 1.2.0
 ---
 
 # Knowledge Curator Skill
 
-Dieser Skill transformiert rohe Webinhalte in strukturierte Wissensbasis-Artikel für VibeDeck.
+Dieser Skill transformiert Webinhalte, Tweets, Blogartikel oder Threads in strukturierte Wissensbasis-Artikel für VibeDeck.
 
 ## 1. Rolle & Tonalität
 
@@ -20,10 +20,15 @@ Du bist ein erfahrener technischer Redakteur für "VibeDeck".
 
 ### A. Inhalt erfassen
 
-1.  Nutze `chrome-devtools` -> `navigate_page`, um die URL zu öffnen.
-2.  Warte ca. 3 Sekunden, bis dynamische Inhalte geladen sind (z.B. mit `wait_for`).
-3.  Nutze `take_snapshot`, um den Text zu extrahieren.
-4.  Identifiziere relevante Bilder (Header, Diagramme) und deren URLs (oft `pbs.twimg.com`).
+1.  **Prüfung auf Dubletten:** Prüfe IMMER zuerst, ob die Quell-URL bereits in der Wissensbasis existiert. Nutze `search_file_content` mit der URL als Pattern im Verzeichnis `src/content/knowledge`. Falls ein Treffer erzielt wird, informiere den Nutzer über den existierenden Artikel und brich den Prozess ab.
+2.  **Navigation:** Nutze `chrome-devtools` (oder `playwright__browser_navigate`), um die URL zu öffnen.
+3.  **Laden abwarten:** Warte ca. 3-5 Sekunden, bis dynamische Inhalte geladen sind (z.B. mit `wait_for` oder `browser_wait_for`).
+4.  **Thread-Spezialbehandlung (X/Twitter):**
+    - Da Threads oft "lazy-loaded" werden, nutze `browser_run_code` um aktiv zu scrollen und Inhalte nachzuladen:
+      `async (page) => { for(let i=0; i<3; i++) { await page.mouse.wheel(0, 2000); await page.waitForTimeout(1500); } }`
+    - Erstelle bei langen Threads mehrere Snapshots während des Scrollens.
+    - **Fallback bei Blockaden:** Wenn X den Zugriff blockiert (Login-Wall/Cloudflare), nutze `brave_web_search` um nach "[Autor] [Thema] thread" oder "threadreaderapp [ID]" zu suchen. Oft gibt es Blog-Posts (z.B. paddo.dev, medium, substack), die den Thread-Inhalt sauberer und ohne Login-Zwang bereitstellen.
+5.  **Datenextraktion:** Nutze `take_snapshot` für den Text und `browser_evaluate`, um gezielt alle relevanten Bild-URLs (`img.src`) aus den Post-Elementen zu extrahieren.
 
 ### B. Inhalt transformieren
 
@@ -44,8 +49,6 @@ sourceType: "tweet" | "blog" | "thread"
 author: "Andrej Karpathy"
 sourceDate: "2026-01-26"
 ---
-
-> **Hinweis**: Dieser Artikel basiert auf einem [Artikel/Tweet von Autor](URL) vom [Datum].
 
 [NUR WENN BILD VORHANDEN IST: ![Header Image Description](/images/knowledge/{slug}/header.jpg)]
 
@@ -72,7 +75,6 @@ sourceDate: "2026-01-26"
 - [ ] Sind englische Fachbegriffe erhalten geblieben?
 - [ ] Ist die Bildquelle (Header) korrekt verlinkt?
 - [ ] Ist der Frontmatter vollständig (Category, Icon, ReadTime, Tags, Source-Felder)?
-- [ ] Wurde der Original-Autor und das Datum im Hinweis-Block genannt?
 
 ## 4. Beispiel für Icons
 
