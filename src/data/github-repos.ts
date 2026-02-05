@@ -139,4 +139,12 @@ export const githubRepos: GithubRepo[] = [
     icon: Zap,
     author: 'fastapi',
   },
+  {
+    name: 'ai-engineering-hub',
+    description: 'Umfassende Tutorials zu LLMs, RAGs und praktischen AI-Agent-Anwendungen.',
+    url: 'https://github.com/patchy631/ai-engineering-hub',
+    category: 'AI Engineering',
+    icon: Brain,
+    author: 'patchy631',
+  },
 ];
