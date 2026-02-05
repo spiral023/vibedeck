@@ -1,12 +1,16 @@
 ---
-title: "Extend Claude Code"
-description: "Verstehe, wann du CLAUDE.md, Skills, Subagents, Hooks, MCP und Plugins verwenden solltest."
+title: Extend Claude Code
+description: >-
+  Verstehe, wann du CLAUDE.md, Skills, Subagents, Hooks, MCP und Plugins
+  verwenden solltest.
 category: fundamentals
 icon: Puzzle
-readTime: 12 Min
+readTime: 4 Min
+tags: ["claude-code", "tooling", "docs", "workflows"]
+sourceURL: "https://code.claude.com/docs/en/features-overview"
+sourceType: "docs"
+author: "Anthropic Docs"
 ---
-
-> **Quelle:** Dieser Artikel basiert auf den offiziellen [Anthropic Docs](https://code.claude.com/docs/en/features-overview).
 
 Claude Code kombiniert ein Modell, das über deinen Code nachdenkt, mit eingebauten Tools. Die "Extension Layer" ermöglicht es dir, Claude an deine Bedürfnisse anzupassen.
 

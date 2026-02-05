@@ -3,7 +3,8 @@ title: React Patterns für AI-Projekte
 description: Bewährte Architektur-Patterns für React-Anwendungen.
 category: patterns
 icon: Layers
-readTime: 12 Min
+readTime: 1 Min
+tags: ["react", "patterns", "best-practices"]
 ---
 
 ## Bewährte React Patterns

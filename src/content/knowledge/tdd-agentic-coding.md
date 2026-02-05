@@ -1,12 +1,16 @@
 ---
-title: "Test-Driven Development (TDD) für Agentic Coding"
-description: "Wie TDD Struktur in den Flow bringt und Agentic Coding die Umsetzung komplexer Logik beschleunigt."
+title: Test-Driven Development (TDD) für Agentic Coding
+description: >-
+  Wie TDD Struktur in den Flow bringt und Agentic Coding die Umsetzung komplexer
+  Logik beschleunigt.
 category: patterns
 icon: CheckSquare
-readTime: 10 Min
+readTime: 9 Min
+tags: ["tdd", "testing", "agentic-coding", "patterns"]
+sourceURL: "https://tweag.github.io/agentic-coding-handbook/WORKFLOW_TDD/"
+sourceType: "docs"
+author: "Tweag"
 ---
-
-> **Original-Quelle:** [Tweag Agentic Coding Handbook](https://tweag.github.io/agentic-coding-handbook/WORKFLOW_TDD/)
 
 Test-Driven Development (TDD) und Agentic Coding mögen wie Gegensätze erscheinen — das eine ist strukturiert und diszipliniert, das andere fluid und intuitiv. Aber kombiniert erzeugen sie eine mächtige Feedback-Schleife: TDD gibt deinem Flow Struktur, und Agentic Coding verleiht deiner Struktur Geschwindigkeit.
 

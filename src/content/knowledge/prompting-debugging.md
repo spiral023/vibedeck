@@ -1,12 +1,16 @@
 ---
-title: "Prompting Debugging: Systematische Fehlerbehebung"
-description: "Strategien und Best Practices zum Debuggen von Prompts und zur Behebung komplexer Probleme in Lovable."
+title: 'Prompting Debugging: Systematische Fehlerbehebung'
+description: >-
+  Strategien und Best Practices zum Debuggen von Prompts und zur Behebung
+  komplexer Probleme in Lovable.
 category: fundamentals
 icon: Bug
-readTime: 12 Min
+readTime: 6 Min
+tags: ["lovable", "prompt-engineering", "testing", "docs"]
+sourceURL: "https://docs.lovable.dev/prompting/prompting-debugging"
+sourceType: "docs"
+author: "Lovable Docs"
 ---
-
-> **Quelle**: Dieser Artikel basiert auf der offiziellen [Lovable Dokumentation](https://docs.lovable.dev/prompting/prompting-debugging).
 
 Die Entwicklung mit KI ist schnell und effizient, aber Fehler oder unerwartetes Verhalten sind Teil des Prozesses. Dieser Leitfaden hilft Ihnen, systematische Debugging-Workflows in Lovable zu etablieren.
 

@@ -1,9 +1,10 @@
 ---
 title: Eine gute AGENTS.md schreiben
-description: Best Practices für CLAUDE.md, GEMINI.md und das Onboarding von AI-Agents.
+description: 'Best Practices für CLAUDE.md, GEMINI.md und das Onboarding von AI-Agents.'
 category: fundamentals
 icon: FileCode
-readTime: 12 Min
+readTime: 11 Min
+tags: ["agents", "prompt-engineering", "best-practices", "claude-code"]
 ---
 
 # Eine gute AGENTS.md schreiben

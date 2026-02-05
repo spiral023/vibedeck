@@ -3,7 +3,8 @@ title: Datenbank-Patterns
 description: Effiziente Datenmodellierung und Abfragen.
 category: patterns
 icon: Database
-readTime: 15 Min
+readTime: 1 Min
+tags: ["databases", "patterns", "best-practices"]
 ---
 
 ## Datenbank Best Practices

@@ -1,12 +1,16 @@
 ---
-title: "Using MiniMax M2.1 with Claude Code"
-description: "So nutzt du MiniMax M2.1 als kostengünstige Alternative zu Claude Opus 4.5, wenn du an Rate Limits stößt oder Kosten sparen möchtest."
+title: Using MiniMax M2.1 with Claude Code
+description: >-
+  So nutzt du MiniMax M2.1 als kostengünstige Alternative zu Claude Opus 4.5,
+  wenn du an Rate Limits stößt oder Kosten sparen möchtest.
 category: performance
 icon: Cpu
-readTime: 8 Min
+readTime: 4 Min
+tags: ["claude-code", "performance", "tooling", "workflows"]
+sourceURL: "https://x.com/rudrank/status/2018272804966449209"
+sourceType: "thread"
+author: "@rudrank"
 ---
-
-> **Original-Quelle:** [Thread von @rudrank auf X](https://x.com/rudrank/status/2018272804966449209)
 
 ![Header Image](/images/knowledge/using-minimax-with-claude-code/header.jpg)
 

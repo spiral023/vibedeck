@@ -1,9 +1,12 @@
 ---
-title: "Vibe Coding Guide: Von Null auf Product in 6 Monaten"
-description: "Elena Kovacs teilt ihre Reise von null Programmierkenntnissen hin zum Bauen eigener Tools und Automatisierungen mit Claude Code."
+title: 'Vibe Coding Guide: Von Null auf Product in 6 Monaten'
+description: >-
+  Elena Kovacs teilt ihre Reise von null Programmierkenntnissen hin zum Bauen
+  eigener Tools und Automatisierungen mit Claude Code.
 category: fundamentals
 icon: Rocket
-readTime: 10 Min
+readTime: 7 Min
+tags: ["vibe-coding", "agentic-coding", "workflows", "best-practices"]
 ---
 
 > Ursprünglich veröffentlicht von [elena ₊ ⊹ auf X](https://x.com/elenakvcs/status/2008228601980985550).

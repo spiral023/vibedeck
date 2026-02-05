@@ -1,9 +1,12 @@
 ---
-title: "Claude Code lernen: Der 7-Schritte-Plan"
-description: "Hoeem teilt die wichtigsten Erkenntnisse aus einem Anthropic-Kurs zu Claude Code: Von Core Mechanics über Context Engineering bis hin zur Skalierung."
+title: 'Claude Code lernen: Der 7-Schritte-Plan'
+description: >-
+  Hoeem teilt die wichtigsten Erkenntnisse aus einem Anthropic-Kurs zu Claude
+  Code: Von Core Mechanics über Context Engineering bis hin zur Skalierung.
 category: fundamentals
 icon: Terminal
-readTime: 10 Min
+readTime: 7 Min
+tags: ["claude-code", "workflows", "tooling", "best-practices"]
 ---
 
 > Ursprünglich veröffentlicht von [hoeem auf X](https://x.com/hooeem/status/2007914329748668472).

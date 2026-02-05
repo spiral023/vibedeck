@@ -1,13 +1,16 @@
 ---
-title: "Automate workflows with hooks"
-description: "Führe Shell-Befehle automatisch aus, wenn Claude Code Dateien bearbeitet, Aufgaben beendet oder Input benötigt."
+title: Automate workflows with hooks
+description: >-
+  Führe Shell-Befehle automatisch aus, wenn Claude Code Dateien bearbeitet,
+  Aufgaben beendet oder Input benötigt.
 category: tools
 icon: Zap
-readTime: 15 Min
+readTime: 3 Min
+tags: ["claude-code", "hooks", "workflows", "docs"]
+sourceURL: "https://code.claude.com/docs/en/hooks-guide"
+sourceType: "docs"
+author: "Anthropic Docs"
 ---
-
-> **Quelle:** Dieser Artikel basiert auf den offiziellen [Anthropic Docs](https://code.claude.com/docs/en/hooks-guide).
-
 Hooks sind benutzerdefinierte Shell-Befehle, die an bestimmten Punkten im Lebenszyklus von Claude Code ausgeführt werden. Sie bieten deterministische Kontrolle über das Verhalten von Claude Code.
 
 ## Erster Hook: Desktop-Benachrichtigung
@@ -98,3 +101,4 @@ Filtere Hooks nach Tool-Namen oder Event-Typ.
 *   **Hook feuert nicht:** Prüfe Matcher und Event-Typ.
 *   **JSON-Fehler:** Stelle sicher, dass deine Shell-Profile (`.bashrc`) keine unbedingten `echo`-Ausgaben machen.
 *   **Debug:** Nutze `Ctrl+O` für Verbose-Mode.
+

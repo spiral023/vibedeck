@@ -1,12 +1,16 @@
 ---
-title: "Claude Code in GitLab CI/CD"
-description: "Integriere Claude Code in deine GitLab CI/CD Pipelines für automatisierte MRs, Code-Reviews und Bugfixes."
+title: Claude Code in GitLab CI/CD
+description: >-
+  Integriere Claude Code in deine GitLab CI/CD Pipelines für automatisierte MRs,
+  Code-Reviews und Bugfixes.
 category: tools
 icon: Gitlab
-readTime: 12 Min
+readTime: 4 Min
+tags: ["claude-code", "ci-cd", "tooling", "docs"]
+sourceURL: "https://code.claude.com/docs/en/gitlab-ci-cd"
+sourceType: "docs"
+author: "Anthropic Docs"
 ---
-
-> **Quelle:** Dieser Artikel basiert auf den offiziellen [Anthropic Docs](https://code.claude.com/docs/en/gitlab-ci-cd).
 
 Claude Code kann direkt in GitLab CI/CD integriert werden, um Aufgaben in isolierten Jobs auszuführen und Ergebnisse als Merge Requests (MRs) zurückzuspielen. Dies ermöglicht Workflows wie "Erstelle MR aus Issue" oder "Fixe diesen Bug".
 

@@ -1,12 +1,16 @@
 ---
-title: "Use Claude Code in VS Code"
-description: "Installiere und konfiguriere die Claude Code Erweiterung für VS Code. Erhalte KI-Coding-Assistenz mit Inline-Diffs, @-Mentions und Plan-Reviews."
+title: Use Claude Code in VS Code
+description: >-
+  Installiere und konfiguriere die Claude Code Erweiterung für VS Code. Erhalte
+  KI-Coding-Assistenz mit Inline-Diffs, @-Mentions und Plan-Reviews.
 category: tools
 icon: Code
-readTime: 10 Min
+readTime: 4 Min
+tags: ["claude-code", "ide", "tooling", "docs"]
+sourceURL: "https://code.claude.com/docs/en/vs-code"
+sourceType: "docs"
+author: "Anthropic Docs"
 ---
-
-> **Quelle:** Dieser Artikel basiert auf den offiziellen [Anthropic Docs](https://code.claude.com/docs/en/vs-code).
 
 Die VS Code Erweiterung bietet eine native grafische Oberfläche für Claude Code, direkt integriert in deine IDE. Dies ist der empfohlene Weg, Claude Code in VS Code zu nutzen.
 

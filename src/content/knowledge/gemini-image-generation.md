@@ -3,7 +3,8 @@ title: Gemini Image Generation Guide
 description: Master image generation and editing with Gemini 2.5 Flash and Gemini 3 Pro.
 category: fundamentals
 icon: Image
-readTime: 20 Min
+readTime: 5 Min
+tags: ["gemini", "image-generation", "prompts", "tooling"]
 ---
 
 # Gemini Image Generation Guide

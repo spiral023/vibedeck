@@ -3,7 +3,8 @@ title: Performance-Optimierung
 description: Mache deine App schneller mit bewährten Techniken.
 category: performance
 icon: Zap
-readTime: 14 Min
+readTime: 1 Min
+tags: ["performance", "best-practices", "tooling"]
 ---
 
 ## Performance Best Practices

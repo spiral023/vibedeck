@@ -3,7 +3,8 @@ title: Prompt Engineering Grundlagen
 description: Lerne die Basis-Techniken für effektive AI-Prompts.
 category: fundamentals
 icon: BookOpen
-readTime: 8 Min
+readTime: 1 Min
+tags: ["prompt-engineering", "prompts", "best-practices", "workflows"]
 ---
 
 ## Was ist Prompt Engineering?

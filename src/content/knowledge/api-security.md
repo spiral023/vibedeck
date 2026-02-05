@@ -3,7 +3,8 @@ title: API-Sicherheit Best Practices
 description: Sichere deine APIs vor häufigen Angriffsvektoren.
 category: security
 icon: Lock
-readTime: 10 Min
+readTime: 1 Min
+tags: ["security", "best-practices", "tooling"]
 ---
 
 ## API Sicherheit

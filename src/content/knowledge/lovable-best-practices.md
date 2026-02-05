@@ -1,12 +1,17 @@
 ---
-title: "Best Practices für Lovable"
-description: "Erfahren Sie, wie Sie Knowledge-Dateien, den Plan-Modus, visuelle Edits und die Versionskontrolle effektiv nutzen, um mit Lovable schneller und fehlerfreier zu bauen."
+title: Best Practices für Lovable
+description: >-
+  Erfahren Sie, wie Sie Knowledge-Dateien, den Plan-Modus, visuelle Edits und
+  die Versionskontrolle effektiv nutzen, um mit Lovable schneller und
+  fehlerfreier zu bauen.
 category: fundamentals
 icon: Rocket
-readTime: 12 Min
+readTime: 6 Min
+tags: ["lovable", "best-practices", "workflows", "docs"]
+sourceURL: "https://docs.lovable.dev/tips-tricks/best-practice"
+sourceType: "docs"
+author: "Lovable Docs"
 ---
-
-> **Original-Quelle:** [Lovable Documentation](https://docs.lovable.dev/tips-tricks/best-practice)
 
 Dieser Leitfaden hilft sowohl neuen als auch erfahrenen Nutzern, Lovable optimal zu nutzen und häufige Fallstricke bei der App-Entwicklung zu vermeiden.
 

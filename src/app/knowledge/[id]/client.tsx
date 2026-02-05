@@ -19,12 +19,55 @@ const iconMap: Record<string, React.ElementType> = {
   Image,
 };
 
+const sourceTypeLabels: Record<NonNullable<KnowledgeArticle['sourceType']>, string> = {
+  tweet: 'Tweet',
+  blog: 'Blog',
+  thread: 'Thread',
+  docs: 'Docs',
+};
+
+const formatSourceDate = (value?: string) => {
+  if (!value) {
+    return null;
+  }
+
+  const parsed = new Date(value);
+  if (Number.isNaN(parsed.getTime())) {
+    return value;
+  }
+
+  return parsed.toLocaleDateString('de-DE');
+};
+
 interface ArticleViewProps {
   article: KnowledgeArticle;
 }
 
 export function ArticleView({ article }: ArticleViewProps) {
   const Icon = iconMap[article.icon] || BookOpen;
+  const formattedDate = formatSourceDate(article.sourceDate);
+  const sourceLabel = article.sourceType
+    ? sourceTypeLabels[article.sourceType] ?? article.sourceType
+    : (article.author || formattedDate ? 'Quelle' : null);
+  const sourceParts: string[] = [];
+
+  if (sourceLabel) {
+    sourceParts.push(sourceLabel);
+  }
+
+  if (article.author) {
+    sourceParts.push(`von ${article.author}`);
+  }
+
+  if (formattedDate) {
+    sourceParts.push(`vom ${formattedDate}`);
+  }
+
+  const sourceLine = sourceParts.length
+    ? sourceParts.join(' ')
+    : null;
+  const tags = article.tags ?? [];
+  const tagLine = tags.length > 0 ? `Tags: ${tags.join(', ')}` : null;
 
   return (
     <div className="space-y-6">
@@ -48,7 +91,32 @@ export function ArticleView({ article }: ArticleViewProps) {
             </div>
             <div>
               <h1 className="text-3xl font-bold mb-2">{article.title}</h1>
-              <p className="text-muted-foreground">{article.readTime} Lesezeit</p>
+              <p className="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-muted-foreground">
+                <span>{article.readTime} Lesezeit</span>
+                {(sourceLine || tagLine) && <span className="text-muted-foreground/50">•</span>}
+                {sourceLine && (
+                  <span>
+                    {article.sourceURL ? (
+                      <a
+                        href={article.sourceURL}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="underline decoration-dotted underline-offset-4 hover:text-foreground"
+                      >
+                        {sourceLine}
+                      </a>
+                    ) : (
+                      sourceLine
+                    )}
+                  </span>
+                )}
+                {tagLine && (
+                  <>
+                    {sourceLine && <span className="text-muted-foreground/50">•</span>}
+                    <span>{tagLine}</span>
+                  </>
+                )}
+              </p>
             </div>
           </div>
         </div>

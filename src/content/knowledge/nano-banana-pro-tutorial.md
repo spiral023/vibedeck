@@ -1,12 +1,17 @@
 ---
-title: "Tutorial: Nano Banana Pro (Gemini 3 Pro Image)"
-description: "Ein umfassender Developer-Guide für die Features von Nano Banana Pro: Thinking Process, Search Grounding, 4K Output und mehr."
+title: 'Tutorial: Nano Banana Pro (Gemini 3 Pro Image)'
+description: >-
+  Ein umfassender Developer-Guide für die Features von Nano Banana Pro: Thinking
+  Process, Search Grounding, 4K Output und mehr.
 category: patterns
 icon: Image
-readTime: 15 Min
+readTime: 6 Min
+tags: ["gemini", "image-generation", "tooling", "docs"]
+sourceURL: 'https://x.com/GoogleAIStudio/status/1992267030050083091'
+sourceType: thread
+author: Google AI Studio
 ---
 
-> **Quelle:** Dieses Tutorial basiert auf einem [Thread von Google AI Studio](https://x.com/GoogleAIStudio/status/1992267030050083091) auf X.
 > **Hinweis:** "Nano Banana" ist der Codename für Gemini 2.5 Flash Image Generation. "Nano Banana Pro" bezieht sich auf **Gemini 3 Pro Image Preview**.
 
 ![Cover](/images/knowledge/nano-banana-pro-tutorial/cover.jpg)

@@ -1,12 +1,16 @@
 ---
-title: "The Shorthand Guide to Everything Claude Code"
-description: "Hier ist mein komplettes Setup nach 10 Monaten täglicher Nutzung: Skills, Hooks, Subagents, MCPs, Plugins und was wirklich funktioniert."
+title: The Shorthand Guide to Everything Claude Code
+description: >-
+  Hier ist mein komplettes Setup nach 10 Monaten täglicher Nutzung: Skills,
+  Hooks, Subagents, MCPs, Plugins und was wirklich funktioniert.
 category: fundamentals
 icon: Zap
-readTime: 10 Min
+readTime: 13 Min
+tags: ["claude-code", "workflows", "tooling", "best-practices"]
+sourceURL: "https://x.com/affaanmustafa/status/2012378465664745795"
+sourceType: "thread"
+author: "@affaanmustafa"
 ---
-
-> **Original-Quelle:** [Thread von @affaanmustafa auf X](https://x.com/affaanmustafa/status/2012378465664745795)
 
 ![Header Image](/images/knowledge/shorthand-guide-everything-claude-code/header.jpg)
 

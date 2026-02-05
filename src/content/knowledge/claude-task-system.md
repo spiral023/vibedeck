@@ -1,12 +1,17 @@
 ---
-title: "Das neue Claude Code Task System: Der Praktische Guide"
-description: "Von flachen To-Do-Listen zur abhängigkeitsgesteuerten Orchestrierung: Wie das neue Task-System von Claude Code komplexe Workflows ermöglicht."
+title: 'Das neue Claude Code Task System: Der Praktische Guide'
+description: >-
+  Von flachen To-Do-Listen zur abhängigkeitsgesteuerten Orchestrierung: Wie das
+  neue Task-System von Claude Code komplexe Workflows ermöglicht.
 category: fundamentals
 icon: Rocket
-readTime: 15 Min
+readTime: 6 Min
+tags: ["claude-code", "workflows", "agentic-coding", "tooling"]
+sourceURL: 'https://x.com/nummanali/status/2014684862985175205'
+sourceType: tweet
+author: Numman Ali
+sourceDate: '2026-01-23'
 ---
-
-> **Hinweis**: Dieser Artikel basiert auf einem [Tweet von Numman Ali](https://x.com/nummanali/status/2014684862985175205) vom 23. Januar 2026.
 
 ![Claude Code Task System Header](/images/knowledge/claude-task-system/header.jpg)
 

@@ -1,12 +1,17 @@
 ---
-title: "Agent Skills vs. Rules vs. Commands"
-description: "Ein Deep Dive von Alice Alexandra Moore in das mentale Modell für AI-Kontext: Wann nutzt man Skills, Rules, Commands oder Subagents?"
+title: Agent Skills vs. Rules vs. Commands
+description: >-
+  Ein Deep Dive von Alice Alexandra Moore in das mentale Modell für AI-Kontext:
+  Wann nutzt man Skills, Rules, Commands oder Subagents?
 category: fundamentals
 icon: Layers
-readTime: 12 Min
+readTime: 5 Min
+tags: ["agents", "claude-skills", "context-engineering", "patterns"]
+sourceURL: 'https://x.com/tempoimmaterial/status/2014054104658526645'
+sourceType: tweet
+author: Alice Alexandra Moore (@tempoimmaterial)
+sourceDate: '2026-01-21'
 ---
-
-> **Hinweis**: Dieser Artikel basiert auf einem [Tweet von Alice Alexandra Moore (@tempoimmaterial)](https://x.com/tempoimmaterial/status/2014054104658526645) vom 21. Januar 2026.
 
 ![Agent Skills vs Rules Header](/images/knowledge/agent-skills-vs-rules/header.jpg)
 

@@ -1,12 +1,16 @@
 ---
-title: "Sicherheit in Lovable: Fallstricke vermeiden"
-description: "Ein Leitfaden zur Vermeidung gängiger Sicherheitsfehler in Lovable-Apps – von Frontend-Geheimnissen bis hin zu Row Level Security (RLS)."
+title: 'Sicherheit in Lovable: Fallstricke vermeiden'
+description: >-
+  Ein Leitfaden zur Vermeidung gängiger Sicherheitsfehler in Lovable-Apps – von
+  Frontend-Geheimnissen bis hin zu Row Level Security (RLS).
 category: security
 icon: Lock
-readTime: 10 Min
+readTime: 4 Min
+tags: ["lovable", "security", "best-practices", "docs"]
+sourceURL: "https://docs.lovable.dev/tips-tricks/avoiding-security-pitfalls"
+sourceType: "docs"
+author: "Lovable Docs"
 ---
-
-> **Original-Quelle:** [Lovable Documentation](https://docs.lovable.dev/tips-tricks/avoiding-security-pitfalls)
 
 Obwohl Lovable und Tools wie der Security Checker viele Probleme automatisch finden, liegt die Verantwortung für den Schutz von Kundendaten letztlich beim Builder. Dieser Guide erklärt die Architektur von Lovable-Apps und wie man typische Sicherheitsfehler vermeidet.
 

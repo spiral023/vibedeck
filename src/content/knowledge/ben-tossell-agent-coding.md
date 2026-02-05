@@ -1,9 +1,12 @@
 ---
-title: "Wie ich mit Agents code, ohne 'technisch' zu sein"
-description: "Ben Tossell teilt seine Erfahrungen, wie er 3 Milliarden Tokens verbraucht hat, um Tools, CLIs und Produkte zu bauen, ohne selbst Code zu schreiben."
+title: 'Wie ich mit Agents code, ohne ''technisch'' zu sein'
+description: >-
+  Ben Tossell teilt seine Erfahrungen, wie er 3 Milliarden Tokens verbraucht
+  hat, um Tools, CLIs und Produkte zu bauen, ohne selbst Code zu schreiben.
 category: fundamentals
 icon: Bot
-readTime: 15 Min
+readTime: 11 Min
+tags: ["agentic-coding", "claude-code", "workflows", "agents"]
 ---
 
 > Ursprünglich veröffentlicht von [Ben Tossell auf X](https://x.com/bentossell/status/2006352820140749073).

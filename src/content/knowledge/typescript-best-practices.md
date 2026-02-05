@@ -3,7 +3,8 @@ title: TypeScript für AI-Entwicklung
 description: Nutze TypeScript optimal für bessere AI-Vorschläge.
 category: fundamentals
 icon: FileCode
-readTime: 6 Min
+readTime: 1 Min
+tags: ["typescript", "best-practices", "patterns"]
 ---
 
 ## TypeScript Best Practices

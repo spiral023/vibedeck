@@ -1,12 +1,16 @@
 ---
-title: "Writing a good CLAUDE.md"
-description: "Best Practices für das Erstellen einer effektiven CLAUDE.md Datei für Claude Code und andere Agenten."
+title: Writing a good CLAUDE.md
+description: >-
+  Best Practices für das Erstellen einer effektiven CLAUDE.md Datei für Claude
+  Code und andere Agenten.
 category: fundamentals
 icon: FileText
-readTime: 10 Min
+readTime: 6 Min
+tags: ["claude-code", "prompt-engineering", "best-practices", "docs"]
+sourceURL: 'https://www.humanlayer.dev/blog/writing-a-good-claude-md'
+sourceType: blog
+author: Kyle (HumanLayer)
 ---
-
-> **Quelle:** Dieser Artikel basiert auf [Writing a good CLAUDE.md](https://www.humanlayer.dev/blog/writing-a-good-claude-md) von Kyle (HumanLayer).
 
 ## Prinzip: LLMs sind (meistens) zustandslos
 

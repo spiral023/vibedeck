@@ -1,12 +1,17 @@
 ---
-title: "The Complete Claude Code Tutorial"
-description: "Ein umfassender Leitfaden von Eyad Khrais zur effektiven Nutzung von Claude Code für robuste Systeme: Planning, Architecture, CLAUDE.md und mehr."
+title: The Complete Claude Code Tutorial
+description: >-
+  Ein umfassender Leitfaden von Eyad Khrais zur effektiven Nutzung von Claude
+  Code für robuste Systeme: Planning, Architecture, CLAUDE.md und mehr.
 category: fundamentals
 icon: Code2
-readTime: 15 Min
+readTime: 8 Min
+tags: ["claude-code", "workflows", "best-practices", "tooling"]
+sourceURL: 'https://x.com/eyad_khrais/status/2010076957938188661'
+sourceType: tweet
+author: Eyad Khrais
+sourceDate: '2026-01-10'
 ---
-
-> **Hinweis**: Dieser Artikel basiert auf einem [Tweet von Eyad Khrais](https://x.com/eyad_khrais/status/2010076957938188661) vom 10. Januar 2026.
 
 ![The Complete Claude Code Tutorial](/images/knowledge/claude-code-tutorial/header.jpg)
 

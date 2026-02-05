@@ -1,12 +1,17 @@
 ---
-title: "The Complete Guide: Prompting Lovable for Design"
-description: "Wie man Lovable wie ein Designer promptet: Der Guide zu Design-Systemen, Komponenten und effektiven Prompts von Damien Ghader."
+title: 'The Complete Guide: Prompting Lovable for Design'
+description: >-
+  Wie man Lovable wie ein Designer promptet: Der Guide zu Design-Systemen,
+  Komponenten und effektiven Prompts von Damien Ghader.
 category: fundamentals
 icon: Rocket
-readTime: 10 Min
+readTime: 7 Min
+tags: ["lovable", "ui-design", "prompts", "workflows"]
+sourceURL: 'https://x.com/damienghader/status/2012547182130336033'
+sourceType: tweet
+author: Damien Ghader
+sourceDate: '2026-01-17'
 ---
-
-> **Hinweis**: Dieser Artikel basiert auf einem [Tweet von Damien Ghader](https://x.com/damienghader/status/2012547182130336033) vom 17. Januar 2026.
 
 ![The Complete Guide: Prompting Lovable for Design](/images/knowledge/prompting-lovable-design/header.jpg)
 

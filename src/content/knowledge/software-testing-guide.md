@@ -1,9 +1,10 @@
 ---
 title: Software-Testing von A bis "läuft wirklich"
-description: Ein praxisnaher Überblick über Testebenen, Ziele und typische Fallstricke.
+description: 'Ein praxisnaher Überblick über Testebenen, Ziele und typische Fallstricke.'
 category: fundamentals
 icon: Code2
-readTime: 14 Min
+readTime: 4 Min
+tags: ["testing", "best-practices", "workflows"]
 ---
 
 ## Warum Testen?

@@ -1,9 +1,13 @@
 ---
-title: "Die Grenzen des Vibe Coding pushen: Claude Skills Deep Dive"
-description: "Meta Alchemist erklärt, wie man mit spezialisierten 'Skills' (Instruction Sets) die Performance von Claude Code massiv steigert und Vibe Coding professionalisiert."
+title: 'Die Grenzen des Vibe Coding pushen: Claude Skills Deep Dive'
+description: >-
+  Meta Alchemist erklärt, wie man mit spezialisierten 'Skills' (Instruction
+  Sets) die Performance von Claude Code massiv steigert und Vibe Coding
+  professionalisiert.
 category: advanced
 icon: Cpu
-readTime: 12 Min
+readTime: 4 Min
+tags: ["claude-skills", "claude-code", "tooling", "patterns"]
 ---
 
 > Ursprünglich veröffentlicht von [Meta Alchemist auf X](https://x.com/meta_alchemist/status/2007388392850641182).

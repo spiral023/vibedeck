@@ -1,12 +1,17 @@
 ---
-title: "How I Use Claude Code (Full Guide)"
-description: "Der vollständige, ungekürzte Guide von Ashpreet Bedi zur Nutzung von Claude Code für komplexe Software-Features mittels Spec-First Development."
+title: How I Use Claude Code (Full Guide)
+description: >-
+  Der vollständige, ungekürzte Guide von Ashpreet Bedi zur Nutzung von Claude
+  Code für komplexe Software-Features mittels Spec-First Development.
 category: fundamentals
 icon: Code2
-readTime: 15 Min
+readTime: 7 Min
+tags: ["claude-code", "workflows", "agentic-coding", "testing"]
+sourceURL: 'https://x.com/ashpreetbedi/status/2011220028453241218'
+sourceType: thread
+author: Ashpreet Bedi
+sourceDate: '2026-01-14'
 ---
-
-> **Hinweis**: Dieser Artikel enthält den vollständigen Inhalt des Threads von [Ashpreet Bedi](https://x.com/ashpreetbedi/status/2011220028453241218) vom 14. Januar 2026.
 
 ![How I Use Claude Code Header](/images/knowledge/claude-code-spec-first/header.png)
 

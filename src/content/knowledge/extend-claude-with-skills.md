@@ -1,12 +1,16 @@
 ---
-title: "Extend Claude with skills"
-description: "Erstelle, verwalte und teile Skills, um Claudes Fähigkeiten in Claude Code zu erweitern. Inklusive benutzerdefinierter Slash-Commands."
+title: Extend Claude with skills
+description: >-
+  Erstelle, verwalte und teile Skills, um Claudes Fähigkeiten in Claude Code zu
+  erweitern. Inklusive benutzerdefinierter Slash-Commands.
 category: tools
 icon: Brain
-readTime: 12 Min
+readTime: 4 Min
+tags: ["claude-skills", "claude-code", "tooling", "docs"]
+sourceURL: "https://code.claude.com/docs/en/skills"
+sourceType: "docs"
+author: "Anthropic Docs"
 ---
-
-> **Quelle:** Dieser Artikel basiert auf den offiziellen [Anthropic Docs](https://code.claude.com/docs/en/skills).
 
 Skills erweitern das, was Claude tun kann. Erstelle eine `SKILL.md`-Datei mit Anweisungen, und Claude fügt sie seinem Werkzeugkasten hinzu. Claude nutzt Skills, wenn sie relevant sind, oder du rufst sie direkt mit `/skill-name` auf.
 

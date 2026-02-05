@@ -1,12 +1,16 @@
 ---
-title: "10 Claude Code Prompts You Need to Steal"
-description: "10 kampferprobte Claude Code Prompts, die garantiert deine Produktivität steigern. Kopiere sie einfach und lege los."
+title: 10 Claude Code Prompts You Need to Steal
+description: >-
+  10 kampferprobte Claude Code Prompts, die garantiert deine Produktivität
+  steigern. Kopiere sie einfach und lege los.
 category: patterns
 icon: Sparkles
-readTime: 10 Min
+readTime: 27 Min
+tags: ["claude-code", "prompts", "prompt-engineering", "vibe-coding"]
+sourceURL: "https://x.com/aiedge_/status/2018356670070718614"
+sourceType: "tweet"
+author: "@aiedge_"
 ---
-
-> **Original-Quelle:** [Artikel von @aiedge_ auf X](https://x.com/aiedge_/status/2018356670070718614)
 
 ![Header Image](/images/knowledge/10-claude-code-prompts-you-need-to-steal/header.jpg)
 

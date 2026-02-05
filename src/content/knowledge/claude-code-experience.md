@@ -1,9 +1,13 @@
 ---
-title: "Der ultimative Guide zu Claude Code 2.0 & Opus 4.5"
-description: "Ein umfassender Deep Dive von Sankalp über Claude Code 2.0: Von der 'Anthropic Redemption Arc' über versteckte Features bis hin zu fortgeschrittenem Context Engineering."
+title: Der ultimative Guide zu Claude Code 2.0 & Opus 4.5
+description: >-
+  Ein umfassender Deep Dive von Sankalp über Claude Code 2.0: Von der 'Anthropic
+  Redemption Arc' über versteckte Features bis hin zu fortgeschrittenem Context
+  Engineering.
 category: advanced
 icon: Bot
-readTime: 30 Min
+readTime: 15 Min
+tags: ["claude-code", "agentic-coding", "workflows", "best-practices"]
 ---
 
 > Ursprünglich veröffentlicht auf [Sankalp's Blog](https://sankalp.bearblog.dev/my-experience-with-claude-code-20-and-how-to-get-better-at-using-coding-agents/).

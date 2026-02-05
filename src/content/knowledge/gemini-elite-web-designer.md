@@ -1,12 +1,16 @@
 ---
-title: "Gemini 3.0: Elite Web Designer Prompt"
-description: "Ein leistungsstarker Meta-Prompt, der Gemini 3.0 in einen Elite Web Designer verwandelt, der komplette Websites von der Vision bis zum Code erstellt."
+title: 'Gemini 3.0: Elite Web Designer Prompt'
+description: >-
+  Ein leistungsstarker Meta-Prompt, der Gemini 3.0 in einen Elite Web Designer
+  verwandelt, der komplette Websites von der Vision bis zum Code erstellt.
 category: patterns
 icon: Layout
-readTime: 10 Min
+readTime: 15 Min
+tags: ["gemini", "prompts", "ui-design", "prompt-engineering"]
+sourceURL: 'https://x.com/godofprompt/status/1991930251715440762'
+sourceType: tweet
+author: God of Prompt
 ---
-
-> **Quelle:** Dieser Prompt stammt von [God of Prompt auf X](https://x.com/godofprompt/status/1991930251715440762).
 
 Dieser Mega-Prompt verwandelt Gemini 3.0 (oder andere fähige Modelle wie Claude 3.5/3.7) in einen **"Elite Web Designer"**.
 

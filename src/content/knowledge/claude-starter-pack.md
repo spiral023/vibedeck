@@ -1,12 +1,16 @@
 ---
-title: "Claude Code Starter Pack: The Ultimate Resource Guide"
-description: "Eine vollständige Sammlung von Tools, Tutorials und Ressourcen für Claude Code von AI Edge (Part 1 & 2)."
+title: 'Claude Code Starter Pack: The Ultimate Resource Guide'
+description: >-
+  Eine vollständige Sammlung von Tools, Tutorials und Ressourcen für Claude Code
+  von AI Edge (Part 1 & 2).
 category: fundamentals
 icon: Rocket
-readTime: 20 Min
+readTime: 7 Min
+tags: ["claude-code", "workflows", "tooling", "best-practices"]
+sourceURL: 'https://x.com/aiedge_/status/2011108297152082250'
+sourceType: thread
+author: AI Edge
 ---
-
-> **Hinweis**: Dieser Artikel enthält den vollständigen Inhalt von zwei Threads von [AI Edge](https://x.com/aiedge_/status/2011108297152082250) (Part 1) und [Part 2](https://x.com/aiedge_/status/2012219230662623372).
 
 ![Claude Code Starter Pack Header](/images/knowledge/claude-starter-pack/header-p1.jpg)
 

@@ -1,12 +1,16 @@
 ---
-title: "Claude Code Common Workflows"
-description: "Praktische Workflows für Claude Code: Codebasen erkunden, Bugs fixen, Refactoring, Testing, PRs erstellen und Session-Management."
+title: Claude Code Common Workflows
+description: >-
+  Praktische Workflows für Claude Code: Codebasen erkunden, Bugs fixen,
+  Refactoring, Testing, PRs erstellen und Session-Management.
 category: patterns
 icon: GitGraph
-readTime: 15 Min
+readTime: 7 Min
+tags: ["claude-code", "workflows", "tooling", "docs"]
+sourceURL: "https://code.claude.com/docs/en/common-workflows"
+sourceType: "docs"
+author: "Anthropic Docs"
 ---
-
-> **Quelle:** Dieser Artikel basiert auf den offiziellen [Anthropic Docs](https://code.claude.com/docs/en/common-workflows).
 
 Diese Seite behandelt praktische Workflows für die tägliche Entwicklung: Erkunden von fremdem Code, Debugging, Refactoring, Schreiben von Tests, Erstellen von PRs und Verwalten von Sitzungen.
 

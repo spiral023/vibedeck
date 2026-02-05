@@ -1,12 +1,18 @@
 ---
-title: "Claude Code lokal ausführen (Kostenlos & Privat)"
-description: "Ein Tutorial von Alvaro Cintas, wie man Claude Code komplett lokal mit Open-Source-Modellen (Ollama) betreibt – ohne Cloud, ohne Kosten, volle Privatsphäre."
+title: Claude Code lokal ausführen (Kostenlos & Privat)
+description: >-
+  Ein Tutorial von Alvaro Cintas, wie man Claude Code komplett lokal mit
+  Open-Source-Modellen (Ollama) betreibt – ohne Cloud, ohne Kosten, volle
+  Privatsphäre.
 category: fundamentals
 icon: Lock
-readTime: 10 Min
+readTime: 3 Min
+tags: ["claude-code", "local-setup", "tooling", "security"]
+sourceURL: 'https://x.com/dr_cintas/status/2014380662300533180'
+sourceType: tweet
+author: Alvaro Cintas
+sourceDate: '2026-01-22'
 ---
-
-> **Hinweis**: Dieser Artikel basiert auf einem [Tweet von Alvaro Cintas](https://x.com/dr_cintas/status/2014380662300533180) vom 22. Januar 2026.
 
 ![Claude Code Local Header](/images/knowledge/claude-code-local/header.jpg)
 

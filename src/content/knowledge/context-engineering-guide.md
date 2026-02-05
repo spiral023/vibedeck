@@ -1,9 +1,13 @@
 ---
-title: "Ein praktischer Leitfaden für Context Engineering"
-description: "Wie man 'AI Slop' vermeidet, indem man das Context Window als die wichtigste Ressource in der Arbeit mit Coding Agents wie Claude Code versteht und optimiert."
+title: Ein praktischer Leitfaden für Context Engineering
+description: >-
+  Wie man 'AI Slop' vermeidet, indem man das Context Window als die wichtigste
+  Ressource in der Arbeit mit Coding Agents wie Claude Code versteht und
+  optimiert.
 category: patterns
 icon: BrainCircuit
-readTime: 12 Min
+readTime: 8 Min
+tags: ["context-engineering", "prompt-engineering", "agents", "patterns"]
 ---
 
 > Ursprünglich veröffentlicht von [Jarrod Watts auf X](https://x.com/jarrodwatts/status/2008495347115630701).

@@ -7,15 +7,6 @@ import { BookOpen, Code2, Database, FileCode, Layers, Lock, Rocket, Search, Zap,
 import { cn } from '@/lib/utils';
 import { type KnowledgeArticle } from '@/types/knowledge';
 
-const categories = [
-  { id: 'all', label: 'Alle' },
-  { id: 'fundamentals', label: 'Grundlagen' },
-  { id: 'patterns', label: 'Patterns' },
-  { id: 'security', label: 'Sicherheit' },
-  { id: 'performance', label: 'Performance' },
-  { id: 'advanced', label: 'Fortgeschritten' },
-];
-
 const iconMap: Record<string, React.ElementType> = {
   BookOpen,
   Code2,
@@ -34,14 +25,36 @@ interface KnowledgeClientProps {
 }
 
 export function KnowledgeClient({ articles }: KnowledgeClientProps) {
-  const [selectedCategory, setSelectedCategory] = useState('all');
+  const [selectedTags, setSelectedTags] = useState<string[]>([]);
   const [searchQuery, setSearchQuery] = useState('');
 
+  const tagStats = articles.reduce<Record<string, number>>((acc, article) => {
+    (article.tags ?? []).forEach((tag) => {
+      acc[tag] = (acc[tag] ?? 0) + 1;
+    });
+    return acc;
+  }, {});
+
+  const allTags = Object.entries(tagStats)
+    .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))
+    .map(([tag]) => tag);
+
   const filtered = articles.filter((article) => {
-    const matchesCategory = selectedCategory === 'all' || article.category === selectedCategory;
-    const matchesSearch = article.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      article.description.toLowerCase().includes(searchQuery.toLowerCase());
-    return matchesCategory && matchesSearch;
+    const matchesTags = selectedTags.length === 0 || selectedTags.every((tag) =>
+      (article.tags ?? []).includes(tag)
+    );
+    const normalizedQuery = searchQuery.trim().toLowerCase();
+    const searchTargets = [
+      article.title,
+      article.description,
+      article.author,
+      article.sourceType,
+      ...(article.tags ?? []),
+    ].filter((value): value is string => Boolean(value));
+    const matchesSearch = normalizedQuery.length === 0 || searchTargets.some((value) =>
+      value.toLowerCase().includes(normalizedQuery)
+    );
+    return matchesTags && matchesSearch;
   });
 
   return (
@@ -68,28 +81,59 @@ export function KnowledgeClient({ articles }: KnowledgeClientProps) {
         />
       </div>
 
-      {/* Categories */}
+      {/* Tags */}
       <div className="flex flex-wrap gap-2">
-        {categories.map((cat) => (
-          <button
-            key={cat.id}
-            onClick={() => setSelectedCategory(cat.id)}
-            className={cn(
-              'rounded-lg px-4 py-2 text-sm font-medium transition-colors',
-              selectedCategory === cat.id
-                ? 'bg-primary text-primary-foreground'
-                : 'bg-secondary text-secondary-foreground hover:bg-secondary/80'
-            )}
-          >
-            {cat.label}
-          </button>
-        ))}
+        <button
+          onClick={() => setSelectedTags([])}
+          className={cn(
+            'rounded-full px-4 py-2 text-sm font-medium transition-colors',
+            selectedTags.length === 0
+              ? 'bg-primary text-primary-foreground'
+              : 'bg-secondary text-secondary-foreground hover:bg-secondary/80'
+          )}
+        >
+          Alle Tags
+        </button>
+        {allTags.map((tag) => {
+          const isActive = selectedTags.includes(tag);
+          return (
+            <button
+              key={tag}
+              onClick={() => {
+                setSelectedTags((prev) => (
+                  prev.includes(tag)
+                    ? prev.filter((item) => item !== tag)
+                    : [...prev, tag]
+                ));
+              }}
+              className={cn(
+                'rounded-full px-3 py-2 text-sm font-medium transition-colors',
+                isActive
+                  ? 'bg-primary/10 text-primary ring-1 ring-primary/30'
+                  : 'bg-secondary text-secondary-foreground hover:bg-secondary/80'
+              )}
+              aria-pressed={isActive}
+            >
+              <span>{tag}</span>
+              <span className={cn(
+                'ml-2 text-xs',
+                isActive ? 'text-primary' : 'text-muted-foreground'
+              )}>
+                {tagStats[tag]}
+              </span>
+            </button>
+          );
+        })}
       </div>
 
       {/* Articles */}
       <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
         {filtered.map((article, index) => {
           const Icon = iconMap[article.icon] || BookOpen;
+          const tags = article.tags ?? [];
+          const visibleTags = tags.slice(0, 3);
+          const extraTagCount = tags.length - visibleTags.length;
+
           return (
             <motion.div
               key={article.id}
@@ -111,6 +155,27 @@ export function KnowledgeClient({ articles }: KnowledgeClientProps) {
                   <p className="mt-2 text-sm text-muted-foreground line-clamp-2">
                     {article.description}
                   </p>
+                  {visibleTags.length > 0 && (
+                    <div className="mt-3 space-y-2">
+                      {visibleTags.length > 0 && (
+                        <div className="flex flex-wrap gap-1.5">
+                          {visibleTags.map((tag) => (
+                            <span
+                              key={tag}
+                              className="rounded-full bg-secondary/70 px-2.5 py-1 text-[11px] font-medium text-secondary-foreground"
+                            >
+                              {tag}
+                            </span>
+                          ))}
+                          {extraTagCount > 0 && (
+                            <span className="rounded-full border border-border/60 px-2.5 py-1 text-[11px] font-medium text-muted-foreground">
+                              +{extraTagCount}
+                            </span>
+                          )}
+                        </div>
+                      )}
+                    </div>
+                  )}
                 </div>
               </Link>
             </motion.div>

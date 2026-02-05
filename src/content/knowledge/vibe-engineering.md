@@ -1,9 +1,13 @@
 ---
-title: "Vibe Engineering: Erkenntnisse aus der Arbeit mit AI Coding Agents"
-description: "Ein umfassender Leitfaden von Duncan Ogilvie (mrexodia) über den Mentalitätswandel und die Techniken für effektive Zusammenarbeit mit KI-Coding-Agents."
+title: 'Vibe Engineering: Erkenntnisse aus der Arbeit mit AI Coding Agents'
+description: >-
+  Ein umfassender Leitfaden von Duncan Ogilvie (mrexodia) über den
+  Mentalitätswandel und die Techniken für effektive Zusammenarbeit mit
+  KI-Coding-Agents.
 category: patterns
 icon: Sparkles
-readTime: 15 Min
+readTime: 12 Min
+tags: ["vibe-coding", "agentic-coding", "workflows", "patterns"]
 ---
 
 > Ursprünglich veröffentlicht von [Duncan Ogilvie (mrexodia) auf X](https://x.com/mrexodia/status/2010157660885176767).

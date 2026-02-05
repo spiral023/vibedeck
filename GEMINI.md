@@ -71,3 +71,18 @@ Lösche temporäre Snapshot-Dateien nach erfolgreicher Erstellung:
 ```powershell
 Remove-Item -Path tweet_content.md
 ```
+
+## Deployment (Cloudflare Pages)
+
+Das Projekt wird als statischer Export (`output: 'export'` in `next.config.mjs`) auf Cloudflare Pages deployed.
+
+### Prozess
+
+1.  **Build**: Erzeugt den statischen `out`-Ordner.
+    ```powershell
+    npm run build
+    ```
+2.  **Deploy**: Lädt den `out`-Ordner hoch.
+    ```powershell
+    npx wrangler pages deploy out
+    ```

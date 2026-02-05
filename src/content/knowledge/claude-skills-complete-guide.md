@@ -1,12 +1,17 @@
 ---
-title: "Claude Skills Explained: Der komplette Guide"
-description: "Ein umfassender Leitfaden zur Erstellung und Nutzung von Claude Skills – von den Grundlagen bis zu fortgeschrittenen Techniken, basierend auf praktischer Erfahrung."
+title: 'Claude Skills Explained: Der komplette Guide'
+description: >-
+  Ein umfassender Leitfaden zur Erstellung und Nutzung von Claude Skills – von
+  den Grundlagen bis zu fortgeschrittenen Techniken, basierend auf praktischer
+  Erfahrung.
 category: fundamentals
 icon: Puzzle
-readTime: 12 Min
+readTime: 7 Min
+tags: ["claude-skills", "claude-code", "tooling", "best-practices"]
+sourceURL: "https://x.com/Meer_AIIT/status/2017984668205756551"
+sourceType: "thread"
+author: "@Meer_AIIT"
 ---
-
-> **Original-Quelle:** [Thread von @Meer_AIIT auf X](https://x.com/Meer_AIIT/status/2017984668205756551)
 
 ![Claude Skills Explained](/images/knowledge/claude-skills-complete-guide/header.jpg)
 
