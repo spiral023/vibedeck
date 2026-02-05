@@ -8,6 +8,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { motion } from 'framer-motion';
 import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 import { toast } from 'sonner';
 import {
   ArrowLeft,
@@ -214,7 +215,7 @@ export function WorkflowDetailClient({ workflow }: WorkflowDetailClientProps) {
         >
           <h3 className="text-lg font-semibold mb-4">Hinweise</h3>
           <div className="prose prose-sm prose-neutral dark:prose-invert max-w-none">
-            <ReactMarkdown>{workflow.body}</ReactMarkdown>
+            <ReactMarkdown remarkPlugins={[remarkGfm]}>{workflow.body}</ReactMarkdown>
           </div>
         </motion.div>
       )}

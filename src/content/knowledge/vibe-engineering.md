@@ -7,6 +7,7 @@ description: >-
 category: patterns
 icon: Sparkles
 readTime: 12 Min
+sourceDate: '2026-01-20'
 tags: ["vibe-coding", "agentic-coding", "workflows", "patterns"]
 ---
 

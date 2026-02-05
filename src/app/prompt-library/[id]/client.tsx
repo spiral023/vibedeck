@@ -8,6 +8,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { motion } from 'framer-motion';
 import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 import { toast } from 'sonner';
 import {
   ArrowLeft,
@@ -448,7 +449,7 @@ export function PromptDetailClient({ prompt }: PromptDetailClientProps) {
             >
               <h2 className="mb-4 text-xl font-semibold">Hinweise</h2>
               <div className="prose prose-sm prose-neutral dark:prose-invert max-w-none">
-                <ReactMarkdown>{prompt.body}</ReactMarkdown>
+                <ReactMarkdown remarkPlugins={[remarkGfm]}>{prompt.body}</ReactMarkdown>
               </div>
             </motion.section>
           )}

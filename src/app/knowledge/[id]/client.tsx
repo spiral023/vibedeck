@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 import Link from 'next/link';
 import { BookOpen, Code2, Database, FileCode, Layers, Lock, Rocket, Search, Zap, Image, ArrowLeft, Copy } from 'lucide-react';
 import { toast } from 'sonner';
@@ -144,6 +145,7 @@ export function ArticleView({ article }: ArticleViewProps) {
         </div>
         <div className="prose prose-sm prose-neutral dark:prose-invert max-w-none">
           <ReactMarkdown
+            remarkPlugins={[remarkGfm]}
             components={{
               img: ({ node, ...props }) => (
                 <span className="block my-8">

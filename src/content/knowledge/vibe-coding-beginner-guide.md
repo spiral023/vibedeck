@@ -6,6 +6,7 @@ description: >-
 category: fundamentals
 icon: Rocket
 readTime: 7 Min
+sourceDate: '2026-01-15'
 tags: ["vibe-coding", "agentic-coding", "workflows", "best-practices"]
 ---
 

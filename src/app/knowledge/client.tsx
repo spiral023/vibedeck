@@ -3,9 +3,16 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { BookOpen, Code2, Database, FileCode, Layers, Lock, Rocket, Search, Zap, Image } from 'lucide-react';
+import { BookOpen, Code2, Database, FileCode, Layers, Lock, Rocket, Search, Zap, Image, Calendar, ArrowUpDown } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { type KnowledgeArticle } from '@/types/knowledge';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 
 const iconMap: Record<string, React.ElementType> = {
   BookOpen,
@@ -24,9 +31,12 @@ interface KnowledgeClientProps {
   articles: KnowledgeArticle[];
 }
 
+type SortBy = 'date' | 'title';
+
 export function KnowledgeClient({ articles }: KnowledgeClientProps) {
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
   const [searchQuery, setSearchQuery] = useState('');
+  const [sortBy, setSortBy] = useState<SortBy>('date');
   const [showAllTags, setShowAllTags] = useState(false);
   const [canExpandTags, setCanExpandTags] = useState(false);
   const [collapsedTagHeight, setCollapsedTagHeight] = useState<number | null>(null);
@@ -43,23 +53,35 @@ export function KnowledgeClient({ articles }: KnowledgeClientProps) {
     .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))
     .map(([tag]) => tag);
 
-  const filtered = articles.filter((article) => {
-    const matchesTags = selectedTags.length === 0 || selectedTags.every((tag) =>
-      (article.tags ?? []).includes(tag)
-    );
-    const normalizedQuery = searchQuery.trim().toLowerCase();
-    const searchTargets = [
-      article.title,
-      article.description,
-      article.author,
-      article.sourceType,
-      ...(article.tags ?? []),
-    ].filter((value): value is string => Boolean(value));
-    const matchesSearch = normalizedQuery.length === 0 || searchTargets.some((value) =>
-      value.toLowerCase().includes(normalizedQuery)
-    );
-    return matchesTags && matchesSearch;
-  });
+  const filtered = articles
+    .filter((article) => {
+      const matchesTags = selectedTags.length === 0 || selectedTags.every((tag) =>
+        (article.tags ?? []).includes(tag)
+      );
+      const normalizedQuery = searchQuery.trim().toLowerCase();
+      const searchTargets = [
+        article.title,
+        article.description,
+        article.author,
+        article.sourceType,
+        ...(article.tags ?? []),
+      ].filter((value): value is string => Boolean(value));
+      const matchesSearch = normalizedQuery.length === 0 || searchTargets.some((value) =>
+        value.toLowerCase().includes(normalizedQuery)
+      );
+      return matchesTags && matchesSearch;
+    })
+    .sort((a, b) => {
+      if (sortBy === 'date') {
+        const dateA = a.sourceDate ? new Date(a.sourceDate).getTime() : 0;
+        const dateB = b.sourceDate ? new Date(b.sourceDate).getTime() : 0;
+        if (dateA !== dateB) {
+          return dateB - dateA; // Newest first
+        }
+        return a.title.localeCompare(b.title);
+      }
+      return a.title.localeCompare(b.title);
+    });
 
   const updateTagLayout = useCallback(() => {
     const container = tagContainerRef.current;
@@ -110,16 +132,32 @@ export function KnowledgeClient({ articles }: KnowledgeClientProps) {
         </p>
       </motion.div>
 
-      {/* Search */}
-      <div className="relative">
-        <Search className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-muted-foreground" />
-        <input
-          type="text"
-          placeholder="Artikel durchsuchen..."
-          value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
-          className="w-full rounded-2xl border border-border/50 bg-card/50 pl-12 pr-4 h-12 focus:border-primary focus:outline-none"
-        />
+      {/* Search & Sort */}
+      <div className="flex flex-col sm:flex-row gap-4">
+        <div className="relative flex-1">
+          <Search className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-muted-foreground" />
+          <input
+            type="text"
+            placeholder="Artikel durchsuchen..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            className="w-full rounded-2xl border border-border/50 bg-card/50 pl-12 pr-4 h-12 focus:border-primary focus:outline-none"
+          />
+        </div>
+        <div className="w-full sm:w-[200px]">
+          <Select value={sortBy} onValueChange={(value) => setSortBy(value as SortBy)}>
+            <SelectTrigger className="h-12 rounded-2xl border-border/50 bg-card/50 px-4 focus:ring-0 focus:ring-offset-0">
+              <div className="flex items-center gap-2">
+                <ArrowUpDown className="h-4 w-4 text-muted-foreground" />
+                <SelectValue placeholder="Sortieren nach" />
+              </div>
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="date">Erscheinungsdatum</SelectItem>
+              <SelectItem value="title">Titel (A-Z)</SelectItem>
+            </SelectContent>
+          </Select>
+        </div>
       </div>
 
       {/* Tags */}
@@ -198,12 +236,20 @@ export function KnowledgeClient({ articles }: KnowledgeClientProps) {
               transition={{ delay: index * 0.05 }}
             >
               <Link href={`/knowledge/${article.id}`} className="block h-full group">
-                <div className="h-full rounded-2xl border border-border/50 bg-card/50 p-5 transition-all hover:border-primary/30 hover:bg-card">
+                <div className="h-full rounded-2xl border border-border/50 bg-card/50 p-5 transition-all hover:border-primary/30 hover:bg-card flex flex-col">
                   <div className="mb-4 flex items-center justify-between">
                     <div className="rounded-xl bg-primary/10 p-2.5">
                       <Icon className="h-5 w-5 text-primary" />
                     </div>
-                    <span className="text-xs text-muted-foreground">{article.readTime}</span>
+                    <div className="flex flex-col items-end gap-1">
+                      <span className="text-xs text-muted-foreground">{article.readTime}</span>
+                      {article.sourceDate && (
+                        <div className="flex items-center gap-1 text-[10px] text-muted-foreground/70">
+                          <Calendar className="h-3 w-3" />
+                          <span>{new Date(article.sourceDate).toLocaleDateString('de-DE', { day: '2-digit', month: '2-digit', year: 'numeric' })}</span>
+                        </div>
+                      )}
+                    </div>
                   </div>
                   <h3 className="font-semibold group-hover:text-primary transition-colors">
                     {article.title}
@@ -211,27 +257,25 @@ export function KnowledgeClient({ articles }: KnowledgeClientProps) {
                   <p className="mt-2 text-sm text-muted-foreground line-clamp-2">
                     {article.description}
                   </p>
-                  {visibleTags.length > 0 && (
-                    <div className="mt-3 space-y-2">
-                      {visibleTags.length > 0 && (
-                        <div className="flex flex-wrap gap-1.5">
-                          {visibleTags.map((tag) => (
-                            <span
-                              key={tag}
-                              className="rounded-full bg-secondary/70 px-2.5 py-1 text-[11px] font-medium text-secondary-foreground"
-                            >
-                              {tag}
-                            </span>
-                          ))}
-                          {extraTagCount > 0 && (
-                            <span className="rounded-full border border-border/60 px-2.5 py-1 text-[11px] font-medium text-muted-foreground">
-                              +{extraTagCount}
-                            </span>
-                          )}
-                        </div>
-                      )}
-                    </div>
-                  )}
+                  <div className="mt-auto pt-4">
+                    {visibleTags.length > 0 && (
+                      <div className="flex flex-wrap gap-1.5">
+                        {visibleTags.map((tag) => (
+                          <span
+                            key={tag}
+                            className="rounded-full bg-secondary/70 px-2.5 py-1 text-[11px] font-medium text-secondary-foreground"
+                          >
+                            {tag}
+                          </span>
+                        ))}
+                        {extraTagCount > 0 && (
+                          <span className="rounded-full border border-border/60 px-2.5 py-1 text-[11px] font-medium text-muted-foreground">
+                            +{extraTagCount}
+                          </span>
+                        )}
+                      </div>
+                    )}
+                  </div>
                 </div>
               </Link>
             </motion.div>

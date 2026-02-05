@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { useForm } from 'react-hook-form';
 import { motion } from 'framer-motion';
 import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 import { toast } from 'sonner';
 import { ArrowLeft, ChevronDown, ChevronUp, Copy, Download, Search, X } from 'lucide-react';
 import { useHistoryStore } from '@/stores/history-store';
@@ -285,7 +286,12 @@ export function HelpTemplateDetailClient({ template }: HelpTemplateDetailClientP
             className="rounded-2xl border border-border/50 bg-card/50 p-5 max-h-[600px] overflow-y-auto"
           >
             <div className="prose prose-sm prose-neutral dark:prose-invert max-w-none">
-              <ReactMarkdown components={markdownComponents}>{resolvedContent}</ReactMarkdown>
+              <ReactMarkdown 
+                remarkPlugins={[remarkGfm]}
+                components={markdownComponents}
+              >
+                {resolvedContent}
+              </ReactMarkdown>
             </div>
           </div>
         </motion.section>

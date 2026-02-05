@@ -27,8 +27,13 @@ export function getAllKnowledgeArticles(): KnowledgeArticle[] {
     });
 
   return allArticles.sort((a, b) => {
-    // Optional: Sort by date if added, or title, or just keep default order
-    // For now let's sort by title
+    if (a.sourceDate || b.sourceDate) {
+      const dateA = a.sourceDate ? new Date(a.sourceDate).getTime() : 0;
+      const dateB = b.sourceDate ? new Date(b.sourceDate).getTime() : 0;
+      if (dateA !== dateB) {
+        return dateB - dateA;
+      }
+    }
     return a.title.localeCompare(b.title);
   });
 }

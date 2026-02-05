@@ -10,8 +10,16 @@ VibeDeck ist eine Next.js-Anwendung mit einer Wissensdatenbank (Knowledge Base),
 
 ## System & Shell
 
-- **PowerShell 7**: Nutze `pwsh` für Shell-Befehle.
+- **PowerShell 7**: Nutze ausschließlich `pwsh` für Shell-Befehle.
+- **Keine Unix-Tools**: Nutze **KEIN** `grep`, `find`, `ls`, `rm` oder `cp`. Diese sind auf Windows oft nicht verfügbar oder verhalten sich anders.
+- **PowerShell-Äquivalente**:
+  - `grep` -> `Select-String`
+  - `find` -> `Get-ChildItem -Recurse`
+  - `ls` -> `Get-ChildItem`
+  - `rm` -> `Remove-Item`
+  - `cp` -> `Copy-Item`
 - **Verkettung**: Nutze `;` statt `&&` (z.B. `pwsh -Command "cmd1; cmd2"`). Das ist robuster und vermeidet Parsing-Fehler.
+- **Beispiel Suche**: `pwsh -Command "Get-ChildItem -Path src -Filter *.md -Recurse | Select-String -Pattern 'Suche'"`
 
 ## Workflow: Tweets in Wissensartikel umwandeln
 

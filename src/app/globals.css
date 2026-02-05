@@ -205,6 +205,31 @@
   .focus-ring {
     @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background;
   }
+
+  /* Markdown Table Styling */
+  .prose table {
+    @apply border-collapse w-full my-8 border border-border/50 rounded-xl overflow-hidden text-sm;
+  }
+
+  .prose thead {
+    @apply bg-muted/50;
+  }
+
+  .prose th {
+    @apply p-3 text-left font-semibold border-b border-border text-foreground;
+  }
+
+  .prose td {
+    @apply p-3 border-b border-border/50 text-muted-foreground;
+  }
+
+  .prose tr:last-child td {
+    @apply border-b-0;
+  }
+
+  .prose tr:hover td {
+    @apply bg-muted/30;
+  }
 }
 
 @layer utilities {
