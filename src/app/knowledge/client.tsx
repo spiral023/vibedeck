@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { BookOpen, Code2, Database, FileCode, Layers, Lock, Rocket, Search, Zap, Image } from 'lucide-react';
@@ -27,6 +27,10 @@ interface KnowledgeClientProps {
 export function KnowledgeClient({ articles }: KnowledgeClientProps) {
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
   const [searchQuery, setSearchQuery] = useState('');
+  const [showAllTags, setShowAllTags] = useState(false);
+  const [canExpandTags, setCanExpandTags] = useState(false);
+  const [collapsedTagHeight, setCollapsedTagHeight] = useState<number | null>(null);
+  const tagContainerRef = useRef<HTMLDivElement | null>(null);
 
   const tagStats = articles.reduce<Record<string, number>>((acc, article) => {
     (article.tags ?? []).forEach((tag) => {
@@ -57,6 +61,43 @@ export function KnowledgeClient({ articles }: KnowledgeClientProps) {
     return matchesTags && matchesSearch;
   });
 
+  const updateTagLayout = useCallback(() => {
+    const container = tagContainerRef.current;
+    if (!container) {
+      return;
+    }
+
+    const tagButton = container.querySelector<HTMLButtonElement>('button');
+    if (!tagButton) {
+      setCanExpandTags(false);
+      setCollapsedTagHeight(null);
+      return;
+    }
+
+    const styles = window.getComputedStyle(container);
+    const rowGapValue = styles.rowGap || styles.gap || '0';
+    const rowGap = Number.parseFloat(rowGapValue) || 0;
+    const tagHeight = tagButton.offsetHeight;
+    const maxHeight = tagHeight * 2 + rowGap;
+
+    setCollapsedTagHeight(maxHeight);
+    setCanExpandTags(container.scrollHeight > maxHeight + 1);
+  }, []);
+
+  useEffect(() => {
+    updateTagLayout();
+
+    const container = tagContainerRef.current;
+    if (!container || typeof ResizeObserver === 'undefined') {
+      return;
+    }
+
+    const observer = new ResizeObserver(() => updateTagLayout());
+    observer.observe(container);
+
+    return () => observer.disconnect();
+  }, [updateTagLayout, allTags.length]);
+
   return (
     <div className="space-y-8">
       <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }}>
@@ -82,48 +123,63 @@ export function KnowledgeClient({ articles }: KnowledgeClientProps) {
       </div>
 
       {/* Tags */}
-      <div className="flex flex-wrap gap-2">
-        <button
-          onClick={() => setSelectedTags([])}
-          className={cn(
-            'rounded-full px-4 py-2 text-sm font-medium transition-colors',
-            selectedTags.length === 0
-              ? 'bg-primary text-primary-foreground'
-              : 'bg-secondary text-secondary-foreground hover:bg-secondary/80'
-          )}
+      <div className="space-y-3">
+        <div
+          ref={tagContainerRef}
+          className="flex flex-wrap gap-2 transition-[max-height] duration-300"
+          style={!showAllTags && collapsedTagHeight ? { maxHeight: `${collapsedTagHeight}px`, overflow: 'hidden' } : undefined}
         >
-          Alle Tags
-        </button>
-        {allTags.map((tag) => {
-          const isActive = selectedTags.includes(tag);
-          return (
-            <button
-              key={tag}
-              onClick={() => {
-                setSelectedTags((prev) => (
-                  prev.includes(tag)
-                    ? prev.filter((item) => item !== tag)
-                    : [...prev, tag]
-                ));
-              }}
-              className={cn(
-                'rounded-full px-3 py-2 text-sm font-medium transition-colors',
-                isActive
-                  ? 'bg-primary/10 text-primary ring-1 ring-primary/30'
-                  : 'bg-secondary text-secondary-foreground hover:bg-secondary/80'
-              )}
-              aria-pressed={isActive}
-            >
-              <span>{tag}</span>
-              <span className={cn(
-                'ml-2 text-xs',
-                isActive ? 'text-primary' : 'text-muted-foreground'
-              )}>
-                {tagStats[tag]}
-              </span>
-            </button>
-          );
-        })}
+          <button
+            onClick={() => setSelectedTags([])}
+            className={cn(
+              'rounded-full px-4 py-2 text-sm font-medium transition-colors',
+              selectedTags.length === 0
+                ? 'bg-primary text-primary-foreground'
+                : 'bg-secondary text-secondary-foreground hover:bg-secondary/80'
+            )}
+          >
+            Alle Tags
+          </button>
+          {allTags.map((tag) => {
+            const isActive = selectedTags.includes(tag);
+            return (
+              <button
+                key={tag}
+                onClick={() => {
+                  setSelectedTags((prev) => (
+                    prev.includes(tag)
+                      ? prev.filter((item) => item !== tag)
+                      : [...prev, tag]
+                  ));
+                }}
+                className={cn(
+                  'rounded-full px-3 py-2 text-sm font-medium transition-colors',
+                  isActive
+                    ? 'bg-primary/10 text-primary ring-1 ring-primary/30'
+                    : 'bg-secondary text-secondary-foreground hover:bg-secondary/80'
+                )}
+                aria-pressed={isActive}
+              >
+                <span>{tag}</span>
+                <span className={cn(
+                  'ml-2 text-xs',
+                  isActive ? 'text-primary' : 'text-muted-foreground'
+                )}>
+                  {tagStats[tag]}
+                </span>
+              </button>
+            );
+          })}
+        </div>
+        {canExpandTags && (
+          <button
+            type="button"
+            onClick={() => setShowAllTags((prev) => !prev)}
+            className="text-sm font-medium text-primary hover:underline"
+          >
+            {showAllTags ? 'Weniger anzeigen' : 'Mehr anzeigen'}
+          </button>
+        )}
       </div>
 
       {/* Articles */}

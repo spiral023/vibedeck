@@ -3,7 +3,10 @@
 import { motion } from 'framer-motion';
 import ReactMarkdown from 'react-markdown';
 import Link from 'next/link';
-import { BookOpen, Code2, Database, FileCode, Layers, Lock, Rocket, Search, Zap, Image, ArrowLeft } from 'lucide-react';
+import { BookOpen, Code2, Database, FileCode, Layers, Lock, Rocket, Search, Zap, Image, ArrowLeft, Copy } from 'lucide-react';
+import { toast } from 'sonner';
+import { copyToClipboard } from '@/lib/copy-utils';
+import { formatKnowledgeArticleMarkdown } from '@/lib/knowledge-export';
 import { type KnowledgeArticle } from '@/types/knowledge';
 
 const iconMap: Record<string, React.ElementType> = {
@@ -69,6 +72,15 @@ export function ArticleView({ article }: ArticleViewProps) {
   const tags = article.tags ?? [];
   const tagLine = tags.length > 0 ? `Tags: ${tags.join(', ')}` : null;
 
+  const handleCopyMarkdown = async () => {
+    const success = await copyToClipboard(formatKnowledgeArticleMarkdown(article));
+    if (success) {
+      toast.success('Markdown kopiert');
+    } else {
+      toast.error('Kopieren fehlgeschlagen');
+    }
+  };
+
   return (
     <div className="space-y-6">
       <Link
@@ -85,11 +97,11 @@ export function ArticleView({ article }: ArticleViewProps) {
         className="prose prose-neutral dark:prose-invert max-w-none"
       >
         <div className="not-prose mb-6">
-          <div className="flex items-center gap-3 mb-4">
+          <div className="flex flex-wrap items-start gap-4 mb-4">
             <div className="rounded-xl bg-primary/10 p-3">
               <Icon className="h-6 w-6 text-primary" />
             </div>
-            <div>
+            <div className="min-w-0">
               <h1 className="text-3xl font-bold mb-2">{article.title}</h1>
               <p className="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-muted-foreground">
                 <span>{article.readTime} Lesezeit</span>
@@ -117,6 +129,16 @@ export function ArticleView({ article }: ArticleViewProps) {
                   </>
                 )}
               </p>
+            </div>
+            <div className="w-full sm:w-auto sm:ml-auto">
+              <button
+                type="button"
+                onClick={handleCopyMarkdown}
+                className="inline-flex items-center gap-2 rounded-lg bg-primary px-3 py-2 text-sm font-medium text-primary-foreground hover:bg-primary/90 focus-ring"
+              >
+                <Copy className="h-4 w-4" />
+                Copy as Markdown
+              </button>
             </div>
           </div>
         </div>
