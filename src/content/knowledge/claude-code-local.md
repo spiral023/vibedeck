@@ -71,6 +71,7 @@ export ANTHROPIC_BASE_URL="http://localhost:11434"
 # Setze einen Dummy API Key (wird benötigt, aber nicht geprüft)
 export ANTHROPIC_AUTH_TOKEN="ollama"
 
+
 # Optional: Telemetrie deaktivieren
 export CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC=1
 ```
