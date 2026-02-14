@@ -1,43 +1,29 @@
 ---
-title: "Claude Code: Agent Teams orchestrieren"
-description: "Koordiniere mehrere Claude Code Instanzen als Team mit gemeinsamen Aufgaben, Inter-Agent-Messaging und zentraler Verwaltung."
-category: workflows
-icon: Layers
-readTime: 9 Min
-tags: ["claude-code", "agent-teams", "parallel-coding", "orchestration"]
-sourceURL: "https://code.claude.com/docs/en/agent-teams"
-sourceType: "docs"
-author: "Anthropic"
-sourceDate: "2026-02-06"
+title: "Claude Code Agent Teams: Der Guide zur Installation und Nutzung"
+description: "Ein tiefer Einblick in das neue Agenten-Modell von Claude Code: Wie Agent Teams funktionieren, wie man sie installiert und warum sie herkömmliche Sub-Agenten übertreffen."
+category: tooling
+icon: Users
+readTime: 12 Min
+tags: ["claude-code", "agent-teams", "automation", "parallel-execution", "reverse-engineering"]
+sourceURL: "https://x.com/jasonzhou1993/status/2020086991740891526"
+sourceType: "thread"
+author: "Jason Zhou"
+sourceDate: "2026-02-07"
 ---
 
-> ⚠️ **Experimentelles Feature:** Agent Teams sind experimentell und standardmäßig deaktiviert. Aktiviere sie, indem Du `CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS` zu Deiner `settings.json` oder Deinem Environment hinzufügst.
+![Claude Code Agent Teams Header](/images/knowledge/claude-code-agent-teams/header.jpg)
 
-Mit Agent Teams kannst Du mehrere Claude Code Instanzen koordinieren, die zusammenarbeiten. Eine Session fungiert als **Team Lead**, koordiniert die Arbeit, weist Aufgaben zu und fasst Ergebnisse zusammen. Die **Teammates** arbeiten unabhängig in ihrem eigenen **Context Window** und kommunizieren direkt miteinander.
+Claude Code hat mit **Agent Teams** ein massives Upgrade seines Agenten-Systems veröffentlicht. Dies ist keine kleine Iteration des alten Task + Sub-Agenten-Modells, sondern ein grundlegend neues Ausführungsmodell. Es ermöglicht 3 bis 5 unabhängigen Claude Code Instanzen, an demselben Projekt zusammenzuarbeiten, Kontext zu teilen und sich über ein gemeinsames Task-System zu koordinieren.
 
-Im Gegensatz zu **Subagents**, die innerhalb einer einzelnen Session laufen und nur an den Hauptagenten berichten können, kannst Du mit einzelnen Teammates direkt interagieren, ohne über den Lead gehen zu müssen.
+## Installation und Aktivierung
 
-## Wann man Agent Teams einsetzt
+Agent Teams befinden sich aktuell noch hinter einem Feature-Flag. Um sie zu nutzen, musst du deine Konfiguration anpassen.
 
-Agent Teams sind am effektivsten für Aufgaben, bei denen parallele Exploration echten Mehrwert bietet:
+### 1. Claude Code aktualisieren
+Stelle sicher, dass du die neueste Version von Claude Code installiert hast.
 
-*   **Research und Review:** Mehrere Teammates können verschiedene Aspekte eines Problems gleichzeitig untersuchen.
-*   **Neue Module oder Features:** Teammates können jeweils ein separates Stück übernehmen, ohne sich gegenseitig in die Quere zu kommen.
-*   **Debugging mit konkurrierenden Hypothesen:** Teammates testen verschiedene Theorien parallel.
-*   **Layer-übergreifende Koordination:** Änderungen, die Frontend, Backend und Tests umspannen.
-
-## Vergleich mit Subagents
-
-| Feature | Subagents | Agent Teams |
-| :--- | :--- | :--- |
-| **Context** | Eigenes Context Window; Ergebnisse gehen an den Caller zurück | Eigenes Context Window; vollständig unabhängig |
-| **Kommunikation** | Berichten Ergebnisse nur an den Hauptagenten | Teammates senden sich gegenseitig Nachrichten |
-| **Koordination** | Hauptagent verwaltet alle Arbeiten | Gemeinsame Task-Liste mit Selbstkoordination |
-| **Token-Kosten** | Niedriger: Ergebnisse werden für den Hauptkontext zusammengefasst | Höher: Jeder Teammate ist eine separate Claude-Instanz |
-
-## Agent Teams aktivieren
-
-Setze die Umgebungsvariable `CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS` auf `1`, entweder in Deiner Shell oder in der `settings.json`:
+### 2. Experimental Flag aktivieren
+Öffne deine `settings.json` (meist unter `~/.claude/settings.json`) und füge folgenden Eintrag hinzu:
 
 ```json
 {
@@ -47,45 +33,65 @@ Setze die Umgebungsvariable `CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS` auf `1`, entw
 }
 ```
 
-## Das erste Agent Team starten
+Starte danach dein Terminal neu.
 
-Nach der Aktivierung kannst Du Claude in natürlicher Sprache anweisen, ein Team zu erstellen:
+### 3. Agent Teams triggern
+Die Teams werden aktiviert, wenn dein Prompt explizit die Erstellung eines Teams fordert.
+> **Beispiel:** *"Ich entwerfe ein CLI-Tool. Erstelle ein Agenten-Team, um dies aus verschiedenen Blickwinkeln zu untersuchen: ein Teammitglied für UX, eines für die technische Architektur und eines, das den Advocatus Diaboli spielt."*
 
-> "Ich entwerfe ein CLI-Tool, das Entwicklern hilft, TODO-Kommentare in ihrer Codebase zu tracken. Erstelle ein Agent Team, um dies aus verschiedenen Blickwinkeln zu untersuchen: ein Teammate für UX, einer für die technische Architektur und einer, der den Devil's Advocate spielt."
+![Setup Agent Teams](/images/knowledge/claude-code-agent-teams/setup.jpg)
 
-Claude erstellt daraufhin ein Team mit einer **Shared Task List**, spawnte Teammates für jede Perspektive und fasst die Ergebnisse am Ende zusammen.
+## Live-Ansicht mit iTerm2 oder tmux
 
-## Steuerung und Display Modes
+Agent Teams entfalten ihre volle Stärke, wenn man ihnen parallel bei der Arbeit zusehen kann.
 
-Es gibt zwei Anzeigemodi für Agent Teams:
-
-1.  **In-process:** Alle Teammates laufen innerhalb Deines Hauptterminals. Nutze `Shift+Up/Down`, um einen Teammate auszuwählen.
-2.  **Split Panes:** Jeder Teammate erhält sein eigenes Pane. Erfordert `tmux` oder `iTerm2`.
-
-### Teammate Mode konfigurieren
-Du kannst den Modus in der `settings.json` festlegen:
-
-```json
-{
-  "teammateMode": "in-process"
-}
-```
-
-Oder via Flag beim Starten:
+**Der beste Setup:**
+Nutze den "Teammate-Modus" mit tmux oder iTerm2 (macOS):
 ```bash
-claude --teammate-mode in-process
+claude --teammate-mode tmux
 ```
+Dies öffnet separate Panes für den **Team Lead** und jedes einzelne **Teammitglied**. Du kannst live beobachten, wie die Agenten kommunizieren und Aufgaben abarbeiten.
 
-## Best Practices für parallele Arbeit
+## Sub-Agenten vs. Agent Teams: Was ist neu?
 
-*   **Genug Kontext geben:** Teammates laden den Projektkontext (`CLAUDE.md`, MCP Server) automatisch, erben aber nicht die Historie des Leads. Gib aufgabenspezifische Details im **Spawn Prompt** mit.
-*   **Aufgabengröße anpassen:** Aufgaben sollten in sich abgeschlossen sein und ein klares Ergebnis liefern (z.B. eine Funktion, ein Testfile).
-*   **File Conflicts vermeiden:** Achte darauf, dass nicht zwei Teammates gleichzeitig dieselbe Datei bearbeiten.
-*   **Monitor and Steer:** Prüfe regelmäßig den Fortschritt der Teammates und greife ein, wenn ein Ansatz nicht funktioniert.
+Das alte Modell der Sub-Agenten war linear und isoliert. Ein Agent rief ein Task-Tool auf, ein Sub-Agent erledigte die Arbeit isoliert und lieferte am Ende nur eine Zusammenfassung zurück.
 
-## Bekannte Limitierungen
+![Teams vs Subagents](/images/knowledge/claude-code-agent-teams/teams-vs-subagents.jpg)
 
-*   **Kein Session Resumption:** `/resume` und `/rewind` stellen in-process Teammates aktuell nicht wieder her.
-*   **Task Status Lag:** Teammates markieren Aufgaben manchmal nicht sofort als erledigt.
-*   **Ein Team pro Session:** Ein Lead kann nur ein Team gleichzeitig verwalten.
-*   **Keine verschachtelten Teams:** Teammates können keine eigenen Teams oder Teammates spawnen.
+**Agent Teams führen ein:**
+- Gemeinsame Task-Listen
+- Direkte Nachrichten und Broadcasts zwischen Agenten
+- Explizite Lifecycle-Kontrolle (Startup, Shutdown)
+
+## Die internen Tools im Detail
+
+Die Zusammenarbeit wird durch neue interne Tools ermöglicht, die im Dateisystem unter `.claude/` operieren.
+
+### Tool 1: TeamCreate
+Erstellt einen neuen Team-Ordner unter `.claude/teams/`. Dies ist das Grundgerüst für die Zusammenarbeit.
+![TeamCreate Tool](/images/knowledge/claude-code-agent-teams/tool-teamcreate.jpg)
+
+### Tool 2: TaskCreate
+Erstellt konkrete Aufgaben (To-Dos) als JSON-Dateien unter `.claude/tasks/<team-id>`. Hier werden Task-IDs, Status, Besitzer und Abhängigkeiten (`blocks`, `blocked_by`) getrackt.
+![TaskCreate Tool](/images/knowledge/claude-code-agent-teams/tool-taskcreate.jpg)
+
+### Tool 3: Task Tool (Upgrade)
+Agenten werden weiterhin über das Task-Tool aktiviert, erhalten aber neue Parameter wie `name` und `team_name`, um sie als Teil eines Teams zu identifizieren.
+![Task Tool](/images/knowledge/claude-code-agent-teams/tool-task.jpg)
+
+### Tool 4: TaskUpdate
+Teammitglieder nutzen dieses Tool, um Aufgaben zu beanspruchen ("claim") oder den Status zu aktualisieren.
+![TaskUpdate Tool](/images/knowledge/claude-code-agent-teams/tool-taskupdate.jpg)
+
+### Tool 5: SendMessage
+Ermöglicht direkte Nachrichten (`agent -> agent`) oder Broadcasts (`agent -> all teammates`). Die Nachrichten landen in einem `inbox/` Ordner und werden als neue User-Messages in die Historie des Ziel-Agenten injiziert.
+![SendMessage Tool](/images/knowledge/claude-code-agent-teams/tool-sendmessage.jpg)
+
+## Wann sind Agent Teams sinnvoll?
+
+Agent Teams verbrauchen deutlich mehr Token und sind langsamer als einfache Sub-Agenten. Sie lohnen sich vor allem für **Deep Debugging** oder komplexe Architektur-Entscheidungen.
+
+**Beispiel für Deep Debugging:**
+Statt einen Agenten suchen zu lassen, spawnst du 5 Teammitglieder, die unterschiedliche Hypothesen untersuchen. Sie debattieren miteinander, versuchen die Theorien der anderen zu widerlegen und halten den Konsens in einem Dokument fest.
+
+Agent Teams sind ein mächtiges Werkzeug für extrem lang laufende, komplexe Aufgaben. Es bleibt spannend zu sehen, ob sie Sub-Agenten langfristig komplett ersetzen werden.

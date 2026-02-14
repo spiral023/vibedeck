@@ -1,0 +1,407 @@
+- generic [ref=e2]:
+  - generic:
+    - generic:
+      - generic:
+        - generic:
+          - generic [ref=e5]:
+            - generic [ref=e6]:
+              - generic [ref=e7]: Lass dir nichts Neues entgehen
+              - generic [ref=e8]: Leute auf X sind topaktuell informiert.
+            - generic [ref=e11]:
+              - link "Anmelden" [ref=e13] [cursor=pointer]:
+                - /url: /login
+                - generic [ref=e16]: Anmelden
+              - link "Registrieren" [ref=e18] [cursor=pointer]:
+                - /url: /i/flow/signup
+                - generic [ref=e21]: Registrieren
+          - generic [ref=e23]:
+            - generic [ref=e24]:
+              - generic [ref=e25]: Hat jemand … Cookies gesagt?
+              - generic [ref=e26]:
+                - text: X und seine Partner verwenden Cookies, damit du einen besseren, sichereren und schnelleren Dienst erhältst und damit wir unser Unternehmen unterstützen können. Einige Cookies sind zur Nutzung unserer Dienste, zur Verbesserung unserer Dienste und zur Sicherstellung ihrer ordnungsgemäßen Funktion notwendig.
+                - button "Zeige mehr über deine Auswahlmöglichkeiten." [ref=e27]
+            - generic [ref=e28]:
+              - button "Alle Cookies akzeptieren" [ref=e29] [cursor=pointer]:
+                - generic [ref=e32]: Alle Cookies akzeptieren
+              - button "Unwesentliche Cookies ablehnen" [ref=e33] [cursor=pointer]:
+                - generic [ref=e36]: Unwesentliche Cookies ablehnen
+      - generic [ref=e37]:
+        - button "Direkt zur Startseiten-Timeline" [ref=e38] [cursor=pointer]
+        - button "Direkt zu Trends" [ref=e40] [cursor=pointer]
+        - banner [ref=e42]:
+          - generic [ref=e45]:
+            - heading "X" [level=1] [ref=e47] [cursor=pointer]:
+              - link "X" [ref=e48]:
+                - /url: /
+                - img [ref=e50]
+            - generic:
+              - navigation "Primär"
+        - main [ref=e53]:
+          - generic "Home-Timeline" [ref=e58]:
+            - generic [ref=e59]:
+              - generic [ref=e65] [cursor=pointer]:
+                - button "Zurück" [ref=e67]:
+                  - img [ref=e69]
+                - heading "Artikel" [level=2] [ref=e81]
+                - link "Fokusmodus" [ref=e83]:
+                  - /url: /gmoneyNFT/article/2022454519741767800
+                  - img [ref=e85]
+              - generic:
+                - generic:
+                  - status:
+                    - button:
+                      - generic:
+                        - img
+                        - generic: Neue Posts sehen
+            - region "Konversation" [ref=e88]:
+              - heading "Konversation" [level=1] [ref=e89]
+              - 'generic "Timeline: Konversation" [ref=e90]':
+                - article "gmoney.eth Verifizierter Account @gmoneyNFT 18 Antworten, 37 Reposts, 365 „Gefällt mir“-Angaben, 916 Lesezeichen, 55122 Mal angezeigt" [ref=e95]:
+                  - generic [ref=e97]:
+                    - generic [ref=e101]:
+                      - link [active] [ref=e113] [cursor=pointer]:
+                        - /url: /gmoneyNFT
+                      - generic [ref=e118]:
+                        - generic [ref=e121]:
+                          - link "gmoney.eth Verifizierter Account" [ref=e124] [cursor=pointer]:
+                            - /url: /gmoneyNFT
+                            - generic [ref=e125]:
+                              - generic [ref=e127]: gmoney.eth
+                              - img "Verifizierter Account" [ref=e130]
+                          - link "@gmoneyNFT" [ref=e136] [cursor=pointer]:
+                            - /url: /gmoneyNFT
+                            - generic [ref=e137]: "@gmoneyNFT"
+                        - button "Mehr" [ref=e143] [cursor=pointer]:
+                          - img [ref=e147]
+                    - generic [ref=e150]:
+                      - generic [ref=e153]:
+                        - link "Bild" [ref=e159] [cursor=pointer]:
+                          - /url: /gmoneyNFT/article/2022454519741767800/media/2022453864708890624
+                          - generic "Bild" [ref=e163]:
+                            - img "Bild" [ref=e165]
+                        - generic [ref=e166]:
+                          - generic [ref=e168]: 25 things i learned using claude code every day
+                          - group "18 Antworten, 37 Reposts, 365 „Gefällt mir“-Angaben, 916 Lesezeichen, 55122 Mal angezeigt" [ref=e170]:
+                            - button "18 Antworten." [ref=e172] [cursor=pointer]:
+                              - generic [ref=e173]:
+                                - img [ref=e176]
+                                - generic [ref=e181]: "18"
+                            - button "37 Reposts. Repost" [ref=e183] [cursor=pointer]:
+                              - generic [ref=e184]:
+                                - img [ref=e187]
+                                - generic [ref=e192]: "37"
+                            - button "365 „Gefällt mir“-Angaben." [ref=e194] [cursor=pointer]:
+                              - generic [ref=e195]:
+                                - img [ref=e198]
+                                - generic [ref=e203]: "365"
+                            - link "55122 Mal angezeigt. Post-Statistiken anzeigen" [ref=e205] [cursor=pointer]:
+                              - /url: /gmoneyNFT/status/2022454519741767800/analytics
+                              - generic [ref=e206]:
+                                - img [ref=e209]
+                                - generic [ref=e214]: "55.122"
+                            - button "Lesezeichen" [ref=e216] [cursor=pointer]:
+                              - img [ref=e220]
+                            - button "Post teilen" [ref=e225] [cursor=pointer]:
+                              - img [ref=e229]
+                          - generic [ref=e237]:
+                            - generic [ref=e240]: i've been running claude code as my daily driver for a few months now. not as a toy. as the backbone of how i actually get work done. i have multiple AI agents running 24/7 across discord, handling research, health tracking, trading analysis, content drafts, and a dozen other things i used to do manually.
+                            - generic [ref=e242]:
+                              - generic [ref=e243]: here are 25 things i've learned the hard way. some came directly from
+                              - link "boris cherny's thread on how the claude code team actually uses it" [ref=e245] [cursor=pointer]:
+                                - /url: https://x.com/bcherny/status/2017742741636321619
+                                - generic [ref=e246]: boris cherny's thread on how the claude code team actually uses it
+                              - generic [ref=e247]: . others came from breaking things at 2am and figuring out what actually works.
+                            - heading "setup and config" [level=2] [ref=e249]:
+                              - generic [ref=e251]: setup and config
+                            - generic [ref=e253]:
+                              - generic [ref=e254]: "1."
+                              - link "CLAUDE.md" [ref=e256] [cursor=pointer]:
+                                - /url: //CLAUDE.md
+                                - generic [ref=e257]: CLAUDE.md
+                              - generic [ref=e258]: is your agent's brain. treat it that way.
+                            - generic [ref=e260]:
+                              - generic [ref=e261]: "this is the single most important file in your setup. claude reads it at the start of every session. i put everything in here: who the agent is, how it should behave, what tools it has access to, what mistakes to avoid. the claude code team tells claude to"
+                              - link "update its own CLAUDE.md after every correction" [ref=e263] [cursor=pointer]:
+                                - /url: https://x.com/bcherny/status/2017742747067945390
+                                - generic [ref=e264]: update its own CLAUDE.md after every correction
+                              - generic [ref=e265]: . after a few weeks of this, the mistake rate drops noticeably.
+                            - generic [ref=e268]: 2. give your agent a soul, not just instructions.
+                            - generic [ref=e270]:
+                              - generic [ref=e271]: i have a
+                              - link "SOUL.md" [ref=e273] [cursor=pointer]:
+                                - /url: //SOUL.md
+                                - generic [ref=e274]: SOUL.md
+                              - generic [ref=e275]: file that defines personality and tone. sounds weird but it matters. an agent with personality gives better responses than one with just rules. "be genuinely helpful, not performatively helpful" hits different than "respond to user queries efficiently."
+                            - generic [ref=e278]: 3. separate what the agent knows from what the agent is.
+                            - generic [ref=e280]:
+                              - generic [ref=e281]: i use
+                              - link "SOUL.md" [ref=e283] [cursor=pointer]:
+                                - /url: //SOUL.md
+                                - generic [ref=e284]: SOUL.md
+                              - generic [ref=e285]: for personality,
+                              - link "AGENTS.md" [ref=e287] [cursor=pointer]:
+                                - /url: //AGENTS.md
+                                - generic [ref=e288]: AGENTS.md
+                              - generic [ref=e289]: for workflow rules,
+                              - link "TOOLS.md" [ref=e291] [cursor=pointer]:
+                                - /url: //TOOLS.md
+                                - generic [ref=e292]: TOOLS.md
+                              - generic [ref=e293]: for environment specifics (ssh hosts, api keys, camera names), and
+                              - link "USER.md" [ref=e295] [cursor=pointer]:
+                                - /url: //USER.md
+                                - generic [ref=e296]: USER.md
+                              - generic [ref=e297]: for context about me. keeping these separate means you can update one without breaking the others.
+                              - link "@law_wu's daily tips series" [ref=e299] [cursor=pointer]:
+                                - /url: https://x.com/law_wu/status/2022043280389922983
+                                - generic [ref=e300]: "@law_wu's daily tips series"
+                              - generic [ref=e301]: covers how agents load these files into context with every message.
+                            - generic [ref=e304]: 4. memory files are everything when your agent wakes up fresh every session.
+                            - generic [ref=e306]:
+                              - generic [ref=e307]: "claude code has no persistent memory between sessions. zero. so i built my own system: daily log files (memory/YYYY-MM-DD.md) for raw notes, and a curated"
+                              - link "MEMORY.md" [ref=e309] [cursor=pointer]:
+                                - /url: //MEMORY.md
+                                - generic [ref=e310]: MEMORY.md
+                              - generic [ref=e311]: for long-term context. the agent reads these on startup and writes to them throughout the day. all of it lives in obsidian as plain markdown, so i can browse and search it too.
+                              - link "@nocodelife moved everything to obsidian markdown files" [ref=e313] [cursor=pointer]:
+                                - /url: https://x.com/nocodelife/status/2015832514028278254
+                                - generic [ref=e314]: "@nocodelife moved everything to obsidian markdown files"
+                              - generic [ref=e315]: "for the same reason: your entire knowledge base becomes claude-accessible."
+                              - link "@terminalnotes built a full personal knowledge system" [ref=e317] [cursor=pointer]:
+                                - /url: https://x.com/terminalnotes/status/1975246913109901709
+                                - generic [ref=e318]: "@terminalnotes built a full personal knowledge system"
+                              - generic [ref=e319]: using
+                              - link "CLAUDE.md" [ref=e321] [cursor=pointer]:
+                                - /url: //CLAUDE.md
+                                - generic [ref=e322]: CLAUDE.md
+                              - generic [ref=e323]: ", custom slash commands, and obsidian. it's the right pattern."
+                            - generic [ref=e326]: 5. skills are reusable playbooks. build them for anything you do more than twice.
+                            - generic [ref=e328]:
+                              - generic [ref=e329]: "i have 10+ custom skills: morning summaries, nightly research sweeps, health digests, x article drafting, meeting transcript processing. each skill has a"
+                              - link "SKILL.md" [ref=e331] [cursor=pointer]:
+                                - /url: //SKILL.md
+                                - generic [ref=e332]: SKILL.md
+                              - generic [ref=e333]: with exact instructions, routing logic (when to use it vs not), and file paths. the claude code team does the same thing.
+                              - link "if you do something more than once a day, make it a skill" [ref=e335] [cursor=pointer]:
+                                - /url: https://x.com/bcherny/status/2017742748984742078
+                                - generic [ref=e336]: if you do something more than once a day, make it a skill
+                              - generic [ref=e337]: .
+                            - heading "workflow and prompting" [level=2] [ref=e339]:
+                              - generic [ref=e341]: workflow and prompting
+                            - generic [ref=e344]: 6. plan mode first. always.
+                            - generic [ref=e346]:
+                              - generic [ref=e347]: for anything beyond a simple question, start in plan mode. have claude outline the approach, confirm it looks right, then execute.
+                              - link "one person on the claude code team has one claude write the plan, then spins up a second claude to review it as a staff engineer" [ref=e349] [cursor=pointer]:
+                                - /url: https://x.com/bcherny/status/2017742745365057733
+                                - generic [ref=e350]: one person on the claude code team has one claude write the plan, then spins up a second claude to review it as a staff engineer
+                              - generic [ref=e351]: . i don't go that far but the principle is right. plan first, build second.
+                            - generic [ref=e354]: 7. when things go sideways, stop and re-plan. don't push through.
+                            - generic [ref=e356]:
+                              - generic [ref=e357]: this is the most common mistake. something breaks, the agent tries to fix it, makes it worse, tries again, spirals. the moment a fix feels wrong, go back to plan mode.
+                              - link "one of the claude code engineers explicitly switches back to plan mode for verification steps" [ref=e359] [cursor=pointer]:
+                                - /url: https://x.com/bcherny/status/2017742745365057733
+                                - generic [ref=e360]: one of the claude code engineers explicitly switches back to plan mode for verification steps
+                              - generic [ref=e361]: ", not just building."
+                            - generic [ref=e364]: 8. "use subagents" is a magic phrase.
+                            - generic [ref=e366]:
+                              - generic [ref=e367]: append "use subagents" to any complex request. claude will spawn background workers to handle subtasks in parallel. keeps the main context window clean and focused.
+                              - link "the claude code team said some of them use 5+ subagents per task" [ref=e369] [cursor=pointer]:
+                                - /url: https://x.com/bcherny/status/2017742755737555434
+                                - generic [ref=e370]: the claude code team said some of them use 5+ subagents per task
+                              - generic [ref=e371]: . i use this constantly for research where i need multiple things explored at once.
+                            - generic [ref=e374]: 9. context window is your most precious resource. treat it like RAM.
+                            - generic [ref=e376]:
+                              - generic [ref=e377]: every message, every file read, every tool call eats context. once you hit the limit, quality degrades fast.
+                              - link "@__BOMO built a statusline" [ref=e379] [cursor=pointer]:
+                                - /url: https://x.com/__BOMO/status/2021336751835590809
+                                - generic [ref=e380]: "@__BOMO built a statusline"
+                              - generic [ref=e381]: that always shows context usage so you can /clear before things get messy.
+                              - link "@dgalarza runs each iteration with a fresh context window" [ref=e383] [cursor=pointer]:
+                                - /url: https://x.com/dgalarza/status/2022314694212526468
+                                - generic [ref=e384]: "@dgalarza runs each iteration with a fresh context window"
+                              - generic [ref=e385]: specifically to avoid the rot that kills quality over time.
+                            - generic [ref=e388]: 10. be specific. stupidly specific.
+                            - generic [ref=e391]: "bad: \"write me a tweet about AI.\" good: \"write a tweet in all lowercase, no emojis, under 200 characters, contrarian angle, about how 3 people with AI agents can outperform a 20 person team. use specific numbers.\" the more constraints you give, the better the output. every time."
+                            - generic [ref=e394]: 11. after a mediocre output, don't iterate. tell it to start over with context.
+                            - generic [ref=e396]:
+                              - link "boris's team says" [ref=e398] [cursor=pointer]:
+                                - /url: https://x.com/bcherny/status/2017742752566632544
+                                - generic [ref=e399]: boris's team says
+                              - generic [ref=e400]: ": \"knowing everything you know now, scrap this and implement the elegant solution.\" this works way better than trying to patch a bad first attempt. fresh start with full context beats incremental fixes."
+                            - heading "running agents 24/7" [level=2] [ref=e402]:
+                              - generic [ref=e404]: running agents 24/7
+                            - generic [ref=e407]: 12. heartbeats let your agent be proactive, not just reactive.
+                            - generic [ref=e410]: "i have a heartbeat system where the agent checks in every 30 minutes. it reviews email, calendar, discord channels, server health. if something needs attention, it speaks up. if not, it stays quiet. the key insight: batch multiple checks into one heartbeat to reduce API calls."
+                            - generic [ref=e413]: 13. cron jobs for exact timing. heartbeats for everything else.
+                            - generic [ref=e416]: cron when the schedule matters (morning summary at 6:30am, nightly research at 2am). heartbeats when you just need periodic checks that can drift. don't create 15 cron jobs when 3 heartbeat checks would work.
+                            - generic [ref=e419]: 14. multiple agents need clear lanes.
+                            - generic [ref=e422]: "i run 4 agents on one discord server. they used to step on each other constantly. the fix: each agent gets specific channels, specific roles, and rules about when to engage vs stay quiet. without this you get agents arguing with each other in an infinite loop. burned a lot of tokens learning that one."
+                            - generic [ref=e425]: 15. automate the content pipeline end to end.
+                            - generic [ref=e427]:
+                              - generic [ref=e428]: i have a cron job that pulls meeting transcripts, runs them through a custom skill, and generates draft posts in my voice. another one sweeps x/twitter for AI news every 6 hours and posts a digest to discord.
+                              - link "boris's tip about building skills for repetitive tasks" [ref=e430] [cursor=pointer]:
+                                - /url: https://x.com/bcherny/status/2017742748984742078
+                                - generic [ref=e431]: boris's tip about building skills for repetitive tasks
+                              - generic [ref=e432]: is what made me build these. once you have the skill, the cron job is just one line.
+                            - heading "tools and integrations" [level=2] [ref=e434]:
+                              - generic [ref=e436]: tools and integrations
+                            - generic [ref=e439]: 16. MCP servers are underrated.
+                            - generic [ref=e441]:
+                              - generic [ref=e442]: "MCP (model context protocol) lets claude connect to external tools: databases, APIs, browsers, file systems."
+                              - link "the team at anthropic uses a slack MCP to paste bug threads and just say \"fix.\"" [ref=e444] [cursor=pointer]:
+                                - /url: https://x.com/bcherny/status/2017742750473720121
+                                - generic [ref=e445]: the team at anthropic uses a slack MCP to paste bug threads and just say "fix."
+                              - generic [ref=e446]: zero context switching. i use MCPs for email, calendar, and discord.
+                            - generic [ref=e449]: 17. hooks let you automate the boring stuff around claude.
+                            - generic [ref=e451]:
+                              - generic [ref=e452]: hooks run before or after specific events.
+                              - link "the claude code team routes permission requests through opus via a hook" [ref=e454] [cursor=pointer]:
+                                - /url: https://x.com/bcherny/status/2017742755737555434
+                                - generic [ref=e455]: the claude code team routes permission requests through opus via a hook
+                              - generic [ref=e456]: that auto-approves safe operations.
+                              - link "trail of bits published an entire opinionated config" [ref=e458] [cursor=pointer]:
+                                - /url: https://x.com/hasamba/status/2021918716716327336
+                                - generic [ref=e459]: trail of bits published an entire opinionated config
+                              - generic [ref=e460]: for security audits built on hooks and skills.
+                            - generic [ref=e463]: 18. voice dictation is a 3x multiplier. we use wisprflow.
+                            - generic [ref=e465]:
+                              - generic [ref=e466]: you speak 3x faster than you type and your prompts get way more detailed as a result.
+                              - link "the claude code team swears by voice dictation" [ref=e468] [cursor=pointer]:
+                                - /url: https://x.com/bcherny/status/2017742753971769626
+                                - generic [ref=e469]: the claude code team swears by voice dictation
+                              - generic [ref=e470]: . we use
+                              - link "wisprflow" [ref=e472] [cursor=pointer]:
+                                - /url: https://x.com/florazhangm/status/2020896774202732832
+                                - generic [ref=e473]: wisprflow
+                              - generic [ref=e474]: and the difference is real. longer, more specific prompts with natural language constraints that you'd never bother typing out.
+                            - generic [ref=e477]: 19. use claude for data work, not just code.
+                            - generic [ref=e479]:
+                              - link "the claude code team hasn't written SQL by hand in 6+ months" [ref=e481] [cursor=pointer]:
+                                - /url: https://x.com/bcherny/status/2017742757666902374
+                                - generic [ref=e482]: the claude code team hasn't written SQL by hand in 6+ months
+                              - generic [ref=e483]: . they have a bigquery skill checked into the codebase. claude handles the queries. this works for any database with a CLI. i use it for trading data analysis and it's replaced most of my manual spreadsheet work.
+                            - heading "mistakes i made so you don't have to" [level=2] [ref=e485]:
+                              - generic [ref=e487]: mistakes i made so you don't have to
+                            - generic [ref=e490]: 20. don't let agents share channels without rules.
+                            - generic [ref=e493]: early on i had all 4 agents listening to every discord channel. they'd all respond to the same message, generate duplicate content, and burn through tokens like crazy. now each agent has its own territory. shared channels have explicit "only respond if directly mentioned" rules.
+                            - generic [ref=e496]: 21. simulated data is worthless. always verify the source.
+                            - generic [ref=e499]: "claude will confidently generate fake data that looks real. trading backtests, research citations, statistics. always verify. i now have explicit rules: \"never use simulated data. if you don't have real data, say so.\" cost me real time before i learned this."
+                            - generic [ref=e502]: 22. lock down your server before giving agents access.
+                            - generic [ref=e504]:
+                              - generic [ref=e505]: i run some agents on a remote VPS. first thing i did was set up tailscale and restrict all access to the tailscale subnet.
+                              - link "@robceliesius runs claude code inside the server with a cron job for security checks" [ref=e507] [cursor=pointer]:
+                                - /url: https://x.com/robceliesius/status/2019083053734256668
+                                - generic [ref=e508]: "@robceliesius runs claude code inside the server with a cron job for security checks"
+                              - generic [ref=e509]: .
+                              - link "trail of bits' config" [ref=e511] [cursor=pointer]:
+                                - /url: https://x.com/hasamba/status/2021918716716327336
+                                - generic [ref=e512]: trail of bits' config
+                              - generic [ref=e513]: covers sandboxing and permission controls. don't skip this or you'll learn the hard way.
+                            - generic [ref=e516]: 23. you can run claude code inside cursor, not just the terminal.
+                            - generic [ref=e518]:
+                              - link "@nocodemba's tutorial" [ref=e520] [cursor=pointer]:
+                                - /url: https://x.com/nocodemba/status/2021232040696254851
+                                - generic [ref=e521]: "@nocodemba's tutorial"
+                              - generic [ref=e522]: covers this and it changed the workflow for a lot of people. if you're frustrated with the terminal-only experience, this is the move. you get claude code's power with cursor's UI. also covers setting up different AI personalities for different project types.
+                            - generic [ref=e525]: 24. the self-improvement loop is real.
+                            - generic [ref=e527]:
+                              - generic [ref=e528]: after every correction, tell claude to update its own instructions so it doesn't make that mistake again.
+                              - link "claude is eerily good at writing rules for itself" [ref=e530] [cursor=pointer]:
+                                - /url: https://x.com/bcherny/status/2017742747067945390
+                                - generic [ref=e531]: claude is eerily good at writing rules for itself
+                              - generic [ref=e532]: . after a few weeks of this, the difference is noticeable. the agent genuinely gets better over time. not because the model changes but because the instructions compound.
+                            - generic [ref=e535]: 25. parallel sessions are the biggest unlock most people miss.
+                            - generic [ref=e537]:
+                              - link "the entire claude code team says the same thing" [ref=e539] [cursor=pointer]:
+                                - /url: https://x.com/bcherny/status/2017742743125299476
+                                - generic [ref=e540]: the entire claude code team says the same thing
+                              - generic [ref=e541]: ": run 3-5 sessions in parallel, each in its own git worktree. it's the single biggest productivity gain. some people set up shell aliases (za, zb, zc) to hop between them in one keystroke. i run parallel subagent sessions for different research topics and it cuts time by more than half."
+                            - heading "the bottom line" [level=2] [ref=e543]:
+                              - generic [ref=e545]: the bottom line
+                            - generic [ref=e548]: the gap between people who use AI tools casually and people who build real workflows around them is getting wider every week. most of these tips aren't complicated. they're just not obvious until you've burned the tokens figuring them out.
+                            - generic [ref=e551]: "posts that shaped how i use this thing:"
+                            - list [ref=e552]:
+                              - listitem [ref=e553]:
+                                - link "@bcherny's 10 tips from the claude code team" [ref=e556] [cursor=pointer]:
+                                  - /url: https://x.com/bcherny/status/2017742741636321619
+                                  - generic [ref=e557]: "@bcherny's 10 tips from the claude code team"
+                              - listitem [ref=e558]:
+                                - link "@bcherny on customizability (hooks, skills, MCP, plugins)" [ref=e561] [cursor=pointer]:
+                                  - /url: https://x.com/bcherny/status/2021699851499798911
+                                  - generic [ref=e562]: "@bcherny on customizability (hooks, skills, MCP, plugins)"
+                              - listitem [ref=e563]:
+                                - link "@__BOMO's context window statusline" [ref=e566] [cursor=pointer]:
+                                  - /url: https://x.com/__BOMO/status/2021336751835590809
+                                  - generic [ref=e567]: "@__BOMO's context window statusline"
+                              - listitem [ref=e568]:
+                                - link "@dgalarza's linear integration with fresh context per iteration" [ref=e571] [cursor=pointer]:
+                                  - /url: https://x.com/dgalarza/status/2022314694212526468
+                                  - generic [ref=e572]: "@dgalarza's linear integration with fresh context per iteration"
+                              - listitem [ref=e573]:
+                                - link "@georgemillo's codex crossover cheat sheet" [ref=e576] [cursor=pointer]:
+                                  - /url: https://x.com/georgemillo/status/2021804005064946154
+                                  - generic [ref=e577]: "@georgemillo's codex crossover cheat sheet"
+                              - listitem [ref=e578]:
+                                - link "trail of bits opinionated claude code config" [ref=e581] [cursor=pointer]:
+                                  - /url: https://x.com/hasamba/status/2021918716716327336
+                                  - generic [ref=e582]: trail of bits opinionated claude code config
+                              - listitem [ref=e583]:
+                                - link "@florazhangm on wisprflow for voice coding" [ref=e586] [cursor=pointer]:
+                                  - /url: https://x.com/florazhangm/status/2020896774202732832
+                                  - generic [ref=e587]: "@florazhangm on wisprflow for voice coding"
+                              - listitem [ref=e588]:
+                                - link "@nocodemba's claude code inside cursor tutorial" [ref=e591] [cursor=pointer]:
+                                  - /url: https://x.com/nocodemba/status/2021232040696254851
+                                  - generic [ref=e592]: "@nocodemba's claude code inside cursor tutorial"
+                              - listitem [ref=e593]:
+                                - link "@law_wu's daily claude code tips" [ref=e596] [cursor=pointer]:
+                                  - /url: https://x.com/law_wu/status/2022043280389922983
+                                  - generic [ref=e597]: "@law_wu's daily claude code tips"
+                              - listitem [ref=e598]:
+                                - link "@robceliesius on server security with claude code" [ref=e601] [cursor=pointer]:
+                                  - /url: https://x.com/robceliesius/status/2019083053734256668
+                                  - generic [ref=e602]: "@robceliesius on server security with claude code"
+                            - generic [ref=e604]:
+                              - generic [ref=e605]: "if you're just getting started: set up"
+                              - link "CLAUDE.md" [ref=e607] [cursor=pointer]:
+                                - /url: //CLAUDE.md
+                                - generic [ref=e608]: CLAUDE.md
+                              - generic [ref=e609]: ", build one skill, run two sessions in parallel. that alone will change how you work."
+                          - status [ref=e611]:
+                            - generic [ref=e612]:
+                              - img [ref=e613]
+                              - generic [ref=e616]:
+                                - generic [ref=e617]: Möchtest du deine eigenen Artikel veröffentlichen?
+                                - link "Upgrade auf Premium" [ref=e618] [cursor=pointer]:
+                                  - /url: /i/premium_sign_up
+                      - generic [ref=e622]:
+                        - link "12:35 vorm. · 14. Feb. 2026" [ref=e624] [cursor=pointer]:
+                          - /url: /gmoneyNFT/status/2022454519741767800
+                          - time [ref=e625]: 12:35 vorm. · 14. Feb. 2026
+                        - generic [ref=e626]: ·
+                        - link "55.122 Mal angezeigt" [ref=e627] [cursor=pointer]:
+                          - /url: /gmoneyNFT/status/2022454519741767800/analytics
+                          - generic [ref=e630]: "55.122"
+                          - generic [ref=e631]: Mal angezeigt
+                      - group "18 Antworten, 37 Reposts, 365 „Gefällt mir“-Angaben, 916 Lesezeichen, 55122 Mal angezeigt" [ref=e634]:
+                        - button "18 Antworten." [ref=e636] [cursor=pointer]:
+                          - generic [ref=e637]:
+                            - img [ref=e640]
+                            - generic [ref=e645]: "18"
+                        - button "37 Reposts. Repost" [ref=e647] [cursor=pointer]:
+                          - generic [ref=e648]:
+                            - img [ref=e651]
+                            - generic [ref=e656]: "37"
+                        - button "365 „Gefällt mir“-Angaben." [ref=e658] [cursor=pointer]:
+                          - generic [ref=e659]:
+                            - img [ref=e662]
+                            - generic [ref=e667]: "365"
+                        - button "916 Lesezeichen. Lesezeichen" [ref=e669] [cursor=pointer]:
+                          - generic [ref=e670]:
+                            - img [ref=e673]
+                            - generic [ref=e678]: "916"
+                        - button "Post teilen" [ref=e681] [cursor=pointer]:
+                          - img [ref=e685]
+                      - button "18 Antworten lesen" [ref=e688] [cursor=pointer]:
+                        - generic [ref=e689]:
+                          - img [ref=e690]
+                          - generic [ref=e694]: 18 Antworten lesen
