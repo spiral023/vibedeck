@@ -9,6 +9,7 @@ import { toast } from 'sonner';
 import { copyToClipboard } from '@/lib/copy-utils';
 import { formatKnowledgeArticleMarkdown } from '@/lib/knowledge-export';
 import { type KnowledgeArticle } from '@/types/knowledge';
+import { Mermaid } from '@/components/Mermaid';
 
 const iconMap: Record<string, React.ElementType> = {
   BookOpen,
@@ -156,6 +157,20 @@ export function ArticleView({ article }: ArticleViewProps) {
                   />
                 </span>
               ),
+              code: ({ node, inline, className, children, ...props }: any) => {
+                const match = /language-(\w+)/.exec(className || '');
+                const isMermaid = match?.[1] === 'mermaid';
+
+                if (!inline && isMermaid) {
+                  return <Mermaid chart={String(children).replace(/\n$/, '')} />;
+                }
+
+                return (
+                  <code className={className} {...props}>
+                    {children}
+                  </code>
+                );
+              },
             }}
           >
             {article.content}
