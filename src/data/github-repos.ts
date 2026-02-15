@@ -1,5 +1,5 @@
 import type { ElementType } from 'react';
-import { Box, Cloud, Brain, Type, Image, Code2, Cog, Bot, Server, FileText, Plug, Container, Zap, LayoutDashboard, Key, Layers, Table, Calendar, Layout, Sparkles, BarChart3, FileSpreadsheet, FileTerminal } from 'lucide-react';
+import { Box, Cloud, Brain, Type, Image, Code2, Cog, Bot, Server, FileText, Plug, Container, Zap, LayoutDashboard, Key, Layers, Table, Calendar, Layout, Sparkles, BarChart3, FileSpreadsheet, FileTerminal, GitBranch, Shapes } from 'lucide-react';
 
 export interface GithubRepo {
   name: string;
@@ -434,5 +434,29 @@ export const githubRepos: GithubRepo[] = [
     category: 'AI Agents',
     icon: Bot,
     author: 'cline',
+  },
+  {
+    name: 'langflow',
+    description: 'Framework zur einfachen Erstellung und Bereitstellung von KI-gesteuerten Agenten und Workflows über eine visuelle Oberfläche.',
+    url: 'https://github.com/langflow-ai/langflow',
+    category: 'AI Agents',
+    icon: GitBranch,
+    author: 'langflow-ai',
+  },
+  {
+    name: 'mermaid',
+    description: 'JavaScript-basiertes Diagramm-Tool zur Erstellung von Flowcharts und Sequenzdiagrammen mittels Markdown-ähnlicher Syntax.',
+    url: 'https://github.com/mermaid-js/mermaid',
+    category: 'Development',
+    icon: Shapes,
+    author: 'mermaid-js',
+  },
+  {
+    name: 'awesome-docker',
+    description: 'Umfangreiche kuratierte Liste von Ressourcen, Tools und Best Practices rund um das Docker-Ökosystem.',
+    url: 'https://github.com/veggiemonk/awesome-docker',
+    category: 'DevOps',
+    icon: Container,
+    author: 'veggiemonk',
   },
 ];
