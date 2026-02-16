@@ -38,7 +38,7 @@ interface KnowledgeClientProps {
   articles: KnowledgeArticle[];
 }
 
-type SortBy = 'date' | 'title';
+type SortBy = 'date' | 'title' | 'level';
 type LevelFilter = 'all' | 'beginner' | 'intermediate' | 'advanced';
 
 const levelWeight: Record<string, number> = {
