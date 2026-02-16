@@ -5,6 +5,7 @@ category: performance
 icon: Zap
 readTime: 1 Min
 tags: ["performance", "best-practices", "tooling"]
+level: intermediate
 ---
 
 ## Performance Best Practices

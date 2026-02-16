@@ -10,6 +10,7 @@ tags: ["claude-code", "mcp", "tooling", "docs"]
 sourceURL: "https://code.claude.com/docs/en/mcp"
 sourceType: "docs"
 author: "Anthropic Docs"
+level: intermediate
 ---
 
 Claude Code kann über das **Model Context Protocol (MCP)** mit hunderten externen Tools und Datenquellen verbunden werden. MCP ist ein offener Standard, der es KI-Assistenten ermöglicht, sicher auf deine Datenbanken, APIs und lokalen Tools zuzugreifen.

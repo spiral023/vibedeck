@@ -9,6 +9,8 @@ sourceURL: "https://boristane.com/blog/how-i-use-claude-code/"
 sourceType: "blog"
 author: "Boris Tane"
 sourceDate: "2026-02-10"
+level: intermediate
+hot: true
 ---
 
 Boris Tane nutzt Claude Code seit über 9 Monaten als primäres Entwicklungswerkzeug. Sein Workflow unterscheidet sich radikal von der typischen "Prompt & Fix" Methodik. Der Kernsatz seines Ansatzes lautet:

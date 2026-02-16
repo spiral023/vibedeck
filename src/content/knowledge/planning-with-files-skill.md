@@ -9,6 +9,7 @@ sourceURL: "https://x.com/anthonyriera/status/2018221220160827828"
 sourceType: "tweet"
 author: "Anthony Riera"
 sourceDate: "2026-02-02"
+level: advanced
 ---
 
 ![Planning with files GitHub Preview](/images/knowledge/planning-with-files-skill/header.jpg)

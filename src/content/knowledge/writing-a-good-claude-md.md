@@ -10,6 +10,8 @@ tags: ["claude-code", "prompt-engineering", "best-practices", "docs"]
 sourceURL: 'https://www.humanlayer.dev/blog/writing-a-good-claude-md'
 sourceType: blog
 author: Kyle (HumanLayer)
+level: advanced
+hot: true
 ---
 
 ## Prinzip: LLMs sind (meistens) zustandslos

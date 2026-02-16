@@ -10,6 +10,7 @@ tags: ["lovable", "security", "best-practices", "docs"]
 sourceURL: "https://docs.lovable.dev/tips-tricks/avoiding-security-pitfalls"
 sourceType: "docs"
 author: "Lovable Docs"
+level: intermediate
 ---
 
 Obwohl Lovable und Tools wie der Security Checker viele Probleme automatisch finden, liegt die Verantwortung für den Schutz von Kundendaten letztlich beim Builder. Dieser Guide erklärt die Architektur von Lovable-Apps und wie man typische Sicherheitsfehler vermeidet.

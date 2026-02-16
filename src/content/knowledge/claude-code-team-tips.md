@@ -9,6 +9,7 @@ sourceURL: "https://x.com/bcherny/status/2017742741636321619"
 sourceType: "thread"
 author: "Boris Cherny"
 sourceDate: "2026-01-31"
+level: advanced
 ---
 
 > **Hinweis**: Dieser Artikel basiert auf einem [Tweet-Thread von Boris Cherny](https://x.com/bcherny/status/2017742741636321619), dem Schöpfer von Claude Code, vom 31. Januar 2026.

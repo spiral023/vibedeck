@@ -10,6 +10,8 @@ tags: ["claude-code", "subagents", "tooling", "docs"]
 sourceURL: "https://code.claude.com/docs/en/sub-agents"
 sourceType: "docs"
 author: "Anthropic Docs"
+level: advanced
+hot: true
 ---
 
 Subagents sind spezialisierte KI-Assistenten, die in einem eigenen Kontextfenster laufen. Jeder Subagent hat einen eigenen System-Prompt, eigene Tool-Rechte und eigene Permissions. Claude delegiert Aufgaben automatisch, wenn die Subagent-Description zum Task passt.

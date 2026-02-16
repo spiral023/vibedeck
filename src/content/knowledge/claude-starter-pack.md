@@ -10,6 +10,8 @@ tags: ["claude-code", "workflows", "tooling", "best-practices"]
 sourceURL: 'https://x.com/aiedge_/status/2011108297152082250'
 sourceType: thread
 author: AI Edge
+level: beginner
+hot: true
 ---
 
 ![Claude Code Starter Pack Header](/images/knowledge/claude-starter-pack/header-p1.jpg)

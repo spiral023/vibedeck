@@ -5,6 +5,7 @@ category: fundamentals
 icon: Rocket
 readTime: 5 Min
 tags: ["vibe-coding", "best-practices", "workflows"]
+level: intermediate
 ---
 
 10 Regeln für effektives „Vibe Coding“, basierend auf den Strategien von Startups und FAANG-Unternehmen:

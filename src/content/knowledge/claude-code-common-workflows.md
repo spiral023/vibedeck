@@ -10,6 +10,7 @@ tags: ["claude-code", "workflows", "tooling", "docs"]
 sourceURL: "https://code.claude.com/docs/en/common-workflows"
 sourceType: "docs"
 author: "Anthropic Docs"
+level: intermediate
 ---
 
 Diese Seite behandelt praktische Workflows für die tägliche Entwicklung: Erkunden von fremdem Code, Debugging, Refactoring, Schreiben von Tests, Erstellen von PRs und Verwalten von Sitzungen.

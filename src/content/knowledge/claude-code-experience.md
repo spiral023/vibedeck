@@ -8,6 +8,8 @@ category: advanced
 icon: Bot
 readTime: 15 Min
 tags: ["claude-code", "agentic-coding", "workflows", "best-practices"]
+level: advanced
+hot: true
 ---
 
 > Ursprünglich veröffentlicht auf [Sankalp's Blog](https://sankalp.bearblog.dev/my-experience-with-claude-code-20-and-how-to-get-better-at-using-coding-agents/).

@@ -9,6 +9,7 @@ sourceURL: "https://x.com/tadaspetra/status/2019204136982532407"
 sourceType: "tweet"
 author: "Tadas Petra"
 sourceDate: "2026-02-05"
+level: intermediate
 ---
 
 ![Deep Dive on Agent Skills](/images/knowledge/agent-skills-deep-dive/header.jpg)

@@ -8,6 +8,8 @@ category: patterns
 icon: BrainCircuit
 readTime: 8 Min
 tags: ["context-engineering", "prompt-engineering", "agents", "patterns"]
+level: advanced
+hot: true
 ---
 
 > Ursprünglich veröffentlicht von [Jarrod Watts auf X](https://x.com/jarrodwatts/status/2008495347115630701).

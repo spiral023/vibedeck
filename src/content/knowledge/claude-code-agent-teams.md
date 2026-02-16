@@ -9,6 +9,7 @@ sourceURL: "https://x.com/jasonzhou1993/status/2020086991740891526"
 sourceType: "thread"
 author: "Jason Zhou"
 sourceDate: "2026-02-07"
+level: advanced
 ---
 
 ![Claude Code Agent Teams Header](/images/knowledge/claude-code-agent-teams/header.jpg)

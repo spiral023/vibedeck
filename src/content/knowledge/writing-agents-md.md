@@ -5,6 +5,8 @@ category: fundamentals
 icon: FileCode
 readTime: 11 Min
 tags: ["agents", "prompt-engineering", "best-practices", "claude-code"]
+level: advanced
+hot: true
 ---
 
 # Eine gute AGENTS.md schreiben

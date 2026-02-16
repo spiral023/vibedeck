@@ -11,6 +11,8 @@ sourceURL: 'https://x.com/damienghader/status/2012547182130336033'
 sourceType: tweet
 author: Damien Ghader
 sourceDate: '2026-01-17'
+level: intermediate
+hot: true
 ---
 
 ![The Complete Guide: Prompting Lovable for Design](/images/knowledge/prompting-lovable-design/header.jpg)

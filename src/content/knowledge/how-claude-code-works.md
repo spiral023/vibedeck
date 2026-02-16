@@ -10,6 +10,7 @@ tags: ["claude-code", "agents", "tooling", "docs"]
 sourceURL: "https://code.claude.com/docs/en/how-claude-code-works"
 sourceType: "docs"
 author: "Anthropic Docs"
+level: beginner
 ---
 
 Claude Code ist ein agentischer Assistent, der in deinem Terminal läuft. Er kann nicht nur Code schreiben, sondern auch bei allem helfen, was du von der Kommandozeile aus tun kannst: Dokumentation schreiben, Builds ausführen, Dateien suchen, recherchieren und mehr.

@@ -7,6 +7,7 @@ category: fundamentals
 icon: Bot
 readTime: 11 Min
 tags: ["agentic-coding", "claude-code", "workflows", "agents"]
+level: beginner
 ---
 
 > Ursprünglich veröffentlicht von [Ben Tossell auf X](https://x.com/bentossell/status/2006352820140749073).

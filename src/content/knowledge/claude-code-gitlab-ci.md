@@ -10,6 +10,7 @@ tags: ["claude-code", "ci-cd", "tooling", "docs"]
 sourceURL: "https://code.claude.com/docs/en/gitlab-ci-cd"
 sourceType: "docs"
 author: "Anthropic Docs"
+level: advanced
 ---
 
 Claude Code kann direkt in GitLab CI/CD integriert werden, um Aufgaben in isolierten Jobs auszuführen und Ergebnisse als Merge Requests (MRs) zurückzuspielen. Dies ermöglicht Workflows wie "Erstelle MR aus Issue" oder "Fixe diesen Bug".

@@ -10,6 +10,8 @@ tags: ["claude-code", "workflows", "tooling", "best-practices"]
 sourceURL: "https://x.com/affaanmustafa/status/2012378465664745795"
 sourceType: "thread"
 author: "@affaanmustafa"
+level: advanced
+hot: true
 ---
 
 ![Header Image](/images/knowledge/shorthand-guide-everything-claude-code/header.jpg)

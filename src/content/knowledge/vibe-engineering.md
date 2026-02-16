@@ -9,6 +9,7 @@ icon: Sparkles
 readTime: 12 Min
 sourceDate: '2026-01-20'
 tags: ["vibe-coding", "agentic-coding", "workflows", "patterns"]
+level: advanced
 ---
 
 > Ursprünglich veröffentlicht von [Duncan Ogilvie (mrexodia) auf X](https://x.com/mrexodia/status/2010157660885176767).

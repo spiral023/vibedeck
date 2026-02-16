@@ -13,6 +13,8 @@ export interface KnowledgeArticle {
   author?: string;
   sourceDate?: string;
   content: string; // Markdown content
+  level?: 'beginner' | 'intermediate' | 'advanced';
+  hot?: boolean;
 }
 
 export const KnowledgeArticleSchema = z.object({
@@ -28,4 +30,6 @@ export const KnowledgeArticleSchema = z.object({
   author: z.string().optional(),
   sourceDate: z.string().optional(),
   content: z.string(),
+  level: z.enum(['beginner', 'intermediate', 'advanced']).optional(),
+  hot: z.boolean().optional(),
 });

@@ -9,6 +9,7 @@ sourceURL: "https://x.com/svpino/status/2018682144361734368"
 sourceType: "tweet"
 author: "Santiago"
 sourceDate: "2026-02-03"
+level: intermediate
 ---
 
 Die Datei `CLAUDE.md` ist das Gehirn Deines Projekts, wenn Du mit Claude Code arbeitest. Mit den richtigen Regeln kannst Du die Zuverlässigkeit des Agenten massiv steigern. Hier sind fünf bewährte Tipps, die Du direkt übernehmen kannst.

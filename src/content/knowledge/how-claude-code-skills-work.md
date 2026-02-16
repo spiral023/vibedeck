@@ -9,6 +9,8 @@ sourceURL: "https://x.com/pdrmnvd/status/2020967757706297797"
 sourceType: "thread"
 author: "pedram.md"
 sourceDate: "2026-02-09"
+level: advanced
+hot: true
 ---
 
 ![Header Image](/images/knowledge/how-claude-code-skills-work/header.jpg)

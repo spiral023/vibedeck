@@ -5,6 +5,7 @@ category: fundamentals
 icon: Image
 readTime: 5 Min
 tags: ["gemini", "image-generation", "prompts", "tooling"]
+level: intermediate
 ---
 
 # Gemini Image Generation Guide

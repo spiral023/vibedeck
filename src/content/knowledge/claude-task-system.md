@@ -11,6 +11,8 @@ sourceURL: 'https://x.com/nummanali/status/2014684862985175205'
 sourceType: tweet
 author: Numman Ali
 sourceDate: '2026-01-23'
+level: advanced
+hot: true
 ---
 
 ![Claude Code Task System Header](/images/knowledge/claude-task-system/header.jpg)

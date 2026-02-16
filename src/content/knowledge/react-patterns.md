@@ -5,6 +5,7 @@ category: patterns
 icon: Layers
 readTime: 1 Min
 tags: ["react", "patterns", "best-practices"]
+level: intermediate
 ---
 
 ## Bewährte React Patterns

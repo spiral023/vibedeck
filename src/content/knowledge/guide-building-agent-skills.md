@@ -9,6 +9,7 @@ sourceURL: "https://x.com/rohit4verse/status/2021622526112358663"
 sourceType: "thread"
 author: "Rohit"
 sourceDate: "2026-02-11"
+level: advanced
 ---
 
 ![Building Agent Skills Header](/images/knowledge/guide-building-agent-skills/header.jpg)

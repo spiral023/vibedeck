@@ -5,6 +5,7 @@ category: fundamentals
 icon: Code2
 readTime: 4 Min
 tags: ["testing", "best-practices", "workflows"]
+level: intermediate
 ---
 
 ## Warum Testen?

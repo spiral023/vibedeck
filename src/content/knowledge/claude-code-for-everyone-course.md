@@ -9,6 +9,7 @@ sourceURL: "https://ccforeveryone.com/"
 sourceType: "blog"
 author: "Carl Vellotti"
 sourceDate: "2026-02-05"
+level: beginner
 ---
 
 > **Hinweis**: Dieser Artikel beschreibt den Kurs [Claude Code for Everyone](https://ccforeveryone.com/) von Carl Vellotti.

@@ -8,6 +8,7 @@ category: advanced
 icon: Cpu
 readTime: 4 Min
 tags: ["claude-skills", "claude-code", "tooling", "patterns"]
+level: advanced
 ---
 
 > Ursprünglich veröffentlicht von [Meta Alchemist auf X](https://x.com/meta_alchemist/status/2007388392850641182).

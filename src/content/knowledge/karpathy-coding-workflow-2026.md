@@ -11,6 +11,7 @@ sourceURL: 'https://x.com/karpathy/status/2015883857489522876'
 sourceType: tweet
 author: Andrej Karpathy
 sourceDate: '2026-01-26'
+level: intermediate
 ---
 
 Andrej Karpathy teilt seine Erfahrungen mit Claude Code aus den letzten Wochen. Seine zentrale Beobachtung: Er ist innerhalb kürzester Zeit von **80% manuellem Coding** (im November) zu **80% Agent Coding** (im Dezember) gewechselt.

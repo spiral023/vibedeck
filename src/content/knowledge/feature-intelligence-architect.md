@@ -9,6 +9,7 @@ sourceURL: "https://x.com/kloss_xyz/status/2019152438910165393?s=20"
 sourceType: "tweet"
 author: "klöss"
 sourceDate: "2026-02-05"
+level: intermediate
 ---
 
 ![Feature Intelligence Architect Header](/images/knowledge/feature-intelligence-architect/header.jpg)

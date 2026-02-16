@@ -8,6 +8,7 @@ icon: Rocket
 readTime: 7 Min
 sourceDate: '2026-01-15'
 tags: ["vibe-coding", "agentic-coding", "workflows", "best-practices"]
+level: beginner
 ---
 
 > Ursprünglich veröffentlicht von [elena ₊ ⊹ auf X](https://x.com/elenakvcs/status/2008228601980985550).

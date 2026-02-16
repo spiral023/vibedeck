@@ -11,6 +11,7 @@ sourceURL: 'https://x.com/ashpreetbedi/status/2011220028453241218'
 sourceType: thread
 author: Ashpreet Bedi
 sourceDate: '2026-01-14'
+level: advanced
 ---
 
 ![How I Use Claude Code Header](/images/knowledge/claude-code-spec-first/header.png)

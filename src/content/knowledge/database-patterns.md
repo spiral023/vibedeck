@@ -5,6 +5,7 @@ category: patterns
 icon: Database
 readTime: 1 Min
 tags: ["databases", "patterns", "best-practices"]
+level: intermediate
 ---
 
 ## Datenbank Best Practices

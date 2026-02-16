@@ -3,9 +3,10 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { BookOpen, Code2, Database, FileCode, Layers, Lock, Rocket, Search, Zap, Image, Calendar, ArrowUpDown } from 'lucide-react';
+import { BookOpen, Code2, Database, FileCode, Layers, Lock, Rocket, Search, Zap, Image, Calendar, ArrowUpDown, BarChart, Flame, Heart } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { type KnowledgeArticle } from '@/types/knowledge';
+import { useFavorites } from '@/hooks/use-favorites';
 import {
   Select,
   SelectContent,
@@ -27,20 +28,68 @@ const iconMap: Record<string, React.ElementType> = {
   Image,
 };
 
+const levelConfig: Record<string, { label: string; color: string }> = {
+  beginner: { label: 'Einsteiger', color: 'bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-200/50 dark:border-emerald-800/50' },
+  intermediate: { label: 'Fortgeschritten', color: 'bg-blue-500/10 text-blue-600 dark:text-blue-400 border-blue-200/50 dark:border-blue-800/50' },
+  advanced: { label: 'Profi', color: 'bg-purple-500/10 text-purple-600 dark:text-purple-400 border-purple-200/50 dark:border-purple-800/50' },
+};
+
 interface KnowledgeClientProps {
   articles: KnowledgeArticle[];
 }
 
 type SortBy = 'date' | 'title';
+type LevelFilter = 'all' | 'beginner' | 'intermediate' | 'advanced';
+
+const levelWeight: Record<string, number> = {
+  beginner: 1,
+  intermediate: 2,
+  advanced: 3,
+};
 
 export function KnowledgeClient({ articles }: KnowledgeClientProps) {
+  const { isFavorite, toggleFavorite } = useFavorites('knowledge');
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
   const [searchQuery, setSearchQuery] = useState('');
-  const [sortBy, setSortBy] = useState<SortBy>('date');
+  const [sortBy, setSortBy] = useState<SortBy>('level');
+  const [selectedLevel, setSelectedLevel] = useState<LevelFilter>('all');
+  const [showHotOnly, setShowHotOnly] = useState(true);
   const [showAllTags, setShowAllTags] = useState(false);
   const [canExpandTags, setCanExpandTags] = useState(false);
   const [collapsedTagHeight, setCollapsedTagHeight] = useState<number | null>(null);
   const tagContainerRef = useRef<HTMLDivElement | null>(null);
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  // Load from local storage on mount
+  useEffect(() => {
+    const savedSortBy = localStorage.getItem('vibedeck-knowledge-sortBy');
+    if (savedSortBy) setSortBy(savedSortBy as SortBy);
+
+    const savedLevel = localStorage.getItem('vibedeck-knowledge-selectedLevel');
+    if (savedLevel) setSelectedLevel(savedLevel as LevelFilter);
+
+    const savedHot = localStorage.getItem('vibedeck-knowledge-showHotOnly');
+    if (savedHot !== null) setShowHotOnly(savedHot === 'true');
+
+    const savedTags = localStorage.getItem('vibedeck-knowledge-selectedTags');
+    if (savedTags) {
+      try {
+        setSelectedTags(JSON.parse(savedTags));
+      } catch (e) {
+        console.error("Failed to parse tags", e);
+      }
+    }
+    setIsLoaded(true);
+  }, []);
+
+  // Save to local storage on change
+  useEffect(() => {
+    if (!isLoaded) return;
+    localStorage.setItem('vibedeck-knowledge-sortBy', sortBy);
+    localStorage.setItem('vibedeck-knowledge-selectedLevel', selectedLevel);
+    localStorage.setItem('vibedeck-knowledge-showHotOnly', String(showHotOnly));
+    localStorage.setItem('vibedeck-knowledge-selectedTags', JSON.stringify(selectedTags));
+  }, [sortBy, selectedLevel, showHotOnly, selectedTags, isLoaded]);
 
   const tagStats = articles.reduce<Record<string, number>>((acc, article) => {
     (article.tags ?? []).forEach((tag) => {
@@ -58,6 +107,8 @@ export function KnowledgeClient({ articles }: KnowledgeClientProps) {
       const matchesTags = selectedTags.length === 0 || selectedTags.every((tag) =>
         (article.tags ?? []).includes(tag)
       );
+      const matchesLevel = selectedLevel === 'all' || article.level === selectedLevel;
+      const matchesHot = !showHotOnly || article.hot;
       const normalizedQuery = searchQuery.trim().toLowerCase();
       const searchTargets = [
         article.title,
@@ -69,7 +120,7 @@ export function KnowledgeClient({ articles }: KnowledgeClientProps) {
       const matchesSearch = normalizedQuery.length === 0 || searchTargets.some((value) =>
         value.toLowerCase().includes(normalizedQuery)
       );
-      return matchesTags && matchesSearch;
+      return matchesTags && matchesSearch && matchesLevel && matchesHot;
     })
     .sort((a, b) => {
       if (sortBy === 'date') {
@@ -77,6 +128,14 @@ export function KnowledgeClient({ articles }: KnowledgeClientProps) {
         const dateB = b.sourceDate ? new Date(b.sourceDate).getTime() : 0;
         if (dateA !== dateB) {
           return dateB - dateA; // Newest first
+        }
+        return a.title.localeCompare(b.title);
+      }
+      if (sortBy === 'level') {
+        const weightA = a.level ? levelWeight[a.level] ?? 4 : 4;
+        const weightB = b.level ? levelWeight[b.level] ?? 4 : 4;
+        if (weightA !== weightB) {
+          return weightA - weightB; // Ascending: Beginner -> Advanced
         }
         return a.title.localeCompare(b.title);
       }
@@ -132,7 +191,7 @@ export function KnowledgeClient({ articles }: KnowledgeClientProps) {
         </p>
       </motion.div>
 
-      {/* Search & Sort */}
+      {/* Search & Sort & Filter */}
       <div className="flex flex-col sm:flex-row gap-4">
         <div className="relative flex-1">
           <Search className="absolute left-4 top-1/2 h-5 w-5 -translate-y-1/2 text-muted-foreground" />
@@ -144,19 +203,50 @@ export function KnowledgeClient({ articles }: KnowledgeClientProps) {
             className="w-full rounded-2xl border border-border/50 bg-card/50 pl-12 pr-4 h-12 focus:border-primary focus:outline-none"
           />
         </div>
-        <div className="w-full sm:w-[200px]">
-          <Select value={sortBy} onValueChange={(value) => setSortBy(value as SortBy)}>
-            <SelectTrigger className="h-12 rounded-2xl border-border/50 bg-card/50 px-4 focus:ring-0 focus:ring-offset-0">
-              <div className="flex items-center gap-2">
-                <ArrowUpDown className="h-4 w-4 text-muted-foreground" />
-                <SelectValue placeholder="Sortieren nach" />
-              </div>
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="date">Erscheinungsdatum</SelectItem>
-              <SelectItem value="title">Titel (A-Z)</SelectItem>
-            </SelectContent>
-          </Select>
+        <div className="flex gap-4 items-center">
+          <button
+            onClick={() => setShowHotOnly(!showHotOnly)}
+            className={cn(
+              "flex items-center gap-2 px-4 h-12 rounded-2xl border transition-colors",
+              showHotOnly
+                ? "bg-red-500/10 border-red-500/30 text-red-600 dark:text-red-400"
+                : "bg-card/50 border-border/50 text-muted-foreground hover:bg-card hover:text-foreground"
+            )}
+          >
+            <Flame className={cn("h-4 w-4", showHotOnly && "fill-current")} />
+            <span className="font-medium">Hot</span>
+          </button>
+          <div className="w-[160px]">
+            <Select value={selectedLevel} onValueChange={(value) => setSelectedLevel(value as LevelFilter)}>
+              <SelectTrigger className="h-12 rounded-2xl border-border/50 bg-card/50 px-4 focus:ring-0 focus:ring-offset-0">
+                <div className="flex items-center gap-2">
+                  <BarChart className="h-4 w-4 text-muted-foreground rotate-90" />
+                  <SelectValue placeholder="Level" />
+                </div>
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="all">Alle Level</SelectItem>
+                <SelectItem value="beginner">Einsteiger</SelectItem>
+                <SelectItem value="intermediate">Fortgeschritten</SelectItem>
+                <SelectItem value="advanced">Profi</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
+          <div className="w-[180px]">
+            <Select value={sortBy} onValueChange={(value) => setSortBy(value as SortBy)}>
+              <SelectTrigger className="h-12 rounded-2xl border-border/50 bg-card/50 px-4 focus:ring-0 focus:ring-offset-0">
+                <div className="flex items-center gap-2">
+                  <ArrowUpDown className="h-4 w-4 text-muted-foreground" />
+                  <SelectValue placeholder="Sortieren" />
+                </div>
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="date">Datum (Neu)</SelectItem>
+                <SelectItem value="title">Titel (A-Z)</SelectItem>
+                <SelectItem value="level">Level (Aufsteigend)</SelectItem>
+              </SelectContent>
+            </Select>
+          </div>
         </div>
       </div>
 
@@ -227,6 +317,8 @@ export function KnowledgeClient({ articles }: KnowledgeClientProps) {
           const tags = article.tags ?? [];
           const visibleTags = tags.slice(0, 3);
           const extraTagCount = tags.length - visibleTags.length;
+          const levelInfo = article.level ? levelConfig[article.level] : null;
+          const isFav = isFavorite(article.id);
 
           return (
             <motion.div
@@ -234,30 +326,55 @@ export function KnowledgeClient({ articles }: KnowledgeClientProps) {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.05 }}
+              className="group relative"
             >
-              <Link href={`/knowledge/${article.id}`} className="block h-full group">
-                <div className="h-full rounded-2xl border border-border/50 bg-card/50 p-5 transition-all hover:border-primary/30 hover:bg-card flex flex-col">
-                  <div className="mb-4 flex items-center justify-between">
+              <Link href={`/knowledge/${article.id}`} className="block h-full">
+                <div className="h-full rounded-2xl border border-border/50 bg-card/50 p-5 transition-all hover:border-primary/30 hover:bg-card flex flex-col relative">
+                  <div className="mb-4 flex items-start justify-between">
                     <div className="rounded-xl bg-primary/10 p-2.5">
                       <Icon className="h-5 w-5 text-primary" />
                     </div>
-                    <div className="flex flex-col items-end gap-1">
-                      <span className="text-xs text-muted-foreground">{article.readTime}</span>
-                      {article.sourceDate && (
-                        <div className="flex items-center gap-1 text-[10px] text-muted-foreground/70">
-                          <Calendar className="h-3 w-3" />
-                          <span>{new Date(article.sourceDate).toLocaleDateString('de-DE', { day: '2-digit', month: '2-digit', year: 'numeric' })}</span>
-                        </div>
+                    <div className="flex gap-2 pr-8">
+                      {article.hot && (
+                        <span className="flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-medium border uppercase tracking-wider bg-red-500/10 text-red-600 dark:text-red-400 border-red-200/50 dark:border-red-800/50">
+                          <Flame className="h-3 w-3" />
+                          Hot
+                        </span>
+                      )}
+                      {levelInfo && (
+                        <span className={cn(
+                          "px-2.5 py-0.5 rounded-full text-[10px] font-medium border uppercase tracking-wider",
+                          levelInfo.color
+                        )}>
+                          {levelInfo.label}
+                        </span>
                       )}
                     </div>
                   </div>
-                  <h3 className="font-semibold group-hover:text-primary transition-colors">
-                    {article.title}
-                  </h3>
-                  <p className="mt-2 text-sm text-muted-foreground line-clamp-2">
+                  
+                  <div className="space-y-2 mb-2">
+                    <h3 className="font-semibold group-hover:text-primary transition-colors line-clamp-2">
+                      {article.title}
+                    </h3>
+                    <div className="flex items-center gap-3 text-xs text-muted-foreground">
+                      <span>{article.readTime}</span>
+                      {article.sourceDate && (
+                        <>
+                          <span className="w-1 h-1 rounded-full bg-muted-foreground/30" />
+                          <div className="flex items-center gap-1">
+                            <Calendar className="h-3 w-3" />
+                            <span>{new Date(article.sourceDate).toLocaleDateString('de-DE', { day: '2-digit', month: '2-digit', year: 'numeric' })}</span>
+                          </div>
+                        </>
+                      )}
+                    </div>
+                  </div>
+
+                  <p className="text-sm text-muted-foreground line-clamp-2 mb-4">
                     {article.description}
                   </p>
-                  <div className="mt-auto pt-4">
+
+                  <div className="mt-auto">
                     {visibleTags.length > 0 && (
                       <div className="flex flex-wrap gap-1.5">
                         {visibleTags.map((tag) => (
@@ -278,6 +395,20 @@ export function KnowledgeClient({ articles }: KnowledgeClientProps) {
                   </div>
                 </div>
               </Link>
+              <button
+                onClick={(e) => {
+                  e.preventDefault();
+                  toggleFavorite(article.id);
+                }}
+                className="absolute top-4 right-4 z-20 p-1.5 rounded-full hover:bg-muted/50 transition-colors"
+              >
+                <Heart
+                  className={cn(
+                    "h-5 w-5 transition-colors",
+                    isFav ? "fill-red-500 text-red-500" : "text-muted-foreground hover:text-foreground"
+                  )}
+                />
+              </button>
             </motion.div>
           );
         })}

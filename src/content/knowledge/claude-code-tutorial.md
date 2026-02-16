@@ -11,6 +11,7 @@ sourceURL: 'https://x.com/eyad_khrais/status/2010076957938188661'
 sourceType: tweet
 author: Eyad Khrais
 sourceDate: '2026-01-10'
+level: intermediate
 ---
 
 ![The Complete Claude Code Tutorial](/images/knowledge/claude-code-tutorial/header.jpg)

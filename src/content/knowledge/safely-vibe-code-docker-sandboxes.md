@@ -9,6 +9,7 @@ sourceURL: "https://x.com/d4m1n/status/2019366063226355930"
 sourceType: "tweet"
 author: "Dan ⚡️"
 sourceDate: "2026-02-05"
+level: advanced
 ---
 
 ![Safe Vibe Coding](/images/knowledge/safely-vibe-code-docker-sandboxes/header.jpg)

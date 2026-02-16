@@ -10,6 +10,8 @@ tags: ["claude-code", "tooling", "docs", "workflows"]
 sourceURL: "https://code.claude.com/docs/en/features-overview"
 sourceType: "docs"
 author: "Anthropic Docs"
+level: intermediate
+hot: true
 ---
 
 Claude Code kombiniert ein Modell, das über deinen Code nachdenkt, mit eingebauten Tools. Die "Extension Layer" ermöglicht es dir, Claude an deine Bedürfnisse anzupassen.

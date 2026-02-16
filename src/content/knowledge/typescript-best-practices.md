@@ -5,6 +5,7 @@ category: fundamentals
 icon: FileCode
 readTime: 1 Min
 tags: ["typescript", "best-practices", "patterns"]
+level: intermediate
 ---
 
 ## TypeScript Best Practices

@@ -11,6 +11,8 @@ tags: ["claude-skills", "claude-code", "tooling", "best-practices"]
 sourceURL: "https://x.com/Meer_AIIT/status/2017984668205756551"
 sourceType: "thread"
 author: "@Meer_AIIT"
+level: advanced
+hot: true
 ---
 
 ![Claude Skills Explained](/images/knowledge/claude-skills-complete-guide/header.jpg)

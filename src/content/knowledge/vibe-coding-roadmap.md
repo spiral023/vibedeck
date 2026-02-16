@@ -9,6 +9,7 @@ sourceURL: "https://x.com/Hartdrawss/status/2019433363287806243"
 sourceType: "tweet"
 author: "Harshil Tomar"
 sourceDate: "2026-02-05"
+level: beginner
 ---
 
 Vibe Coding bedeutet nicht, gar keine Ahnung von Technik zu haben. Um wirklich effektiv mit AI-Agenten zu arbeiten, solltest Du bestimmte Fähigkeiten meistern. Hier ist die ultimative Roadmap.

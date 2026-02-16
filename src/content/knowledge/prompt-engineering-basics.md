@@ -5,6 +5,7 @@ category: fundamentals
 icon: BookOpen
 readTime: 1 Min
 tags: ["prompt-engineering", "prompts", "best-practices", "workflows"]
+level: beginner
 ---
 
 ## Was ist Prompt Engineering?

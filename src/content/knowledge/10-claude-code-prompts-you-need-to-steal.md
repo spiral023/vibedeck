@@ -10,6 +10,7 @@ tags: ["claude-code", "prompts", "prompt-engineering", "vibe-coding"]
 sourceURL: "https://x.com/aiedge_/status/2018356670070718614"
 sourceType: "tweet"
 author: "@aiedge_"
+level: beginner
 ---
 
 ![Header Image](/images/knowledge/10-claude-code-prompts-you-need-to-steal/header.jpg)

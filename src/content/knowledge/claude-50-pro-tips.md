@@ -9,6 +9,7 @@ sourceURL: "https://x.com/aiedge_/status/2014009389427101949"
 sourceType: "thread"
 author: "AI Edge"
 sourceDate: "2026-01-21"
+level: intermediate
 ---
 
 > **Hinweis**: Dieser Artikel basiert auf einem [Post von AI Edge](https://x.com/aiedge_/status/2014009389427101949) vom 21. Januar 2026.

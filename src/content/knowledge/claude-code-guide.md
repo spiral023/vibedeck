@@ -7,6 +7,7 @@ category: fundamentals
 icon: Terminal
 readTime: 7 Min
 tags: ["claude-code", "workflows", "tooling", "best-practices"]
+level: intermediate
 ---
 
 > Ursprünglich veröffentlicht von [hoeem auf X](https://x.com/hooeem/status/2007914329748668472).

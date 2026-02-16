@@ -9,6 +9,7 @@ sourceURL: "https://www.reddit.com/r/ClaudeCode/comments/1id7vzv/what_i_learned_
 sourceType: "thread"
 author: "dhruv1103"
 sourceDate: "2026-01-12"
+level: advanced
 ---
 
 > **Hinweis**: Dieser Artikel basiert auf einem [Reddit-Thread von dhruv1103](https://www.reddit.com/r/ClaudeCode/comments/1id7vzv/what_i_learned_from_writing_500k_lines_with/) aus dem Subreddit r/ClaudeCode.

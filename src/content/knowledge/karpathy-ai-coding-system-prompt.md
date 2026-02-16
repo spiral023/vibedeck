@@ -9,6 +9,7 @@ sourceURL: "https://x.com/godofprompt/status/2018482335130296381?s=20"
 sourceType: "tweet"
 author: "God of Prompt"
 sourceDate: "2026-02-03"
+level: advanced
 ---
 
 > **Hinweis**: Dieser Artikel basiert auf einem [Tweet von God of Prompt](https://x.com/godofprompt/status/2018482335130296381?s=20) vom 3. Februar 2026, der Andrej Karpathys virale Gedanken zum AI-Coding in einen ausführbaren Prompt übersetzt hat.

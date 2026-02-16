@@ -5,6 +5,7 @@ category: security
 icon: Lock
 readTime: 1 Min
 tags: ["security", "best-practices", "tooling"]
+level: intermediate
 ---
 
 ## API Sicherheit

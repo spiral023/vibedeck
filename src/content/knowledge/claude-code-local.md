@@ -12,6 +12,7 @@ sourceURL: 'https://x.com/dr_cintas/status/2014380662300533180'
 sourceType: tweet
 author: Alvaro Cintas
 sourceDate: '2026-01-22'
+level: intermediate
 ---
 
 ![Claude Code Local Header](/images/knowledge/claude-code-local/header.jpg)

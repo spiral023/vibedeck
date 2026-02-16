@@ -9,6 +9,7 @@ sourceURL: "https://www.aihero.dev/skill-test-driven-development-claude-code"
 sourceType: "blog"
 author: "Matt Pocock"
 sourceDate: "2026-02-14"
+level: advanced
 ---
 
 ![TDD Skill Header](/images/knowledge/skill-tdd-claude-code/header.jpg)

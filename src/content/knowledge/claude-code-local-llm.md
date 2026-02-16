@@ -9,6 +9,7 @@ sourceURL: "https://unsloth.ai/docs/basics/claude-codex"
 sourceType: "docs"
 author: "Unsloth Team"
 sourceDate: "2026-02-02"
+level: advanced
 ---
 
 ![Claude Code Local](/images/knowledge/claude-code-local-llm/header.png)

@@ -10,6 +10,7 @@ tags: ["claude-code", "performance", "tooling", "workflows"]
 sourceURL: "https://x.com/rudrank/status/2018272804966449209"
 sourceType: "thread"
 author: "@rudrank"
+level: advanced
 ---
 
 ![Header Image](/images/knowledge/using-minimax-with-claude-code/header.jpg)
