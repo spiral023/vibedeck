@@ -36,6 +36,20 @@ interface NavItem {
   badge?: string;
 }
 
+const SIDEBAR_SOON_MODE_ENABLED = true;
+const SOON_LOCKED_PATHS = new Set<string>([
+  '/prompt-builder',
+  '/prompt-composer',
+  '/prompt-factory',
+  '/prompt-library',
+  '/workflows',
+  '/hosting',
+  '/superpowers',
+  '/idea-lab',
+  '/rules-generator',
+  '/history',
+]);
+
 const navItems: NavItem[] = [
   { label: 'Prompt Builder', href: '/prompt-builder', icon: Wrench },
   { label: 'Prompt Composer', href: '/prompt-composer', icon: Layers },
@@ -131,30 +145,48 @@ export function Sidebar() {
           <nav className="flex-1 overflow-y-auto px-2.5 py-3 scrollbar-thin">
             <ul className="space-y-0.5">
               {navItems.map((item) => {
-                const isActive = pathname === item.href || 
-                  (item.href !== '/' && pathname?.startsWith(item.href));
-                
+                const isSoonLocked =
+                  SIDEBAR_SOON_MODE_ENABLED && SOON_LOCKED_PATHS.has(item.href);
+                const isActive =
+                  !isSoonLocked &&
+                  (pathname === item.href || (item.href !== '/' && pathname?.startsWith(item.href)));
+                const badge = isSoonLocked ? 'SOON' : item.badge;
+                const navItemContent = (
+                  <>
+                    <item.icon className={cn('h-[18px] w-[18px] flex-shrink-0', isActive && 'text-primary')} />
+                    <span className="flex-1 truncate">{item.label}</span>
+                    {badge && (
+                      <span className="rounded-md bg-primary/15 px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-primary">
+                        {badge}
+                      </span>
+                    )}
+                  </>
+                );
+
                 return (
                   <li key={item.href}>
-                    <Link
-                      href={item.href}
-                      onClick={() => setIsOpen(false)}
-                      className={cn(
-                        'flex items-center gap-2.5 rounded-lg px-3 py-2.5 text-[13px] font-medium transition-all duration-150',
-                        'hover:bg-accent/80 focus-ring active:scale-[0.98]',
-                        isActive
-                          ? 'bg-primary/10 text-primary shadow-sm'
-                          : 'text-muted-foreground hover:text-foreground'
-                      )}
-                    >
-                      <item.icon className={cn('h-[18px] w-[18px] flex-shrink-0', isActive && 'text-primary')} />
-                      <span className="flex-1 truncate">{item.label}</span>
-                      {item.badge && (
-                        <span className="rounded-md bg-primary/15 px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-primary">
-                          {item.badge}
-                        </span>
-                      )}
-                    </Link>
+                    {isSoonLocked ? (
+                      <div
+                        aria-disabled="true"
+                        className="flex cursor-not-allowed select-none items-center gap-2.5 rounded-lg px-3 py-2.5 text-[13px] font-medium text-muted-foreground/70 opacity-75"
+                      >
+                        {navItemContent}
+                      </div>
+                    ) : (
+                      <Link
+                        href={item.href}
+                        onClick={() => setIsOpen(false)}
+                        className={cn(
+                          'flex items-center gap-2.5 rounded-lg px-3 py-2.5 text-[13px] font-medium transition-all duration-150',
+                          'hover:bg-accent/80 focus-ring active:scale-[0.98]',
+                          isActive
+                            ? 'bg-primary/10 text-primary shadow-sm'
+                            : 'text-muted-foreground hover:text-foreground'
+                        )}
+                      >
+                        {navItemContent}
+                      </Link>
+                    )}
                   </li>
                 );
               })}
