@@ -452,6 +452,14 @@ export const githubRepos: GithubRepo[] = [
     author: 'langflow-ai',
   },
   {
+    name: 'react-doctor',
+    description: 'Lässt Coding-Agenten React-Code analysieren und automatisch Probleme beheben.',
+    url: 'https://github.com/millionco/react-doctor',
+    category: 'AI Agents',
+    icon: Bot,
+    author: 'millionco',
+  },
+  {
     name: 'mermaid',
     description: 'JavaScript-basiertes Diagramm-Tool zur Erstellung von Flowcharts und Sequenzdiagrammen mittels Markdown-ähnlicher Syntax.',
     url: 'https://github.com/mermaid-js/mermaid',
