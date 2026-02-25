@@ -22,6 +22,7 @@ import {
   Zap,
   FileText,
   Monitor,
+  Newspaper,
 } from 'lucide-react';
 import { useThemeStore } from '@/stores/theme-store';
 import { useHistoryStore } from '@/stores/history-store';
@@ -43,6 +44,7 @@ const navigationItems = [
   { icon: FileText, label: 'Help Bibliothek', path: '/help-library', keywords: 'help documentation' },
   { icon: Compass, label: 'Tool Directory', path: '/tool-directory', keywords: 'tools resources' },
   { icon: BookOpen, label: 'Wissensbasis', path: '/knowledge', keywords: 'knowledge docs' },
+  { icon: Newspaper, label: 'Blog', path: '/blog', keywords: 'blog artikel posts' },
   { icon: Server, label: 'Hosting', path: '/hosting', keywords: 'deploy hosting' },
   { icon: Zap, label: 'Superpowers', path: '/superpowers', keywords: 'tips power user' },
   { icon: Lightbulb, label: 'Ideen Lab', path: '/idea-lab', keywords: 'ideas brainstorm' },
