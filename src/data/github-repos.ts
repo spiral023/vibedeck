@@ -276,6 +276,14 @@ export const githubRepos: GithubRepo[] = [
     author: 'davila7',
   },
   {
+    name: 'cli-continues',
+    description: 'Setzt AI-Coding-Sessions toolübergreifend fort, etwa zwischen Claude Code, Copilot, Gemini, Codex und Cursor.',
+    url: 'https://github.com/yigitkonur/cli-continues',
+    category: 'AI Agents',
+    icon: Bot,
+    author: 'yigitkonur',
+  },
+  {
     name: 'awesome-claude-code',
     description: 'Kuratierte Sammlung von Skills, Hooks, Slash-Commands und Plugins für Claude Code.',
     url: 'https://github.com/hesreallyhim/awesome-claude-code',
