@@ -2,104 +2,145 @@
 
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { ArrowRight, FolderKanban, Library, Rocket, Sparkles, Zap } from 'lucide-react';
+import {
+  ArrowRight,
+  BookOpen,
+  Box,
+  ExternalLink,
+  Github,
+  Newspaper,
+  Rocket,
+  Sparkles,
+} from 'lucide-react';
 
-const features = [
+const coreSections = [
   {
-    icon: Library,
-    title: 'Prompt Bibliothek',
-    description: 'Durchsuche kuratierte Prompts für verschiedene Anwendungsfälle.',
-    href: '/prompt-library',
-    color: 'text-blue-400',
-    bgColor: 'bg-blue-500/10',
-  },
-  {
-    icon: FolderKanban,
-    title: 'Workflows',
-    description: 'Strukturierte Arbeitsabläufe für komplexe Aufgaben.',
-    href: '/workflows',
+    icon: BookOpen,
+    title: 'Hochwertige Wissensdatenbank-Artikel',
+    description:
+      'Praxisnahe Guides, Patterns und Workflows für moderne AI- und Frontend-Entwicklung.',
+    href: '/knowledge',
+    actionLabel: 'Wissensbasis öffnen',
     color: 'text-emerald-400',
     bgColor: 'bg-emerald-500/10',
   },
   {
-    icon: Sparkles,
-    title: 'Rules Generator',
-    description: 'Erstelle maßgeschneiderte Projekt-Regeln für AI-Agenten.',
-    href: '/rules-generator',
+    icon: Box,
+    title: 'Beste UI-Bibliotheken',
+    description:
+      'Kuratierte Frontend-Library-Links für Komponenten, Animationen, Styling und Produktivität.',
+    href: '/ui-libraries',
+    actionLabel: 'UI Bibliotheken ansehen',
+    color: 'text-sky-400',
+    bgColor: 'bg-sky-500/10',
+  },
+  {
+    icon: Github,
+    title: 'Hilfreichste GitHub Repos',
+    description:
+      'Handverlesene Awesome-Listen und Repositories für schnelleres Lernen und Bauen.',
+    href: '/github',
+    actionLabel: 'Repos entdecken',
     color: 'text-violet-400',
     bgColor: 'bg-violet-500/10',
   },
   {
-    icon: Zap,
-    title: 'Superpowers',
-    description: 'Erweiterte Fähigkeiten und Techniken für Power-User.',
-    href: '/superpowers',
+    icon: Newspaper,
+    title: 'Spannende Blog-Zusammenfassungen',
+    description:
+      'Kompakte Zusammenfassungen relevanter Beiträge mit direktem Link zur Originalquelle.',
+    href: '/blog',
+    actionLabel: 'Blog öffnen',
     color: 'text-amber-400',
     bgColor: 'bg-amber-500/10',
   },
 ];
 
+const soonFeatures = [
+  'Prompt Builder',
+  'Prompt Composer',
+  'Prompt Factory',
+  'Prompt Bibliothek',
+  'Workflows',
+  'Rules Generator',
+  'Superpowers',
+  'Ideen Lab',
+  'Hosting',
+  'Verlauf',
+];
+
 interface HomePageClientProps {
-  promptCount: number;
-  workflowCount: number;
+  knowledgeCount: number;
+  blogCount: number;
+  uiLibraryCount: number;
+  githubRepoCount: number;
 }
 
-export default function HomePageClient({ promptCount, workflowCount }: HomePageClientProps) {
+export default function HomePageClient({
+  knowledgeCount,
+  blogCount,
+  uiLibraryCount,
+  githubRepoCount,
+}: HomePageClientProps) {
   return (
     <div className="space-y-16 py-8">
-      {/* Hero */}
       <motion.section
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="text-center"
+        className="text-center space-y-6"
       >
-        <div className="relative inline-block mb-6">
+        <div className="relative inline-block">
           <div className="absolute inset-0 rounded-3xl bg-primary/20 blur-2xl" />
           <div className="relative flex h-20 w-20 items-center justify-center rounded-3xl bg-gradient-to-br from-primary to-primary/80 mx-auto">
             <Rocket className="h-10 w-10 text-primary-foreground" />
           </div>
         </div>
-        
-        <h1 className="text-4xl font-bold tracking-tight lg:text-5xl xl:text-6xl">
-          Willkommen bei{' '}
+
+        <span className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-primary">
+          <Sparkles className="h-3.5 w-3.5" />
+          Öffentlich verfügbar
+        </span>
+
+        <h1 className="text-4xl font-bold tracking-tight lg:text-5xl xl:text-6xl text-balance">
+          Der kuratierte Frontend- und Wissenshub von{' '}
           <span className="bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
             VibeDeck
           </span>
         </h1>
-        
-        <p className="mx-auto mt-6 max-w-2xl text-lg text-muted-foreground lg:text-xl">
-          Deine zentrale Anlaufstelle für kuratierte Prompts, Workflows und Ressourcen 
-          für die AI-gestützte Entwicklung.
+
+        <p className="mx-auto max-w-3xl text-lg text-muted-foreground lg:text-xl text-balance">
+          Fokus auf hochwertige Wissensdatenbank-Artikel, starke UI-Bibliotheken für Frontend
+          Entwicklung, hilfreiche GitHub Repositories und spannende Blogartikel-Zusammenfassungen.
         </p>
 
-        <div className="mt-8 flex flex-wrap justify-center gap-4">
+        <div className="flex flex-wrap justify-center gap-4 pt-2">
           <Link
-            href="/prompt-library"
+            href="/knowledge"
             className="inline-flex items-center gap-2 rounded-2xl bg-primary px-6 py-3 font-medium text-primary-foreground transition-all hover:bg-primary/90 hover:scale-105 focus-ring"
           >
-            Bibliothek erkunden
+            Wissensbasis öffnen
             <ArrowRight className="h-4 w-4" />
           </Link>
           <Link
-            href="/prompt-builder"
+            href="/blog"
             className="inline-flex items-center gap-2 rounded-2xl border border-border bg-card/50 px-6 py-3 font-medium transition-all hover:bg-card hover:border-primary/50 focus-ring"
           >
-            Prompt erstellen
+            Blog-Zusammenfassungen lesen
           </Link>
         </div>
       </motion.section>
 
-      {/* Stats */}
       <motion.section
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.1 }}
-        className="grid gap-4 sm:grid-cols-3"
+        className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4"
       >
         {[
-          { label: 'Prompts', value: promptCount },
-          { label: 'Workflows', value: workflowCount },
-          { label: 'Kategorien', value: 4 },
+          { label: 'Wissensartikel', value: knowledgeCount },
+          { label: 'UI Bibliotheken', value: uiLibraryCount },
+          { label: 'GitHub Repos', value: githubRepoCount },
+          { label: 'Blog-Artikel', value: blogCount },
         ].map((stat) => (
           <div
             key={stat.label}
@@ -111,18 +152,18 @@ export default function HomePageClient({ promptCount, workflowCount }: HomePageC
         ))}
       </motion.section>
 
-      {/* Features */}
       <motion.section
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.2 }}
+        className="space-y-8"
       >
-        <h2 className="mb-8 text-2xl font-bold tracking-tight">Schnellzugriff</h2>
+        <h2 className="text-2xl font-bold tracking-tight">Jetzt verfügbar</h2>
         <div className="grid gap-5 sm:grid-cols-2">
-          {features.map((feature, index) => (
+          {coreSections.map((section, index) => (
             <Link
-              key={feature.href}
-              href={feature.href}
+              key={section.href}
+              href={section.href}
               className="group"
             >
               <motion.div
@@ -131,21 +172,59 @@ export default function HomePageClient({ promptCount, workflowCount }: HomePageC
                 transition={{ delay: 0.1 * index }}
                 className="h-full rounded-2xl border border-border/50 bg-card/50 p-6 transition-all hover:border-primary/30 hover:bg-card hover:shadow-lg hover:shadow-primary/5"
               >
-                <div className={`mb-4 inline-flex rounded-xl ${feature.bgColor} p-3`}>
-                  <feature.icon className={`h-6 w-6 ${feature.color}`} />
+                <div className={`mb-4 inline-flex rounded-xl ${section.bgColor} p-3`}>
+                  <section.icon className={`h-6 w-6 ${section.color}`} />
                 </div>
                 <h3 className="text-lg font-semibold group-hover:text-primary transition-colors">
-                  {feature.title}
+                  {section.title}
                 </h3>
                 <p className="mt-2 text-sm text-muted-foreground">
-                  {feature.description}
+                  {section.description}
                 </p>
-                <div className="mt-4 flex items-center gap-1 text-sm font-medium text-primary opacity-0 group-hover:opacity-100 transition-opacity">
-                  Öffnen
+                <div className="mt-4 flex items-center gap-1 text-sm font-medium text-primary">
+                  {section.actionLabel}
                   <ArrowRight className="h-4 w-4" />
                 </div>
               </motion.div>
             </Link>
+          ))}
+        </div>
+
+        <div className="rounded-2xl border border-border/50 bg-card/50 p-6">
+          <h3 className="text-lg font-semibold tracking-tight">Hinweis zu den Inhalten</h3>
+          <p className="mt-3 text-sm leading-relaxed text-muted-foreground">
+            Viele Inhalte wurden für schnellen Überblick aus Originalquellen übersetzt und gekürzt.
+            Für den vollen Mehrwert empfehlen wir immer die verlinkte Originalquelle.
+          </p>
+          <div className="mt-4 inline-flex items-center gap-2 rounded-xl border border-border/60 px-3 py-2 text-xs font-medium text-muted-foreground">
+            <ExternalLink className="h-3.5 w-3.5" />
+            Originalquelle pro Eintrag verlinkt
+          </div>
+        </div>
+      </motion.section>
+
+      <motion.section
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.3 }}
+        className="space-y-4"
+      >
+        <h2 className="text-2xl font-bold tracking-tight">Demnächst</h2>
+        <p className="text-sm text-muted-foreground">
+          Die folgenden Features sind als <span className="font-semibold text-foreground">SOON</span>{' '}
+          markiert und folgen später.
+        </p>
+        <div className="flex flex-wrap gap-2">
+          {soonFeatures.map((feature) => (
+            <span
+              key={feature}
+              className="inline-flex items-center gap-2 rounded-full border border-border/60 bg-secondary/60 px-3 py-1.5 text-xs font-medium text-secondary-foreground"
+            >
+              {feature}
+              <span className="rounded-md bg-primary/15 px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wide text-primary">
+                Soon
+              </span>
+            </span>
           ))}
         </div>
       </motion.section>
