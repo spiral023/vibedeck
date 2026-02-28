@@ -79,6 +79,12 @@ global.ResizeObserver = class ResizeObserver {
   unobserve() {}
 } as any
 
+// cmdk uses scrollIntoView in layout effects
+Object.defineProperty(HTMLElement.prototype, 'scrollIntoView', {
+  value: vi.fn(),
+  writable: true,
+})
+
 // Suppress console errors in tests (optional)
 const originalError = console.error
 beforeAll(() => {

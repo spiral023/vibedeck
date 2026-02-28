@@ -4,10 +4,13 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "predev": "npm run content:generate-search-index",
+    "prebuild": "npm run content:generate-search-index",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "content:generate-search-index": "node scripts/generate-search-index.mjs",
     "content:backfill-added-date": "node scripts/backfill-added-date.mjs",
     "test": "vitest",
     "test:ui": "vitest --ui",

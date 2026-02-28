@@ -1,12 +1,15 @@
 'use client';
 
-import { useState, useEffect, useRef, useCallback } from 'react';
+import { useState, useEffect, useRef, useCallback, useMemo } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { BookOpen, Code2, Database, FileCode, Layers, Lock, Rocket, Search, Zap, Image, Calendar, ArrowUpDown, BarChart, Flame, Heart, Check, Eye } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { type KnowledgeArticle } from '@/types/knowledge';
 import { useContentStatusStore } from '@/stores/content-status-store';
+import { stripMarkdown } from '@/lib/copy-utils';
+import { createSearchFuse, normalizeSearchInput, searchDocuments as runSearchDocuments } from '@/lib/article-search';
+import { type SearchDocument } from '@/types/search';
 import {
   Select,
   SelectContent,
@@ -145,77 +148,127 @@ export function KnowledgeClient({ articles }: KnowledgeClientProps) {
     .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))
     .map(([tag]) => tag);
 
-  const filtered = articles
-    .filter((article) => {
+  const searchIndexDocuments = useMemo<SearchDocument[]>(() => {
+    return articles.map((article) => ({
+      id: article.id,
+      domain: 'knowledge',
+      path: `/knowledge/${article.id}`,
+      title: article.title,
+      description: article.description,
+      tags: article.tags,
+      author: article.author,
+      sourceType: article.sourceType,
+      sourceDate: article.sourceDate,
+      addedDate: article.addedDate,
+      searchText: normalizeSearchInput(stripMarkdown(article.content)),
+    }));
+  }, [articles]);
+
+  const articleById = useMemo(() => {
+    return new Map(articles.map((article) => [article.id, article]));
+  }, [articles]);
+
+  const searchFuse = useMemo(() => createSearchFuse(searchIndexDocuments), [searchIndexDocuments]);
+
+  const compareBySort = useCallback((a: KnowledgeArticle, b: KnowledgeArticle) => {
+    if (sortBy === 'added-date-desc') {
+      const diff = dateValue(b.addedDate) - dateValue(a.addedDate);
+      if (diff !== 0) {
+        return diff;
+      }
+      const sourceDiff = dateValue(b.sourceDate) - dateValue(a.sourceDate);
+      if (sourceDiff !== 0) {
+        return sourceDiff;
+      }
+      return a.title.localeCompare(b.title);
+    }
+
+    if (sortBy === 'added-date-asc') {
+      const diff = dateValue(a.addedDate) - dateValue(b.addedDate);
+      if (diff !== 0) {
+        return diff;
+      }
+      const sourceDiff = dateValue(a.sourceDate) - dateValue(b.sourceDate);
+      if (sourceDiff !== 0) {
+        return sourceDiff;
+      }
+      return a.title.localeCompare(b.title);
+    }
+
+    if (sortBy === 'source-date-desc') {
+      const diff = dateValue(b.sourceDate) - dateValue(a.sourceDate);
+      if (diff !== 0) {
+        return diff;
+      }
+      return a.title.localeCompare(b.title);
+    }
+
+    if (sortBy === 'source-date-asc') {
+      const diff = dateValue(a.sourceDate) - dateValue(b.sourceDate);
+      if (diff !== 0) {
+        return diff;
+      }
+      return a.title.localeCompare(b.title);
+    }
+
+    if (sortBy === 'level') {
+      const weightA = a.level ? levelWeight[a.level] ?? 4 : 4;
+      const weightB = b.level ? levelWeight[b.level] ?? 4 : 4;
+      if (weightA !== weightB) {
+        return weightA - weightB;
+      }
+      return a.title.localeCompare(b.title);
+    }
+    return a.title.localeCompare(b.title);
+  }, [sortBy]);
+
+  const filtered = useMemo(() => {
+    const normalizedQuery = normalizeSearchInput(searchQuery);
+
+    const baseFiltered = articles.filter((article) => {
       const matchesTags = selectedTags.length === 0 || selectedTags.every((tag) =>
         (article.tags ?? []).includes(tag)
       );
       const matchesLevel = selectedLevel === 'all' || article.level === selectedLevel;
       const matchesHot = !showHotOnly || article.hot;
-      const normalizedQuery = searchQuery.trim().toLowerCase();
-      const searchTargets = [
-        article.title,
-        article.description,
-        article.author,
-        article.sourceType,
-        ...(article.tags ?? []),
-      ].filter((value): value is string => Boolean(value));
-      const matchesSearch = normalizedQuery.length === 0 || searchTargets.some((value) =>
-        value.toLowerCase().includes(normalizedQuery)
-      );
-      return matchesTags && matchesSearch && matchesLevel && matchesHot;
-    })
-    .sort((a, b) => {
-      if (sortBy === 'added-date-desc') {
-        const diff = dateValue(b.addedDate) - dateValue(a.addedDate);
-        if (diff !== 0) {
-          return diff;
-        }
-        const sourceDiff = dateValue(b.sourceDate) - dateValue(a.sourceDate);
-        if (sourceDiff !== 0) {
-          return sourceDiff;
-        }
-        return a.title.localeCompare(b.title);
-      }
-
-      if (sortBy === 'added-date-asc') {
-        const diff = dateValue(a.addedDate) - dateValue(b.addedDate);
-        if (diff !== 0) {
-          return diff;
-        }
-        const sourceDiff = dateValue(a.sourceDate) - dateValue(b.sourceDate);
-        if (sourceDiff !== 0) {
-          return sourceDiff;
-        }
-        return a.title.localeCompare(b.title);
-      }
-
-      if (sortBy === 'source-date-desc') {
-        const diff = dateValue(b.sourceDate) - dateValue(a.sourceDate);
-        if (diff !== 0) {
-          return diff;
-        }
-        return a.title.localeCompare(b.title);
-      }
-
-      if (sortBy === 'source-date-asc') {
-        const diff = dateValue(a.sourceDate) - dateValue(b.sourceDate);
-        if (diff !== 0) {
-          return diff;
-        }
-        return a.title.localeCompare(b.title);
-      }
-
-      if (sortBy === 'level') {
-        const weightA = a.level ? levelWeight[a.level] ?? 4 : 4;
-        const weightB = b.level ? levelWeight[b.level] ?? 4 : 4;
-        if (weightA !== weightB) {
-          return weightA - weightB; // Ascending: Beginner -> Advanced
-        }
-        return a.title.localeCompare(b.title);
-      }
-      return a.title.localeCompare(b.title);
+      return matchesTags && matchesLevel && matchesHot;
     });
+
+    if (!normalizedQuery) {
+      return [...baseFiltered].sort(compareBySort);
+    }
+
+    const allowedIds = new Set(baseFiltered.map((article) => article.id));
+
+    const rankedResults = runSearchDocuments(searchFuse, normalizedQuery, articles.length)
+      .filter((result) => allowedIds.has(result.item.id))
+      .map((result) => {
+        const article = articleById.get(result.item.id);
+        if (!article) {
+          return null;
+        }
+        return { article, score: result.score };
+      })
+      .filter((entry): entry is { article: KnowledgeArticle; score: number } => entry !== null);
+
+    return rankedResults
+      .sort((a, b) => {
+        if (a.score !== b.score) {
+          return a.score - b.score;
+        }
+        return compareBySort(a.article, b.article);
+      })
+      .map((entry) => entry.article);
+  }, [
+    articles,
+    searchQuery,
+    selectedTags,
+    selectedLevel,
+    showHotOnly,
+    compareBySort,
+    searchFuse,
+    articleById,
+  ]);
 
   const updateTagLayout = useCallback(() => {
     const container = tagContainerRef.current;
