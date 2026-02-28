@@ -1,19 +1,29 @@
 ---
-title: "Anthropic: Einen C-Compiler mit einem Team paralleler Claude-Agenten bauen"
-description: "Anthropic zeigt, wie 16 parallel laufende Claude-Agenten in rund 2.000 Sessions einen Rust-basierten C-Compiler für Linux erzeugten. Der Bericht liefert konkrete Patterns für autonome Agent-Teams, Testharnesses und Sicherheitsgrenzen."
+title: 'Anthropic: Einen C-Compiler mit einem Team paralleler Claude-Agenten bauen'
+description: >-
+  Anthropic zeigt, wie 16 parallel laufende Claude-Agenten in rund 2.000 Sessions einen Rust-basierten C-Compiler für
+  Linux erzeugten. Der Bericht liefert konkrete Patterns für autonome Agent-Teams, Testharnesses und Sicherheitsgrenzen.
 category: workflows
 icon: BrainCircuit
 readTime: 12 Min
-tags: ["anthropic", "agent-teams", "claude-code", "compiler", "autonomous-systems"]
+tags:
+  - modelle-tools
+  - agenten-engineering
 keyPoints:
-  - "Anthropic setzte 16 parallel arbeitende Claude-Agenten ein und erreichte damit in zwei Wochen einen funktionsfähigen 100.000-Zeilen-C-Compiler."
-  - "Der größte Erfolgsfaktor war nicht der Prompt allein, sondern ein präziser Test- und Harness-Stack, der autonome Fortschritte ohne permanente Menschenaufsicht ermöglicht."
-  - "Trotz starker Ergebnisse bleiben klare Grenzen: fragile Regressionen, schwierige Spezialfälle und hohe Sicherheitsrisiken bei ungeprüftem autonomen Deployment."
-sourceURL: "https://www.anthropic.com/engineering/building-c-compiler"
+  - >-
+    Anthropic setzte 16 parallel arbeitende Claude-Agenten ein und erreichte damit in zwei Wochen einen funktionsfähigen
+    100.000-Zeilen-C-Compiler.
+  - >-
+    Der größte Erfolgsfaktor war nicht der Prompt allein, sondern ein präziser Test- und Harness-Stack, der autonome
+    Fortschritte ohne permanente Menschenaufsicht ermöglicht.
+  - >-
+    Trotz starker Ergebnisse bleiben klare Grenzen: fragile Regressionen, schwierige Spezialfälle und hohe
+    Sicherheitsrisiken bei ungeprüftem autonomen Deployment.
+sourceURL: 'https://www.anthropic.com/engineering/building-c-compiler'
 sourceType: blog
-author: "Nicholas Carlini"
-sourceDate: "2026-02-05"
-addedDate: "2026-02-26"
+author: Nicholas Carlini
+sourceDate: '2026-02-05'
+addedDate: '2026-02-26'
 ---
 
 ![Header](/images/blog/anthropic-building-c-compiler/header.png)

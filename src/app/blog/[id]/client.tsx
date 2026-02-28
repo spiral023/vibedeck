@@ -13,6 +13,7 @@ import { type BlogArticle } from '@/types/blog';
 import { useContentStatusStore } from '@/stores/content-status-store';
 import { cn } from '@/lib/utils';
 import { formatBlogArticleMarkdown } from '@/lib/blog-export';
+import { getBlogTagLabel } from '@/lib/blog-tags';
 
 const sourceTypeLabels: Record<NonNullable<BlogArticle['sourceType']>, string> = {
   tweet: 'Tweet',
@@ -171,7 +172,7 @@ export function BlogArticleView({ article }: BlogArticleViewProps) {
                   key={tag}
                   className="rounded-full bg-secondary/70 px-2.5 py-1 text-xs font-medium text-secondary-foreground"
                 >
-                  {tag}
+                  {getBlogTagLabel(tag)}
                 </span>
               ))}
             </div>

@@ -1,19 +1,30 @@
 ---
-title: "Shipping at Inference-Speed: Warum Peter Steinberger Code heute anders baut"
-description: "Peter Steinberger beschreibt, wie sich sein Agentic-Coding-Workflow 2025 verändert hat: weniger manuelles Lesen, mehr Systemdenken, schnellere Iteration und Delivery, die primär durch Inference-Latenz begrenzt ist."
+title: 'Shipping at Inference-Speed: Warum Peter Steinberger Code heute anders baut'
+description: >-
+  Peter Steinberger beschreibt, wie sich sein Agentic-Coding-Workflow 2025 verändert hat: weniger manuelles Lesen, mehr
+  Systemdenken, schnellere Iteration und Delivery, die primär durch Inference-Latenz begrenzt ist.
 category: workflows
 icon: Zap
 readTime: 18 Min
-tags: ["agentic-coding", "codex", "gpt-5.2", "workflow", "developer-productivity"]
+tags:
+  - agenten-engineering
+  - modelle-tools
+  - coding-workflows
 keyPoints:
-  - "Der zentrale Engpass ist laut Steinberger nicht mehr Tippen, sondern Inference-Zeit plus Architektur- und Produktentscheidungen."
-  - "Er sieht bei größeren Aufgaben klare Qualitätsvorteile von Codex durch längeres Kontextlesen, auch wenn einzelne Runs länger dauern."
-  - "Sein Output-Boost kommt vor allem aus einem iterativen CLI-first-Workflow, starkem Kontext-Engineering und konsequenter Automatisierung über Skills."
-sourceURL: "https://steipete.me/posts/2025/shipping-at-inference-speed"
+  - >-
+    Der zentrale Engpass ist laut Steinberger nicht mehr Tippen, sondern Inference-Zeit plus Architektur- und
+    Produktentscheidungen.
+  - >-
+    Er sieht bei größeren Aufgaben klare Qualitätsvorteile von Codex durch längeres Kontextlesen, auch wenn einzelne
+    Runs länger dauern.
+  - >-
+    Sein Output-Boost kommt vor allem aus einem iterativen CLI-first-Workflow, starkem Kontext-Engineering und
+    konsequenter Automatisierung über Skills.
+sourceURL: 'https://steipete.me/posts/2025/shipping-at-inference-speed'
 sourceType: blog
-author: "Peter Steinberger"
-sourceDate: "2025-12-28"
-addedDate: "2026-02-26"
+author: Peter Steinberger
+sourceDate: '2025-12-28'
+addedDate: '2026-02-26'
 ---
 
 ![Header](/images/blog/shipping-at-inference-speed/header.png)

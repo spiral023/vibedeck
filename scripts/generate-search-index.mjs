@@ -7,37 +7,6 @@ const blogDir = path.join(rootDir, 'src/content/blog');
 const knowledgeDir = path.join(rootDir, 'src/content/knowledge');
 const outputPath = path.join(rootDir, 'public/search-index.json');
 
-function normalizeSearchInput(query) {
-  return String(query ?? '')
-    .trim()
-    .replace(/\s+/g, ' ')
-    .toLowerCase();
-}
-
-function stripMarkdown(md) {
-  let text = String(md ?? '');
-
-  text = text.replace(/```[\s\S]*?```/g, (match) => {
-    const lines = match.split('\n');
-    return lines.slice(1, -1).join('\n');
-  });
-  text = text.replace(/`([^`]+)`/g, '$1');
-  text = text.replace(/!\[([^\]]*)\]\([^)]+\)/g, '$1');
-  text = text.replace(/\[([^\]]+)\]\([^)]+\)/g, '$1');
-  text = text.replace(/^#{1,6}\s+/gm, '');
-  text = text.replace(/\*\*([^*]+)\*\*/g, '$1');
-  text = text.replace(/\*([^*]+)\*/g, '$1');
-  text = text.replace(/__([^_]+)__/g, '$1');
-  text = text.replace(/_([^_]+)_/g, '$1');
-  text = text.replace(/^>\s+/gm, '');
-  text = text.replace(/^[-*_]{3,}$/gm, '');
-  text = text.replace(/^\s*[-*+]\s+/gm, '');
-  text = text.replace(/^\s*\d+\.\s+/gm, '');
-  text = text.replace(/\n{3,}/g, '\n\n').trim();
-
-  return text;
-}
-
 function normalizeStringArray(value) {
   if (!Array.isArray(value)) {
     return undefined;
@@ -56,7 +25,6 @@ function parseDocument(filePath, domain) {
   const parsed = matter(fileContents);
   const tags = normalizeStringArray(parsed.data.tags);
   const keyPoints = normalizeStringArray(parsed.data.keyPoints);
-  const bodyText = normalizeSearchInput(stripMarkdown(parsed.content));
   const title = typeof parsed.data.title === 'string' ? parsed.data.title : id;
 
   return {
@@ -71,7 +39,6 @@ function parseDocument(filePath, domain) {
     sourceDate: typeof parsed.data.sourceDate === 'string' ? parsed.data.sourceDate : undefined,
     addedDate: typeof parsed.data.addedDate === 'string' ? parsed.data.addedDate : undefined,
     keyPoints,
-    searchText: bodyText,
   };
 }
 

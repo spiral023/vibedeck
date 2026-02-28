@@ -1,19 +1,31 @@
 ---
-title: "Spotify und AI-Coding: Warum Top-Entwickler seit Dezember kaum noch selbst tippen"
-description: "Spotify beschreibt auf dem Earnings Call einen radikalen AI-Workflow: Mit Claude Code und dem internen System Honk sollen Entwickler Features und Bugfixes deutlich schneller ausrollen und teils schon auf dem Arbeitsweg deployen."
+title: 'Spotify und AI-Coding: Warum Top-Entwickler seit Dezember kaum noch selbst tippen'
+description: >-
+  Spotify beschreibt auf dem Earnings Call einen radikalen AI-Workflow: Mit Claude Code und dem internen System Honk
+  sollen Entwickler Features und Bugfixes deutlich schneller ausrollen und teils schon auf dem Arbeitsweg deployen.
 category: workflows
 icon: BrainCircuit
 readTime: 7 Min
-tags: ["spotify", "ai-coding", "claude-code", "developer-workflow", "product-velocity"]
+tags:
+  - fallstudien
+  - coding-workflows
+  - modelle-tools
 keyPoints:
-  - "Spotify sagt, dass viele seiner stärksten Entwickler seit Dezember kaum noch selbst Code schreiben, sondern AI-Agenten steuern."
-  - "Das interne System Honk verbindet Claude Code mit Deployment- und Review-Flow, inklusive mobiler Steuerung über Slack."
-  - "Neben Coding-Produktivität setzt Spotify strategisch auf proprietäre Musikdaten als AI-Vorteil, den allgemeine LLMs schwer commoditizen können."
-sourceURL: "https://techcrunch.com/2026/02/12/spotify-says-its-best-developers-havent-written-a-line-of-code-since-december-thanks-to-ai/"
+  - >-
+    Spotify sagt, dass viele seiner stärksten Entwickler seit Dezember kaum noch selbst Code schreiben, sondern
+    AI-Agenten steuern.
+  - >-
+    Das interne System Honk verbindet Claude Code mit Deployment- und Review-Flow, inklusive mobiler Steuerung über
+    Slack.
+  - >-
+    Neben Coding-Produktivität setzt Spotify strategisch auf proprietäre Musikdaten als AI-Vorteil, den allgemeine LLMs
+    schwer commoditizen können.
+sourceURL: >-
+  https://techcrunch.com/2026/02/12/spotify-says-its-best-developers-havent-written-a-line-of-code-since-december-thanks-to-ai/
 sourceType: blog
-author: "Sarah Perez"
-sourceDate: "2026-02-12"
-addedDate: "2026-02-26"
+author: Sarah Perez
+sourceDate: '2026-02-12'
+addedDate: '2026-02-26'
 ---
 
 ![Header](/images/blog/spotify-ai-developers-no-code-since-december/header.jpg)

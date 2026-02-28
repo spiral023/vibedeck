@@ -1,19 +1,31 @@
 ---
-title: "Intent Engineering: Warum Prompt- und Context-Optimierung allein nicht mehr reichen"
-description: "Das Video zeigt, warum Enterprise-AI nicht an Modellintelligenz scheitert, sondern an fehlender Zielausrichtung: Ohne maschinenlesbaren Intent optimieren Agenten lokale Metriken statt Kundenwert, Marke und langfristigem ROI."
+title: 'Intent Engineering: Warum Prompt- und Context-Optimierung allein nicht mehr reichen'
+description: >-
+  Das Video zeigt, warum Enterprise-AI nicht an Modellintelligenz scheitert, sondern an fehlender Zielausrichtung: Ohne
+  maschinenlesbaren Intent optimieren Agenten lokale Metriken statt Kundenwert, Marke und langfristigem ROI.
 category: fundamentals
 icon: BrainCircuit
 readTime: 8 Min
-tags: ["intent-engineering", "enterprise-ai", "agent-governance", "context-engineering", "ai-strategy"]
+tags:
+  - kontext-prompting
+  - unternehmen-adoption
+  - agenten-engineering
+  - strategie-fuehrung
 keyPoints:
-  - "Klarna zeigt das Kernrisiko: Ein leistungsstarker Agent kann die falsche Metrik perfekt optimieren und dabei Kundenerlebnis, Vertrauen und Marke beschädigen."
-  - "Context Engineering bleibt notwendig, aber erst Intent Engineering macht Ziele, Trade-offs und Eskalationsregeln für Agenten maschinenlesbar und handlungsfähig."
-  - "Der AI-Wettbewerb verschiebt sich von Modellqualität zu organisatorischer Klarheit: Wer Intent strukturiert und operationalisiert, skaliert Nutzen statt Aktivität."
-sourceURL: "https://www.youtube.com/watch?v=QWzLPn164w0"
+  - >-
+    Klarna zeigt das Kernrisiko: Ein leistungsstarker Agent kann die falsche Metrik perfekt optimieren und dabei
+    Kundenerlebnis, Vertrauen und Marke beschädigen.
+  - >-
+    Context Engineering bleibt notwendig, aber erst Intent Engineering macht Ziele, Trade-offs und Eskalationsregeln für
+    Agenten maschinenlesbar und handlungsfähig.
+  - >-
+    Der AI-Wettbewerb verschiebt sich von Modellqualität zu organisatorischer Klarheit: Wer Intent strukturiert und
+    operationalisiert, skaliert Nutzen statt Aktivität.
+sourceURL: 'https://www.youtube.com/watch?v=QWzLPn164w0'
 sourceType: blog
-author: "AI News & Strategy Daily | Nate B. Jones"
-sourceDate: "2026-02-24"
-addedDate: "2026-02-26"
+author: AI News & Strategy Daily | Nate B. Jones
+sourceDate: '2026-02-24'
+addedDate: '2026-02-26'
 ---
 
 ![Header](/images/blog/intent-engineering-statt-prompt-und-context/header.jpg)

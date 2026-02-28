@@ -10,6 +10,7 @@ import { useContentStatusStore } from '@/stores/content-status-store';
 import { stripMarkdown } from '@/lib/copy-utils';
 import { createSearchFuse, normalizeSearchInput, searchDocuments as runSearchDocuments } from '@/lib/article-search';
 import { type SearchDocument } from '@/types/search';
+import { getBlogTagLabel } from '@/lib/blog-tags';
 import {
   Select,
   SelectContent,
@@ -87,7 +88,7 @@ export function BlogClient({ articles }: BlogClientProps) {
 
   const allTags = useMemo(() => {
     return Object.entries(tagStats)
-      .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))
+      .sort((a, b) => b[1] - a[1] || getBlogTagLabel(a[0]).localeCompare(getBlogTagLabel(b[0]), 'de-DE'))
       .map(([tag]) => tag);
   }, [tagStats]);
 
@@ -98,7 +99,7 @@ export function BlogClient({ articles }: BlogClientProps) {
       path: `/blog/${article.id}`,
       title: article.title,
       description: article.description,
-      tags: article.tags,
+      tags: Array.from(new Set((article.tags ?? []).flatMap((tag) => [tag, getBlogTagLabel(tag)]))),
       author: article.author,
       sourceType: article.sourceType,
       sourceDate: article.sourceDate,
@@ -274,7 +275,7 @@ export function BlogClient({ articles }: BlogClientProps) {
                 )}
                 aria-pressed={isActive}
               >
-                {tag}
+                {getBlogTagLabel(tag)}
                 <span className={cn('ml-2 text-xs', isActive ? 'text-primary' : 'text-muted-foreground')}>
                   {tagStats[tag]}
                 </span>
@@ -403,7 +404,7 @@ export function BlogClient({ articles }: BlogClientProps) {
                         key={`${article.id}-${tag}`}
                         className="rounded-full bg-secondary/70 px-2.5 py-1 text-xs font-medium text-secondary-foreground"
                       >
-                        {tag}
+                        {getBlogTagLabel(tag)}
                       </span>
                     ))}
                   </div>

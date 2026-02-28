@@ -1,19 +1,31 @@
 ---
-title: "Jack Dorseys Block-Ansage: 4.000 Jobs weg, AI im Zentrum, Aktie im Sprint"
-description: "Jack Dorsey kündigt bei Block einen harten AI-Umbau an: Die Organisation soll von über 10.000 auf unter 6.000 Mitarbeitende schrumpfen. Der Markt reagierte am 26. Februar 2026 nachbörslich mit einem Kurssprung von rund 25%."
+title: 'Jack Dorseys Block-Ansage: 4.000 Jobs weg, AI im Zentrum, Aktie im Sprint'
+description: >-
+  Jack Dorsey kündigt bei Block einen harten AI-Umbau an: Die Organisation soll von über 10.000 auf unter 6.000
+  Mitarbeitende schrumpfen. Der Markt reagierte am 26. Februar 2026 nachbörslich mit einem Kurssprung von rund 25%.
 category: workflows
 icon: BrainCircuit
 readTime: 5 Min
-tags: ["jack-dorsey", "block", "ai-native", "layoffs", "agentic-workflows"]
+tags:
+  - fallstudien
+  - unternehmen-adoption
+  - arbeitswelt
+  - agenten-engineering
 keyPoints:
-  - "Jack Dorsey stellte den Umbau als strategischen AI-Shift dar: von über 10.000 auf unter 6.000 Mitarbeitende, also über 4.000 betroffene Rollen."
-  - "Die Börse bewertete die Ankündigung kurzfristig positiv; Berichte zeigten am 26. Februar 2026 nachbörslich Kursgewinne von bis zu etwa 25%."
-  - "Für Teams wird damit ein Muster sichtbar: Wer nicht AI-native arbeitet, verliert Verhandlungsmacht gegenüber Effizienz- und Margenzielen."
-sourceURL: "https://x.com/jack/status/2027129697092731343"
+  - >-
+    Jack Dorsey stellte den Umbau als strategischen AI-Shift dar: von über 10.000 auf unter 6.000 Mitarbeitende, also
+    über 4.000 betroffene Rollen.
+  - >-
+    Die Börse bewertete die Ankündigung kurzfristig positiv; Berichte zeigten am 26. Februar 2026 nachbörslich
+    Kursgewinne von bis zu etwa 25%.
+  - >-
+    Für Teams wird damit ein Muster sichtbar: Wer nicht AI-native arbeitet, verliert Verhandlungsmacht gegenüber
+    Effizienz- und Margenzielen.
+sourceURL: 'https://x.com/jack/status/2027129697092731343'
 sourceType: tweet
-author: "Jack Dorsey"
-sourceDate: "2026-02-26"
-addedDate: "2026-02-27"
+author: Jack Dorsey
+sourceDate: '2026-02-26'
+addedDate: '2026-02-27'
 ---
 
 Jack Dorseys Mitteilung markiert einen der deutlichsten AI-getriebenen Umbau-Schritte eines großen US-Unternehmens in diesem Jahr. Die Kernaussage ist hart und eindeutig: Block verkleinert die Organisation drastisch, weil mit AI heute deutlich mehr Output pro Team möglich ist.

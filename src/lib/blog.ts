@@ -2,6 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
 import { type BlogArticle } from '@/types/blog';
+import { normalizeBlogTags } from '@/lib/blog-tags';
 
 const blogDirectory = path.join(process.cwd(), 'src/content/blog');
 
@@ -39,7 +40,7 @@ export function getAllBlogArticles(): BlogArticle[] {
       const fullPath = path.join(blogDirectory, fileName);
       const fileContents = fs.readFileSync(fullPath, 'utf8');
       const matterResult = matter(fileContents);
-      const tags = normalizeArrayValue(matterResult.data.tags);
+      const tags = normalizeBlogTags(normalizeArrayValue(matterResult.data.tags));
       const keyPoints = normalizeArrayValue(matterResult.data.keyPoints)?.slice(0, 3);
 
       return {
@@ -79,7 +80,7 @@ export function getBlogArticle(id: string): BlogArticle | null {
   return {
     id,
     ...matterResult.data,
-    tags: normalizeArrayValue(matterResult.data.tags),
+    tags: normalizeBlogTags(normalizeArrayValue(matterResult.data.tags)),
     keyPoints: normalizeArrayValue(matterResult.data.keyPoints)?.slice(0, 3),
     content: matterResult.content,
   } as BlogArticle;

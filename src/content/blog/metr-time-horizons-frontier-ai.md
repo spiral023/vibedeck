@@ -1,19 +1,30 @@
 ---
-title: "METR Time Horizons Update 2026: TH 1.1, Coding Agents und Messchaos im Alltag"
-description: "Seit dem Long-Tasks-Artikel 2025 hat METR Time Horizon 1.1, direkte Claude-Code/Codex-Tests und neue Uplift-Methoden veröffentlicht. Die Capabilities steigen, aber Produktivitätsmessung bleibt methodisch schwierig."
+title: 'METR Time Horizons Update 2026: TH 1.1, Coding Agents und Messchaos im Alltag'
+description: >-
+  Seit dem Long-Tasks-Artikel 2025 hat METR Time Horizon 1.1, direkte Claude-Code/Codex-Tests und neue Uplift-Methoden
+  veröffentlicht. Die Capabilities steigen, aber Produktivitätsmessung bleibt methodisch schwierig.
 category: fundamentals
 icon: BrainCircuit
 readTime: 11 Min
-tags: ["metr", "time-horizons", "coding-agents", "claude-code", "codex", "ai-evaluation"]
+tags:
+  - evaluation-benchmarks
+  - agenten-engineering
+  - modelle-tools
 keyPoints:
-  - "Mit Time Horizon 1.1 hat METR die Task-Suite auf 228 Aufgaben erweitert, den Long-Task-Anteil mehr als verdoppelt und die Infrastruktur auf Inspect umgestellt."
-  - "Direkte Bench-Tests zeigen: Claude Code und Codex schlagen METRs bestehende Scaffolds bei den getesteten Setups nicht signifikant."
-  - "METR arbeitet an neuen Produktivitätsmethoden wie Transcript-Analyse, kämpft aber weiter mit Selection Bias und Real-World-Messproblemen."
-sourceURL: "https://metr.org/time-horizons/"
+  - >-
+    Mit Time Horizon 1.1 hat METR die Task-Suite auf 228 Aufgaben erweitert, den Long-Task-Anteil mehr als verdoppelt
+    und die Infrastruktur auf Inspect umgestellt.
+  - >-
+    Direkte Bench-Tests zeigen: Claude Code und Codex schlagen METRs bestehende Scaffolds bei den getesteten Setups
+    nicht signifikant.
+  - >-
+    METR arbeitet an neuen Produktivitätsmethoden wie Transcript-Analyse, kämpft aber weiter mit Selection Bias und
+    Real-World-Messproblemen.
+sourceURL: 'https://metr.org/time-horizons/'
 sourceType: blog
-author: "METR"
-sourceDate: "2026-02-24"
-addedDate: "2026-02-25"
+author: METR
+sourceDate: '2026-02-24'
+addedDate: '2026-02-25'
 ---
 
 ![Header](/images/blog/metr-time-horizons-frontier-ai/header.png)

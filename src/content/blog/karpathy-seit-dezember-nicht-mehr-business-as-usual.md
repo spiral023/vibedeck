@@ -1,19 +1,30 @@
 ---
-title: "Karpathy: Seit Dezember ist Softwareentwicklung nicht mehr Business as Usual"
-description: "Andrej Karpathy beschreibt im Februar 2026 einen abrupten Shift: Seit Dezember funktionieren Coding-Agenten für lange Aufgaben zuverlässig. Sein Praxisbeispiel zeigt, wie ein früheres Wochenendprojekt heute in rund 30 Minuten läuft."
+title: 'Karpathy: Seit Dezember ist Softwareentwicklung nicht mehr Business as Usual'
+description: >-
+  Andrej Karpathy beschreibt im Februar 2026 einen abrupten Shift: Seit Dezember funktionieren Coding-Agenten für lange
+  Aufgaben zuverlässig. Sein Praxisbeispiel zeigt, wie ein früheres Wochenendprojekt heute in rund 30 Minuten läuft.
 category: workflows
 icon: BrainCircuit
 readTime: 4 Min
-tags: ["andrej-karpathy", "agentic-engineering", "coding-agents", "orchestration", "developer-workflow"]
+tags:
+  - fallstudien
+  - agenten-engineering
+  - coding-workflows
 keyPoints:
-  - "Karpathy sieht keinen langsamen Trend, sondern einen harten Kipppunkt seit Dezember 2025: Coding-Agenten sind plötzlich für lange Aufgaben verlässlich genug."
-  - "In seinem DGX-Spark-Beispiel erledigte ein Agent Setup, Benchmarking, API, UI, Debugging und Service-Betrieb in etwa 30 Minuten ohne manuelle Eingriffe."
-  - "Die zentrale Kompetenz verschiebt sich vom Tippen im Editor hin zu Task-Decomposition, Agent-Orchestrierung, Review und Verifikation."
-sourceURL: "https://x.com/karpathy/status/2026731645169185220"
+  - >-
+    Karpathy sieht keinen langsamen Trend, sondern einen harten Kipppunkt seit Dezember 2025: Coding-Agenten sind
+    plötzlich für lange Aufgaben verlässlich genug.
+  - >-
+    In seinem DGX-Spark-Beispiel erledigte ein Agent Setup, Benchmarking, API, UI, Debugging und Service-Betrieb in etwa
+    30 Minuten ohne manuelle Eingriffe.
+  - >-
+    Die zentrale Kompetenz verschiebt sich vom Tippen im Editor hin zu Task-Decomposition, Agent-Orchestrierung, Review
+    und Verifikation.
+sourceURL: 'https://x.com/karpathy/status/2026731645169185220'
 sourceType: tweet
-author: "Andrej Karpathy"
-sourceDate: "2026-02-25"
-addedDate: "2026-02-27"
+author: Andrej Karpathy
+sourceDate: '2026-02-25'
+addedDate: '2026-02-27'
 ---
 
 Andrej Karpathy beschreibt in seinem Post vom 25. Februar 2026 einen Bruch, nicht bloß eine graduelle Verbesserung: Programmieren habe sich in den letzten zwei Monaten drastisch verändert, mit einem klaren Kipppunkt im Dezember.

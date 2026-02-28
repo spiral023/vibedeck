@@ -1,19 +1,29 @@
 ---
-title: "Lessons from Building Claude Code: So lernst du, wie ein Agent zu sehen"
-description: "Thariq zeigt am Beispiel von Claude Code, warum gute Agent-Tools nicht aus Feature-Listen entstehen, sondern aus Beobachtung echter Model-Outputs. Der Kern: Action Space an Fähigkeitsprofil und Kontextaufbau anpassen."
+title: 'Lessons from Building Claude Code: So lernst du, wie ein Agent zu sehen'
+description: >-
+  Thariq zeigt am Beispiel von Claude Code, warum gute Agent-Tools nicht aus Feature-Listen entstehen, sondern aus
+  Beobachtung echter Model-Outputs. Der Kern: Action Space an Fähigkeitsprofil und Kontextaufbau anpassen.
 category: workflows
 icon: BrainCircuit
 readTime: 11 Min
-tags: ["claude-code", "agent-design", "tool-calling", "progressive-disclosure", "elicitation"]
+tags:
+  - modelle-tools
+  - agenten-engineering
 keyPoints:
-  - "Der härteste Teil beim Agent-Bau ist das Design des Action Space: Nicht möglichst viele Tools, sondern die passenden Tools für das Fähigkeitsprofil des Modells."
-  - "Features funktionieren nur, wenn das Modell sie zuverlässig und gern nutzt, wie der Weg von ExitPlan-Workarounds zum AskUserQuestion-Tool zeigt."
-  - "Mit stärkeren Modellen müssen alte Tool-Entscheidungen regelmäßig überarbeitet werden, etwa der Wechsel von Todos zu Task-basierten Multi-Agent-Workflows."
-sourceURL: "https://x.com/trq212/status/2027463795355095314"
+  - >-
+    Der härteste Teil beim Agent-Bau ist das Design des Action Space: Nicht möglichst viele Tools, sondern die passenden
+    Tools für das Fähigkeitsprofil des Modells.
+  - >-
+    Features funktionieren nur, wenn das Modell sie zuverlässig und gern nutzt, wie der Weg von ExitPlan-Workarounds zum
+    AskUserQuestion-Tool zeigt.
+  - >-
+    Mit stärkeren Modellen müssen alte Tool-Entscheidungen regelmäßig überarbeitet werden, etwa der Wechsel von Todos zu
+    Task-basierten Multi-Agent-Workflows.
+sourceURL: 'https://x.com/trq212/status/2027463795355095314'
 sourceType: tweet
-author: "Thariq"
-sourceDate: "2026-02-27"
-addedDate: "2026-02-28"
+author: Thariq
+sourceDate: '2026-02-27'
+addedDate: '2026-02-28'
 ---
 
 ![Header](/images/blog/lessons-building-claude-code-seeing-like-an-agent/header.jpg)

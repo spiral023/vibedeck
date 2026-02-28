@@ -1,19 +1,31 @@
 ---
-title: "Karpathys 80/20-Shift: Vom Tippen zum Steuern mit AI-Agenten"
-description: "Andrej Karpathy beschreibt, wie sein Workflow in Wochen von 80% manuellem Coding zu 80% Agent-Coding kippte. Der Tweet zeigt Chancen, Grenzen und neue Rollenbilder für Entwickler im Jahr 2026."
+title: 'Karpathys 80/20-Shift: Vom Tippen zum Steuern mit AI-Agenten'
+description: >-
+  Andrej Karpathy beschreibt, wie sein Workflow in Wochen von 80% manuellem Coding zu 80% Agent-Coding kippte. Der Tweet
+  zeigt Chancen, Grenzen und neue Rollenbilder für Entwickler im Jahr 2026.
 category: workflows
 icon: BrainCircuit
 readTime: 7 Min
-tags: ["andrej-karpathy", "agentic-coding", "claude-code", "developer-workflow", "ai-productivity"]
+tags:
+  - fallstudien
+  - agenten-engineering
+  - modelle-tools
+  - coding-workflows
 keyPoints:
-  - "Karpathy berichtet von einem schnellen Wechsel: von überwiegend manuellem Coding zu überwiegend agentischem Coding innerhalb weniger Wochen."
-  - "Er sieht den größten Gewinn weniger in reiner Geschwindigkeit als in Expansion: mehr Projekte, mehr Scope, mehr umsetzbare Ideen."
-  - "Trotz Begeisterung betont er klare Grenzen heutiger Modelle: subtile Denkfehler, Überkomplizierung und hoher Bedarf an menschlichem Review."
-sourceURL: "https://x.com/karpathy/status/2015883857489522876"
+  - >-
+    Karpathy berichtet von einem schnellen Wechsel: von überwiegend manuellem Coding zu überwiegend agentischem Coding
+    innerhalb weniger Wochen.
+  - >-
+    Er sieht den größten Gewinn weniger in reiner Geschwindigkeit als in Expansion: mehr Projekte, mehr Scope, mehr
+    umsetzbare Ideen.
+  - >-
+    Trotz Begeisterung betont er klare Grenzen heutiger Modelle: subtile Denkfehler, Überkomplizierung und hoher Bedarf
+    an menschlichem Review.
+sourceURL: 'https://x.com/karpathy/status/2015883857489522876'
 sourceType: tweet
-author: "Andrej Karpathy"
-sourceDate: "2026-01-26"
-addedDate: "2026-02-26"
+author: Andrej Karpathy
+sourceDate: '2026-01-26'
+addedDate: '2026-02-26'
 ---
 
 Andrej Karpathys Tweet zu seinem aktuellen Coding-Workflow wurde so stark geteilt, weil er einen Punkt trifft, den viele Teams 2026 gerade live erleben: AI ist nicht mehr nur Auto-Complete, sondern zunehmend ein operativer Copilot für ganze Umsetzungsblöcke.

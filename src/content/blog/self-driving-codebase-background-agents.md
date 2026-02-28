@@ -1,19 +1,30 @@
 ---
-title: "The Self-Driving Codebase: Warum Background Agents der nächste Delivery-Shift sind"
-description: "Die interaktive Seite erklärt, warum lokale Coding-Agents in Unternehmen an Grenzen stoßen. Erst Background Agents mit Cloud-Umgebung, Governance, Triggern und Fleet-Orchestrierung ermöglichen eine self-driving codebase."
+title: 'The Self-Driving Codebase: Warum Background Agents der nächste Delivery-Shift sind'
+description: >-
+  Die interaktive Seite erklärt, warum lokale Coding-Agents in Unternehmen an Grenzen stoßen. Erst Background Agents mit
+  Cloud-Umgebung, Governance, Triggern und Fleet-Orchestrierung ermöglichen eine self-driving codebase.
 category: workflows
 icon: Rocket
 readTime: 11 Min
-tags: ["background-agents", "self-driving-codebase", "software-delivery", "agentic-engineering", "platform-engineering"]
+tags:
+  - agenten-engineering
+  - coding-workflows
+  - unternehmen-adoption
 keyPoints:
-  - "Lokale Coding-Agents steigern individuelle Geschwindigkeit, aber ohne Systemumbau entsteht ein 'false summit' mit überlasteten Reviews und stagnierender Cycle Time."
-  - "Background Agents laufen asynchron in isolierten Cloud-Entwicklungsumgebungen und brauchen fünf Primitives: Environment, Governance, Connectivity, Triggers und Fleet Coordination."
-  - "Der organisatorische Hebel liegt nicht im schnelleren Tippen, sondern in einer Software Factory, in der Agenten den First Pass über Plan, Code, Review, Test und Deploy übernehmen."
-sourceURL: "https://background-agents.com/"
+  - >-
+    Lokale Coding-Agents steigern individuelle Geschwindigkeit, aber ohne Systemumbau entsteht ein 'false summit' mit
+    überlasteten Reviews und stagnierender Cycle Time.
+  - >-
+    Background Agents laufen asynchron in isolierten Cloud-Entwicklungsumgebungen und brauchen fünf Primitives:
+    Environment, Governance, Connectivity, Triggers und Fleet Coordination.
+  - >-
+    Der organisatorische Hebel liegt nicht im schnelleren Tippen, sondern in einer Software Factory, in der Agenten den
+    First Pass über Plan, Code, Review, Test und Deploy übernehmen.
+sourceURL: 'https://background-agents.com/'
 sourceType: blog
-author: "Lou und das Team von Ona"
-sourceDate: "2026-02-26"
-addedDate: "2026-02-28"
+author: Lou und das Team von Ona
+sourceDate: '2026-02-26'
+addedDate: '2026-02-28'
 ---
 
 Bevor du tiefer einsteigst: Die interaktive Homepage [background-agents.com](https://background-agents.com/) macht das Thema grafisch deutlich verständlicher als reiner Fließtext und enthält zusätzliche Beispiele, Tabellen und weiterführende Quellen.

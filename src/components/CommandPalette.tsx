@@ -78,6 +78,7 @@ export function CommandPalette({ open, onOpenChange }: CommandPaletteProps) {
   const [search, setSearch] = useState('');
   const inputRef = useRef<HTMLInputElement>(null);
   const normalizedSearch = useMemo(() => normalizeSearchInput(search), [search]);
+  const shouldFetchArticleIndex = open && normalizedSearch.length >= 2;
 
   const {
     data: searchDocuments = [],
@@ -97,7 +98,7 @@ export function CommandPalette({ open, onOpenChange }: CommandPaletteProps) {
       }
       return data as SearchDocument[];
     },
-    enabled: open,
+    enabled: shouldFetchArticleIndex,
     staleTime: Infinity,
     gcTime: Infinity,
   });

@@ -12,7 +12,7 @@ export interface SearchDocument {
   sourceDate?: string;
   addedDate?: string;
   keyPoints?: string[];
-  searchText: string;
+  searchText?: string;
 }
 
 export interface SearchResult {

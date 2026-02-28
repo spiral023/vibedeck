@@ -1,19 +1,29 @@
 ---
-title: "Die nächsten 12 Monate AI: 5 Hebel, die Gewinner von Zuschauern trennen"
-description: "MotionViz argumentiert, dass 2026 nicht das beste Produkt gewinnt, sondern der schnellste Lernzyklus. Entscheidend sind Iterationsgeschwindigkeit, fokussierter Tool-Stack, Marktverständnis, Distribution und konsequentes Shipping."
+title: 'Die nächsten 12 Monate AI: 5 Hebel, die Gewinner von Zuschauern trennen'
+description: >-
+  MotionViz argumentiert, dass 2026 nicht das beste Produkt gewinnt, sondern der schnellste Lernzyklus. Entscheidend
+  sind Iterationsgeschwindigkeit, fokussierter Tool-Stack, Marktverständnis, Distribution und konsequentes Shipping.
 category: workflows
 icon: BrainCircuit
 readTime: 10 Min
-tags: ["ai-coding", "builder-mindset", "iteration-speed", "distribution", "execution"]
+tags:
+  - coding-workflows
+  - strategie-fuehrung
 keyPoints:
-  - "Im AI-Zeitalter wird Wachstum vor allem durch schnelle Iteration entschieden: mehr Experimente in kürzerer Zeit schlagen Perfektionismus."
-  - "Tool-Overload ist ein zentraler Produktivitätskiller; ein stabiler 90-Tage-Stack erzeugt mehr Output als ständige Workflow-Optimierung."
-  - "Langfristiger Vorsprung entsteht aus einem System aus Build, Distribution und konsequenter Umsetzung – nicht aus Konsum, Planung oder Hype."
-sourceURL: "https://x.com/Motion_Viz/status/2027122214685098270"
+  - >-
+    Im AI-Zeitalter wird Wachstum vor allem durch schnelle Iteration entschieden: mehr Experimente in kürzerer Zeit
+    schlagen Perfektionismus.
+  - >-
+    Tool-Overload ist ein zentraler Produktivitätskiller; ein stabiler 90-Tage-Stack erzeugt mehr Output als ständige
+    Workflow-Optimierung.
+  - >-
+    Langfristiger Vorsprung entsteht aus einem System aus Build, Distribution und konsequenter Umsetzung – nicht aus
+    Konsum, Planung oder Hype.
+sourceURL: 'https://x.com/Motion_Viz/status/2027122214685098270'
 sourceType: tweet
-author: "MotionViz"
-sourceDate: "2026-02-26"
-addedDate: "2026-02-28"
+author: MotionViz
+sourceDate: '2026-02-26'
+addedDate: '2026-02-28'
 ---
 
 MotionViz beschreibt in diesem langen X-Post eine harte, aber realistische Perspektive auf 2026: Die eigentliche Trennlinie verläuft nicht zwischen „AI-Nutzern" und „Nicht-Nutzern", sondern zwischen Menschen, die mit AI kontinuierlich Dinge **shippen**, und denen, die dauerhaft nur Tools vergleichen.

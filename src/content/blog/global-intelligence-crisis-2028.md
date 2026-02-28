@@ -1,19 +1,29 @@
 ---
-title: "2028 GIC: Wenn Intelligenz zum globalen Engpass wird"
-description: "Ein Gedankenexperiment von Citrini Research zur Frage, wie AI, sinkende Zinsen und neue Vermögensformen bis 2028 eine globale Intelligence-Knappheit auslösen könnten und welche Gewinner daraus entstehen."
+title: '2028 GIC: Wenn Intelligenz zum globalen Engpass wird'
+description: >-
+  Ein Gedankenexperiment von Citrini Research zur Frage, wie AI, sinkende Zinsen und neue Vermögensformen bis 2028 eine
+  globale Intelligence-Knappheit auslösen könnten und welche Gewinner daraus entstehen.
 category: fundamentals
 icon: BrainCircuit
 readTime: 9 Min
-tags: ["ai-economics", "macro", "infrastructure", "agentic-commerce", "capital-markets"]
+tags:
+  - oekonomie-maerkte
+  - unternehmen-adoption
 keyPoints:
-  - "Die nächste Phase ist kein klassischer Produktivitätszyklus, sondern ein Rennen um skalierbare Intelligence über Modelle, Daten, Energie und Distribution."
-  - "Die Autoren sehen einen Möglichkeitsraum, in dem AI bis 2028 neue Asset-Klassen, Marketing- und Commerce-Mechaniken sowie einen 24/7-Agentenmarkt etabliert."
-  - "Die größten Hebel liegen laut Szenario bei Infrastruktur und Plattformen: Compute, Energie, Netzwerke, Agent-Ops, Distribution und finanzielle Verbriefung." 
-sourceURL: "https://www.citriniresearch.com/p/2028gic"
+  - >-
+    Die nächste Phase ist kein klassischer Produktivitätszyklus, sondern ein Rennen um skalierbare Intelligence über
+    Modelle, Daten, Energie und Distribution.
+  - >-
+    Die Autoren sehen einen Möglichkeitsraum, in dem AI bis 2028 neue Asset-Klassen, Marketing- und Commerce-Mechaniken
+    sowie einen 24/7-Agentenmarkt etabliert.
+  - >-
+    Die größten Hebel liegen laut Szenario bei Infrastruktur und Plattformen: Compute, Energie, Netzwerke, Agent-Ops,
+    Distribution und finanzielle Verbriefung.
+sourceURL: 'https://www.citriniresearch.com/p/2028gic'
 sourceType: blog
-author: "Citrini Research, Alap Shah"
-sourceDate: "2026-02-22"
-addedDate: "2026-02-25"
+author: 'Citrini Research, Alap Shah'
+sourceDate: '2026-02-22'
+addedDate: '2026-02-25'
 ---
 
 ![Header](/images/blog/global-intelligence-crisis-2028/header.jpg)
