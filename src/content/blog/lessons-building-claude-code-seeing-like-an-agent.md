@@ -3,9 +3,12 @@ title: 'Lessons from Building Claude Code: So lernst du, wie ein Agent zu sehen'
 description: >-
   Thariq zeigt am Beispiel von Claude Code, warum gute Agent-Tools nicht aus Feature-Listen entstehen, sondern aus
   Beobachtung echter Model-Outputs. Der Kern: Action Space an Fähigkeitsprofil und Kontextaufbau anpassen.
+type: blog
+status: published
 category: workflows
 icon: BrainCircuit
-readTime: 11 Min
+readTime: '7 Min'
+readTimeMin: 7
 tags:
   - modelle-tools
   - agenten-engineering
@@ -19,12 +22,26 @@ keyPoints:
   - >-
     Mit stärkeren Modellen müssen alte Tool-Entscheidungen regelmäßig überarbeitet werden, etwa der Wechsel von Todos zu
     Task-basierten Multi-Agent-Workflows.
+aliases:
+  - 'Claude Code Seeing Like an Agent'
+  - 'Thariq Claude Code Lessons'
+people:
+  - '[[Thariq]]'
+topics:
+  - '[[Claude Code]]'
+  - '[[Action Space]]'
+  - '[[Tool Design]]'
+  - '[[Agenten-UX]]'
+  - '[[Task-Based Workflows]]'
 sourceURL: 'https://x.com/trq212/status/2027463795355095314'
 sourceType: tweet
 author: Thariq
 sourceDate: '2026-02-27'
 addedDate: '2026-02-28'
+slug: 'lessons-building-claude-code-seeing-like-an-agent'
 ---
+
+Kurzkontext: [[Thariq]] ordnet die Entwicklung entlang von [[Claude Code]] ein.
 
 ![Header](/images/blog/lessons-building-claude-code-seeing-like-an-agent/header.jpg)
 
@@ -176,3 +193,13 @@ Wenn du das auf einen Satz verdichtest:
 > Lerne, wie dein Modell wirklich arbeitet, und forme seinen Action Space so, dass es darin natürlich und zuverlässig handeln kann.
 
 Genau darin steckt der Unterschied zwischen einer Demo und einem System, das im Alltag wirklich trägt.
+
+## Verbindungen
+
+- [[Thariq]]
+- [[Claude Code]]
+- [[Action Space]]
+- [[Tool Design]]
+- [[Agenten-UX]]
+- [[Task-Based Workflows]]
+

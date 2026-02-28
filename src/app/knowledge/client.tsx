@@ -500,7 +500,7 @@ export function KnowledgeClient({ articles }: KnowledgeClientProps) {
                       {articleDone && <span className="ml-2 text-xs text-green-500">✓</span>}
                     </h3>
                     <div className="flex items-center gap-3 text-xs text-muted-foreground">
-                      <span>{article.readTime}</span>
+                      <span>{typeof article.readTime === 'number' ? `${article.readTime} Min` : article.readTime}</span>
                       {article.sourceDate && (
                         <>
                           <span className="w-1 h-1 rounded-full bg-muted-foreground/30" />

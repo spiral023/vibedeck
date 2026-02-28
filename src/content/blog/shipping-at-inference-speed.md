@@ -3,9 +3,12 @@ title: 'Shipping at Inference-Speed: Warum Peter Steinberger Code heute anders b
 description: >-
   Peter Steinberger beschreibt, wie sich sein Agentic-Coding-Workflow 2025 verändert hat: weniger manuelles Lesen, mehr
   Systemdenken, schnellere Iteration und Delivery, die primär durch Inference-Latenz begrenzt ist.
+type: blog
+status: published
 category: workflows
 icon: Zap
-readTime: 18 Min
+readTime: '16 Min'
+readTimeMin: 16
 tags:
   - agenten-engineering
   - modelle-tools
@@ -20,12 +23,26 @@ keyPoints:
   - >-
     Sein Output-Boost kommt vor allem aus einem iterativen CLI-first-Workflow, starkem Kontext-Engineering und
     konsequenter Automatisierung über Skills.
+aliases:
+  - 'Shipping at Inference Speed'
+  - 'Peter Steinberger Agentic Coding'
+people:
+  - '[[Peter Steinberger]]'
+topics:
+  - '[[Inference-Speed]]'
+  - '[[CLI Workflow]]'
+  - '[[Context Engineering]]'
+  - '[[Codex]]'
+  - '[[Agentic Coding]]'
 sourceURL: 'https://steipete.me/posts/2025/shipping-at-inference-speed'
 sourceType: blog
 author: Peter Steinberger
 sourceDate: '2025-12-28'
 addedDate: '2026-02-26'
+slug: 'shipping-at-inference-speed'
 ---
+
+Kurzkontext: [[Peter Steinberger]] ordnet die Entwicklung entlang von [[Inference-Speed]] ein.
 
 ![Header](/images/blog/shipping-at-inference-speed/header.png)
 
@@ -401,3 +418,13 @@ Wenn du den Artikel in handhabbare Regeln übersetzt, ergeben sich fünf robuste
 Die stärkste Aussage ist vielleicht diese: Wir bewegen uns in eine Phase, in der „Code schreiben“ zunehmend commoditized wird, während Produkturteil, Architekturfähigkeit und Systemorchestrierung den größten Hebel liefern.
 
 Wer das früh akzeptiert, arbeitet nicht nur schneller, sondern vor allem mit weniger Reibung.
+
+## Verbindungen
+
+- [[Peter Steinberger]]
+- [[Inference-Speed]]
+- [[CLI Workflow]]
+- [[Context Engineering]]
+- [[Codex]]
+- [[Agentic Coding]]
+

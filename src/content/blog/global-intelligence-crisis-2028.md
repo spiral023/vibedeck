@@ -3,9 +3,12 @@ title: '2028 GIC: Wenn Intelligenz zum globalen Engpass wird'
 description: >-
   Ein Gedankenexperiment von Citrini Research zur Frage, wie AI, sinkende Zinsen und neue Vermögensformen bis 2028 eine
   globale Intelligence-Knappheit auslösen könnten und welche Gewinner daraus entstehen.
+type: blog
+status: published
 category: fundamentals
 icon: BrainCircuit
-readTime: 9 Min
+readTime: '6 Min'
+readTimeMin: 6
 tags:
   - oekonomie-maerkte
   - unternehmen-adoption
@@ -19,12 +22,26 @@ keyPoints:
   - >-
     Die größten Hebel liegen laut Szenario bei Infrastruktur und Plattformen: Compute, Energie, Netzwerke, Agent-Ops,
     Distribution und finanzielle Verbriefung.
+aliases:
+  - '2028 Global Intelligence Crisis'
+  - 'Citrini Research 2028 GIC'
+people:
+  - '[[Alap Shah]]'
+topics:
+  - '[[Global Intelligence Crisis]]'
+  - '[[AI Economics]]'
+  - '[[Capital Markets]]'
+  - '[[Compute Infrastructure]]'
+  - '[[AI Adoption]]'
 sourceURL: 'https://www.citriniresearch.com/p/2028gic'
 sourceType: blog
 author: 'Citrini Research, Alap Shah'
 sourceDate: '2026-02-22'
 addedDate: '2026-02-25'
+slug: 'global-intelligence-crisis-2028'
 ---
+
+Kurzkontext: [[Alap Shah]] ordnet die Entwicklung entlang von [[Global Intelligence Crisis]] ein.
 
 ![Header](/images/blog/global-intelligence-crisis-2028/header.jpg)
 
@@ -154,4 +171,13 @@ Gerade deshalb ist der Beitrag als "Thought Exercise" wertvoll: Er zwingt zu Sys
 Wer in diesem Rahmen denkt, priorisiert nicht nur Model-Qualität, sondern komplette Wertschöpfungsketten von Energie und Compute bis zu Distribution, Agent-Ops und kapitalmarktfähigen Cashflows.
 
 Für Vibe-Coding-Teams und Builder ist die praktische Übersetzung simpel: Baue dort, wo du einen echten Engpass auflösen kannst, und entwerfe dein Produkt so, dass es bei steigender Intelligence-Nachfrage nicht nur mithalten, sondern profitieren kann.
+
+## Verbindungen
+
+- [[Alap Shah]]
+- [[Global Intelligence Crisis]]
+- [[AI Economics]]
+- [[Capital Markets]]
+- [[Compute Infrastructure]]
+- [[AI Adoption]]
 

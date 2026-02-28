@@ -1,12 +1,27 @@
 ---
 title: "OpenAI Codex Multi-Agents: Parallelle Agenten-Workflows"
 description: "Nutze experimentelle Multi-Agenten-Kollaboration in der Codex CLI für komplexe, parallele Aufgaben und Codebase-Exploration."
+type: source
+status: seed
 category: workflows
 icon: Layers
-readTime: 12 Min
-tags: ["codex", "openai", "multi-agents", "parallel-computing", "cli"]
+readTime: 12
+tags:
+  - tooling/codex
+  - openai
+  - multi-agents
+  - parallel-computing
+  - cli
+aliases:
+  - "Codex Multi-Agents Guide"
+topics:
+  - "[[Multi-Agents]]"
+  - "[[Orchestration]]"
+  - "[[Agent Roles]]"
+  - "[[Context Pollution]]"
+up: "[[OpenAI Codex]]"
 sourceURL: "https://developers.openai.com/codex/multi-agent/"
-sourceType: "blog"
+sourceType: blog
 author: "OpenAI"
 sourceDate: "2026-02-28"
 addedDate: "2026-02-28"
@@ -142,3 +157,16 @@ Hier arbeiten Agenten zusammen, um UI-Regressionen oder Flaky-Tests zu beheben:
 ## Fazit: State statt Context
 
 Das Multi-Agenten-System in Codex löst eines der größten Probleme beim Agentic Coding: **Context Pollution** (oder "Context Rot"). Durch das Auslagern spezialisierter Aufgaben in frische Threads bleibt der Haupt-Kontext sauber und die Performance hoch. Deine Rolle verschiebt sich vom "Code-Schreiber" zum "Architekten und Reviewer", der spezialisierte Teams für dedizierte Aufgaben delegiert.
+
+## Verbindungen
+- [[Multi-Agents]]
+- [[Orchestration]]
+- [[Agent Roles]]
+- [[Context Pollution]]
+- [[OpenAI Codex]]
+- [[Sandbox]]
+- [[MCP]]
+- [[CLI]]
+- [[Parallel Computing]]
+- [[PR Review Team]]
+- [[Frontend-Debugging Team]]

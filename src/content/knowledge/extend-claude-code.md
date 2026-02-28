@@ -1,17 +1,29 @@
 ---
-title: Extend Claude Code
-description: >-
-  Verstehe, wann du CLAUDE.md, Skills, Subagents, Hooks, MCP und Plugins
-  verwenden solltest.
+title: "Extend Claude Code"
+description: "Verstehe, wann du CLAUDE.md, Skills, Subagents, Hooks, MCP und Plugins verwenden solltest."
+type: source
+status: seed
 category: fundamentals
 icon: Puzzle
-readTime: 4 Min
-tags: ["claude-code", "tooling", "docs", "workflows"]
+readTime: 4
+tags:
+  - tooling/claude-code
+  - fundamentals/extension
+  - workflows/customization
+aliases:
+  - "Claude Code Extension Overview"
+topics:
+  - "[[Claude Code]]"
+  - "[[CLAUDE.md]]"
+  - "[[Skills]]"
+  - "[[MCP]]"
+  - "[[Subagents]]"
+  - "[[Hooks]]"
+up: "[[Claude Code]]"
 sourceURL: "https://code.claude.com/docs/en/features-overview"
 sourceType: "docs"
 author: "Anthropic Docs"
-level: intermediate
-hot: true
+sourceDate: "2026-02-01"
 addedDate: "2026-02-01"
 ---
 
@@ -79,3 +91,13 @@ Jedes Feature verbraucht Kontext.
 *   **Skill + Subagent:** `/review` Skill startet Subagents für Security und Style.
 *   **CLAUDE.md + Skills:** `CLAUDE.md` verweist auf API-Konventionen, Skill enthält den Styleguide.
 *   **Hook + MCP:** Hook sendet Slack-Nachricht via MCP nach wichtigem Edit.
+
+## Verbindungen
+- [[Claude Code]]
+- [[CLAUDE.md]]
+- [[Skills]]
+- [[Model Context Protocol]]
+- [[Subagents]]
+- [[Hooks]]
+- [[Prompt Engineering]]
+- [[Workflow Automation]]

@@ -3,9 +3,12 @@ title: 'Karpathys 80/20-Shift: Vom Tippen zum Steuern mit AI-Agenten'
 description: >-
   Andrej Karpathy beschreibt, wie sein Workflow in Wochen von 80% manuellem Coding zu 80% Agent-Coding kippte. Der Tweet
   zeigt Chancen, Grenzen und neue Rollenbilder für Entwickler im Jahr 2026.
+type: blog
+status: published
 category: workflows
 icon: BrainCircuit
-readTime: 7 Min
+readTime: '6 Min'
+readTimeMin: 6
 tags:
   - fallstudien
   - agenten-engineering
@@ -21,12 +24,26 @@ keyPoints:
   - >-
     Trotz Begeisterung betont er klare Grenzen heutiger Modelle: subtile Denkfehler, Überkomplizierung und hoher Bedarf
     an menschlichem Review.
+aliases:
+  - 'Karpathy 80 20 Agent Coding'
+  - 'Karpathy Agentic Coding Shift'
+people:
+  - '[[Andrej Karpathy]]'
+topics:
+  - '[[Agentic Coding]]'
+  - '[[80/20 Shift]]'
+  - '[[Developer Workflow]]'
+  - '[[Code Review]]'
+  - '[[AI Coding 2026]]'
 sourceURL: 'https://x.com/karpathy/status/2015883857489522876'
 sourceType: tweet
 author: Andrej Karpathy
 sourceDate: '2026-01-26'
 addedDate: '2026-02-26'
+slug: 'karpathy-agent-coding-80-20-shift'
 ---
+
+Kurzkontext: [[Andrej Karpathy]] ordnet die Entwicklung entlang von [[Agentic Coding]] ein.
 
 Andrej Karpathys Tweet zu seinem aktuellen Coding-Workflow wurde so stark geteilt, weil er einen Punkt trifft, den viele Teams 2026 gerade live erleben: AI ist nicht mehr nur Auto-Complete, sondern zunehmend ein operativer Copilot für ganze Umsetzungsblöcke.
 
@@ -164,3 +181,13 @@ Karpathys 80/20-Shift steht exemplarisch für eine breitere Veränderung in der 
 Die Gewinner in diesem Modus sind nicht die, die blind alles automatisieren, sondern die, die Agentenführung, Systemdenken und diszipliniertes Review kombinieren.
 
 Der Tweet ist daher weniger eine Prognose als eine Arbeitsanweisung für die Gegenwart: Nutze den Hebel, aber bleibe der verantwortliche Engineer im Loop.
+
+## Verbindungen
+
+- [[Andrej Karpathy]]
+- [[Agentic Coding]]
+- [[80/20 Shift]]
+- [[Developer Workflow]]
+- [[Code Review]]
+- [[AI Coding 2026]]
+

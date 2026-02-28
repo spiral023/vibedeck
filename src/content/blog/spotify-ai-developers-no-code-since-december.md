@@ -3,9 +3,12 @@ title: 'Spotify und AI-Coding: Warum Top-Entwickler seit Dezember kaum noch selb
 description: >-
   Spotify beschreibt auf dem Earnings Call einen radikalen AI-Workflow: Mit Claude Code und dem internen System Honk
   sollen Entwickler Features und Bugfixes deutlich schneller ausrollen und teils schon auf dem Arbeitsweg deployen.
+type: blog
+status: published
 category: workflows
 icon: BrainCircuit
-readTime: 7 Min
+readTime: '6 Min'
+readTimeMin: 6
 tags:
   - fallstudien
   - coding-workflows
@@ -20,13 +23,27 @@ keyPoints:
   - >-
     Neben Coding-Produktivität setzt Spotify strategisch auf proprietäre Musikdaten als AI-Vorteil, den allgemeine LLMs
     schwer commoditizen können.
+aliases:
+  - 'Spotify Entwickler schreiben kaum Code'
+  - 'Spotify Claude Code Honk'
+people:
+  - '[[Sarah Perez]]'
+topics:
+  - '[[Spotify]]'
+  - '[[Claude Code]]'
+  - '[[Honk]]'
+  - '[[AI-Coding]]'
+  - '[[Developer Productivity]]'
 sourceURL: >-
   https://techcrunch.com/2026/02/12/spotify-says-its-best-developers-havent-written-a-line-of-code-since-december-thanks-to-ai/
 sourceType: blog
 author: Sarah Perez
 sourceDate: '2026-02-12'
 addedDate: '2026-02-26'
+slug: 'spotify-ai-developers-no-code-since-december'
 ---
+
+Kurzkontext: [[Sarah Perez]] ordnet die Entwicklung entlang von [[Spotify]] ein.
 
 ![Header](/images/blog/spotify-ai-developers-no-code-since-december/header.jpg)
 
@@ -133,3 +150,13 @@ Spotify liefert mit dieser Aussage weniger ein „Ende des Programmierens“ als
 Der Schwerpunkt wandert von manueller Produktion zu systemischer Steuerung. Wer diesen Shift früh operationalisiert, kann Produktzyklen deutlich verkürzen – vorausgesetzt, Geschwindigkeit und Qualität bleiben sauber balanciert.
 
 Für Unternehmen ist das die eigentliche Frage hinter der Schlagzeile: Nicht „Nutzen wir AI?“, sondern „Ist unsere Delivery-Organisation so aufgebaut, dass AI wirklich Durchsatz erzeugt statt nur Demo-Effekte?“
+
+## Verbindungen
+
+- [[Sarah Perez]]
+- [[Spotify]]
+- [[Claude Code]]
+- [[Honk]]
+- [[AI-Coding]]
+- [[Developer Productivity]]
+

@@ -1,13 +1,29 @@
 ---
 title: "Feature Intelligence Architect: Der ultimative Produktstrategie-Prompt"
 description: "Verwandle deinen AI Coding Agent in einen Produktstrategen mit der Vision von Steve Jobs und der Systemdenke von Tobi Lütke."
+type: source
+status: seed
 category: patterns
 icon: BrainCircuit
-readTime: 8 Min
-tags: ["prompt-engineering", "product-strategy", "ai-agents", "claude-code", "feature-planning"]
+readTime: 8
+tags:
+  - patterns/product-strategy
+  - prompt-engineering
+  - ai-agents
+  - tooling/claude-code
+  - feature-planning
+aliases:
+  - "Feature Intelligence Architect Prompt"
+  - "AI Product Strategist"
+topics:
+  - "[[Product Strategy]]"
+  - "[[User Journey]]"
+  - "[[Feature Planning]]"
+  - "[[Compounding Value]]"
+up: "[[Product Design]]"
 sourceURL: "https://x.com/kloss_xyz/status/2019152438910165393?s=20"
 sourceType: "tweet"
-author: "klöss"
+author: "klöss (@kloss_xyz)"
 sourceDate: "2026-02-05"
 addedDate: "2026-02-14"
 level: intermediate
@@ -125,3 +141,17 @@ Jedes vorgeschlagene Feature muss durch drei Prüfsteine:
 2. **Analyse:** Identifizierung von Reibungspunkten, Retention-Hooks und Monetarisierungs-Chancen.
 3. **Ausgabe:** Erstellung eines Phasenplans (`FEATURE_PLAN_[Datum].md`).
 4. **Handoff:** Der Plan wird nach Freigabe an den "Build Agent" übergeben, der die Umsetzung übernimmt.
+
+## Verbindungen
+- [[Product Strategy]]
+- [[User Journey]]
+- [[Feature Planning]]
+- [[Compounding Value]]
+- [[CLAUDE.md]]
+- [[Build Agent]]
+- [[PRD]]
+- [[Architecture]]
+- [[Prompt Engineering]]
+- [[System Thinking]]
+- [[AI Agents]]
+- [[Claude Code]]

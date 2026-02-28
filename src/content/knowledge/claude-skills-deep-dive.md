@@ -4,12 +4,32 @@ description: >-
   Meta Alchemist erklärt, wie man mit spezialisierten 'Skills' (Instruction
   Sets) die Performance von Claude Code massiv steigert und Vibe Coding
   professionalisiert.
+type: source
+status: seed
 category: advanced
 icon: Cpu
-readTime: 4 Min
-tags: ["claude-skills", "claude-code", "tooling", "patterns"]
-level: advanced
+readTime: 4
+tags:
+  - tooling/claude-skills
+  - tooling/claude-code
+  - advanced-patterns
+  - vibe-coding
+aliases:
+  - "Claude Skills Deep Dive"
+  - "Vibe Coding Optimization"
+topics:
+  - "[[Agent Skills]]"
+  - "[[Vibe Coding]]"
+  - "[[Orchestration]]"
+  - "[[Spawner]]"
+  - "[[Benchmark]]"
+up: "[[Claude Code]]"
+sourceURL: "https://x.com/meta_alchemist/status/2007388392850641182"
+sourceType: "tweet"
+author: "Meta Alchemist (@meta_alchemist)"
+sourceDate: "2026-01-21"
 addedDate: "2026-02-01"
+level: advanced
 ---
 
 > Ursprünglich veröffentlicht von [Meta Alchemist auf X](https://x.com/meta_alchemist/status/2007388392850641182).
@@ -84,3 +104,14 @@ Ich denke, wir sind bereits in der Singularität – sie steckt vorerst in Claud
 
 ---
 *Quelle: [Meta Alchemist auf X](https://x.com/meta_alchemist/status/2007388392850641182)*
+
+## Verbindungen
+- [[Agent Skills]]
+- [[Vibe Coding]]
+- [[Orchestration]]
+- [[Spawner]]
+- [[Benchmark]]
+- [[Claude Code]]
+- [[Error Handling]]
+- [[Opus 4.5]]
+- [[Autonomous Agents]]

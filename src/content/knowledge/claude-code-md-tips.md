@@ -1,13 +1,28 @@
 ---
 title: "Claude Code: 5 Tipps für Deine CLAUDE.md"
 description: "Maximiere die Effizienz von Claude Code mit diesen 5 Regeln für Deine CLAUDE.md Datei. Verbessere Planung, Bug-Fixing und Lerneffekte des Agenten."
+type: source
+status: seed
 category: patterns
 icon: Zap
-readTime: 4 Min
-tags: ["claude-code", "claude-md", "best-practices", "agent-coding", "workflow"]
+readTime: 4
+tags:
+  - tooling/claude-code
+  - patterns/claude-md
+  - best-practices
+  - agent-coding
+  - workflow
+aliases:
+  - "5 CLAUDE.md Tips"
+topics:
+  - "[[CLAUDE.md]]"
+  - "[[Planning]]"
+  - "[[Self-Improving]]"
+  - "[[TDD]]"
+up: "[[Claude Code]]"
 sourceURL: "https://x.com/svpino/status/2018682144361734368"
 sourceType: "tweet"
-author: "Santiago"
+author: "Santiago (@svpino)"
 sourceDate: "2026-02-03"
 addedDate: "2026-02-06"
 level: intermediate
@@ -48,3 +63,13 @@ Jede Korrektur, die Du manuell vornehmen musst, ist eine Chance, die `CLAUDE.md`
 ---
 
 Diese Regeln helfen dabei, Claude Code von einem reinen "Code-Schreiber" zu einem mitdenkenden Partner zu machen. Kopiere sie in Deine `CLAUDE.md` und passe sie an Deinen Workflow an.
+
+## Verbindungen
+- [[CLAUDE.md]]
+- [[Planning]]
+- [[Self-Improving]]
+- [[TDD]]
+- [[Claude Code]]
+- [[Task Granularity]]
+- [[Verification]]
+- [[Bug Fixing]]

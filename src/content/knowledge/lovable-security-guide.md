@@ -1,16 +1,28 @@
 ---
-title: 'Sicherheit in Lovable: Fallstricke vermeiden'
-description: >-
-  Ein Leitfaden zur Vermeidung gängiger Sicherheitsfehler in Lovable-Apps – von
-  Frontend-Geheimnissen bis hin zu Row Level Security (RLS).
+title: "Sicherheit in Lovable: Fallstricke vermeiden"
+description: "Ein Leitfaden zur Vermeidung gängiger Sicherheitsfehler in Lovable-Apps – von Frontend-Geheimnissen bis hin zu Row Level Security (RLS)."
+type: source
+status: seed
 category: security
 icon: Lock
-readTime: 4 Min
-tags: ["lovable", "security", "best-practices", "docs"]
+readTime: 4
+tags:
+  - tooling/lovable
+  - security/best-practices
+  - infrastructure/supabase
+aliases:
+  - "Lovable Security Guide"
+topics:
+  - "[[Lovable]]"
+  - "[[Security]]"
+  - "[[Row Level Security]]"
+  - "[[Supabase Edge Functions]]"
+  - "[[Frontend Security]]"
+up: "[[Lovable]]"
 sourceURL: "https://docs.lovable.dev/tips-tricks/avoiding-security-pitfalls"
 sourceType: "docs"
 author: "Lovable Docs"
-level: intermediate
+sourceDate: "2026-02-04"
 addedDate: "2026-02-04"
 ---
 
@@ -39,7 +51,7 @@ Diese Trennung ist die Basis für Sicherheit. Jede Schicht hat eigene Anforderun
 const API_KEY = "sk-1234567890abcdef"; // Öffentlich einsehbar!
 
 // ✅ RICHTIG
-// Bitte Lovable, einen Secret Key hinzuzufügen. 
+// Bitte Lovable, einen Secret Key hinzuzufügen.
 // Er wird sicher im Lovable-Backend gespeichert und nicht im Frontend-Code exponiert.
 ```
 
@@ -90,3 +102,13 @@ Lovable verfügt über einen eingebauten **Security Checker**. Nutzen Sie ihn vo
 4.  Lassen Sie den Checker erneut laufen.
 
 Sicherheit ist kein einmaliger Task, sondern ein fortlaufender Prozess.
+
+## Verbindungen
+- [[Lovable]]
+- [[Security]]
+- [[Row Level Security]]
+- [[Supabase Edge Functions]]
+- [[Frontend Security]]
+- [[Supabase]]
+- [[Data Privacy]]
+- [[Authentication]]

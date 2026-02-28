@@ -3,9 +3,12 @@ title: 'The Self-Driving Codebase: Warum Background Agents der nächste Delivery
 description: >-
   Die interaktive Seite erklärt, warum lokale Coding-Agents in Unternehmen an Grenzen stoßen. Erst Background Agents mit
   Cloud-Umgebung, Governance, Triggern und Fleet-Orchestrierung ermöglichen eine self-driving codebase.
+type: blog
+status: published
 category: workflows
 icon: Rocket
-readTime: 11 Min
+readTime: '8 Min'
+readTimeMin: 8
 tags:
   - agenten-engineering
   - coding-workflows
@@ -20,12 +23,26 @@ keyPoints:
   - >-
     Der organisatorische Hebel liegt nicht im schnelleren Tippen, sondern in einer Software Factory, in der Agenten den
     First Pass über Plan, Code, Review, Test und Deploy übernehmen.
+aliases:
+  - 'Self-Driving Codebase Background Agents'
+  - 'Ona Background Agents'
+people:
+  - '[[Lou]]'
+topics:
+  - '[[Background Agents]]'
+  - '[[Self-Driving Codebase]]'
+  - '[[Software Factory]]'
+  - '[[Governance]]'
+  - '[[Fleet Coordination]]'
 sourceURL: 'https://background-agents.com/'
 sourceType: blog
 author: Lou und das Team von Ona
 sourceDate: '2026-02-26'
 addedDate: '2026-02-28'
+slug: 'self-driving-codebase-background-agents'
 ---
+
+Kurzkontext: [[Lou]] ordnet die Entwicklung entlang von [[Background Agents]] ein.
 
 Bevor du tiefer einsteigst: Die interaktive Homepage [background-agents.com](https://background-agents.com/) macht das Thema grafisch deutlich verständlicher als reiner Fließtext und enthält zusätzliche Beispiele, Tabellen und weiterführende Quellen.
 
@@ -212,3 +229,13 @@ Die Seite „The Self-Driving Codebase“ liefert keinen kurzfristigen Prompt-Tr
 Der wichtigste Shift ist organisatorisch: Entwickler sind immer seltener dauerhaft **in** der Ausführungsschleife und zunehmend **on** der Schleife. Sie definieren Ziele, Grenzen und Qualitätskriterien, während Agenten den operativen First Pass übernehmen.
 
 > Wer nur Coding-Agents ausrollt, beschleunigt Individuen. Wer Background-Agent-Primitives mit Governance und Fleet-Orchestrierung aufbaut, beschleunigt die gesamte Organisation.
+
+## Verbindungen
+
+- [[Lou]]
+- [[Background Agents]]
+- [[Self-Driving Codebase]]
+- [[Software Factory]]
+- [[Governance]]
+- [[Fleet Coordination]]
+

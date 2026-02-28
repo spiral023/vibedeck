@@ -1,10 +1,26 @@
 ---
 title: "Deep Dive: Agent Skills verstehen und bauen"
 description: "Ein umfassender Leitfaden zu Agent Skills: Wie sie funktionieren, wie man sie effizient einsetzt und eigene Skills für Claude Code oder Cursor entwickelt."
+type: source
+status: seed
 category: fundamentals
 icon: BrainCircuit
-readTime: 6 Min
-tags: ["agents", "claude-code", "cursor", "skills", "automation"]
+readTime: 6
+tags:
+  - fundamentals/agents
+  - tooling/claude-code
+  - tooling/cursor
+  - skills
+  - automation
+aliases:
+  - "Agent Skills Deep Dive"
+  - "Building Agent Skills Guide"
+topics:
+  - "[[Agent Skills]]"
+  - "[[Progressive Disclosure]]"
+  - "[[Claude Code]]"
+  - "[[Cursor]]"
+up: "[[AI Agents]]"
 sourceURL: "https://x.com/tadaspetra/status/2019204136982532407"
 sourceType: "tweet"
 author: "Tadas Petra"
@@ -73,3 +89,13 @@ Die Seite `skills.sh` durchsucht GitHub automatisch nach `SKILL.md` Dateien und 
 npx skills add <owner/repo>
 ```
 Dieser Befehl startet einen Installer, der die Skills an den richtigen Orten verlinkt.
+
+## Verbindungen
+- [[Agent Skills]]
+- [[Progressive Disclosure]]
+- [[Claude Code]]
+- [[Cursor]]
+- [[SKILL.md]]
+- [[skills.sh]]
+- [[Context Management]]
+- [[AI Agents]]

@@ -1,13 +1,28 @@
 ---
 title: "Der komplette Guide zum Erstellen von Agent Skills"
 description: "Ein technischer Deep-Dive in den neuen Skills-Standard: Von der Architektur der progressiven Offenlegung bis hin zu komplexen Orchestrierungs-Patterns."
+type: source
+status: seed
 category: tooling
 icon: Layers
-readTime: 15 Min
-tags: ["agent-skills", "claude-code", "mcp", "automation", "development", "architecture"]
+readTime: 15
+tags:
+  - tooling/agent-skills
+  - tooling/claude-code
+  - automation
+  - architecture
+aliases:
+  - "Agent Skills Technical Guide"
+  - "Building AI Agent Skills"
+topics:
+  - "[[Agent Skills]]"
+  - "[[Progressive Disclosure]]"
+  - "[[skills.sh]]"
+  - "[[Context on Demand]]"
+up: "[[AI Agents]]"
 sourceURL: "https://x.com/rohit4verse/status/2021622526112358663"
 sourceType: "thread"
-author: "Rohit"
+author: "Rohit (@rohit4verse)"
 sourceDate: "2026-02-11"
 addedDate: "2026-02-14"
 level: advanced
@@ -123,3 +138,17 @@ Skills sind mächtig, da sie Code ausführen können. Beachte:
 Agent Skills transformieren KI von einer netten Spielerei zu einem strategischen Asset. Die Fähigkeit, organisatorisches Wissen in prozessuale Skills zu gießen, wird in Zukunft der entscheidende Produktivitätsvorteil für Entwickler und Unternehmen sein. 
 
 **Empfehlung:** Starte klein. Nutze den `skill-creator` Skill in Claude, um innerhalb von 15 Minuten dein erstes eigenes Playbook zu erstellen. Die Zeitersparnis durch die Eliminierung repetitiver Erklärungen wird sich sofort bemerkbar machen.
+
+## Verbindungen
+- [[Agent Skills]]
+- [[Progressive Disclosure]]
+- [[skills.sh]]
+- [[Context on Demand]]
+- [[SKILL.md]]
+- [[MCP]]
+- [[Two-Message Pattern]]
+- [[Claude Code]]
+- [[Architecture]]
+- [[Automation]]
+- [[Model Context Protocol]]
+- [[Context Engineering]]

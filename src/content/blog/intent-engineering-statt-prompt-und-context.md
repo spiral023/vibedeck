@@ -3,9 +3,12 @@ title: 'Intent Engineering: Warum Prompt- und Context-Optimierung allein nicht m
 description: >-
   Das Video zeigt, warum Enterprise-AI nicht an Modellintelligenz scheitert, sondern an fehlender Zielausrichtung: Ohne
   maschinenlesbaren Intent optimieren Agenten lokale Metriken statt Kundenwert, Marke und langfristigem ROI.
+type: blog
+status: published
 category: fundamentals
 icon: BrainCircuit
-readTime: 8 Min
+readTime: '8 Min'
+readTimeMin: 8
 tags:
   - kontext-prompting
   - unternehmen-adoption
@@ -21,12 +24,26 @@ keyPoints:
   - >-
     Der AI-Wettbewerb verschiebt sich von Modellqualität zu organisatorischer Klarheit: Wer Intent strukturiert und
     operationalisiert, skaliert Nutzen statt Aktivität.
+aliases:
+  - 'Intent Engineering vs Prompting'
+  - 'Intent Engineering Enterprise AI'
+people:
+  - '[[Nate B. Jones]]'
+topics:
+  - '[[Intent Engineering]]'
+  - '[[Context Engineering]]'
+  - '[[Enterprise AI]]'
+  - '[[Klarna]]'
+  - '[[Agent Governance]]'
 sourceURL: 'https://www.youtube.com/watch?v=QWzLPn164w0'
 sourceType: blog
 author: AI News & Strategy Daily | Nate B. Jones
 sourceDate: '2026-02-24'
 addedDate: '2026-02-26'
+slug: 'intent-engineering-statt-prompt-und-context'
 ---
+
+Kurzkontext: [[Nate B. Jones]] ordnet die Entwicklung entlang von [[Intent Engineering]] ein.
 
 ![Header](/images/blog/intent-engineering-statt-prompt-und-context/header.jpg)
 
@@ -180,3 +197,13 @@ Das Video trifft einen Kernpunkt der aktuellen Enterprise-AI-Phase: Prompt Engin
 Wer Intent nicht explizit macht, bekommt oft genau das, was er messbar fordert, und verfehlt dennoch den eigentlichen Zweck. Wer Intent sauber strukturiert, kann dagegen auch mit nicht-maximalen Modellen robuste Resultate erzielen.
 
 Die eigentliche strategische Frage ist deshalb nicht mehr primär, welches Modell ein Unternehmen nutzt, sondern ob es seinen eigenen Zweck so klar operationalisiert hat, dass autonome Systeme danach handeln können.
+
+## Verbindungen
+
+- [[Nate B. Jones]]
+- [[Intent Engineering]]
+- [[Context Engineering]]
+- [[Enterprise AI]]
+- [[Klarna]]
+- [[Agent Governance]]
+

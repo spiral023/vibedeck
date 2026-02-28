@@ -1,17 +1,28 @@
 ---
-title: How Claude Code works
-description: >-
-  Verstehe den agentischen Loop, die eingebauten Tools und wie Claude Code mit
-  deinem Projekt interagiert.
+title: "How Claude Code works"
+description: "Verstehe den agentischen Loop, die eingebauten Tools und wie Claude Code mit deinem Projekt interagiert."
+type: source
+status: seed
 category: fundamentals
 icon: Cpu
-readTime: 4 Min
-tags: ["claude-code", "agents", "tooling", "docs"]
+readTime: 4
+tags:
+  - tooling/claude-code
+  - fundamentals/agents
+  - infrastructure/claude
+aliases:
+  - "Claude Code Architecture"
+topics:
+  - "[[Claude Code]]"
+  - "[[Agentic Loop]]"
+  - "[[Model Context Protocol]]"
+  - "[[Context Window]]"
+up: "[[Claude Code]]"
 sourceURL: "https://code.claude.com/docs/en/how-claude-code-works"
 sourceType: "docs"
 author: "Anthropic Docs"
-level: beginner
-addedDate: "2026-02-01"
+sourceDate: "2026-02-01"
+addedDate: "2026-02-28"
 ---
 
 Claude Code ist ein agentischer Assistent, der in deinem Terminal läuft. Er kann nicht nur Code schreiben, sondern auch bei allem helfen, was du von der Kommandozeile aus tun kannst: Dokumentation schreiben, Builds ausführen, Dateien suchen, recherchieren und mehr.
@@ -81,3 +92,14 @@ Claudes Kontext-Fenster enthält den Verlauf, Dateiinhalte, Befehlsausgaben und 
 *   **Sei spezifisch:** Nenne Dateien und Pfade.
 *   **Verifikation:** Gib Testfälle oder Screenshots an.
 *   **Explore first:** Nutze den Plan Mode für komplexe Aufgaben.
+
+## Verbindungen
+- [[Claude Code]]
+- [[Agentic Loop]]
+- [[Model Context Protocol]]
+- [[Context Window]]
+- [[CLAUDE.md]]
+- [[Plan Mode]]
+- [[Subagents]]
+- [[Skills]]
+- [[Infrastructure/Claude]]

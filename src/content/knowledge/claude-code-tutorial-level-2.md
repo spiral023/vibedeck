@@ -1,13 +1,30 @@
 ---
 title: "Claude Code Tutorial Level 2: Fortgeschrittene Systeme"
 description: "Gehe über die Grundlagen hinaus: Meistere Skills, Subagents und MCP-Connectors, um Claude Code in ein autonomes Entwicklungssystem zu verwandeln."
+type: source
+status: seed
 category: tooling
 icon: Zap
-readTime: 12 Min
-tags: ["claude-code", "ai-coding", "skills", "subagents", "mcp", "workflow"]
+readTime: 12
+tags:
+  - tooling/claude-code
+  - ai-coding
+  - skills
+  - subagents
+  - mcp
+  - workflow
+aliases:
+  - "Claude Code Level 2"
+  - "Advanced Claude Code Systems"
+topics:
+  - "[[Agent Skills]]"
+  - "[[Subagents]]"
+  - "[[MCP Connectors]]"
+  - "[[Progressive Disclosure]]"
+up: "[[Claude Code]]"
 sourceURL: "https://x.com/eyad_khrais/status/2010810802023141688"
 sourceType: "thread"
-author: "Eyad"
+author: "Eyad (@eyad_khrais)"
 sourceDate: "2026-01-12"
 addedDate: "2026-02-26"
 ---
@@ -104,3 +121,13 @@ Die wahre Magie entsteht, wenn diese Systeme zusammenwirken:
 Investiere Zeit in das Konfigurieren dieser Systeme – es zahlt sich bei jeder nachfolgenden Aufgabe doppelt aus.
 
 *Quelle: Basierend auf einem Thread von [Eyad](https://x.com/eyad_khrais) auf X.*
+
+## Verbindungen
+- [[Agent Skills]]
+- [[Subagents]]
+- [[MCP Connectors]]
+- [[Progressive Disclosure]]
+- [[Context Window]]
+- [[Claude Code]]
+- [[Workflow Automation]]
+- [[Conventional Commits]]

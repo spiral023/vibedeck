@@ -3,9 +3,12 @@ title: 'Die nächsten 12 Monate AI: 5 Hebel, die Gewinner von Zuschauern trennen
 description: >-
   MotionViz argumentiert, dass 2026 nicht das beste Produkt gewinnt, sondern der schnellste Lernzyklus. Entscheidend
   sind Iterationsgeschwindigkeit, fokussierter Tool-Stack, Marktverständnis, Distribution und konsequentes Shipping.
+type: blog
+status: published
 category: workflows
 icon: BrainCircuit
-readTime: 10 Min
+readTime: '8 Min'
+readTimeMin: 8
 tags:
   - coding-workflows
   - strategie-fuehrung
@@ -19,12 +22,26 @@ keyPoints:
   - >-
     Langfristiger Vorsprung entsteht aus einem System aus Build, Distribution und konsequenter Umsetzung – nicht aus
     Konsum, Planung oder Hype.
+aliases:
+  - 'AI Five Things Next 12 Months'
+  - 'MotionViz AI Hebel 2026'
+people:
+  - '[[MotionViz]]'
+topics:
+  - '[[AI Execution]]'
+  - '[[Iteration Speed]]'
+  - '[[Distribution]]'
+  - '[[Tool-Stack]]'
+  - '[[Builder Mindset]]'
 sourceURL: 'https://x.com/Motion_Viz/status/2027122214685098270'
 sourceType: tweet
 author: MotionViz
 sourceDate: '2026-02-26'
 addedDate: '2026-02-28'
+slug: 'next-12-months-ai-five-things'
 ---
+
+Kurzkontext: [[MotionViz]] ordnet die Entwicklung entlang von [[AI Execution]] ein.
 
 MotionViz beschreibt in diesem langen X-Post eine harte, aber realistische Perspektive auf 2026: Die eigentliche Trennlinie verläuft nicht zwischen „AI-Nutzern" und „Nicht-Nutzern", sondern zwischen Menschen, die mit AI kontinuierlich Dinge **shippen**, und denen, die dauerhaft nur Tools vergleichen.
 
@@ -197,3 +214,13 @@ Der Post von MotionViz ist kein Tool-Guide, sondern ein Betriebsmodell für Buil
 Wer dieses Muster konsequent umsetzt, kann mit denselben Tools deutlich mehr Wert erzeugen als Teams, die in permanenter Optimierungsschleife hängen.
 
 > 2026 belohnt nicht die beste Theorie über AI, sondern die beste Frequenz an shipped outcomes.
+
+## Verbindungen
+
+- [[MotionViz]]
+- [[AI Execution]]
+- [[Iteration Speed]]
+- [[Distribution]]
+- [[Tool-Stack]]
+- [[Builder Mindset]]
+

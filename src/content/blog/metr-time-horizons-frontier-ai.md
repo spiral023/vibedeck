@@ -3,9 +3,12 @@ title: 'METR Time Horizons Update 2026: TH 1.1, Coding Agents und Messchaos im A
 description: >-
   Seit dem Long-Tasks-Artikel 2025 hat METR Time Horizon 1.1, direkte Claude-Code/Codex-Tests und neue Uplift-Methoden
   veröffentlicht. Die Capabilities steigen, aber Produktivitätsmessung bleibt methodisch schwierig.
+type: blog
+status: published
 category: fundamentals
 icon: BrainCircuit
-readTime: 11 Min
+readTime: '6 Min'
+readTimeMin: 6
 tags:
   - evaluation-benchmarks
   - agenten-engineering
@@ -20,12 +23,26 @@ keyPoints:
   - >-
     METR arbeitet an neuen Produktivitätsmethoden wie Transcript-Analyse, kämpft aber weiter mit Selection Bias und
     Real-World-Messproblemen.
+aliases:
+  - 'METR Time Horizons 2026'
+  - 'Time Horizon 1.1 Update'
+people:
+  - '[[METR]]'
+topics:
+  - '[[Time Horizon 1.1]]'
+  - '[[Evaluation]]'
+  - '[[Long Tasks]]'
+  - '[[Frontier Models]]'
+  - '[[Benchmarking]]'
 sourceURL: 'https://metr.org/time-horizons/'
 sourceType: blog
 author: METR
 sourceDate: '2026-02-24'
 addedDate: '2026-02-25'
+slug: 'metr-time-horizons-frontier-ai'
 ---
+
+Kurzkontext: [[METR]] ordnet die Entwicklung entlang von [[Time Horizon 1.1]] ein.
 
 ![Header](/images/blog/metr-time-horizons-frontier-ai/header.png)
 
@@ -140,3 +157,13 @@ Das Netto-Signal ist klar: Die technischen Fähigkeiten steigen, aber der Nachwe
 - [Early-2025 AI and experienced OSS developer productivity (10.07.2025)](https://metr.org/blog/2025-07-10-early-2025-ai-experienced-os-dev-study/)
 - [Reconciling slowdown with time horizons (12.08.2025)](https://metr.org/blog/2025-08-12-research-update-towards-reconciling-slowdown-with-time-horizons/)
 - [How time horizon varies across domains (14.07.2025)](https://metr.org/blog/2025-07-14-how-does-time-horizon-vary-across-domains/)
+
+## Verbindungen
+
+- [[METR]]
+- [[Time Horizon 1.1]]
+- [[Evaluation]]
+- [[Long Tasks]]
+- [[Frontier Models]]
+- [[Benchmarking]]
+

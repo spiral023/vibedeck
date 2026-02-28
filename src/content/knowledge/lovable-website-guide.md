@@ -1,16 +1,29 @@
 ---
 title: "The Complete Guide: Lovable Websites bauen"
 description: "Das exakte Framework für wunderschöne, hochkonvertierende Lovable-Websites im Jahr 2026. Von Layout-Mustern bis zu Conversion-Hacks."
+type: source
+status: seed
 category: workflows
 icon: Rocket
-readTime: 7 Min
-tags: ["lovable", "web-design", "conversion", "prompt-engineering", "landing-page"]
+readTime: 7
+tags:
+  - tooling/lovable
+  - workflows/web-design
+  - marketing/conversion
+  - tooling/prompt-engineering
+aliases:
+  - "Lovable Web Design Guide"
+topics:
+  - "[[Lovable]]"
+  - "[[Web Design]]"
+  - "[[Conversion Optimization]]"
+  - "[[Landing Pages]]"
+up: "[[Lovable]]"
 sourceURL: "https://x.com/damienghader/status/2014341010600435925"
 sourceType: "tweet"
-author: "damien"
+author: "Damien"
 sourceDate: "2026-01-22"
 addedDate: "2026-02-06"
-level: intermediate
 ---
 
 ![Lovable Guide](/images/knowledge/lovable-website-guide/header.jpg)
@@ -82,3 +95,13 @@ Sobald die Struktur steht, teste systematisch:
 4.  Reihenfolge der Sektionen
 
 Lovable macht Iteration trivial: **Duplizieren → Anpassen → Shiffen → Verfeinern.**
+
+## Verbindungen
+- [[Lovable]]
+- [[Web Design]]
+- [[Conversion Optimization]]
+- [[Landing Pages]]
+- [[UI Design]]
+- [[Responsive Design]]
+- [[Prompt Engineering]]
+- [[Supabase]]

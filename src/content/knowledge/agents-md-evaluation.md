@@ -1,10 +1,25 @@
 ---
 title: "Hilft AGENTS.md wirklich? Eine Evaluierung von Repository-Level Context Files"
 description: "Eine Studie der ETH Zürich untersucht, ob Dateien wie AGENTS.md oder CLAUDE.md die Performance von Coding-Agents tatsächlich verbessern oder nur die Kosten in die Höhe treiben."
+type: source
+status: seed
 category: patterns
 icon: BrainCircuit
-readTime: 6 Min
-tags: ["llm-coding", "agents", "context-engineering", "benchmark"]
+readTime: 6
+tags:
+  - patterns/context-engineering
+  - llm-coding
+  - agents
+  - benchmark
+aliases:
+  - "ETH Zurich AGENTS.md Study"
+topics:
+  - "[[Context Engineering]]"
+  - "[[AGENTS.md]]"
+  - "[[CLAUDE.md]]"
+  - "[[Benchmark]]"
+  - "[[ETH Zurich]]"
+up: "[[Context Engineering]]"
 sourceURL: "https://x.com/omarsar0/status/2027025098578727353"
 sourceType: "thread"
 author: "elvis (@omarsar0)"
@@ -88,3 +103,13 @@ Context Files sind keine Magie, aber auch nicht nutzlos. Die Qualität des Ergeb
 *   **Vollständiges Paper:** [Evaluating AGENTS.md: Are Repository-Level Context Files Helpful for Coding Agents?](https://arxiv.org/abs/2602.11988)
 *   **AGENTbench Dataset:** [github.com/eth-sri/agentbench](https://github.com/eth-sri/agentbench)
 *   **Original Blogpost:** [dair.ai/blog/agents-md-evaluation](https://academy.dair.ai/blog/agents-md-evaluation)
+
+## Verbindungen
+- [[Context Engineering]]
+- [[AGENTS.md]]
+- [[CLAUDE.md]]
+- [[Benchmark]]
+- [[ETH Zurich]]
+- [[Inference Costs]]
+- [[Redundancy]]
+- [[Instruction Following]]

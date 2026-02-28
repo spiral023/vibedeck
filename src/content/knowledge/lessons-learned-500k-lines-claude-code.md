@@ -1,16 +1,31 @@
 ---
 title: "Was ich aus 500k+ Zeilen Claude Code gelernt habe"
 description: "Erkenntnisse und Best Practices eines Power-Users, der innerhalb von 90 Tagen über eine halbe Million Zeilen Code mit Claude Code geschrieben hat."
+type: source
+status: seed
 category: workflows
 icon: Layers
-readTime: 4 Min
-tags: ["claude-code", "monorepo", "tdd", "mcp", "context-management"]
+readTime: 4
+tags:
+  - tooling/claude-code
+  - infrastructure/monorepo
+  - workflows/tdd
+  - tooling/mcp
+  - infrastructure/context-management
+aliases:
+  - "500k Lines Claude Code Lessons"
+topics:
+  - "[[Claude Code]]"
+  - "[[Monorepo]]"
+  - "[[Test Driven Development]]"
+  - "[[Model Context Protocol]]"
+  - "[[Context Management]]"
+up: "[[Claude Code]]"
 sourceURL: "https://www.reddit.com/r/ClaudeCode/comments/1id7vzv/what_i_learned_from_writing_500k_lines_with/"
 sourceType: "thread"
 author: "dhruv1103"
 sourceDate: "2026-01-12"
 addedDate: "2026-02-05"
-level: advanced
 ---
 
 > **Hinweis**: Dieser Artikel basiert auf einem [Reddit-Thread von dhruv1103](https://www.reddit.com/r/ClaudeCode/comments/1id7vzv/what_i_learned_from_writing_500k_lines_with/) aus dem Subreddit r/ClaudeCode.
@@ -53,6 +68,17 @@ Lasse Dein Frontend und Backend in einem **tmux**-Session laufen. So kann Claude
 Wenn Du mit den obigen Schritten vertraut bist, nutze mehrere `git worktrees` und lasse Agenten parallel arbeiten (oft 3-4 Sitzungen gleichzeitig).
 
 ## Fazit: "Vibe Reviewing" statt "Vibe Coding"
-Der wichtigste Punkt: Vergiss niemals, den generierten Code gründlich zu reviewen. 
+Der wichtigste Punkt: Vergiss niemals, den generierten Code gründlich zu reviewen.
 
 > "Vibe Reviewing beschreibt den Prozess besser als Vibe Coding. Es ist kritisch, die gesamte Codebase auf der Abstraktionsebene von Funktionen zu kennen. Du solltest zumindest wissen, wo jede Funktion lebt und in welcher Datei sie sich befindet."
+
+## Verbindungen
+- [[Claude Code]]
+- [[Monorepo]]
+- [[Test Driven Development]]
+- [[Model Context Protocol]]
+- [[Context Management]]
+- [[CLAUDE.md]]
+- [[Skills]]
+- [[Git Worktrees]]
+- [[Tmux]]

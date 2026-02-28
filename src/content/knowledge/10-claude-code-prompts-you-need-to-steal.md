@@ -3,10 +3,25 @@ title: 10 Claude Code Prompts You Need to Steal
 description: >-
   10 kampferprobte Claude Code Prompts, die garantiert deine Produktivität
   steigern. Kopiere sie einfach und lege los.
+type: source
+status: seed
 category: patterns
 icon: Sparkles
-readTime: 27 Min
-tags: ["claude-code", "prompts", "prompt-engineering", "vibe-coding"]
+readTime: 27
+tags:
+  - patterns/prompts
+  - tooling/claude-code
+  - prompt-engineering
+  - vibe-coding
+aliases:
+  - "Claude Code Prompt Library"
+topics:
+  - "[[Prompt Engineering]]"
+  - "[[Claude Code]]"
+  - "[[Automation]]"
+  - "[[Debugging]]"
+  - "[[App Development]]"
+up: "[[Claude Code]]"
 sourceURL: "https://x.com/aiedge_/status/2018356670070718614"
 sourceType: "tweet"
 author: "@aiedge_"
@@ -404,7 +419,7 @@ Lass Claude einen persönlichen Habit Tracker für dich bauen.
 >
 > When it's finished, give me:
 > - How to use it (the basics)
-- How to add or change habits later
+> - How to add or change habits later
 > - How my data is saved (and how to back it up)
 > - Ideas for features we could add next if I want
 >
@@ -469,4 +484,12 @@ Der ultimative Prompt, um eine Idee in ein echtes Produkt zu verwandeln.
 >
 > Let's build.
 
-**Pro Tipp:** Speichere diese Prompts in einer Notion-Datenbank für einfachen Zugriff & Wiederverwendbarkeit (du kannst sogar Claude Code bitten, dies automatisch für dich zu tun).
+## Verbindungen
+- [[Prompt Engineering]]
+- [[Claude Code]]
+- [[Automation]]
+- [[Debugging]]
+- [[App Development]]
+- [[Security Audit]]
+- [[Hosting]]
+- [[Habit Tracker]]

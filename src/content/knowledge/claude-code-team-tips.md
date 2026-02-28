@@ -1,13 +1,30 @@
 ---
 title: "10 Profi-Tipps vom Claude Code Team"
 description: "Boris Cherny, der Schöpfer von Claude Code, teilt 10 exklusive Tipps und Best Practices direkt aus dem internen Anthropic-Team."
+type: source
+status: seed
 category: workflows
 icon: Code2
-readTime: 6 Min
-tags: ["claude-code", "anthropic", "workflows", "ai-coding", "productivity"]
+readTime: 6
+tags:
+  - tooling/claude-code
+  - anthropic
+  - workflows
+  - ai-coding
+  - productivity
+aliases:
+  - "Claude Code Team Pro Tips"
+  - "Anthropic Internal Best Practices"
+topics:
+  - "[[Git Worktrees]]"
+  - "[[Plan Mode]]"
+  - "[[Subagents]]"
+  - "[[Skills]]"
+  - "[[Voice Dictation]]"
+up: "[[Claude Code]]"
 sourceURL: "https://x.com/bcherny/status/2017742741636321619"
 sourceType: "thread"
-author: "Boris Cherny"
+author: "Boris Cherny (@bcherny)"
 sourceDate: "2026-01-31"
 addedDate: "2026-02-05"
 level: advanced
@@ -82,3 +99,17 @@ Hinter den unterschiedlichen Workflows steht eine gemeinsame Philosophie:
 3. **Claude verbessert sich selbst:** Lass ihn seine eigenen Regeln schreiben.
 4. **Skills kumulieren:** Automatisiere, was Du wiederholst.
 5. **Herausfordern statt Instruieren:** Behandle Claude wie einen Kollegen, den Du überzeugen musst.
+
+## Verbindungen
+- [[Git Worktrees]]
+- [[Plan Mode]]
+- [[Subagents]]
+- [[Skills]]
+- [[Voice Dictation]]
+- [[CLAUDE.md]]
+- [[Boris Cherny]]
+- [[Ghostty]]
+- [[Claude Code]]
+- [[Parallel Execution]]
+- [[Context Management]]
+- [[Autonomous Agents]]

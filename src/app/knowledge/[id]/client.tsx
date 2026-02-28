@@ -131,7 +131,7 @@ export function ArticleView({ article }: ArticleViewProps) {
             <div className="min-w-0">
               <h1 className="text-3xl font-bold mb-2">{article.title}</h1>
               <p className="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-muted-foreground">
-                <span>{article.readTime} Lesezeit</span>
+                <span>{typeof article.readTime === 'number' ? `${article.readTime} Min.` : article.readTime} Lesezeit</span>
                 {viewed && (
                   <>
                     <span className="text-muted-foreground/50">•</span>

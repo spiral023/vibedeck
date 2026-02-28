@@ -1,13 +1,28 @@
 ---
 title: "Wie Claude Code Skills funktionieren"
 description: "Ein tiefer Einblick in die Funktionsweise von Claude Code Skills, von der Anatomie eines Skills bis hin zum dreistufigen Ladesystem."
+type: source
+status: seed
 category: tooling
 icon: Code2
-readTime: 4 Min
-tags: ["claude-code", "skills", "agent-coding", "workflow"]
+readTime: 4
+tags:
+  - tooling/claude-code
+  - tooling/skills
+  - agent-coding
+  - workflow
+aliases:
+  - "Claude Code Skills Mechanics"
+  - "How Skills Work in Claude Code"
+topics:
+  - "[[Agent Skills]]"
+  - "[[Progressive Disclosure]]"
+  - "[[Context Management]]"
+  - "[[Trigger-System]]"
+up: "[[Claude Code]]"
 sourceURL: "https://x.com/pdrmnvd/status/2020967757706297797"
 sourceType: "thread"
-author: "pedram.md"
+author: "pedram.md (@pdrmnvd)"
 sourceDate: "2026-02-09"
 addedDate: "2026-02-15"
 level: advanced
@@ -91,3 +106,15 @@ Wenn Claude die Logik hinter einer Anweisung versteht, kann er auch auf Grenzfä
 ## Fazit
 
 Gut geschriebene Skills sind ein Force Multiplier. Domain-Experten sind oft die besten Skill-Ersteller, da sie Details und Präzision liefern können, die anderen entgehen. Letztendlich baust Du eine universelle Reasoning-Engine, die bei Bedarf durch injizierten Kontext spezialisiert wird.
+
+## Verbindungen
+- [[Agent Skills]]
+- [[Progressive Disclosure]]
+- [[Context Management]]
+- [[Trigger-System]]
+- [[SKILL.md]]
+- [[YAML Frontmatter]]
+- [[Claude Code]]
+- [[Workflow Automation]]
+- [[Context Window]]
+- [[Domain Expertise]]

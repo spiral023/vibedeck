@@ -3,13 +3,28 @@ title: How I Use Claude Code (Full Guide)
 description: >-
   Der vollständige, ungekürzte Guide von Ashpreet Bedi zur Nutzung von Claude
   Code für komplexe Software-Features mittels Spec-First Development.
+type: source
+status: seed
 category: fundamentals
 icon: Code2
-readTime: 7 Min
-tags: ["claude-code", "workflows", "agentic-coding", "testing"]
+readTime: 7
+tags:
+  - tooling/claude-code
+  - workflows/spec-first
+  - agentic-coding
+  - testing
+aliases:
+  - "Spec-First Development Guide"
+  - "Claude Code Complex Features Guide"
+topics:
+  - "[[Spec-First Development]]"
+  - "[[Cookbooks]]"
+  - "[[Decision Traces]]"
+  - "[[Layered Instructions]]"
+up: "[[Software Engineering Patterns]]"
 sourceURL: 'https://x.com/ashpreetbedi/status/2011220028453241218'
 sourceType: thread
-author: Ashpreet Bedi
+author: Ashpreet Bedi (@ashpreetbedi)
 sourceDate: '2026-01-14'
 addedDate: "2026-02-01"
 level: advanced
@@ -118,3 +133,17 @@ Ich bevorzuge es, Informationen vorzuladen (Front-loading). Architektur-Entschei
 *   **Opus 4.5 ist AGI.**
 
 Wenn ich sage, Claude schreibt 100% meines Codes, meine ich das ernst. Ich reviewe immer noch jede Zeile. Ich bin nur nicht derjenige, der tippt.
+
+## Verbindungen
+- [[Spec-First Development]]
+- [[Cookbooks]]
+- [[Decision Traces]]
+- [[Layered Instructions]]
+- [[design.md]]
+- [[implementation.md]]
+- [[CLAUDE.md]]
+- [[Opus 4.5]]
+- [[Claude Code]]
+- [[Agentic Workflow]]
+- [[Testing]]
+- [[Vibe Coding]]

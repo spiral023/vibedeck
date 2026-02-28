@@ -1,16 +1,27 @@
 ---
-title: Connect Claude Code to tools via MCP
-description: >-
-  Lerne, wie du Claude Code über das Model Context Protocol (MCP) mit deinen
-  Tools, Datenbanken und APIs verbindest.
-category: tools
+title: "Connect Claude Code to tools via MCP"
+description: "Lerne, wie du Claude Code über das Model Context Protocol (MCP) mit deinen Tools, Datenbanken und APIs verbindest."
+type: source
+status: seed
+category: tooling
 icon: Plug
-readTime: 3 Min
-tags: ["claude-code", "mcp", "tooling", "docs"]
+readTime: 3
+tags:
+  - tooling/claude-code
+  - tooling/mcp
+  - infrastructure/mcp
+aliases:
+  - "Claude Code MCP Integration"
+topics:
+  - "[[Model Context Protocol]]"
+  - "[[MCP Server]]"
+  - "[[Tool Integration]]"
+  - "[[Claude Code]]"
+up: "[[Claude Code]]"
 sourceURL: "https://code.claude.com/docs/en/mcp"
 sourceType: "docs"
 author: "Anthropic Docs"
-level: intermediate
+sourceDate: "2026-02-01"
 addedDate: "2026-02-01"
 ---
 
@@ -78,3 +89,11 @@ Wenn du viele MCP-Server hast, lädt Claude Code Tools dynamisch ("Tool Search")
 
 ## Managed MCP (Enterprise)
 Unternehmen können MCP-Server zentral über eine `managed-mcp.json` steuern oder Policies (Allow-/Denylists) definieren, um den Zugriff auf bestimmte Tools zu beschränken oder zu erzwingen.
+
+## Verbindungen
+- [[Model Context Protocol]]
+- [[MCP Server]]
+- [[Claude Code]]
+- [[Tool Integration]]
+- [[API Integration]]
+- [[Infrastructure/MCP]]

@@ -1,17 +1,28 @@
 ---
-title: Extend Claude with skills
-description: >-
-  Erstelle, verwalte und teile Skills, um Claudes Fähigkeiten in Claude Code zu
-  erweitern. Inklusive benutzerdefinierter Slash-Commands.
-category: tools
+title: "Extend Claude with skills"
+description: "Erstelle, verwalte und teile Skills, um Claudes Fähigkeiten in Claude Code zu erweitern. Inklusive benutzerdefinierter Slash-Commands."
+type: source
+status: seed
+category: tooling
 icon: Brain
-readTime: 4 Min
-tags: ["claude-skills", "claude-code", "tooling", "docs"]
+readTime: 4
+tags:
+  - tooling/claude-skills
+  - tooling/claude-code
+  - workflows/automation
+aliases:
+  - "Claude Skills Guide"
+topics:
+  - "[[Skills]]"
+  - "[[Claude Code]]"
+  - "[[Custom Commands]]"
+  - "[[Workflow Automation]]"
+up: "[[Claude Code]]"
 sourceURL: "https://code.claude.com/docs/en/skills"
 sourceType: "docs"
 author: "Anthropic Docs"
-level: advanced
-addedDate: "2026-02-01"
+sourceDate: "2026-02-01"
+addedDate: "2026-02-28"
 ---
 
 Skills erweitern das, was Claude tun kann. Erstelle eine `SKILL.md`-Datei mit Anweisungen, und Claude fügt sie seinem Werkzeugkasten hinzu. Claude nutzt Skills, wenn sie relevant sind, oder du rufst sie direkt mit `/skill-name` auf.
@@ -128,4 +139,13 @@ Skills können Skripte bündeln (z.B. Python), um HTML-Dateien zu generieren und
 
 *   **Skill triggert nicht:** Prüfe die `description`. Enthält sie relevante Keywords?
 *   **Triggert zu oft:** Mach die `description` spezifischer oder setze `disable-model-invocation: true`.
-*   **Claude sieht Skills nicht:** Prüfe mit `/context`, ob du das Limit für Skill-Beschreibungen erreicht hast.
+*   **Claude sieht Skills nicht:** Prüfe mit `/context`, ob du das Limit für Skill-Beschreibungen erreicht hast. 
+
+## Verbindungen
+- [[Skills]]
+- [[Claude Code]]
+- [[Custom Commands]]
+- [[Workflow Automation]]
+- [[Subagents]]
+- [[CLAUDE.md]]
+- [[Model Context Protocol]]

@@ -3,11 +3,28 @@ title: 'Claude Code lernen: Der 7-Schritte-Plan'
 description: >-
   Hoeem teilt die wichtigsten Erkenntnisse aus einem Anthropic-Kurs zu Claude
   Code: Von Core Mechanics über Context Engineering bis hin zur Skalierung.
+type: source
+status: seed
 category: fundamentals
 icon: Terminal
-readTime: 7 Min
-tags: ["claude-code", "workflows", "tooling", "best-practices"]
-level: intermediate
+readTime: 7
+tags:
+  - fundamentals/claude-code
+  - tooling/claude-code
+  - workflows
+  - best-practices
+aliases:
+  - "Claude Code 7 Step Plan"
+topics:
+  - "[[Context Engineering]]"
+  - "[[Two Brains Strategy]]"
+  - "[[Hooks]]"
+  - "[[God Mode]]"
+up: "[[Claude Code]]"
+sourceURL: "https://x.com/hooeem/status/2007914329748668472"
+sourceType: tweet
+author: "hoeem (@hooeem)"
+sourceDate: "2026-01-22"
 addedDate: "2026-02-01"
 ---
 
@@ -117,3 +134,15 @@ Wir sind keine kompletten Anfänger mehr in Claude Code.
 
 ---
 *Quelle: [hoeem auf X](https://x.com/hooeem/status/2007914329748668472)*
+
+## Verbindungen
+- [[Context Engineering]]
+- [[Two Brains Strategy]]
+- [[Hooks]]
+- [[God Mode]]
+- [[CLAUDE.md]]
+- [[Panic Buttons]]
+- [[Extended Thinking]]
+- [[MCP]]
+- [[Claude Code]]
+- [[Guardrails]]

@@ -1,10 +1,24 @@
 ---
 title: "Advanced Patterns für Agent Teams in Claude Code"
 description: "Erfahre, wie du Agent Teams durch Modulgrenzen, operationalen Kontext in CLAUDE.md und automatisierte Verifizierung effizient steuerst."
+type: source
+status: seed
 category: workflows
 icon: Zap
-readTime: 8 Min
-tags: ["claude-code", "agent-teams", "productivity", "parallel-execution", "claude-md"]
+readTime: 8
+tags:
+  - workflows/agent-teams
+  - tooling/claude-code
+  - parallel-execution
+  - claude-md
+aliases:
+  - "Advanced Agent Teams Patterns"
+topics:
+  - "[[Agent Teams]]"
+  - "[[Parallel Execution]]"
+  - "[[CLAUDE.md]]"
+  - "[[Module Boundaries]]"
+up: "[[Agent Teams]]"
 sourceURL: "https://x.com/dani_avila7/status/2020170608290549906"
 sourceType: "thread"
 author: "Daniel San"
@@ -107,3 +121,12 @@ Agent Teams funktionieren am besten, wenn:
 - Die `CLAUDE.md` als gemeinsamer Runtime-Kontext behandelt wird.
 
 Sobald man sich an dieses Modell der Koordination gewöhnt hat, fühlt es sich weniger nach "vielen Agenten" an, sondern nach einem einzigen, hocheffizienten, parallel laufenden System.
+
+## Verbindungen
+- [[Agent Teams]]
+- [[Parallel Execution]]
+- [[CLAUDE.md]]
+- [[Plan Mode]]
+- [[Token Efficiency]]
+- [[Verification]]
+- [[Module Boundaries]]

@@ -3,13 +3,28 @@ title: 'Karpathys neuer Coding Workflow: 80% Agent, 20% Mensch'
 description: >-
   Andrej Karpathys Beobachtungen zur Transition von manuellem Coding hin zu
   'English as a Programming Language' mit Claude Code.
+type: source
+status: seed
 category: workflows
 icon: BrainCircuit
-readTime: 5 Min
-tags: ["claude-code", "agentic-coding", "workflows", "vibe-coding"]
+readTime: 5
+tags:
+  - workflows/agent-coding
+  - tooling/claude-code
+  - vibe-coding
+  - productivity
+aliases:
+  - "Karpathy Coding Workflow 2026"
+  - "English as a Programming Language"
+topics:
+  - "[[Vibe Coding]]"
+  - "[[English as Programming Language]]"
+  - "[[Stamina]]"
+  - "[[Atrophy]]"
+up: "[[AI Workflows]]"
 sourceURL: 'https://x.com/karpathy/status/2015883857489522876'
 sourceType: tweet
-author: Andrej Karpathy
+author: Andrej Karpathy (@karpathy)
 sourceDate: '2026-01-26'
 addedDate: "2026-02-05"
 level: intermediate
@@ -73,3 +88,16 @@ Karpathy erwartet für 2026 eine Flut von minderwertigem AI-Content ("Slop") auf
 ## Fazit
 
 Wir haben Ende 2025 eine Schwelle der Kohärenz überschritten (speziell mit Claude & Codex). 2026 wird das Jahr, in dem die Industrie diese neuen Fähigkeiten "verstoffwechselt" und neue organisatorische Workflows findet.
+
+## Verbindungen
+- [[Vibe Coding]]
+- [[English as Programming Language]]
+- [[Stamina]]
+- [[Atrophy]]
+- [[Claude Code]]
+- [[Andrej Karpathy]]
+- [[Test-Driven]]
+- [[AI Workflows]]
+- [[Leverage]]
+- [[Slopacolypse]]
+- [[Agentic Workflow]]

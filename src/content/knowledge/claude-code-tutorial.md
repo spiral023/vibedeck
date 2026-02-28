@@ -3,13 +3,28 @@ title: The Complete Claude Code Tutorial
 description: >-
   Ein umfassender Leitfaden von Eyad Khrais zur effektiven Nutzung von Claude
   Code für robuste Systeme: Planning, Architecture, CLAUDE.md und mehr.
+type: source
+status: seed
 category: fundamentals
 icon: Code2
-readTime: 8 Min
-tags: ["claude-code", "workflows", "best-practices", "tooling"]
+readTime: 8
+tags:
+  - tooling/claude-code
+  - workflows
+  - best-practices
+  - tooling
+aliases:
+  - "Claude Code Beginner Guide"
+  - "Eyad Khrais Claude Code Tutorial"
+topics:
+  - "[[Plan Mode]]"
+  - "[[CLAUDE.md]]"
+  - "[[Context Window]]"
+  - "[[Architecture]]"
+up: "[[Claude Code]]"
 sourceURL: 'https://x.com/eyad_khrais/status/2010076957938188661'
 sourceType: tweet
-author: Eyad Khrais
+author: Eyad Khrais (@eyad_khrais)
 sourceDate: '2026-01-10'
 addedDate: "2026-02-01"
 level: intermediate
@@ -120,9 +135,9 @@ Manchmal loopet Claude. Es versucht das Gleiche, scheitert, wiederholt es.
 Profis nutzen Claude nicht für One-Off Tasks, sondern bauen Systeme. Claude Code hat einen `-p` Flag für **Headless Mode**.
 
 Das bedeutet:
-*   Du kannst es scripten.
-*   Output in andere Tools pipen.
-*   In automatisierte Workflows integrieren (Auto PR Reviews, Support Tickets).
+*   **Du kannst es scripten.**
+*   **Output in andere Tools pipen.**
+*   **In automatisierte Workflows integrieren** (Auto PR Reviews, Support Tickets).
 
 **Das Flywheel:** Claude macht Fehler -> Du prüfst Logs -> Du verbesserst `CLAUDE.md` oder Tooling -> Claude wird besser.
 
@@ -138,3 +153,16 @@ Das bedeutet:
 5.  **Output kommt von Input:** Verbessere deine Kommunikation.
 6.  **Experimentiere:** Nutze MCP, Hooks, Slash Commands.
 7.  **Baue Systeme:** Nutze Headless Mode und Automation.
+
+## Verbindungen
+- [[Plan Mode]]
+- [[CLAUDE.md]]
+- [[Context Window]]
+- [[Architecture]]
+- [[MCP]]
+- [[Hooks]]
+- [[Slash Commands]]
+- [[Claude Code]]
+- [[Headless Mode]]
+- [[System Thinking]]
+- [[Prompt Engineering]]

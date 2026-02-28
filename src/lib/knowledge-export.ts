@@ -17,7 +17,7 @@ export const formatKnowledgeArticleMarkdown = (article: KnowledgeArticle) => {
     `description: ${formatYamlString(article.description)}`,
     `category: ${formatYamlString(article.category)}`,
     `icon: ${formatYamlString(article.icon)}`,
-    `readTime: ${formatYamlString(article.readTime)}`,
+    `readTime: ${typeof article.readTime === 'number' ? article.readTime : formatYamlString(article.readTime)}`,
   ];
 
   if (article.tags && article.tags.length > 0) {

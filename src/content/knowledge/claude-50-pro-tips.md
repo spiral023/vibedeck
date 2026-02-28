@@ -1,12 +1,29 @@
 ---
 title: "50 unterschätzte Claude Tipps (Practical Advice)"
 description: "Eine umfassende Sammlung von 50 praktischen Tipps für Claude, Claude Code, Cowork und Prompting-Hacks für Power-User."
+type: source
+status: seed
 category: workflows
 icon: Zap
-readTime: 12 Min
-tags: ["claude", "claude-code", "prompt-engineering", "productivity", "cowork"]
+readTime: 12
+tags:
+  - tooling/claude
+  - tooling/claude-code
+  - prompt-engineering
+  - productivity
+  - tooling/cowork
+aliases:
+  - "50 Claude Pro Tips"
+  - "Claude Practical Advice"
+topics:
+  - "[[CLAUDE.md]]"
+  - "[[MCP]]"
+  - "[[Plan Mode]]"
+  - "[[Claude Cowork]]"
+  - "[[Compact Command]]"
+up: "[[Claude Code]]"
 sourceURL: "https://x.com/aiedge_/status/2014009389427101949"
-sourceType: "thread"
+sourceType: thread
 author: "AI Edge"
 sourceDate: "2026-01-21"
 addedDate: "2026-02-05"
@@ -83,3 +100,15 @@ Hier sind 50 praktische Tipps, um das Beste aus Claude herauszuholen – von ver
 3. **Bezahlte Pläne**: Ein Paid-Plan lohnt sich für Claude mehr als für jedes andere AI-Tool.
 2. **ChatGPT zu Claude**: Nutze die Sprachfunktion von ChatGPT für komplexe Prompts und exportiere das Transkript zu Claude.
 1. **Model Stacking**: Kombiniere die Stärken verschiedener Tools (z.B. Grok für X-Scraping, dann Import zu Claude).
+
+## Verbindungen
+- [[CLAUDE.md]]
+- [[MCP]]
+- [[Plan Mode]]
+- [[Claude Cowork]]
+- [[Compact Command]]
+- [[Extended Thinking]]
+- [[Slash Commands]]
+- [[Prompt Engineering]]
+- [[Claude Code]]
+- [[Ralph Loop]]

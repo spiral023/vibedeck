@@ -1,10 +1,26 @@
 ---
 title: "Claude Code & OpenAI Codex: Lokale LLMs nutzen"
 description: "Schritt-für-Schritt-Anleitung, um Anthropic's Claude Code und OpenAI Codex mit lokalen Modellen wie DeepSeek oder Qwen via llama.cpp zu verbinden."
+type: source
+status: seed
 category: tooling
 icon: Code2
-readTime: 8 Min
-tags: ["claude-code", "codex", "local-llm", "llama-cpp", "unsloth"]
+readTime: 8
+tags:
+  - tooling/claude-code
+  - tooling/codex
+  - local-llm
+  - llama-cpp
+  - unsloth
+aliases:
+  - "Local LLM for Claude Code Guide"
+topics:
+  - "[[Local LLM]]"
+  - "[[llama.cpp]]"
+  - "[[Unsloth]]"
+  - "[[GGUF]]"
+  - "[[GLM-4.7-Flash]]"
+up: "[[Local Execution]]"
 sourceURL: "https://unsloth.ai/docs/basics/claude-codex"
 sourceType: "docs"
 author: "Unsloth Team"
@@ -117,3 +133,15 @@ codex --model unsloth/GLM-4.7-Flash -c model_provider=llama_cpp --search
 ```
 
 > ⚠️ **Achtung:** Mit dem Flag `--dangerously-bypass-approvals-and-sandbox` führt Codex Code ohne Bestätigung aus. Nutze dies nur in sicheren Umgebungen!
+
+## Verbindungen
+- [[Local LLM]]
+- [[llama.cpp]]
+- [[Unsloth]]
+- [[GGUF]]
+- [[GLM-4.7-Flash]]
+- [[Ollama]]
+- [[Claude Code]]
+- [[OpenAI Codex]]
+- [[Privacy]]
+- [[Local Execution]]

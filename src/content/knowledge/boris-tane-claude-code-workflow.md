@@ -1,10 +1,24 @@
 ---
 title: "Der Boris Tane Workflow: Claude Code effizient nutzen"
 description: "Lerne den disziplinierten Workflow von Boris Tane kennen: Trennung von Planung und Implementierung durch Annotationen in Markdown-Dateien."
+type: source
+status: seed
 category: workflows
 icon: Zap
-readTime: 10 Min
-tags: ["claude-code", "workflows", "planning", "ai-agents", "best-practices"]
+readTime: 10
+tags:
+  - tooling/claude-code
+  - workflows/planning
+  - best-practices
+  - ai-agents
+aliases:
+  - "Boris Tane Claude Code Workflow"
+topics:
+  - "[[Planning Cycle]]"
+  - "[[Annotation Cycle]]"
+  - "[[Shared Mutable State]]"
+  - "[[Research Mode]]"
+up: "[[Claude Code]]"
 sourceURL: "https://boristane.com/blog/how-i-use-claude-code/"
 sourceType: "blog"
 author: "Boris Tane"
@@ -109,3 +123,13 @@ graph TD
 
 ### Fazit in einem Satz
 Lies tiefgründig, schreibe einen Plan, annotiere den Plan, bis er stimmt, und lass Claude dann ohne Unterbrechung ausführen, während ständig die Typen geprüft werden.
+
+## Verbindungen
+- [[Planning Cycle]]
+- [[Annotation Cycle]]
+- [[Shared Mutable State]]
+- [[Research Mode]]
+- [[plan.md]]
+- [[research.md]]
+- [[Claude Code]]
+- [[Iterative Refinement]]

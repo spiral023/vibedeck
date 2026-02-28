@@ -1,10 +1,26 @@
 ---
 title: "Claude vs. Codex: Iterative Plan-Reviews für fehlerfreien Code"
 description: "Wie du Claude Code und OpenAI Codex in einer iterativen Review-Schleife gegeneinander antreten lässt, um produktionsreife Specs zu erhalten."
+type: source
+status: seed
 category: workflows
 icon: Code2
-readTime: 12 Min
-tags: ["claude-code", "codex", "agent-skills", "code-review", "ai-workflow"]
+readTime: 12
+tags:
+  - tooling/claude-code
+  - tooling/codex
+  - agent-skills
+  - code-review
+  - ai-workflow
+aliases:
+  - "Claude Codex Review Loop"
+  - "Iterative Plan Review Guide"
+topics:
+  - "[[Cross-Model Review]]"
+  - "[[Iterative Review Loop]]"
+  - "[[Verdict Protocol]]"
+  - "[[Codex CLI]]"
+up: "[[AI Workflows]]"
 sourceURL: "https://aseemshrey.in/blog/claude-codex-iterative-plan-review/"
 sourceType: "blog"
 author: "Aseem Shrey"
@@ -90,3 +106,15 @@ Die Qualität dessen, was du mit Agenten baust, hängt direkt von der Qualität 
 
 ---
 *P.S. – Ja, dieser Blogpost wurde auch mit Unterstützung von KI geschrieben. Wir lassen KIs darüber schreiben, wie KIs miteinander streiten. Wir sind offiziell hinter den Spiegeln gelandet.*
+
+## Verbindungen
+- [[Cross-Model Review]]
+- [[Iterative Review Loop]]
+- [[Verdict Protocol]]
+- [[Codex CLI]]
+- [[Claude Code]]
+- [[OpenAI Codex]]
+- [[Spec-First Development]]
+- [[Code Review]]
+- [[Architecture]]
+- [[Agentic Workflow]]

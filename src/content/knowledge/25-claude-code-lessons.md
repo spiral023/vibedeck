@@ -1,10 +1,26 @@
 ---
 title: "25 Lektionen aus der täglichen Nutzung von Claude Code"
 description: "Ein Deep-Dive in fortgeschrittene Workflows: CLAUDE.md, Memory-Systeme, Subagents und die effiziente Nutzung des Context Windows."
+type: source
+status: seed
 category: workflows
 icon: Code2
-readTime: 12 Min
-tags: ["claude-code", "ai-agents", "productivity", "mcp", "subagents"]
+readTime: 12
+tags:
+  - tooling/claude-code
+  - workflows/agents
+  - productivity
+  - mcp
+  - subagents
+aliases:
+  - "25 Claude Code Lessons"
+topics:
+  - "[[CLAUDE.md]]"
+  - "[[Memory Systems]]"
+  - "[[Subagents]]"
+  - "[[Context Management]]"
+  - "[[MCP]]"
+up: "[[Claude Code]]"
 sourceURL: "https://x.com/gmoneyNFT/status/2022454519741767800"
 sourceType: "thread"
 author: "gmoney.eth"
@@ -108,3 +124,13 @@ Der größte Produktivitätsboost: Führe 3-5 Sessions parallel aus (jeweils in 
 Die Kluft zwischen Gelegenheitsnutzern und denen, die echte Workflows bauen, wird immer größer. Die meisten dieser Tipps sind nicht kompliziert – sie sind nur nicht offensichtlich, bis man selbst genug Token "verbrannt" hat, um die Patterns zu erkennen.
 
 **Starte klein:** Setze eine `CLAUDE.md` auf, baue einen ersten Skill und experimentiere mit parallelen Sessions.
+
+## Verbindungen
+- [[CLAUDE.md]]
+- [[Context Window]]
+- [[Subagents]]
+- [[MCP]]
+- [[Plan Mode]]
+- [[Voice Dictation]]
+- [[Git Worktrees]]
+- [[Memory Systems]]

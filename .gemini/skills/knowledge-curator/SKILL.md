@@ -1,12 +1,12 @@
 ---
 name: knowledge-curator
 description: Use this skill to convert web content (Tweets, Blogs, Threads) into high-quality VibeDeck knowledge base articles using Markdown.
-version: 1.3.0
+version: 1.4.0
 ---
 
 # Knowledge Curator Skill
 
-Dieser Skill transformiert Webinhalte, Tweets, Blogartikel oder Threads in strukturierte Wissensbasis-Artikel für VibeDeck.
+Dieser Skill transformiert Webinhalte, Tweets, Blogartikel oder Threads in strukturierte Wissensbasis-Artikel für VibeDeck. Er ist speziell für **Obsidian** optimiert, um als "Source Note" in einem Knowledge Graph zu funktionieren.
 
 ## 1. Rolle & Tonalität
 
@@ -30,20 +30,30 @@ Du bist ein erfahrener technischer Redakteur für "VibeDeck".
     - **Fallback bei Blockaden:** Wenn X den Zugriff blockiert (Login-Wall/Cloudflare), nutze `brave_web_search` um nach "[Autor] [Thema] thread" oder "threadreaderapp [ID]" zu suchen. Oft gibt es Blog-Posts (z.B. paddo.dev, medium, substack), die den Thread-Inhalt sauberer und ohne Login-Zwang bereitstellen.
 5.  **Datenextraktion:** Nutze `take_snapshot` für den Text und `browser_evaluate`, um gezielt alle relevanten Bild-URLs (`img.src`) aus den Post-Elementen zu extrahieren.
 
-### B. Inhalt transformieren
+### B. Inhalt transformieren (Obsidian Optimized)
 
-Berechne die Lesezeit: `Lesezeit (Min) ≈ Wörter / 140` (aufrunden).
+Berechne die Lesezeit: `Lesezeit ≈ Wörter / 140` (aufrunden, nur als Zahl).
 
-Erstelle den Markdown-Inhalt basierend auf dieser Struktur:
+Erstelle den Markdown-Inhalt basierend auf dieser erweiterten Struktur für Obsidian:
 
 ```markdown
 ---
 title: "Prägnanter deutscher Titel (nah am Original)"
 description: "1-2 Sätze Zusammenfassung."
+type: source
+status: seed
 category: [fundamentals | patterns | workflows | tooling | security]
 icon: [Passendes Lucide Icon Name]
-readTime: [X] Min
-tags: ["llm-coding", "agents", "workflow", "testing"]
+readTime: [X] # Nur die Zahl (Integer)
+tags:
+  - tooling/claude-code # Hierarchische Tags nutzen!
+  - workflows
+  - agents
+aliases:
+  - "Alternativer Titel oder Abkürzung"
+topics:
+  - "[[Concept Note Name]]" # Wichtige Konzepte als Wikilinks
+up: "[[Parent Concept]]" # Optional: Übergeordnetes Thema
 sourceURL: "https://url.com"
 sourceType: "tweet" | "blog" | "thread"
 author: "Andrej Karpathy"
@@ -54,17 +64,18 @@ addedDate: "2026-02-28"
 [NUR WENN BILD VORHANDEN IST: ![Header Image Description](/images/knowledge/{slug}/header.jpg)]
 
 [Inhalt hier. Nutze H2 (##) und H3 (###). Zitiere Kernaussagen mit Blockquotes (>).]
+
+## Verbindungen
+- [[Concept Note 1]]
+- [[Concept Note 2]]
+- [[Concept Note 3]]
 ```
 
-Wichtig zu Datumsfeldern:
-
-- `sourceDate`: Original-Veröffentlichungsdatum der Quelle (vom Tweet/Blog/Thread selbst).
-- `addedDate`: Hinzufügedatum zu VibeDeck (immer lokales Tagesdatum im Format `YYYY-MM-DD` zum Zeitpunkt der Erstellung).
-- Datumsformat für beide Felder: `YYYY-MM-DD`.
-
-Für `addedDate` in PowerShell:
-
-`(Get-Date).ToString('yyyy-MM-dd')`
+**Wichtige Regeln für Metadaten & Links:**
+1.  **Tags:** Nutze hierarchische Tags (Slash-Syntax), z.B. `tooling/claude-code` statt nur `claude-code`.
+2.  **Topics:** Liste wichtige Konzepte als Wikilinks in Quotes, z.B. `"[[Prompt Engineering]]"`.
+3.  **Verbindungen:** Erstelle am Ende des Artikels IMMER eine Sektion `## Verbindungen`. Extrahiere 5-10 Schlüsselbegriffe aus dem Text (z.B. Tools, Methoden, Konzepte) und liste sie als Wikilinks auf. Dies erzeugt die Kanten im Knowledge Graph.
+4.  **Datumsfelder:** Format `YYYY-MM-DD`. `addedDate` ist das aktuelle Datum.
 
 ### C. Assets verwalten
 
@@ -82,10 +93,11 @@ Für `addedDate` in PowerShell:
 
 ## 3. Qualitäts-Checkliste
 
-- [ ] Wurde eine Einleitung/Marketing-Gerede entfernt?
+- [ ] Wurde das Obsidian-Frontmatter korrekt befüllt (`type: source`, `status`, `topics`)?
+- [ ] Sind `tags` hierarchisch (`category/topic`)?
+- [ ] Gibt es am Ende eine Sektion `## Verbindungen` mit echten Wikilinks?
 - [ ] Sind englische Fachbegriffe erhalten geblieben?
 - [ ] Ist die Bildquelle (Header) korrekt verlinkt?
-- [ ] Ist der Frontmatter vollständig (Category, Icon, ReadTime, Tags, Source-Felder inkl. `sourceDate` und `addedDate`)?
 
 ## 4. Beispiel für Icons
 

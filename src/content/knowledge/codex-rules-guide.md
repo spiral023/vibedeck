@@ -1,12 +1,29 @@
 ---
 title: "Codex Rules: Kontrolle über Befehle außerhalb der Sandbox"
 description: "Verwalte mit Rules, welche Befehle Codex außerhalb der isolierten Sandbox ausführen darf – von der automatischen Freigabe bis zur strikten Blockierung."
+type: source
+status: seed
 category: security
 icon: Shield
-readTime: 10 Min
-tags: ["codex", "openai", "security", "sandbox", "cli", "rules"]
+readTime: 10
+tags:
+  - tooling/codex
+  - openai
+  - security
+  - sandbox
+  - cli
+  - rules
+aliases:
+  - "Codex Rules Guide"
+  - "Prefix Rules for Codex"
+topics:
+  - "[[Rules]]"
+  - "[[Sandbox]]"
+  - "[[Starlark]]"
+  - "[[Prefix Rule]]"
+up: "[[OpenAI Codex]]"
 sourceURL: "https://developers.openai.com/codex/rules"
-sourceType: "blog"
+sourceType: blog
 author: "OpenAI"
 sourceDate: "2026-02-28"
 addedDate: "2026-02-28"
@@ -118,3 +135,15 @@ Das `.rules` Dateiformat basiert auf **Starlark**, einer Sprache, die syntaktisc
 ## Fazit: Sicherheit durch Transparenz
 
 Rules geben Administratoren und Power-Usern die volle Kontrolle zurück. Durch die Kombination von **Smart Approvals** (bei denen Codex Regeln basierend auf deinem Verhalten vorschlägt) und manuell definierten **Restrictive Rules** kannst du eine Arbeitsumgebung schaffen, die sowohl produktiv als auch sicher vor destruktiven KI-Aktionen ist.
+
+## Verbindungen
+- [[Rules]]
+- [[Sandbox]]
+- [[Starlark]]
+- [[Prefix Rule]]
+- [[OpenAI Codex]]
+- [[Security]]
+- [[Command Smuggling]]
+- [[Tree-sitter]]
+- [[Smart Approvals]]
+- [[CLI]]

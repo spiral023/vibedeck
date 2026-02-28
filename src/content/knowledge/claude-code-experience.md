@@ -4,13 +4,33 @@ description: >-
   Ein umfassender Deep Dive von Sankalp über Claude Code 2.0: Von der 'Anthropic
   Redemption Arc' über versteckte Features bis hin zu fortgeschrittenem Context
   Engineering.
+type: source
+status: seed
 category: advanced
 icon: Bot
-readTime: 15 Min
-tags: ["claude-code", "agentic-coding", "workflows", "best-practices"]
+readTime: 15
+tags:
+  - tooling/claude-code
+  - agentic-coding
+  - workflows
+  - best-practices
+aliases:
+  - "Claude Code 2.0 Deep Dive"
+  - "Opus 4.5 Experience"
+topics:
+  - "[[Context Engineering]]"
+  - "[[Opus 4.5]]"
+  - "[[Subagents]]"
+  - "[[Checkpointing]]"
+  - "[[Hooks]]"
+up: "[[Claude Code]]"
+sourceURL: "https://sankalp.bearblog.dev/my-experience-with-claude-code-20-and-how-to-get-better-at-using-coding-agents/"
+sourceType: "blog"
+author: "Sankalp (@sankalp)"
+sourceDate: "2026-01-25"
+addedDate: "2026-02-01"
 level: advanced
 hot: true
-addedDate: "2026-02-01"
 ---
 
 > Ursprünglich veröffentlicht auf [Sankalp's Blog](https://sankalp.bearblog.dev/my-experience-with-claude-code-20-and-how-to-get-better-at-using-coding-agents/).
@@ -258,3 +278,16 @@ Wenn du das hier nützlich fandest: Probier heute **ein** neues Feature aus (z.B
 
 ---
 *Quelle: [Sankalp's Blog](https://sankalp.bearblog.dev/my-experience-with-claude-code-20-and-how-to-get-better-at-using-coding-agents/)*
+
+## Verbindungen
+- [[Context Engineering]]
+- [[Opus 4.5]]
+- [[Subagents]]
+- [[Checkpointing]]
+- [[Hooks]]
+- [[Ultrathink]]
+- [[Context Rot]]
+- [[System Reminders]]
+- [[Agent Skills]]
+- [[CLAUDE.md]]
+- [[Claude Code]]

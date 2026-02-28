@@ -3,10 +3,24 @@ title: Claude Code in GitLab CI/CD
 description: >-
   Integriere Claude Code in deine GitLab CI/CD Pipelines für automatisierte MRs,
   Code-Reviews und Bugfixes.
-category: tools
+type: source
+status: seed
+category: tooling
 icon: Gitlab
-readTime: 4 Min
-tags: ["claude-code", "ci-cd", "tooling", "docs"]
+readTime: 4
+tags:
+  - tooling/claude-code
+  - workflows/ci-cd
+  - tooling/gitlab
+  - docs
+aliases:
+  - "Claude Code GitLab Integration"
+topics:
+  - "[[GitLab CI/CD]]"
+  - "[[Merge Requests]]"
+  - "[[AWS Bedrock]]"
+  - "[[Google Vertex AI]]"
+up: "[[CI/CD]]"
 sourceURL: "https://code.claude.com/docs/en/gitlab-ci-cd"
 sourceType: "docs"
 author: "Anthropic Docs"
@@ -140,3 +154,13 @@ claude-vertex:
 *   **Keine Reaktion:** Prüfe Pipeline-Trigger und ob `@claude` (nicht `/claude`) verwendet wurde.
 *   **Keine MRs:** Prüfe `CI_JOB_TOKEN` Berechtigungen oder nutze einen Project Access Token.
 *   **Auth Fehler:** Prüfe API Key oder OIDC Konfiguration.
+
+## Verbindungen
+- [[GitLab CI/CD]]
+- [[Merge Requests]]
+- [[AWS Bedrock]]
+- [[Google Vertex AI]]
+- [[CLAUDE.md]]
+- [[Sandboxed Execution]]
+- [[Claude Code]]
+- [[Automation]]

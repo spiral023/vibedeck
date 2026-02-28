@@ -4,13 +4,33 @@ description: >-
   Wie man 'AI Slop' vermeidet, indem man das Context Window als die wichtigste
   Ressource in der Arbeit mit Coding Agents wie Claude Code versteht und
   optimiert.
+type: source
+status: seed
 category: patterns
 icon: BrainCircuit
-readTime: 8 Min
-tags: ["context-engineering", "prompt-engineering", "agents", "patterns"]
+readTime: 8
+tags:
+  - patterns/context-engineering
+  - prompt-engineering
+  - agents
+  - productivity
+aliases:
+  - "Context Engineering Guide"
+  - "Maximizing Context Window Efficiency"
+topics:
+  - "[[Context Window]]"
+  - "[[Value-Dense Context]]"
+  - "[[MCP]]"
+  - "[[Subagents]]"
+  - "[[Skills]]"
+up: "[[Context Engineering]]"
+sourceURL: "https://x.com/jarrodwatts/status/2008495347115630701"
+sourceType: thread
+author: Jarrod Watts (@jarrodwatts)
+sourceDate: "2026-01-23"
+addedDate: "2026-02-01"
 level: advanced
 hot: true
-addedDate: "2026-02-01"
 ---
 
 > Ursprünglich veröffentlicht von [Jarrod Watts auf X](https://x.com/jarrodwatts/status/2008495347115630701).
@@ -146,5 +166,16 @@ Wenn es das nicht tut – solltest du nicht im selben Kontext weitermachen. Das 
 
 Es ist nicht so kompliziert, wie es klingt. Versuch dein Bestes, dem LLM mit präzisen, qualitativen Informationen zu helfen und gib ihm Tools, um relevante Informationen selbst zu finden – genau wie du es bei einem Kollegen tun würdest.
 
----
-*Quelle: [Jarrod Watts auf X](https://x.com/jarrodwatts/status/2008495347115630701)*
+## Verbindungen
+- [[Context Window]]
+- [[Value-Dense Context]]
+- [[MCP]]
+- [[Subagents]]
+- [[Skills]]
+- [[Claude Code]]
+- [[Opus 4.5]]
+- [[/compact Command]]
+- [[Plan Mode]]
+- [[Context Engineering]]
+- [[Vibe Coding]]
+- [[Prompt Engineering]]

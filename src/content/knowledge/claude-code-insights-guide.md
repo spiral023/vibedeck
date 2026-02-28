@@ -1,10 +1,25 @@
 ---
 title: "Claude Code /insights: Der Befehl, der deinen KI-Workflow spiegelt"
 description: "Erfahre, wie der Befehl /insights tausende deiner Nachrichten analysiert, blinde Flecken in deinem Workflow aufdeckt und maßgeschneiderte autonome Agenten für dich entwirft."
+type: source
+status: seed
 category: workflows
 icon: BrainCircuit
-readTime: 12 Min
-tags: ["claude-code", "insights", "workflow-optimization", "ai-agents", "automation"]
+readTime: 12
+tags:
+  - tooling/claude-code
+  - insights
+  - workflow-optimization
+  - ai-agents
+  - automation
+aliases:
+  - "Claude Code /insights Guide"
+topics:
+  - "[[/insights Command]]"
+  - "[[Workflow Diagnosis]]"
+  - "[[Autonomous Agents]]"
+  - "[[Self-Improving Skills]]"
+up: "[[Claude Code]]"
 sourceURL: "https://x.com/tomcrawshaw01/status/2020866308230009189"
 sourceType: "thread"
 author: "Tom Crawshaw"
@@ -76,3 +91,15 @@ Der Unterschied zwischen dem bloßen Benutzen eines KI-Tools und dem Betreiben e
 Ein Befehl genügt: `/insights`.
 
 *Quelle: Basierend auf einem Thread von [Tom Crawshaw](https://x.com/tomcrawshaw01) auf X.*
+
+## Verbindungen
+- [[/insights Command]]
+- [[Workflow Diagnosis]]
+- [[Autonomous Agents]]
+- [[Self-Improving Skills]]
+- [[CLAUDE.md]]
+- [[Slash Commands]]
+- [[MCP]]
+- [[Claude Code]]
+- [[Token Efficiency]]
+- [[Workflow Optimization]]

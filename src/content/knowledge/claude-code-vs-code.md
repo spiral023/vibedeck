@@ -1,17 +1,28 @@
 ---
-title: Use Claude Code in VS Code
-description: >-
-  Installiere und konfiguriere die Claude Code Erweiterung für VS Code. Erhalte
-  KI-Coding-Assistenz mit Inline-Diffs, @-Mentions und Plan-Reviews.
-category: tools
+title: "Use Claude Code in VS Code"
+description: "Installiere und konfiguriere die Claude Code Erweiterung für VS Code. Erhalte KI-Coding-Assistenz mit Inline-Diffs, @-Mentions und Plan-Reviews."
+type: source
+status: seed
+category: tooling
 icon: Code
-readTime: 4 Min
-tags: ["claude-code", "ide", "tooling", "docs"]
+readTime: 4
+tags:
+  - tooling/claude-code
+  - tooling/vs-code
+  - workflows/ide
+aliases:
+  - "Claude Code VS Code Extension"
+topics:
+  - "[[VS Code Extension]]"
+  - "[[IDE Integration]]"
+  - "[[Claude Code]]"
+  - "[[Checkpointing]]"
+up: "[[Claude Code]]"
 sourceURL: "https://code.claude.com/docs/en/vs-code"
 sourceType: "docs"
 author: "Anthropic Docs"
-level: beginner
-addedDate: "2026-02-01"
+sourceDate: "2026-02-01"
+addedDate: "2026-02-28"
 ---
 
 Die VS Code Erweiterung bietet eine native grafische Oberfläche für Claude Code, direkt integriert in deine IDE. Dies ist der empfohlene Weg, Claude Code in VS Code zu nutzen.
@@ -34,7 +45,7 @@ Du kannst die Erweiterung direkt über den [VS Code Marketplace](https://marketp
 ### 1. Claude Code Panel öffnen
 Das **Spark Icon** (✨) zeigt Claude Code an.
 *   **Editor Toolbar:** Klicke auf das Spark-Icon oben rechts im Editor (nur sichtbar, wenn eine Datei offen ist).
-*   **Status Bar:** Klicke auf "✱ Claude Code" unten rechts.
+*   **Status Bar:** Klicke auf "✶ Claude Code" unten rechts.
 *   **Command Palette:** Suche nach "Claude Code: Open in New Tab".
 
 ### 2. Prompt senden
@@ -81,3 +92,11 @@ In der Extension kannst du Nachrichten hovern, um den **Rewind-Button** zu sehen
 *   **Spark Icon fehlt:** Stelle sicher, dass eine Datei geöffnet ist und VS Code aktuell ist.
 *   **Keine Antwort:** Prüfe deine Internetverbindung oder starte eine neue Session.
 *   **Drittanbieter (Bedrock/Vertex):** Deaktiviere "Login Prompt" in den Settings und konfiguriere die Authentifizierung in `~/.claude/settings.json`.
+
+## Verbindungen
+- [[VS Code Extension]]
+- [[IDE Integration]]
+- [[Claude Code]]
+- [[Checkpointing]]
+- [[Anthropic]]
+- [[Model Context Protocol]]

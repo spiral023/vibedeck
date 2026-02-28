@@ -4,12 +4,27 @@ description: >-
   Ein umfassender Leitfaden zur Erstellung und Nutzung von Claude Skills – von
   den Grundlagen bis zu fortgeschrittenen Techniken, basierend auf praktischer
   Erfahrung.
+type: source
+status: seed
 category: fundamentals
 icon: Puzzle
-readTime: 7 Min
-tags: ["claude-skills", "claude-code", "tooling", "best-practices"]
+readTime: 7
+tags:
+  - fundamentals/claude-skills
+  - tooling/claude-code
+  - best-practices
+  - automation
+aliases:
+  - "Claude Skills Explained"
+  - "Building Claude Skills Guide"
+topics:
+  - "[[Agent Skills]]"
+  - "[[SKILL.md]]"
+  - "[[Progressive Disclosure]]"
+  - "[[Domain Expertise]]"
+up: "[[AI Agents]]"
 sourceURL: "https://x.com/Meer_AIIT/status/2017984668205756551"
-sourceType: "thread"
+sourceType: thread
 author: "@Meer_AIIT"
 level: advanced
 hot: true
@@ -150,3 +165,14 @@ Lade es hoch, teste es mit deinen Use Cases, und verbessere es.
 *   **Skills kombinieren**: Brand Guidelines Skill + DOCX Skill.
 *   **Advanced Scripting**: Externe APIs aufrufen, Outputs validieren.
 *   **Team Sharing**: Skills als `.skill` verteilen für einheitliche Standards.
+
+## Verbindungen
+- [[Agent Skills]]
+- [[SKILL.md]]
+- [[Progressive Disclosure]]
+- [[Domain Expertise]]
+- [[Claude Code]]
+- [[Automation]]
+- [[Context Management]]
+- [[Workflow Automation]]
+- [[Tool Integration]]

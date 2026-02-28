@@ -1,12 +1,28 @@
 ---
 title: "Claude Code Best Practices: So nutzt du das volle Potenzial (100x Powerful)"
 description: "Ein umfassender Guide zu den besten Praktiken für Claude Code, basierend auf offiziellen Dokumentationen und Insights der Entwickler."
+type: source
+status: seed
 category: tooling
 icon: Zap
-readTime: 15 Min
-tags: ["claude-code", "anthropic", "llm-coding", "workflow", "best-practices"]
+readTime: 15
+tags:
+  - tooling/claude-code
+  - anthropic
+  - llm-coding
+  - workflow
+  - best-practices
+aliases:
+  - "Claude Code 100x Powerful Guide"
+topics:
+  - "[[Context Management]]"
+  - "[[Plan Mode]]"
+  - "[[Subagents]]"
+  - "[[Self-Verification]]"
+  - "[[CLAUDE.md]]"
+up: "[[Claude Code]]"
 sourceURL: "https://x.com/Meer_AIIT/status/2027509711722188976"
-sourceType: "thread"
+sourceType: thread
 author: "Meer | AI Tools & News"
 sourceDate: "2026-02-27"
 addedDate: "2026-02-28"
@@ -190,4 +206,11 @@ Claude Code ist mehr als ein Code-Generator – es ist ein Senior-Partner. Nutze
 3. **Bloated CLAUDE.md:** Zu viele Regeln -> Nur das Nötigste behalten.
 4. **Infinite Exploration:** Uferlose Recherche -> Scope definieren oder Subagents nutzen.
 
-Viel Erfolg beim Coden!
+## Verbindungen
+- [[Context Management]]
+- [[Self-Verification]]
+- [[Plan Mode]]
+- [[CLAUDE.md]]
+- [[Subagents]]
+- [[Voice Dictation]]
+- [[Context Pollution]]

@@ -1,13 +1,29 @@
 ---
 title: "Claude Cowork richtig einrichten: Der ultimative Guide für 2026"
 description: "Erfahre, wie du Claude Cowork so konfigurierst, dass es deine Arbeit autonom erledigt, während du dich anderen Dingen widmest."
+type: source
+status: seed
 category: workflows
 icon: Layers
-readTime: 12 Min
-tags: ["claude-cowork", "anthropic", "ai-productivity", "workflows", "agents"]
+readTime: 12
+tags:
+  - tooling/claude-cowork
+  - anthropic
+  - ai-productivity
+  - workflows
+  - agents
+aliases:
+  - "Claude Cowork Setup Guide"
+topics:
+  - "[[Claude Cowork]]"
+  - "[[File System Access]]"
+  - "[[AskUserQuestion]]"
+  - "[[Connectors]]"
+  - "[[Global Instructions]]"
+up: "[[Claude Tools]]"
 sourceURL: "https://x.com/heynavtoor/status/2026717574776631556"
-sourceType: "article"
-author: "Nav Toor"
+sourceType: article
+author: "Nav Toor (@heynavtoor)"
 sourceDate: "2026-02-25"
 addedDate: "2026-02-25"
 ---
@@ -105,3 +121,14 @@ Nav Toor bleibt ehrlich und nennt die aktuellen Grenzen:
 
 ![Cowork Overview](/images/knowledge/claude-cowork-setup-guide/cowork-overview.jpg)
 
+## Verbindungen
+- [[Claude Cowork]]
+- [[File System Access]]
+- [[AskUserQuestion]]
+- [[Connectors]]
+- [[Global Instructions]]
+- [[Context-Files Strategie]]
+- [[Plugins]]
+- [[Context Engineering]]
+- [[AI Productivity]]
+- [[Autonomous Agents]]

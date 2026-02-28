@@ -1,12 +1,27 @@
 ---
 title: "Claude Code Agent Teams: Der Guide zur Installation und Nutzung"
 description: "Ein tiefer Einblick in das neue Agenten-Modell von Claude Code: Wie Agent Teams funktionieren, wie man sie installiert und warum sie herkömmliche Sub-Agenten übertreffen."
+type: source
+status: seed
 category: tooling
 icon: Users
-readTime: 12 Min
-tags: ["claude-code", "agent-teams", "automation", "parallel-execution", "reverse-engineering"]
+readTime: 12
+tags:
+  - tooling/claude-code
+  - workflows/agent-teams
+  - automation
+  - parallel-execution
+  - reverse-engineering
+aliases:
+  - "Claude Code Agent Teams Guide"
+topics:
+  - "[[Agent Teams]]"
+  - "[[Teammate Mode]]"
+  - "[[Task System]]"
+  - "[[Parallel Execution]]"
+up: "[[Agent Teams]]"
 sourceURL: "https://x.com/jasonzhou1993/status/2020086991740891526"
-sourceType: "thread"
+sourceType: thread
 author: "Jason Zhou"
 sourceDate: "2026-02-07"
 addedDate: "2026-02-06"
@@ -96,4 +111,14 @@ Agent Teams verbrauchen deutlich mehr Token und sind langsamer als einfache Sub-
 **Beispiel für Deep Debugging:**
 Statt einen Agenten suchen zu lassen, spawnst du 5 Teammitglieder, die unterschiedliche Hypothesen untersuchen. Sie debattieren miteinander, versuchen die Theorien der anderen zu widerlegen und halten den Konsens in einem Dokument fest.
 
-Agent Teams sind ein mächtiges Werkzeug für extrem lang laufende, komplexe Aufgaben. Es bleibt spannend zu sehen, ob sie Sub-Agenten langfristig komplett ersetzen werden.
+Agent Teams ist ein mächtiges Werkzeug für extrem lang laufende, komplexe Aufgaben. Es bleibt spannend zu sehen, ob sie Sub-Agenten langfristig komplett ersetzen werden.
+
+## Verbindungen
+- [[Agent Teams]]
+- [[Teammate Mode]]
+- [[Task System]]
+- [[Parallel Execution]]
+- [[SendMessage Tool]]
+- [[Deep Debugging]]
+- [[Claude Code]]
+- [[Autonomous Agents]]

@@ -1,12 +1,28 @@
 ---
-title: Gemini Image Generation Guide
-description: Master image generation and editing with Gemini 2.5 Flash and Gemini 3 Pro.
+title: "Gemini Image Generation Guide"
+description: "Master image generation and editing with Gemini 2.5 Flash and Gemini 3 Pro."
+type: source
+status: seed
 category: fundamentals
 icon: Image
-readTime: 5 Min
-tags: ["gemini", "image-generation", "prompts", "tooling"]
-level: intermediate
-addedDate: "2026-02-01"
+readTime: 5
+tags:
+  - tooling/gemini
+  - tooling/image-generation
+  - fundamentals/ai-images
+aliases:
+  - "Gemini Image API Guide"
+topics:
+  - "[[Gemini 2.5 Flash]]"
+  - "[[Gemini 3 Pro Image]]"
+  - "[[Image Generation]]"
+  - "[[SynthID]]"
+up: "[[Gemini 3.0]]"
+sourceURL: "https://ai.google.dev/gemini-api/docs/image-generation"
+sourceType: "docs"
+author: "Google AI"
+sourceDate: "2026-02-01"
+addedDate: "2026-02-28"
 ---
 
 # Gemini Image Generation Guide
@@ -160,3 +176,12 @@ response = client.models.generate_content(
 ***
 
 **Originalbeitrag:** [Gemini API Documentation - Image Generation](https://ai.google.dev/gemini-api/docs/image-generation?hl=de)
+
+## Verbindungen
+- [[Gemini 2.5 Flash]]
+- [[Gemini 3 Pro Image]]
+- [[Image Generation]]
+- [[SynthID]]
+- [[AI Art]]
+- [[Prompt Engineering]]
+- [[Multimodal AI]]

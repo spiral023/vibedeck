@@ -3,13 +3,29 @@ title: 'Claude Code Starter Pack: The Ultimate Resource Guide'
 description: >-
   Eine vollständige Sammlung von Tools, Tutorials und Ressourcen für Claude Code
   von AI Edge (Part 1 & 2).
+type: source
+status: seed
 category: fundamentals
 icon: Rocket
-readTime: 7 Min
-tags: ["claude-code", "workflows", "tooling", "best-practices"]
+readTime: 7
+tags:
+  - fundamentals/claude-code
+  - resources
+  - tooling
+  - best-practices
+aliases:
+  - "Claude Code Starter Pack"
+  - "Claude Code Resource Guide"
+topics:
+  - "[[CLAUDE.md]]"
+  - "[[Plan Mode]]"
+  - "[[MCP]]"
+  - "[[SkillsMP]]"
+  - "[[Prompt Engineering]]"
+up: "[[Claude Code]]"
 sourceURL: 'https://x.com/aiedge_/status/2011108297152082250'
 sourceType: thread
-author: AI Edge
+author: AI Edge (@aiedge_)
 level: beginner
 hot: true
 addedDate: "2026-02-01"
@@ -177,3 +193,18 @@ Fortgeschrittene Kurse für die Anthropic API, das Bauen mit Claude und mehr.
 
 **Outro:**
 Ich hoffe, dieser Artikel war hilfreich. Ich habe viel Zeit damit verbracht, die besten Ressourcen hier zu kuratieren.
+
+## Verbindungen
+- [[CLAUDE.md]]
+- [[Plan Mode]]
+- [[MCP]]
+- [[SkillsMP]]
+- [[Prompt Engineering]]
+- [[Claude Code]]
+- [[Subreddits]]
+- [[Chrome Extension]]
+- [[Anthropic Academy]]
+- [[Vibe Coding]]
+- [[Slash Commands]]
+- [[Hooks]]
+- [[Agent Skills]]

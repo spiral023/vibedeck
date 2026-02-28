@@ -3,10 +3,24 @@ title: Agent Skills vs. Rules vs. Commands
 description: >-
   Ein Deep Dive von Alice Alexandra Moore in das mentale Modell für AI-Kontext:
   Wann nutzt man Skills, Rules, Commands oder Subagents?
+type: source
+status: seed
 category: fundamentals
 icon: Layers
-readTime: 5 Min
-tags: ["agents", "claude-skills", "context-engineering", "patterns"]
+readTime: 5
+tags:
+  - fundamentals/agents
+  - fundamentals/context-engineering
+  - claude-skills
+  - patterns
+aliases:
+  - "Skills vs Rules vs Commands"
+topics:
+  - "[[Agent Skills]]"
+  - "[[Agent Rules]]"
+  - "[[Commands]]"
+  - "[[Subagents]]"
+up: "[[Context Engineering]]"
 sourceURL: 'https://x.com/tempoimmaterial/status/2014054104658526645'
 sourceType: tweet
 author: Alice Alexandra Moore (@tempoimmaterial)
@@ -104,3 +118,13 @@ Hier sind Basics, die jedes Projekt braucht:
 
 **Fazit:**
 Nutze Regeln für Invarianten, Commands für Workflows und Skills für optionales Expertenwissen. Wenn du diesen Split einhältst, fühlt sich dein Agent weniger wie ein brüchiges Skript an und mehr wie ein echter Kollaborateur.
+
+## Verbindungen
+- [[Agent Skills]]
+- [[Agent Rules]]
+- [[Commands]]
+- [[Subagents]]
+- [[Progressive Disclosure]]
+- [[Context Engineering]]
+- [[Lazy Loading]]
+- [[Composition over Inheritance]]

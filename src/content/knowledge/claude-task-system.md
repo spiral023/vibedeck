@@ -3,13 +3,28 @@ title: 'Das neue Claude Code Task System: Der Praktische Guide'
 description: >-
   Von flachen To-Do-Listen zur abhängigkeitsgesteuerten Orchestrierung: Wie das
   neue Task-System von Claude Code komplexe Workflows ermöglicht.
+type: source
+status: seed
 category: fundamentals
 icon: Rocket
-readTime: 6 Min
-tags: ["claude-code", "workflows", "agentic-coding", "tooling"]
+readTime: 6
+tags:
+  - tooling/claude-code
+  - workflows/orchestration
+  - agentic-coding
+  - project-management
+aliases:
+  - "Claude Code Task System Guide"
+  - "Claude Code Orchestration"
+topics:
+  - "[[Task System]]"
+  - "[[Dependency Management]]"
+  - "[[Agent Assignment]]"
+  - "[[Parallelism]]"
+up: "[[Claude Code]]"
 sourceURL: 'https://x.com/nummanali/status/2014684862985175205'
 sourceType: tweet
-author: Numman Ali
+author: Numman Ali (@nummanali)
 sourceDate: '2026-01-23'
 addedDate: "2026-02-01"
 level: advanced
@@ -168,3 +183,15 @@ Du bekommst:
 *   **Parallelität**
 
 Es ist keine Magie. Es ist Struktur. Und Struktur skaliert.
+
+## Verbindungen
+- [[Task System]]
+- [[Dependency Management]]
+- [[Agent Assignment]]
+- [[Parallelism]]
+- [[TaskCreate]]
+- [[TaskUpdate]]
+- [[TaskList]]
+- [[Claude Code]]
+- [[Orchestration]]
+- [[Context Compaction]]

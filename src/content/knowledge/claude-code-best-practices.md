@@ -3,10 +3,24 @@ title: Best Practices für Claude Code
 description: >-
   Tipps und Muster, um das Beste aus Claude Code herauszuholen – von der
   Konfiguration der Umgebung bis hin zur Skalierung über parallele Sessions.
+type: source
+status: seed
 category: fundamentals
 icon: Rocket
-readTime: 6 Min
-tags: ["claude-code", "best-practices", "workflows", "docs"]
+readTime: 6
+tags:
+  - tooling/claude-code
+  - best-practices
+  - workflows
+  - docs
+aliases:
+  - "Claude Code Best Practices"
+topics:
+  - "[[Context Window]]"
+  - "[[Plan Mode]]"
+  - "[[CLAUDE.md]]"
+  - "[[Verification Criteria]]"
+up: "[[Claude Code]]"
 sourceURL: "https://code.claude.com/docs/en/best-practices"
 sourceType: "docs"
 author: "Anthropic Docs"
@@ -83,3 +97,13 @@ Nutze `/init`, um eine Starter-Datei zu erstellen. **CLAUDE.md** wird bei jeder 
 *   **Endlose Korrekturen:** Claude macht denselben Fehler immer wieder. **Fix:** `/clear` und einen besseren Initial-Prompt schreiben.
 *   **Die überladene CLAUDE.md:** Wichtige Regeln gehen im Rauschen unter. **Fix:** Radikal kürzen.
 *   **Infinite Exploration:** Claude liest hunderte Dateien ohne Ziel. **Fix:** Scope eng fassen oder Subagents für die Recherche nutzen.
+
+## Verbindungen
+- [[Context Window]]
+- [[Plan Mode]]
+- [[CLAUDE.md]]
+- [[Verification Criteria]]
+- [[MCP]]
+- [[Parallele Sessions]]
+- [[Claude Code]]
+- [[Session Management]]

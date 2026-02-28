@@ -3,9 +3,12 @@ title: 'Karpathy: Seit Dezember ist Softwareentwicklung nicht mehr Business as U
 description: >-
   Andrej Karpathy beschreibt im Februar 2026 einen abrupten Shift: Seit Dezember funktionieren Coding-Agenten für lange
   Aufgaben zuverlässig. Sein Praxisbeispiel zeigt, wie ein früheres Wochenendprojekt heute in rund 30 Minuten läuft.
+type: blog
+status: published
 category: workflows
 icon: BrainCircuit
-readTime: 4 Min
+readTime: '4 Min'
+readTimeMin: 4
 tags:
   - fallstudien
   - agenten-engineering
@@ -20,12 +23,26 @@ keyPoints:
   - >-
     Die zentrale Kompetenz verschiebt sich vom Tippen im Editor hin zu Task-Decomposition, Agent-Orchestrierung, Review
     und Verifikation.
+aliases:
+  - 'Karpathy seit Dezember Agent Coding'
+  - 'Business as Usual Softwareentwicklung 2026'
+people:
+  - '[[Andrej Karpathy]]'
+topics:
+  - '[[Coding Agents]]'
+  - '[[Task Decomposition]]'
+  - '[[AI-Orchestrierung]]'
+  - '[[DGX Spark]]'
+  - '[[Softwareentwicklung 2026]]'
 sourceURL: 'https://x.com/karpathy/status/2026731645169185220'
 sourceType: tweet
 author: Andrej Karpathy
 sourceDate: '2026-02-25'
 addedDate: '2026-02-27'
+slug: 'karpathy-seit-dezember-nicht-mehr-business-as-usual'
 ---
+
+Kurzkontext: [[Andrej Karpathy]] ordnet die Entwicklung entlang von [[Coding Agents]] ein.
 
 Andrej Karpathy beschreibt in seinem Post vom 25. Februar 2026 einen Bruch, nicht bloß eine graduelle Verbesserung: Programmieren habe sich in den letzten zwei Monaten drastisch verändert, mit einem klaren Kipppunkt im Dezember.
 
@@ -97,4 +114,13 @@ Für produktive Teams heißt das konkret: Wer Orchestrierung, Verifikation und s
 Der Post markiert einen zeitlichen Marker für viele Engineering-Teams: Dezember 2025 als operativer Kipppunkt, an dem Coding-Agenten von „interessant, aber unzuverlässig“ zu „disruptiv nützlich im Alltag“ gewechselt sind.
 
 Die Arbeit verschwindet nicht, sie verlagert sich. Weniger manuelle Ausführung, mehr Steuerung von agentischen Systemen. Genau darin liegt laut Karpathy der neue Produktivitätsgewinn.
+
+## Verbindungen
+
+- [[Andrej Karpathy]]
+- [[Coding Agents]]
+- [[Task Decomposition]]
+- [[AI-Orchestrierung]]
+- [[DGX Spark]]
+- [[Softwareentwicklung 2026]]
 

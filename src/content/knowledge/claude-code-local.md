@@ -4,13 +4,28 @@ description: >-
   Ein Tutorial von Alvaro Cintas, wie man Claude Code komplett lokal mit
   Open-Source-Modellen (Ollama) betreibt – ohne Cloud, ohne Kosten, volle
   Privatsphäre.
+type: source
+status: seed
 category: fundamentals
 icon: Lock
-readTime: 3 Min
-tags: ["claude-code", "local-setup", "tooling", "security"]
+readTime: 3
+tags:
+  - tooling/claude-code
+  - local-setup
+  - tooling/ollama
+  - security
+aliases:
+  - "Local Claude Code Setup"
+  - "Private Claude Code Guide"
+topics:
+  - "[[Ollama]]"
+  - "[[Local Setup]]"
+  - "[[Privacy]]"
+  - "[[Offline AI]]"
+up: "[[Local Execution]]"
 sourceURL: 'https://x.com/dr_cintas/status/2014380662300533180'
 sourceType: tweet
-author: Alvaro Cintas
+author: Alvaro Cintas (@dr_cintas)
 sourceDate: '2026-01-22'
 addedDate: "2026-02-01"
 level: intermediate
@@ -98,3 +113,13 @@ Versuche einen Prompt wie:
 Du wirst sehen, wie Claude Dateien liest, Code modifiziert und Terminal-Befehle ausführt – **alles lokal auf deiner Maschine**.
 
 Keine API-Calls. Keine Cloud. Null Kosten.
+
+## Verbindungen
+- [[Ollama]]
+- [[Local Setup]]
+- [[Privacy]]
+- [[Offline AI]]
+- [[Qwen2.5-Coder]]
+- [[Claude Code]]
+- [[Security]]
+- [[Local Execution]]

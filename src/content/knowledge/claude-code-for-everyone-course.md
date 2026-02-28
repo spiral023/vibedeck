@@ -1,10 +1,26 @@
 ---
 title: "Claude Code for Everyone: Der interaktive Kurs"
 description: "Lerne Claude Code direkt in Claude Code. Ein kostenloser, praxisorientierter Kurs für Nicht-Techniker und Einsteiger."
+type: source
+status: seed
 category: fundamentals
 icon: GraduationCap
-readTime: 5 Min
-tags: ["claude-code", "kurs", "tutorial", "vibe-coding", "einsteiger"]
+readTime: 5
+tags:
+  - fundamentals/claude-code
+  - education
+  - tutorial
+  - vibe-coding
+  - einsteiger
+aliases:
+  - "CC4E Course"
+  - "Claude Code for Everyone"
+topics:
+  - "[[Learning by Doing]]"
+  - "[[Vibe Coding]]"
+  - "[[Parallel Agents]]"
+  - "[[Custom Subagents]]"
+up: "[[Claude Code]]"
 sourceURL: "https://ccforeveryone.com/"
 sourceType: "blog"
 author: "Carl Vellotti"
@@ -52,3 +68,13 @@ Anstatt Videos anzuschauen oder lange Dokumentationen zu lesen, lernst Du hier d
 *   **Website**: [ccforeveryone.com](https://ccforeveryone.com/)
 *   **GitHub Repository**: [carlvellotti/claude-code-everyone-course](https://github.com/carlvellotti/claude-code-everyone-course)
 *   **Newsletter**: [fullstackpm.com/cc4e](https://fullstackpm.com/cc4e)
+
+## Verbindungen
+- [[Learning by Doing]]
+- [[Vibe Coding]]
+- [[Parallel Agents]]
+- [[Custom Subagents]]
+- [[CLAUDE.md]]
+- [[Slash Commands]]
+- [[Claude Code]]
+- [[Version Control]]

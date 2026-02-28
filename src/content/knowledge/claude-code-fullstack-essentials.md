@@ -1,10 +1,25 @@
 ---
 title: "Claude Code für Fullstack-Entwicklung: Die 3 Säulen für echten Erfolg"
 description: "Vibe-Coding mit Claude Code ist mehr als nur Hype. Erfahre, welche drei Dinge du wirklich brauchst, um komplexe Apps effizient zu bauen."
+type: source
+status: seed
 category: workflows
 icon: Rocket
-readTime: 14 Min
-tags: ["claude-code", "fullstack", "vibecoding", "wasp", "mcp", "llms-txt"]
+readTime: 14
+tags:
+  - workflows/fullstack
+  - vibecoding
+  - tooling/wasp
+  - mcp
+  - llms-txt
+aliases:
+  - "Fullstack Claude Code Essentials"
+topics:
+  - "[[Fullstack Debugging]]"
+  - "[[Browser Automation]]"
+  - "[[llms.txt]]"
+  - "[[Wasp Framework]]"
+up: "[[Fullstack Development]]"
 sourceURL: "https://dev.to/wasp/claude-code-for-fullstack-development-the-3-things-you-actually-need-1p6p"
 sourceType: "blog"
 author: "vincanger"
@@ -106,3 +121,13 @@ Nutze komplexe Subagenten oder benutzerdefinierte Skills erst, wenn der einfache
 Für die meisten Fullstack-Projekte reichen jedoch: **Ein klares Framework, aktuelle Docs und Sichtbarkeit im Browser.**
 
 *Quelle: Basierend auf einem Blogartikel von [vincanger](https://dev.to/vincanger) auf DEV Community.*
+
+## Verbindungen
+- [[Fullstack Debugging]]
+- [[Browser Automation]]
+- [[llms.txt]]
+- [[Wasp Framework]]
+- [[Chrome DevTools MCP]]
+- [[Background Tasks]]
+- [[Claude Code]]
+- [[Vibe Coding]]

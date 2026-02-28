@@ -3,10 +3,25 @@ title: Claude Code Common Workflows
 description: >-
   Praktische Workflows für Claude Code: Codebasen erkunden, Bugs fixen,
   Refactoring, Testing, PRs erstellen und Session-Management.
+type: source
+status: seed
 category: patterns
 icon: GitGraph
-readTime: 7 Min
-tags: ["claude-code", "workflows", "tooling", "docs"]
+readTime: 7
+tags:
+  - tooling/claude-code
+  - workflows
+  - patterns
+  - docs
+aliases:
+  - "Claude Code Workflows"
+topics:
+  - "[[Codebase Exploration]]"
+  - "[[Debugging]]"
+  - "[[Refactoring]]"
+  - "[[Plan Mode]]"
+  - "[[Pull Requests]]"
+up: "[[Claude Code]]"
 sourceURL: "https://code.claude.com/docs/en/common-workflows"
 sourceType: "docs"
 author: "Anthropic Docs"
@@ -245,3 +260,16 @@ Claude kennt seine eigene Dokumentation.
 *   `> can Claude Code create pull requests?`
 *   `> how do I use MCP with Claude Code?`
 *   `> what are the limitations of Claude Code?`
+
+## Verbindungen
+- [[Codebase Exploration]]
+- [[Debugging]]
+- [[Refactoring]]
+- [[Plan Mode]]
+- [[Pull Requests]]
+- [[Subagents]]
+- [[Extended Thinking]]
+- [[Git Worktrees]]
+- [[Claude Code]]
+- [[Documentation]]
+- [[Unix Utility]]

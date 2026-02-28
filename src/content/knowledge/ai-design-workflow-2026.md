@@ -1,10 +1,26 @@
 ---
 title: "Designen mit KI in 2026: Der ultimative Workflow für besseren Geschmack"
 description: "KI macht die technische Ausführung einfach, aber 'Taste' bleibt die entscheidende Fähigkeit. Erfahre, wie du deinen Design-Geschmack trainierst und KI als Junior Designer nutzt."
+type: source
+status: seed
 category: workflows
 icon: Palette
-readTime: 15 Min
-tags: ["ai-design", "vibe-design", "workflow", "ui-ux", "taste", "kimi"]
+readTime: 15
+tags:
+  - workflows/design
+  - vibe-design
+  - ui-ux
+  - taste
+  - tooling/kimi
+aliases:
+  - "AI Design Workflow 2026"
+  - "Vibe Design Guide"
+topics:
+  - "[[Vibe Design]]"
+  - "[[Design Taste]]"
+  - "[[Kimi K2.5]]"
+  - "[[Meta-Prompting]]"
+up: "[[UI/UX Design]]"
 sourceURL: "https://x.com/Av1dlive/status/2023086925817729306"
 sourceType: "thread"
 author: "Avid"
@@ -87,3 +103,13 @@ Betrachte KI nicht als Blackbox, sondern als Junior-Designer. Professionelles De
 Dein Geschmack und dein Prozess sind dein wahrer Wettbewerbsvorteil.
 
 *Quelle: Basierend auf einem Thread von [Avid](https://x.com/Av1dlive) auf X.*
+
+## Verbindungen
+- [[Vibe Design]]
+- [[Design Taste]]
+- [[Kimi K2.5]]
+- [[Meta-Prompting]]
+- [[Self-Review]]
+- [[Pixel-Perfect]]
+- [[UI/UX Design]]
+- [[Agent Skills]]

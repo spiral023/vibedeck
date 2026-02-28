@@ -3,11 +3,29 @@ title: 'Wie ich mit Agents code, ohne ''technisch'' zu sein'
 description: >-
   Ben Tossell teilt seine Erfahrungen, wie er 3 Milliarden Tokens verbraucht
   hat, um Tools, CLIs und Produkte zu bauen, ohne selbst Code zu schreiben.
+type: source
+status: seed
 category: fundamentals
 icon: Bot
-readTime: 11 Min
-tags: ["agentic-coding", "claude-code", "workflows", "agents"]
-level: beginner
+readTime: 11
+tags:
+  - fundamentals/agent-coding
+  - tooling/claude-code
+  - workflows
+  - agents
+aliases:
+  - "Ben Tossell Agent Coding"
+  - "Vibe Coding Experience"
+topics:
+  - "[[Vibe Coding]]"
+  - "[[Spec Mode]]"
+  - "[[System Thinking]]"
+  - "[[Fail Forward]]"
+up: "[[AI Agents]]"
+sourceURL: "https://x.com/bentossell/status/2006352820140749073"
+sourceType: tweet
+author: "Ben Tossell (@bentossell)"
+sourceDate: "2026-01-20"
 addedDate: "2026-02-01"
 ---
 
@@ -156,3 +174,13 @@ Je mehr ich mit den Tools selbst zu tun habe, desto härter ist es. Ich will ein
 
 ---
 *Quelle: [Ben Tossell auf X](https://x.com/bentossell/status/2006352820140749073)*
+
+## Verbindungen
+- [[Vibe Coding]]
+- [[Spec Mode]]
+- [[System Thinking]]
+- [[Fail Forward]]
+- [[agents.md]]
+- [[CLI]]
+- [[No-Code]]
+- [[AI Agents]]

@@ -1,12 +1,28 @@
 ---
 title: "Ralph Loop: Das ultimative Setup für langlaufende AI-Coding-Agents"
 description: "Ein detaillierter Guide zum Einrichten des Ralph Loops, um AI-Agents über Stunden hinweg autonom arbeiten zu lassen, ohne dass das Context Window gesättigt wird."
+type: source
+status: seed
 category: workflows
 icon: Repeat
-readTime: 12 Min
-tags: ["ai-agents", "ralph-loop", "claude-code", "automation", "workflow"]
+readTime: 12
+tags:
+  - workflows/agents
+  - automation/ralph-loop
+  - tooling/claude-code
+  - setup
+aliases:
+  - "Ralph Loop Guide"
+  - "Long Running AI Agents Setup"
+topics:
+  - "[[Ralph Loop]]"
+  - "[[Context Window]]"
+  - "[[Docker Sandbox]]"
+  - "[[Claude Code]]"
+  - "[[PRD Creation]]"
+up: "[[AI Agents]]"
 sourceURL: "https://x.com/d4m1n/status/2026032801322356903"
-sourceType: "thread"
+sourceType: thread
 author: "Dan ⚡️"
 sourceDate: "2026-02-23"
 addedDate: "2026-02-28"
@@ -170,3 +186,12 @@ Sollte etwas schiefgelaufen sein, nutze einfach `git revert` für den fehlerhaft
 Mit dem Ralph Loop ändert sich deine Rolle als Entwickler. Du bist nicht mehr derjenige, der jede Zeile tippt, sondern derjenige, der **plant, delegiert und reviewt**.
 
 Die wichtigste Fähigkeit im Jahr 2026 ist nicht schnelles Tippen, sondern das präzise **Beschreiben von Anforderungen**: UI-Specs, Flows, Constraints und Integrationen. Ralph ist nur der Motor – das Lenkrad und die Route liegen in deiner Hand.
+
+## Verbindungen
+- [[Ralph Loop]]
+- [[Context Window]]
+- [[Docker Sandbox]]
+- [[Claude Code]]
+- [[PRD Creation]]
+- [[Steering]]
+- [[Autonomous Agents]]
