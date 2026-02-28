@@ -1,132 +1,131 @@
 ---
-title: "METR Time Horizons: Wie weit Frontier-Modelle wirklich autonom arbeiten"
-description: "METR zeigt mit Time Horizons, wie lange Aufgaben Frontier-Modelle mit 50 % oder 80 % Zuverlässigkeit lösen. Der Trend ist stark exponentiell, aber die Aussagekraft hängt von Domäne, Kontext und Messmethodik ab."
+title: "METR Time Horizons Update 2026: TH 1.1, Coding Agents und Messchaos im Alltag"
+description: "Seit dem Long-Tasks-Artikel 2025 hat METR Time Horizon 1.1, direkte Claude-Code/Codex-Tests und neue Uplift-Methoden veröffentlicht. Die Capabilities steigen, aber Produktivitätsmessung bleibt methodisch schwierig."
 category: fundamentals
 icon: BrainCircuit
-readTime: 10 Min
-tags: ["metr", "ai-evaluation", "time-horizons", "frontier-models", "autonomy-risk"]
+readTime: 11 Min
+tags: ["metr", "time-horizons", "coding-agents", "claude-code", "codex", "ai-evaluation"]
 keyPoints:
-  - "Time Horizon misst nicht Laufzeit der KI, sondern Aufgabenschwierigkeit über menschliche Bearbeitungsdauer und modellierte Erfolgswahrscheinlichkeit."
-  - "Die von METR berichteten 50 %- und 80 %-Horizonte wachsen über Modellgenerationen weiterhin exponentiell."
-  - "Die Werte sind wichtig, aber eng begrenzt: Fokus auf Software/ML/Cybersecurity, wenig Kontext, keine direkte Aussage über Vollautomatisierung von Jobs."
+  - "Mit Time Horizon 1.1 hat METR die Task-Suite auf 228 Aufgaben erweitert, den Long-Task-Anteil mehr als verdoppelt und die Infrastruktur auf Inspect umgestellt."
+  - "Direkte Bench-Tests zeigen: Claude Code und Codex schlagen METRs bestehende Scaffolds bei den getesteten Setups nicht signifikant."
+  - "METR arbeitet an neuen Produktivitätsmethoden wie Transcript-Analyse, kämpft aber weiter mit Selection Bias und Real-World-Messproblemen."
 sourceURL: "https://metr.org/time-horizons/"
-sourceType: docs
+sourceType: blog
 author: "METR"
-sourceDate: "2026-02-20"
+sourceDate: "2026-02-24"
 addedDate: "2026-02-25"
 ---
 
 ![Header](/images/blog/metr-time-horizons-frontier-ai/header.png)
 
-METR veröffentlicht mit der Seite zu den **Task-Completion Time Horizons** eine der aktuell klarsten Metriken für agentische Leistungsfähigkeit von Frontier-Modellen. Statt nur Benchmarkscores zu vergleichen, fragt der Ansatz: **Für wie lange Aufgaben ist ein Modell mit einer bestimmten Zuverlässigkeit brauchbar?**
+Seit dem großen Long-Tasks-Artikel vom **19. März 2025** hat METR aus einer einzelnen Veröffentlichung ein laufendes Messprogramm gemacht. Die letzten Updates sind besonders relevant, wenn du Coding Agents wie Claude Code oder Codex einordnen willst.
 
-Die Seite wurde zuletzt am **20. Februar 2026** aktualisiert und enthält die laufend ergänzten Messwerte (aktuell „Time Horizon 1.1“) sowie eine ausführliche FAQ zur korrekten Interpretation.
+Die zentrale Verschiebung: METR veröffentlicht nicht nur neue Horizon-Punkte, sondern auch methodische Nachschärfungen, Negativresultate und Designänderungen bei Produktivitätsstudien.
 
-## Was „Time Horizon“ konkret bedeutet
+## 1) Time Horizon 1.1: mehr Aufgaben, mehr Long Tasks, neue Infrastruktur
 
-Die zentrale Definition ist einfach, aber wichtig: Eine Time Horizon ist die Aufgabendauer (gemessen als menschliche Expertenzeit), bei der ein Agent mit einer Zielwahrscheinlichkeit erfolgreich ist.
+Am **29. Januar 2026** hat METR **Time Horizon 1.1** vorgestellt. Das ist keine kosmetische Revision, sondern ein substanzielles Upgrade der Eval-Basis.
 
-- **50 %-Horizon**: Dauer, bei der der Agent im Mittel in etwa der Hälfte der Fälle erfolgreich ist
-- **80 %-Horizon**: Dauer, bei der der Agent in etwa 80 % der Fälle erfolgreich ist
+- Task-Suite von **170 auf 228** Aufgaben erweitert
+- **+73 HCAST-Tasks**, **-15 entfernt**, **53 überarbeitet**
+- Zahl der Long Tasks (>= 8h Humanzeit) von **14 auf 31** erhöht
+- Infrastrukturwechsel von **Vivaria** auf **Inspect** (Open Source vom UK AI Security Institute)
 
-> Time Horizon ist primär ein Maß für Aufgabenschwierigkeit, nicht für die reale Wandzeit, die das Modell für die Bearbeitung benötigt.
+> Der Ausbau des Long-Task-Anteils ist wichtig, weil genau dort die Unsicherheit bisher am größten war.
 
-Das ist ein entscheidender Punkt, weil viele die Kennzahl sofort als „Agent kann X Stunden autonom arbeiten“ lesen. Genau das sagt METR ausdrücklich nicht.
+Damit werden die oberen Bereiche der Kurven statistisch belastbarer, also genau die Zone, in der viele strategische Interpretationen stattfinden.
 
-## Methodik in Kurzform: Logistic Fit statt Bauchgefühl
+## 2) Live-Referenz statt "Paper-Snapshot"
 
-METR nutzt pro Modell einen statistischen Fit über viele Aufgaben und deren Erfolgsraten. Vereinfacht:
+Parallel pflegt METR die Seite **Task-Completion Time Horizons of Frontier AI Models** als laufende Referenz (Stand: Februar 2026). Das verändert die Nutzung:
 
-1. Für jede Aufgabe wird geschätzt, wie lange ein menschlicher Experte dafür braucht.
-2. Für das Modell werden mehrere Läufe pro Aufgabe ausgewertet (Erfolg/Misserfolg).
-3. Daraus wird eine **logistische Kurve** fitten, die Erfolgswahrscheinlichkeit als Funktion der Aufgabendauer beschreibt.
-4. Die Schnittpunkte der Kurve bei 50 % bzw. 80 % ergeben die Horizon-Werte.
+- weniger "ein Chart aus einem PDF"
+- mehr kontinuierliches Monitoring über Modellgenerationen
+- schnellere Integration methodischer Anpassungen
 
-Die Datenbasis umfasst laut Seite über hundert vielfältige Softwareaufgaben, u. a. aus **RE-Bench**, **HCAST** und zusätzlichen kurzen Aufgaben.
+Für Teams heißt das: eher Trendbeobachtung über Zeit statt Fixierung auf einen Einzelwert.
 
-## Warum die Metrik stark ist
+## 3) Claude Code und Codex schlagen METR-Scaffolds nicht automatisch
 
-Im Vergleich zu vielen klassischen Benchmarks hat der Ansatz drei große Stärken:
+Am **13. Februar 2026** hat METR explizit geprüft, ob spezialisierte Coding-Agent-Setups die Horizon-Messung verbessern:
 
-- **Outcome-nah**: Es geht um abgeschlossene Tasks, nicht nur Einzelfragen.
-- **Vergleichbarkeit über Modellgenerationen**: Man kann die Kurven über die Zeit verfolgen.
-- **Zuverlässigkeit explizit modelliert**: 50 % und 80 % machen die Risikoebene sichtbar.
+- **Claude Code** vs. ReAct (Opus 4.5)
+- **Codex** vs. Triframe (GPT-5)
 
-METR zeigt außerdem, dass der beobachtete Verlauf bislang deutlich besser zu einem **exponentiellen Trend** passt als zu linearen oder hyperbolischen Alternativen.
+Ergebnis: **kein signifikanter Vorteil** in diesem Bench-Setup.
 
-## Warum man die Metrik leicht falsch liest
+Konkrete Kennzahlen aus METRs Notiz:
 
-Die FAQ auf der Seite ist deshalb fast so wichtig wie die Charts selbst. Sie grenzt ab, was die Zahlen gerade **nicht** bedeuten.
+- Opus 4.5: Claude Code schlägt ReAct in **50,7 %** der Bootstrap-Samples
+- GPT-5: Codex schlägt Triframe in **14,5 %** der Bootstrap-Samples
 
-### 1. Kein direkter Beweis für „voll autonome Arbeitszeit“
+Interpretation: besseres Tooling ist nicht automatisch besseres autonomes Benchmarking. Diese Produkte sind oft auf interaktive Human-in-the-Loop-Nutzung optimiert und übertragen sich nicht 1:1 auf Vollautonomie-Evals.
 
-Eine 2-Stunden-Horizon heißt nicht, dass ein Modell universell 2 Stunden „wie ein Mensch im Job“ arbeitet. Die Tasks sind bewusst selbstenthalten und stark spezifiziert.
+## 4) Neue Uplift-Schätzung über Transcript-Analyse (17.02.2026)
 
-In realen Teams ist Arbeit häufig kontextreich, sozial eingebettet und schwer algorithmisch bewertbar.
+METR testet zusätzlich einen günstigeren Weg, Produktivitätseffekte von Coding Agents zu schätzen: nicht nur klassische RCTs, sondern Analyse realer Agent-Transkripte.
 
-### 2. Keine Aussage über alle Domänen
+Prototyp-Datensatz:
 
-Der Schwerpunkt liegt auf Software Engineering, Machine Learning und Cybersecurity. METR verweist selbst darauf, dass Horizons in anderen Domänen anders ausfallen können.
+- **5305 Claude-Code-Transkripte** aus Januar 2026
+- **7 technische METR-Mitarbeitende**
 
-### 3. Keine Gleichsetzung mit Job-Automatisierung
+Berichtete Größenordnung:
 
-Selbst eine hohe Horizon ersetzt nicht automatisch ganze Berufe. Viele Tätigkeiten bestehen aus Kommunikation, Ambiguität und nicht sauber scorbaren Zwischenzielen.
+- geschätzter "time savings factor" von etwa **1,5x bis 13x**
 
-> Hohe Time Horizons sind ein Signal für steigende Capability in klaren, testbaren Aufgabenumgebungen, nicht automatisch ein „Alle Jobs sind jetzt automatisierbar“-Signal.
+Wichtiger caveat: METR rahmt diese Werte eher als **weiche Obergrenze**. Der reale Uplift dürfte niedriger liegen, unter anderem weil Parallelisierungseffekte (mehrere Agenten gleichzeitig) den Faktor künstlich aufblasen können.
 
-## Praktische Details, die oft übersehen werden
+## 5) Produktivitäts-RCTs geraten in Selection-Bias-Probleme
 
-Die Seite gibt auch Einblick in den operativen Aufwand solcher Evaluierungen:
+Am **24. Februar 2026** hat METR offen kommuniziert, dass die seit August 2025 laufende Folgestudie zur Dev-Produktivität durch Selection Effects verzerrt wird:
 
-- Modellzugang herstellen und Verhalten verstehen
-- Scaffold/Agent-Setup auswählen (z. B. ReAct, Codex-ähnliche Setups)
-- Elicitation auf Dev-Tasks
-- Skalierung auf Testset mit mehreren unabhängigen Runs je Task
-- Prüfung auf Reward Hacking, Token-Budget-Probleme und Re-Scoring
+- immer mehr Entwickler wollen nicht mehr ohne AI arbeiten
+- dadurch sinkt die Teilnahmebereitschaft für "ohne-AI"-Bedingungen
+- die Vergleichbarkeit zwischen Gruppen wird schlechter
 
-Laut METR dauert der gesamte Prozess typischerweise **mindestens 1–2 Wochen**. Das erklärt, warum nicht jede neue Modellversion sofort einen veröffentlichten Horizon-Wert hat.
+METR hält es zwar für plausibel, dass Entwickler Anfang 2026 stärker beschleunigt werden als Anfang 2025, betont aber gleichzeitig, dass die Evidenz wegen Bias derzeit nicht sauber genug ist.
 
-## 50 %, 80 % und warum nicht 99 %
+## 6) Warum das Gesamtbild gleichzeitig stark und messy ist
 
-Ein häufiger Wunsch ist ein 99 %-Horizon als „produktionsnähere“ Kennzahl. METR argumentiert, dass das deutlich schwerer robust zu messen ist:
+Im Kontext der letzten Monate ergibt sich ein konsistentes, aber unbequemes Bild:
 
-- deutlich mehr Tasks nötig
-- dafür tendenziell sehr kurze Tasks nötig
-- höhere Empfindlichkeit gegenüber methodischen Details und fehlerhaften Tasks
+1. **Capabilities steigen** in strukturierbaren, testbaren Aufgabenumgebungen.
+2. **Produktivitätswirkung im Alltag** bleibt methodisch schwer sauber zu identifizieren.
+3. **Scaffolds, Tooling und Interaktionsmodus** (autonom vs. human-in-loop) beeinflussen Messresultate massiv.
 
-Solange 50 % und 80 % ähnliche Trendformen zeigen, ist es plausibel, dass höhere Zuverlässigkeitsniveaus trendseitig ähnlich verlaufen, aber mit größerer Unsicherheit.
+Das passt auch zur älteren METR-Linie:
 
-## Was das für Builder, Teams und Entscheider bedeutet
+- RCT von Juli 2025 mit erfahrenen OSS-Entwicklern zeigte im damaligen Tool-Setup einen durchschnittlichen Slowdown.
+- Danach folgten methodische Arbeiten zur Versöhnung von "wachsenden Horizons" und "messbarer Produktivität".
+- Zusätzlich wurde untersucht, wie stark Horizons je Domäne variieren.
 
-Für den praktischen Einsatz taugt die Metrik weniger als Marketingzahl und mehr als **Planungsinstrument**:
+## Was du als Builder daraus mitnehmen solltest
 
-1. **Task-Portfolios in Dauerklassen aufteilen**  
-   Welche Aufgaben in deinem Produkt liegen heute im Bereich einer hohen Erfolgswahrscheinlichkeit?
+Wenn du Agentensysteme bewertest oder einkaufst, nimm aus den METR-Updates vor allem diese drei Punkte mit:
 
-2. **Reliability zuerst definieren**  
-   Für interne Tools reichen oft niedrigere Schwellen als für kundenkritische Automationen.
+- **Trenne Capability-Signal von Workplace-Uplift.**  
+  Ein höherer Horizon-Wert ist nicht automatisch gleichbedeutend mit höherer Team-Produktivität.
 
-3. **Scaffolding ist Teil der Leistung**  
-   Modell + Agent-Loop + Tooling + Guardrails bestimmen das Ergebnis, nicht nur das Basismodell.
+- **Teste Scaffolds gegen deine echte Arbeitsweise.**  
+  Ein Setup, das in interaktiven Flows glänzt, muss nicht im autonomen Batch-Benchmark gewinnen.
 
-4. **Domänenübertragungen vorsichtig behandeln**  
-   Gute Werte in Coding-nahen Aufgaben sind kein Freifahrtschein für andere Arbeitsfelder.
-
-5. **Release-Bewertung zeitversetzt einplanen**  
-   Wenn du auf Drittmessungen wartest, rechne mit Verzögerung zwischen Modellrelease und belastbarer Horizon-Schätzung.
-
-## Einordnung der aktuellen Updates
-
-Auf der Seite ist dokumentiert, dass regelmäßig neue Modellstände ergänzt werden (zuletzt u. a. neuere Codex- und Claude-Varianten). Für Marktbeobachtung heißt das:
-
-- nicht auf Einzelpunkte fixieren
-- eher auf **Steigung und Stabilität des Trends** achten
-- gleichzeitig die Grenzen der Messumgebung im Blick behalten
-
-Gerade diese Kombination aus Trendstärke und methodischer Nüchternheit macht den METR-Ansatz wertvoll: Er ist ambitioniert, aber nicht naiv.
+- **Rechne mit Messrauschen in realen Umgebungen.**  
+  Concurrency, Auswahlverzerrungen und Prozessänderungen können Effekte stark verzerren.
 
 ## Fazit
 
-Die Time-Horizons-Seite von METR ist aktuell eine der brauchbarsten Brücken zwischen abstrakten Modellfähigkeiten und realen agentischen Einsatzfragen. Sie macht Fortschritt messbar, ohne die Unsicherheit zu verschweigen.
+Seit März 2025 hat METR sein Time-Horizon-Programm deutlich professionalisiert: **TH 1.1**, eine laufend gepflegte Referenzseite, explizite Scaffold-Vergleiche (inklusive Nullresultate) und neue Uplift-Methodik über Transkripte.
 
-Wenn du Agentensysteme baust, solltest du die Metrik so lesen: **nicht als absolute Automationsgarantie**, sondern als strukturierte Evidenz dafür, welche Aufgabendauern und Zuverlässigkeitsniveaus für Frontier-Modelle heute realistisch sind — und wie schnell sich dieser Korridor verschiebt.
+Das Netto-Signal ist klar: Die technischen Fähigkeiten steigen, aber der Nachweis stabiler Real-World-Produktivitätsgewinne bleibt ein methodisch hartes Problem. Genau diese Kombination macht die aktuellen METR-Updates so wertvoll.
+
+## Quellen
+
+- [Time Horizon 1.1 (29.01.2026)](https://metr.org/blog/2026-1-29-time-horizon-1-1/)
+- [Task-Completion Time Horizons of Frontier AI Models](https://metr.org/time-horizons/)
+- [Measuring Time Horizon using Claude Code and Codex (13.02.2026)](https://metr.org/notes/2026-02-13-measuring-time-horizon-using-claude-code-and-codex/)
+- [Exploratory transcript analysis for coding-agent time savings (17.02.2026)](https://metr.org/notes/2026-02-17-exploratory-transcript-analysis-for-estimating-time-savings-from-coding-agents/)
+- [We are Changing our Developer Productivity Experiment Design (24.02.2026)](https://metr.org/blog/2026-02-24-uplift-update/)
+- [Early-2025 AI and experienced OSS developer productivity (10.07.2025)](https://metr.org/blog/2025-07-10-early-2025-ai-experienced-os-dev-study/)
+- [Reconciling slowdown with time horizons (12.08.2025)](https://metr.org/blog/2025-08-12-research-update-towards-reconciling-slowdown-with-time-horizons/)
+- [How time horizon varies across domains (14.07.2025)](https://metr.org/blog/2025-07-14-how-does-time-horizon-vary-across-domains/)

@@ -1,7 +1,7 @@
 ---
 name: knowledge-curator
 description: Use this skill to convert web content (Tweets, Blogs, Threads) into high-quality VibeDeck knowledge base articles using Markdown.
-version: 1.2.0
+version: 1.3.0
 ---
 
 # Knowledge Curator Skill
@@ -48,12 +48,23 @@ sourceURL: "https://url.com"
 sourceType: "tweet" | "blog" | "thread"
 author: "Andrej Karpathy"
 sourceDate: "2026-01-26"
+addedDate: "2026-02-28"
 ---
 
 [NUR WENN BILD VORHANDEN IST: ![Header Image Description](/images/knowledge/{slug}/header.jpg)]
 
 [Inhalt hier. Nutze H2 (##) und H3 (###). Zitiere Kernaussagen mit Blockquotes (>).]
 ```
+
+Wichtig zu Datumsfeldern:
+
+- `sourceDate`: Original-Veröffentlichungsdatum der Quelle (vom Tweet/Blog/Thread selbst).
+- `addedDate`: Hinzufügedatum zu VibeDeck (immer lokales Tagesdatum im Format `YYYY-MM-DD` zum Zeitpunkt der Erstellung).
+- Datumsformat für beide Felder: `YYYY-MM-DD`.
+
+Für `addedDate` in PowerShell:
+
+`(Get-Date).ToString('yyyy-MM-dd')`
 
 ### C. Assets verwalten
 
@@ -74,7 +85,7 @@ sourceDate: "2026-01-26"
 - [ ] Wurde eine Einleitung/Marketing-Gerede entfernt?
 - [ ] Sind englische Fachbegriffe erhalten geblieben?
 - [ ] Ist die Bildquelle (Header) korrekt verlinkt?
-- [ ] Ist der Frontmatter vollständig (Category, Icon, ReadTime, Tags, Source-Felder)?
+- [ ] Ist der Frontmatter vollständig (Category, Icon, ReadTime, Tags, Source-Felder inkl. `sourceDate` und `addedDate`)?
 
 ## 4. Beispiel für Icons
 
