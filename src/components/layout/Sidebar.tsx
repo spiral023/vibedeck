@@ -29,6 +29,7 @@ import {
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { ThemeToggle } from '@/components/ThemeToggle';
+import { SIDEBAR_SOON_MODE_ENABLED, SOON_LOCKED_PATHS } from '@/lib/navigation';
 
 interface NavItem {
   label: string;
@@ -36,20 +37,6 @@ interface NavItem {
   icon: React.ComponentType<{ className?: string }>;
   badge?: string;
 }
-
-const SIDEBAR_SOON_MODE_ENABLED = true;
-const SOON_LOCKED_PATHS = new Set<string>([
-  '/prompt-builder',
-  '/prompt-composer',
-  '/prompt-factory',
-  '/prompt-library',
-  '/workflows',
-  '/hosting',
-  '/superpowers',
-  '/idea-lab',
-  '/rules-generator',
-  '/history',
-]);
 
 const navItems: NavItem[] = [
   { label: 'Prompt Builder', href: '/prompt-builder', icon: Wrench },

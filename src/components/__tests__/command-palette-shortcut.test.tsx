@@ -66,4 +66,17 @@ describe('command palette shortcuts', () => {
 
     expect(screen.getByTestId('palette-state')).toHaveTextContent('closed');
   });
+
+  it('hides soon-locked pages in navigation results', () => {
+    render(<PaletteHarness />);
+
+    act(() => {
+      fireEvent.keyDown(document, { key: 'k', ctrlKey: true });
+    });
+
+    expect(screen.getByTestId('palette-state')).toHaveTextContent('open');
+    expect(screen.queryByText('Prompt Builder')).not.toBeInTheDocument();
+    expect(screen.queryByText('Prompt Factory')).not.toBeInTheDocument();
+    expect(screen.getByText('Help Bibliothek')).toBeInTheDocument();
+  });
 });

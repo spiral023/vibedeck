@@ -1,4 +1,4 @@
-import { useEffect, useCallback, useMemo, useState } from 'react';
+import { useEffect, useCallback, useMemo, useRef, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { Command } from 'cmdk';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -28,6 +28,7 @@ import { useThemeStore } from '@/stores/theme-store';
 import { useHistoryStore } from '@/stores/history-store';
 import { copyToClipboard } from '@/lib/copy-utils';
 import { createSearchFuse, normalizeSearchInput, searchDocuments as runSearchDocuments } from '@/lib/article-search';
+import { SIDEBAR_SOON_MODE_ENABLED, SOON_LOCKED_PATHS } from '@/lib/navigation';
 import { type SearchDocument } from '@/types/search';
 import { toast } from 'sonner';
 import { cn } from '@/lib/utils';
@@ -75,6 +76,7 @@ export function CommandPalette({ open, onOpenChange }: CommandPaletteProps) {
   const { theme, setTheme } = useThemeStore();
   const { entries, getLatestEntry } = useHistoryStore();
   const [search, setSearch] = useState('');
+  const inputRef = useRef<HTMLInputElement>(null);
   const normalizedSearch = useMemo(() => normalizeSearchInput(search), [search]);
 
   const {
@@ -136,7 +138,13 @@ export function CommandPalette({ open, onOpenChange }: CommandPaletteProps) {
   }, [getLatestEntry, onOpenChange]);
 
   const filteredNavigationItems = useMemo(() => {
-    return navigationItems.filter((item) => matchesQuery([item.label, item.keywords], normalizedSearch));
+    return navigationItems.filter((item) => {
+      if (SIDEBAR_SOON_MODE_ENABLED && SOON_LOCKED_PATHS.has(item.path)) {
+        return false;
+      }
+
+      return matchesQuery([item.label, item.keywords], normalizedSearch);
+    });
   }, [normalizedSearch]);
 
   const showCopyAction = useMemo(() => {
@@ -151,6 +159,18 @@ export function CommandPalette({ open, onOpenChange }: CommandPaletteProps) {
     if (!open) {
       setSearch('');
     }
+  }, [open]);
+
+  useEffect(() => {
+    if (!open) {
+      return;
+    }
+
+    const frameId = window.requestAnimationFrame(() => {
+      inputRef.current?.focus();
+    });
+
+    return () => window.cancelAnimationFrame(frameId);
   }, [open]);
 
   const articleSearchFuse = useMemo(() => {
@@ -208,16 +228,18 @@ export function CommandPalette({ open, onOpenChange }: CommandPaletteProps) {
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.95 }}
             transition={{ duration: 0.15 }}
-            className="fixed left-1/2 top-1/4 z-50 w-full max-w-lg -translate-x-1/2"
+            className="fixed inset-0 z-50 flex items-center justify-center p-4"
           >
             <Command
               shouldFilter={false}
-              className="rounded-2xl border border-border bg-card shadow-2xl overflow-hidden"
+              className="w-full max-w-lg overflow-hidden rounded-2xl border border-border bg-card shadow-2xl"
               loop
             >
               <div className="flex items-center border-b border-border px-4">
                 <Search className="mr-2 h-4 w-4 shrink-0 text-muted-foreground" />
                 <Command.Input
+                  ref={inputRef}
+                  autoFocus
                   value={search}
                   onValueChange={setSearch}
                   placeholder="Suche oder Befehl eingeben..."
