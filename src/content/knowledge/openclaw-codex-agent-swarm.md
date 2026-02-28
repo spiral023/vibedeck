@@ -1,13 +1,30 @@
 ---
 title: "OpenClaw + Codex/ClaudeCode Agent Swarm: Das Ein-Personen-Entwicklerteam [Full Setup]"
 description: "Ein tiefer Einblick in das autonome Agenten-System von Elvis: Orchestrierung mit OpenClaw, parallele Agenten-Flotten und der Weg zum Ein-Personen-Millionen-Dollar-Unternehmen."
+type: source
+status: seed
 category: tooling
 icon: Zap
-readTime: 18 Min
-tags: ["openclaw", "codex", "claude-code", "agent-swarm", "automation", "devops", "software-engineering"]
-sourceURL: "https://x.com/elvissun/status/2025920521871716562"
-sourceType: "article"
-author: "Elvis"
+readTime: 18
+tags:
+  - tooling/openclaw
+  - tooling/codex
+  - tooling/claude-code
+  - patterns/agent-swarms
+  - workflows/automation
+  - workflows/devops
+  - workflows/software-engineering
+aliases:
+  - "OpenClaw + Codex/ClaudeCode Agent Swarm: Das Ein-Personen-Entwicklerteam [Full Setup]"
+topics:
+  - "[[OpenAI Codex]]"
+  - "[[OpenClaw]]"
+  - "[[Claude Code]]"
+  - "[[DevOps]]"
+up: "[[OpenAI Codex]]"
+sourceURL: https://x.com/elvissun/status/2025920521871716562
+sourceType: article
+author: Elvis
 sourceDate: "2026-02-23"
 addedDate: "2026-02-25"
 ---
@@ -126,3 +143,13 @@ Wir bewegen uns auf eine Zeit zu, in der Einzelpersonen millionenschwere Unterne
 ![Swarm UI](/images/knowledge/openclaw-codex-agent-swarm/swarm-ui.png)
 
 *Quelle: Basierend auf einem Thread von [Elvis](https://x.com/elvissun) auf X.*
+
+## Verbindungen
+- [[OpenAI Codex]]
+- [[OpenClaw]]
+- [[Claude Code]]
+- [[DevOps]]
+- [[Agent Workflows]]
+- [[Tool Calling]]
+- [[Context Engineering]]
+- [[Automation]]

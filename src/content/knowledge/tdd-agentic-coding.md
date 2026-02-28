@@ -1,17 +1,28 @@
 ---
 title: Test-Driven Development (TDD) für Agentic Coding
-description: >-
-  Wie TDD Struktur in den Flow bringt und Agentic Coding die Umsetzung komplexer
-  Logik beschleunigt.
+description: Wie TDD Struktur in den Flow bringt und Agentic Coding die Umsetzung komplexer Logik beschleunigt.
+type: source
+status: seed
 category: patterns
 icon: CheckSquare
-readTime: 9 Min
-tags: ["tdd", "testing", "agentic-coding", "patterns"]
-sourceURL: "https://tweag.github.io/agentic-coding-handbook/WORKFLOW_TDD/"
-sourceType: "docs"
-author: "Tweag"
-level: intermediate
+readTime: 9
+tags:
+  - patterns/tdd
+  - patterns/testing
+  - workflows/agentic-coding
+  - patterns/general
+aliases:
+  - Test-Driven Development (TDD) für Agentic Coding
+topics:
+  - "[[Testing]]"
+  - "[[TDD]]"
+  - "[[Agentic Coding]]"
+up: "[[Testing]]"
+sourceURL: https://tweag.github.io/agentic-coding-handbook/WORKFLOW_TDD/
+sourceType: docs
+author: Tweag
 addedDate: "2026-02-04"
+level: intermediate
 ---
 
 Test-Driven Development (TDD) und Agentic Coding mögen wie Gegensätze erscheinen — das eine ist strukturiert und diszipliniert, das andere fluid und intuitiv. Aber kombiniert erzeugen sie eine mächtige Feedback-Schleife: TDD gibt deinem Flow Struktur, und Agentic Coding verleiht deiner Struktur Geschwindigkeit.
@@ -153,3 +164,13 @@ Diese Kombination glänzt besonders bei komplexen Logikdateien, wie z. B. Pricin
 - [ ] Refactor tax calculation into separate method for clarity
 - [ ] Refactor discount calculation into separate method
 - [ ] Ensure all tests still pass after refactoring
+
+## Verbindungen
+- [[Testing]]
+- [[TDD]]
+- [[Agentic Coding]]
+- [[Regression Testing]]
+- [[Integration Testing]]
+- [[Debugging]]
+- [[Quality Gates]]
+- [[Test Strategy]]

@@ -1,13 +1,29 @@
 ---
-title: "AI Agents sicher im YOLO-Modus ausführen mit Docker Sandboxes"
-description: "Lerne, wie Du Claude Code, Codex oder Gemini CLI sicher mit vollen Berechtigungen ausführst, ohne Dein System zu gefährden."
+title: AI Agents sicher im YOLO-Modus ausführen mit Docker Sandboxes
+description: Lerne, wie Du Claude Code, Codex oder Gemini CLI sicher mit vollen Berechtigungen ausführst, ohne Dein System zu gefährden.
+type: source
+status: seed
 category: security
 icon: Shield
-readTime: 7 Min
-tags: ["docker", "sandbox", "security", "claude-code", "automation", "vibe-coding"]
-sourceURL: "https://x.com/d4m1n/status/2019366063226355930"
-sourceType: "tweet"
-author: "Dan ⚡️"
+readTime: 7
+tags:
+  - tooling/docker
+  - security/sandbox
+  - security/best-practices
+  - tooling/claude-code
+  - workflows/automation
+  - workflows/vibe-coding
+aliases:
+  - AI Agents sicher im YOLO-Modus ausführen mit Docker Sandboxes
+topics:
+  - "[[Vibe Coding]]"
+  - "[[Docker]]"
+  - "[[Security]]"
+  - "[[Claude Code]]"
+up: "[[Vibe Coding]]"
+sourceURL: https://x.com/d4m1n/status/2019366063226355930
+sourceType: tweet
+author: Dan ⚡️
 sourceDate: "2026-02-05"
 addedDate: "2026-02-06"
 level: advanced
@@ -82,3 +98,13 @@ docker sandbox exec -it <sandbox-name> bash
 ```
 
 Du hast die volle Kontrolle über die Sandbox, genau wie bei einem regulären Container, aber mit der Sicherheit einer isolierten Micro-VM.
+
+## Verbindungen
+- [[Vibe Coding]]
+- [[Docker]]
+- [[Security]]
+- [[Claude Code]]
+- [[Agentic Coding]]
+- [[Prompt Engineering]]
+- [[Rapid Prototyping]]
+- [[Workflow Design]]

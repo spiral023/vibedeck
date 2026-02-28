@@ -1,17 +1,28 @@
 ---
 title: Using MiniMax M2.1 with Claude Code
-description: >-
-  So nutzt du MiniMax M2.1 als kostengünstige Alternative zu Claude Opus 4.5,
-  wenn du an Rate Limits stößt oder Kosten sparen möchtest.
-category: performance
+description: So nutzt du MiniMax M2.1 als kostengünstige Alternative zu Claude Opus 4.5, wenn du an Rate Limits stößt oder Kosten sparen möchtest.
+type: source
+status: seed
+category: workflows
 icon: Cpu
-readTime: 4 Min
-tags: ["claude-code", "performance", "tooling", "workflows"]
-sourceURL: "https://x.com/rudrank/status/2018272804966449209"
-sourceType: "thread"
+readTime: 4
+tags:
+  - tooling/claude-code
+  - patterns/performance
+  - tooling/general
+  - workflows/general
+aliases:
+  - Using MiniMax M2.1 with Claude Code
+topics:
+  - "[[Claude Code]]"
+  - "[[Prompt Engineering]]"
+  - "[[Workflow Design]]"
+up: "[[Claude Code]]"
+sourceURL: https://x.com/rudrank/status/2018272804966449209
+sourceType: thread
 author: "@rudrank"
-level: advanced
 addedDate: "2026-02-04"
+level: advanced
 ---
 
 ![Header Image](/images/knowledge/using-minimax-with-claude-code/header.jpg)
@@ -88,3 +99,13 @@ Das macht es so einfach wie einen einzigen Befehl.
 Mit dieser Konfiguration kannst du den Alias `minimax` nutzen, um es direkt zu verwenden, oder weiterhin `claude` nutzen, um mit Opus 4.5 zu arbeiten.
 
 Das gleiche Muster kann für Modelle wie **Kimi K2.5** oder **GLM 4.7** verwendet werden.
+
+## Verbindungen
+- [[Claude Code]]
+- [[Prompt Engineering]]
+- [[Workflow Design]]
+- [[Context Engineering]]
+- [[Hooks]]
+- [[Subagents]]
+- [[Tool Calling]]
+- [[Agent Workflows]]

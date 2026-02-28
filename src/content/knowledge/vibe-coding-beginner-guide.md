@@ -1,14 +1,27 @@
 ---
-title: 'Vibe Coding Guide: Von Null auf Product in 6 Monaten'
-description: >-
-  Elena Kovacs teilt ihre Reise von null Programmierkenntnissen hin zum Bauen
-  eigener Tools und Automatisierungen mit Claude Code.
+title: "Vibe Coding Guide: Von Null auf Product in 6 Monaten"
+description: Elena Kovacs teilt ihre Reise von null Programmierkenntnissen hin zum Bauen eigener Tools und Automatisierungen mit Claude Code.
+type: source
+status: seed
 category: fundamentals
 icon: Rocket
-readTime: 7 Min
-sourceDate: '2026-01-15'
+readTime: 7
+tags:
+  - workflows/vibe-coding
+  - workflows/agentic-coding
+  - workflows/general
+  - patterns/best-practices
+aliases:
+  - "Vibe Coding Guide: Von Null auf Product in 6 Monaten"
+topics:
+  - "[[Vibe Coding]]"
+  - "[[Agentic Coding]]"
+  - "[[Workflow Design]]"
+up: "[[Vibe Coding]]"
+sourceURL: https://x.com/elenakvcs/status/2008228601980985550
+sourceType: tweet
+sourceDate: "2026-01-15"
 addedDate: "2026-02-01"
-tags: ["vibe-coding", "agentic-coding", "workflows", "best-practices"]
 level: beginner
 ---
 
@@ -113,3 +126,12 @@ Die Lücke zwischen "Ich habe eine Idee" und "Ich habe es gebaut" war nie kleine
 
 ---
 *Quelle: [elena ₊ ⊹ auf X](https://x.com/elenakvcs/status/2008228601980985550)*
+
+## Verbindungen
+- [[Vibe Coding]]
+- [[Agentic Coding]]
+- [[Workflow Design]]
+- [[Prompt Engineering]]
+- [[Rapid Prototyping]]
+- [[Debugging]]
+- [[Product Iteration]]

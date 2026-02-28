@@ -1,17 +1,28 @@
 ---
-title: 'Gemini 3.0: Elite Web Designer Prompt'
-description: >-
-  Ein leistungsstarker Meta-Prompt, der Gemini 3.0 in einen Elite Web Designer
-  verwandelt, der komplette Websites von der Vision bis zum Code erstellt.
+title: "Gemini 3.0: Elite Web Designer Prompt"
+description: Ein leistungsstarker Meta-Prompt, der Gemini 3.0 in einen Elite Web Designer verwandelt, der komplette Websites von der Vision bis zum Code erstellt.
+type: source
+status: seed
 category: patterns
 icon: Layout
-readTime: 15 Min
-tags: ["gemini", "prompts", "ui-design", "prompt-engineering"]
-sourceURL: 'https://x.com/godofprompt/status/1991930251715440762'
+readTime: 15
+tags:
+  - tooling/gemini
+  - patterns/prompting
+  - patterns/ui-design
+  - patterns/prompt-engineering
+aliases:
+  - "Gemini 3.0: Elite Web Designer Prompt"
+topics:
+  - "[[Google Gemini]]"
+  - "[[Prompt Engineering]]"
+  - "[[UI Design]]"
+up: "[[Google Gemini]]"
+sourceURL: https://x.com/godofprompt/status/1991930251715440762
 sourceType: tweet
 author: God of Prompt
-level: advanced
 addedDate: "2026-02-01"
+level: advanced
 ---
 
 Dieser Mega-Prompt verwandelt Gemini 3.0 (oder andere fähige Modelle wie Claude 3.5/3.7) in einen **"Elite Web Designer"**.
@@ -335,3 +346,12 @@ Begin Phase 1 when ready.
 *   Sei in **Phase 1** (Vision Capture) so spezifisch wie möglich bezüglich Ästhetik (z.B. "Liquid Glass", "Cyberpunk", "Minimalist SaaS").
 *   Nutze die **Mockup-Phase**, um Design-Fehler frühzeitig zu erkennen, bevor Code geschrieben wird.
 *   Das Ergebnis ist meist eine einzelne HTML-Datei mit allem CSS/JS integriert ("Single File Delivery") – perfekt für schnelles Deployment oder Prototyping.
+
+## Verbindungen
+- [[Google Gemini]]
+- [[Prompt Engineering]]
+- [[UI Design]]
+- [[Image Generation]]
+- [[Model Selection]]
+- [[Workflow Design]]
+- [[Agent Workflows]]

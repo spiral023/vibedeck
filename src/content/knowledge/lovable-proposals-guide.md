@@ -1,13 +1,27 @@
 ---
 title: "Premium Proposals & Slide Decks mit Lovable: Der komplette Guide"
-description: "Erfahre, wie du interaktive Angebote und Slide Decks in Minuten mit Lovable erstellst. Inklusive Prompts für verschiedene Branchen."
+description: Erfahre, wie du interaktive Angebote und Slide Decks in Minuten mit Lovable erstellst. Inklusive Prompts für verschiedene Branchen.
+type: source
+status: seed
 category: workflows
 icon: Presentation
-readTime: 12 Min
-tags: ["lovable", "proposals", "slide-decks", "agency-growth", "prompts"]
-sourceURL: "https://x.com/damienghader/status/2023780178128728201"
-sourceType: "thread"
-author: "Damien"
+readTime: 12
+tags:
+  - tooling/lovable
+  - workflows/proposals
+  - workflows/slide-decks
+  - workflows/agency-growth
+  - patterns/prompting
+aliases:
+  - "Premium Proposals & Slide Decks mit Lovable: Der komplette Guide"
+topics:
+  - "[[Lovable]]"
+  - "[[Prompt Engineering]]"
+  - "[[Workflow Design]]"
+up: "[[Lovable]]"
+sourceURL: https://x.com/damienghader/status/2023780178128728201
+sourceType: thread
+author: Damien
 sourceDate: "2026-02-17"
 addedDate: "2026-02-25"
 ---
@@ -125,3 +139,12 @@ Unabhängig vom Format teilen hochwertige Angebote diese Merkmale:
 > "Die stärksten Decks und Proposals entstehen durch Vereinfachung der Struktur, das Entfernen unnötiger Entscheidungen und den Fokus darauf, wie der Leser Informationen tatsächlich konsumiert."
 
 *Quelle: Basierend auf einem Thread von [Damien](https://x.com/damienghader) auf X.*
+
+## Verbindungen
+- [[Lovable]]
+- [[Prompt Engineering]]
+- [[Workflow Design]]
+- [[UI Design]]
+- [[Rapid Prototyping]]
+- [[Design Systems]]
+- [[Product Discovery]]

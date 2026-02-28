@@ -1,13 +1,28 @@
 ---
 title: "Kimi K2.5: Lokale Ausführung & Guide"
-description: "Erfahre, wie Du Kimi K2.5 von Moonshot AI lokal ausführst. Nutze Unsloth Dynamic GGUFs für maximale Performance bei geringem Speicherbedarf."
+description: Erfahre, wie Du Kimi K2.5 von Moonshot AI lokal ausführst. Nutze Unsloth Dynamic GGUFs für maximale Performance bei geringem Speicherbedarf.
+type: source
+status: seed
 category: tooling
 icon: Lock
-readTime: 8 Min
-tags: ["llm-coding", "local-llm", "unsloth", "moonshot-ai", "kimi"]
-sourceURL: "https://unsloth.ai/docs/models/kimi-k2.5"
-sourceType: "blog"
-author: "Unsloth Team"
+readTime: 8
+tags:
+  - workflows/llm-coding
+  - tooling/local-llm
+  - tooling/unsloth
+  - tooling/moonshot-ai
+  - tooling/kimi
+aliases:
+  - "Kimi K2.5: Lokale Ausführung & Guide"
+topics:
+  - "[[AI Engineering]]"
+  - "[[Local LLMs]]"
+  - "[[Kimi]]"
+  - "[[Workflow Design]]"
+up: "[[AI Engineering]]"
+sourceURL: https://unsloth.ai/docs/models/kimi-k2.5
+sourceType: blog
+author: Unsloth Team
 sourceDate: "2026-01-31"
 addedDate: "2026-02-06"
 level: advanced
@@ -94,3 +109,13 @@ Kimi K2.5 zeigt beeindruckende Ergebnisse im Vergleich zu anderen Top-Modellen:
 | **MMLU-Pro** | 87.1 | 86.7 | 89.3 |
 | **SWE-Bench Verified** | 76.8 | 80.0 | 80.9 |
 | **MathVista** | 90.1 | 82.8 | 80.2 |
+
+## Verbindungen
+- [[AI Engineering]]
+- [[Local LLMs]]
+- [[Kimi]]
+- [[Workflow Design]]
+- [[Prompt Engineering]]
+- [[Agent Workflows]]
+- [[Tool Calling]]
+- [[Context Engineering]]

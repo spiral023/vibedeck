@@ -1,16 +1,27 @@
 ---
-title: 'The Complete Guide: Prompting Lovable for Design'
-description: >-
-  Wie man Lovable wie ein Designer promptet: Der Guide zu Design-Systemen,
-  Komponenten und effektiven Prompts von Damien Ghader.
+title: "The Complete Guide: Prompting Lovable for Design"
+description: "Wie man Lovable wie ein Designer promptet: Der Guide zu Design-Systemen, Komponenten und effektiven Prompts von Damien Ghader."
+type: source
+status: seed
 category: fundamentals
 icon: Rocket
-readTime: 7 Min
-tags: ["lovable", "ui-design", "prompts", "workflows"]
-sourceURL: 'https://x.com/damienghader/status/2012547182130336033'
+readTime: 7
+tags:
+  - tooling/lovable
+  - patterns/ui-design
+  - patterns/prompting
+  - workflows/general
+aliases:
+  - "The Complete Guide: Prompting Lovable for Design"
+topics:
+  - "[[Lovable]]"
+  - "[[UI Design]]"
+  - "[[Prompt Engineering]]"
+up: "[[Lovable]]"
+sourceURL: https://x.com/damienghader/status/2012547182130336033
 sourceType: tweet
 author: Damien Ghader
-sourceDate: '2026-01-17'
+sourceDate: "2026-01-17"
 addedDate: "2026-02-01"
 level: intermediate
 hot: true
@@ -213,3 +224,12 @@ Lovable versteht Deltas (Unterschiede) extrem gut.
 
 **Fazit:**
 Lovable ist das perfekte Werkzeug, um als **Design-System-Engine** zu fungieren. Wenn du kleine Komponenten, klare Strukturen, explizite Layout-Regeln und existierende Referenzen promptest, erhältst du sauberere UI, schnellere Iteration und echte Design-Konsistenz.
+
+## Verbindungen
+- [[Lovable]]
+- [[UI Design]]
+- [[Prompt Engineering]]
+- [[Rapid Prototyping]]
+- [[Design Systems]]
+- [[Workflow Design]]
+- [[Product Discovery]]

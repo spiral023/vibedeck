@@ -1,13 +1,26 @@
 ---
 title: "Planning with files: Der 'Cheat Code' für Claude Code"
-description: "Ein Deep Dive in den Planning-with-files Skill, der durch persistente Dateien für eine präzisere Planung und Ausführung sorgt."
+description: Ein Deep Dive in den Planning-with-files Skill, der durch persistente Dateien für eine präzisere Planung und Ausführung sorgt.
+type: source
+status: seed
 category: tooling
 icon: FileText
-readTime: 2 Min
-tags: ["claude-code", "skills", "planning", "workflow"]
-sourceURL: "https://x.com/anthonyriera/status/2018221220160827828"
-sourceType: "tweet"
-author: "Anthony Riera"
+readTime: 2
+tags:
+  - tooling/claude-code
+  - workflows/skills
+  - patterns/planning
+  - workflows/general
+aliases:
+  - "Planning with files: Der 'Cheat Code' für Claude Code"
+topics:
+  - "[[Claude Code]]"
+  - "[[Skills]]"
+  - "[[Planning]]"
+up: "[[Claude Code]]"
+sourceURL: https://x.com/anthonyriera/status/2018221220160827828
+sourceType: tweet
+author: Anthony Riera
 sourceDate: "2026-02-02"
 addedDate: "2026-02-15"
 level: advanced
@@ -46,3 +59,13 @@ Sobald der Skill installiert ist, reicht es aus, in einem Prompt einfach **"Plan
 ## Fazit
 
 Wenn Du komplexe Refactorings oder Feature-Implementierungen mit Claude Code durchführst, ist "Planning with files" ein unverzichtbares Werkzeug. Es verwandelt Claude von einem fähigen Assistenten in einen methodischen Ingenieur, der den Überblick behält.
+
+## Verbindungen
+- [[Claude Code]]
+- [[Skills]]
+- [[Planning]]
+- [[Context Engineering]]
+- [[Hooks]]
+- [[Subagents]]
+- [[Tool Calling]]
+- [[Agent Workflows]]

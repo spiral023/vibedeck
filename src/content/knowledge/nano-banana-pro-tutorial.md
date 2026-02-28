@@ -1,17 +1,28 @@
 ---
-title: 'Tutorial: Nano Banana Pro (Gemini 3 Pro Image)'
-description: >-
-  Ein umfassender Developer-Guide für die Features von Nano Banana Pro: Thinking
-  Process, Search Grounding, 4K Output und mehr.
+title: "Tutorial: Nano Banana Pro (Gemini 3 Pro Image)"
+description: "Ein umfassender Developer-Guide für die Features von Nano Banana Pro: Thinking Process, Search Grounding, 4K Output und mehr."
+type: source
+status: seed
 category: patterns
 icon: Image
-readTime: 6 Min
-tags: ["gemini", "image-generation", "tooling", "docs"]
-sourceURL: 'https://x.com/GoogleAIStudio/status/1992267030050083091'
+readTime: 6
+tags:
+  - tooling/gemini
+  - tooling/image-generation
+  - tooling/general
+  - tooling/docs
+aliases:
+  - "Tutorial: Nano Banana Pro (Gemini 3 Pro Image)"
+topics:
+  - "[[Google Gemini]]"
+  - "[[Prompt Engineering]]"
+  - "[[Workflow Design]]"
+up: "[[Google Gemini]]"
+sourceURL: https://x.com/GoogleAIStudio/status/1992267030050083091
 sourceType: thread
 author: Google AI Studio
-level: advanced
 addedDate: "2026-02-01"
+level: advanced
 ---
 
 > **Hinweis:** "Nano Banana" ist der Codename für Gemini 2.5 Flash Image Generation. "Nano Banana Pro" bezieht sich auf **Gemini 3 Pro Image Preview**.
@@ -238,3 +249,12 @@ Prompt: *"A photo of a program for the Broadway show about TCG players on a nice
 *   **Camera Control:** Nutze Begriffe wie "wide-angle", "macro shot".
 *   **Search Grounding präzise nutzen:** Sag explizit "Search the web about...".
 *   **Batch API nutzen:** Um Kosten zu sparen.
+
+## Verbindungen
+- [[Google Gemini]]
+- [[Prompt Engineering]]
+- [[Workflow Design]]
+- [[Image Generation]]
+- [[UI Design]]
+- [[Model Selection]]
+- [[Agent Workflows]]

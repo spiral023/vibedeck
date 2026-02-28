@@ -1,12 +1,25 @@
 ---
 title: 10 Regeln für effektives „Vibe Coding“
 description: Strategien von Startups und FAANG-Unternehmen für KI-gestützte Entwicklung.
+type: source
+status: seed
 category: fundamentals
 icon: Rocket
-readTime: 5 Min
-tags: ["vibe-coding", "best-practices", "workflows"]
-level: intermediate
+readTime: 5
+tags:
+  - workflows/vibe-coding
+  - patterns/best-practices
+  - workflows/general
+aliases:
+  - 10 Regeln für effektives „Vibe Coding“
+topics:
+  - "[[Vibe Coding]]"
+  - "[[Prompt Engineering]]"
+  - "[[Workflow Design]]"
+up: "[[Vibe Coding]]"
+sourceType: blog
 addedDate: "2026-02-01"
+level: intermediate
 ---
 
 10 Regeln für effektives „Vibe Coding“, basierend auf den Strategien von Startups und FAANG-Unternehmen:
@@ -45,3 +58,12 @@ KI ersetzt keine Disziplin, sie verstärkt sie. Achte auf **modularen Code** sta
 
 **Analogie zur Veranschaulichung:**
 Vibe Coding ist wie das Fliegen eines modernen Jets mit **Autopiloten**: Die KI kann die meiste Flugzeit (den Code-Boilerplate) übernehmen und ist dabei extrem schnell. Aber ohne einen **Flugplan** (PRD), ständige Überprüfung der **Instrumente** (Tests) und die Bereitschaft des Piloten, bei Turbulenzen das **Steuer selbst zu übernehmen** (Debugging/Refactoring), wird der Flug im Chaos enden. Der Autopilot macht dich schneller, aber du bestimmst das Ziel und die Sicherheit.
+
+## Verbindungen
+- [[Vibe Coding]]
+- [[Prompt Engineering]]
+- [[Workflow Design]]
+- [[Agentic Coding]]
+- [[Rapid Prototyping]]
+- [[Debugging]]
+- [[Product Iteration]]

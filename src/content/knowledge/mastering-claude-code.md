@@ -1,13 +1,27 @@
 ---
 title: "Mastering Claude Code: Vom Chatbot zum echten Assistenten"
-description: "Lerne, wie du Claude Code durch Konfigurationsdateien, ein Memory-System und ein Orchestrator-Modell effektiv in deinen Workflow integrierst."
+description: Lerne, wie du Claude Code durch Konfigurationsdateien, ein Memory-System und ein Orchestrator-Modell effektiv in deinen Workflow integrierst.
+type: source
+status: seed
 category: workflows
 icon: Zap
-readTime: 6 Min
-tags: ["claude-code", "ai-agents", "productivity", "workflows", "memory-system"]
-sourceURL: "https://x.com/DeFiMinty/status/2022470560505090071"
-sourceType: "thread"
-author: "Minty"
+readTime: 6
+tags:
+  - tooling/claude-code
+  - patterns/ai-agents
+  - workflows/productivity
+  - workflows/general
+  - patterns/memory-system
+aliases:
+  - "Mastering Claude Code: Vom Chatbot zum echten Assistenten"
+topics:
+  - "[[Claude Code]]"
+  - "[[Prompt Engineering]]"
+  - "[[Workflow Design]]"
+up: "[[Claude Code]]"
+sourceURL: https://x.com/DeFiMinty/status/2022470560505090071
+sourceType: thread
+author: Minty
 sourceDate: "2026-02-14"
 addedDate: "2026-02-14"
 level: advanced
@@ -99,3 +113,13 @@ Claude nimmt Anweisungen sehr wörtlich. Vage Anweisungen führen zu vagen Ergeb
 - **Visuals:** Claude "sieht" deinen Bildschirm nicht. Wenn es sagt *"CSS gefixt"*, schließt es das logisch aus dem Code. Du musst visuelle Änderungen immer selbst verifizieren.
 
 Claude Code belohnt **Systemdenken**. Das Tool passt sich der Struktur an, die du ihm gibst. Gibst du ihm eine gute Struktur, potenziert sich der Nutzen. Ohne Struktur verbringst du jede Session damit, die gleichen Dinge neu zu erklären.
+
+## Verbindungen
+- [[Claude Code]]
+- [[Prompt Engineering]]
+- [[Workflow Design]]
+- [[Context Engineering]]
+- [[Hooks]]
+- [[Subagents]]
+- [[Tool Calling]]
+- [[Agent Workflows]]

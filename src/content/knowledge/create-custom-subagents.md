@@ -1,18 +1,29 @@
 ---
 title: Custom Subagents erstellen
-description: >-
-  Erstelle spezialisierte Subagents in Claude Code mit eigenem Prompt, Tools und
-  Permissions.
-category: tools
+description: Erstelle spezialisierte Subagents in Claude Code mit eigenem Prompt, Tools und Permissions.
+type: source
+status: seed
+category: patterns
 icon: Bot
-readTime: 7 Min
-tags: ["claude-code", "subagents", "tooling", "docs"]
-sourceURL: "https://code.claude.com/docs/en/sub-agents"
-sourceType: "docs"
-author: "Anthropic Docs"
+readTime: 7
+tags:
+  - tooling/claude-code
+  - patterns/subagents
+  - tooling/general
+  - tooling/docs
+aliases:
+  - Custom Subagents erstellen
+topics:
+  - "[[Claude Code]]"
+  - "[[Subagents]]"
+  - "[[Workflow Design]]"
+up: "[[Claude Code]]"
+sourceURL: https://code.claude.com/docs/en/sub-agents
+sourceType: docs
+author: Anthropic Docs
+addedDate: "2026-02-01"
 level: advanced
 hot: true
-addedDate: "2026-02-01"
 ---
 
 Subagents sind spezialisierte KI-Assistenten, die in einem eigenen Kontextfenster laufen. Jeder Subagent hat einen eigenen System-Prompt, eigene Tool-Rechte und eigene Permissions. Claude delegiert Aufgaben automatisch, wenn die Subagent-Description zum Task passt.
@@ -289,3 +300,13 @@ tools: Read, Edit, Bash, Grep, Glob
 Find root cause, implement minimal fix, verify with tests.
 Explain reasoning and prevention steps.
 ```
+
+## Verbindungen
+- [[Claude Code]]
+- [[Subagents]]
+- [[Workflow Design]]
+- [[Context Engineering]]
+- [[Hooks]]
+- [[Tool Calling]]
+- [[Agent Workflows]]
+- [[Prompt Engineering]]

@@ -1,13 +1,27 @@
 ---
 title: Eine gute AGENTS.md schreiben
-description: 'Best Practices für CLAUDE.md, GEMINI.md und das Onboarding von AI-Agents.'
+description: Best Practices für CLAUDE.md, GEMINI.md und das Onboarding von AI-Agents.
+type: source
+status: seed
 category: fundamentals
 icon: FileCode
-readTime: 11 Min
-tags: ["agents", "prompt-engineering", "best-practices", "claude-code"]
+readTime: 11
+tags:
+  - patterns/agents
+  - patterns/prompt-engineering
+  - patterns/best-practices
+  - tooling/claude-code
+aliases:
+  - Eine gute AGENTS.md schreiben
+topics:
+  - "[[Claude Code]]"
+  - "[[Prompt Engineering]]"
+  - "[[Workflow Design]]"
+up: "[[Claude Code]]"
+sourceType: blog
+addedDate: "2026-02-01"
 level: advanced
 hot: true
-addedDate: "2026-02-01"
 ---
 
 # Eine gute AGENTS.md schreiben
@@ -153,3 +167,13 @@ Aber die CLAUDE.md beeinflusst *jede Phase* deines Workflows und *jedes* Artefak
 * Nutze Progressive Disclosure: Sag Claude nicht alles, sondern zeig ihm, wie es wichtige Informationen findet – und zwar nur dann, wenn es sie braucht, damit Context Window und Instruktionsbudget nicht aufblähen.
 * Claude ist kein Linter: Nutze Linter und Formatter, und ergänze bei Bedarf Hooks und Slash Commands.
 * CLAUDE.md ist ein High-Leverage-Punkt des Harnesses: Vermeide Auto-Generierung und gestalte den Inhalt sorgfältig für die besten Ergebnisse.
+
+## Verbindungen
+- [[Claude Code]]
+- [[Prompt Engineering]]
+- [[Workflow Design]]
+- [[Context Engineering]]
+- [[Hooks]]
+- [[Subagents]]
+- [[Tool Calling]]
+- [[Agent Workflows]]

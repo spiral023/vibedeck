@@ -1,13 +1,26 @@
 ---
 title: "TDD mit Claude Code: Mit Tracer Bullets zu besserem Code"
-description: "Wie man Claude Code durch gezielte TDD-Skills dazu zwingt, sauberen und testbaren Code in vertikalen Slices zu schreiben."
+description: Wie man Claude Code durch gezielte TDD-Skills dazu zwingt, sauberen und testbaren Code in vertikalen Slices zu schreiben.
+type: source
+status: seed
 category: workflows
 icon: Code2
-readTime: 6 Min
-tags: ["tdd", "claude-code", "testing", "ai-workflow"]
-sourceURL: "https://www.aihero.dev/skill-test-driven-development-claude-code"
-sourceType: "blog"
-author: "Matt Pocock"
+readTime: 6
+tags:
+  - patterns/tdd
+  - tooling/claude-code
+  - patterns/testing
+  - workflows/ai-workflow
+aliases:
+  - "TDD mit Claude Code: Mit Tracer Bullets zu besserem Code"
+topics:
+  - "[[Testing]]"
+  - "[[TDD]]"
+  - "[[Claude Code]]"
+up: "[[Testing]]"
+sourceURL: https://www.aihero.dev/skill-test-driven-development-claude-code
+sourceType: blog
+author: Matt Pocock
 sourceDate: "2026-02-14"
 addedDate: "2026-02-15"
 level: advanced
@@ -95,3 +108,13 @@ Wenn man den Tests vertrauen kann, kann man auch dem Code vertrauen. Dies ermög
 
 ---
 *Quelle: [AIHero.dev - Skill TDD Claude Code](https://www.aihero.dev/skill-test-driven-development-claude-code)*
+
+## Verbindungen
+- [[Testing]]
+- [[TDD]]
+- [[Claude Code]]
+- [[Regression Testing]]
+- [[Integration Testing]]
+- [[Debugging]]
+- [[Quality Gates]]
+- [[Test Strategy]]

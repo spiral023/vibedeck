@@ -1,18 +1,29 @@
 ---
 title: The Shorthand Guide to Everything Claude Code
-description: >-
-  Hier ist mein komplettes Setup nach 10 Monaten täglicher Nutzung: Skills,
-  Hooks, Subagents, MCPs, Plugins und was wirklich funktioniert.
+description: "Hier ist mein komplettes Setup nach 10 Monaten täglicher Nutzung: Skills, Hooks, Subagents, MCPs, Plugins und was wirklich funktioniert."
+type: source
+status: seed
 category: fundamentals
 icon: Zap
-readTime: 13 Min
-tags: ["claude-code", "workflows", "tooling", "best-practices"]
-sourceURL: "https://x.com/affaanmustafa/status/2012378465664745795"
-sourceType: "thread"
+readTime: 13
+tags:
+  - tooling/claude-code
+  - workflows/general
+  - tooling/general
+  - patterns/best-practices
+aliases:
+  - The Shorthand Guide to Everything Claude Code
+topics:
+  - "[[Claude Code]]"
+  - "[[Prompt Engineering]]"
+  - "[[Workflow Design]]"
+up: "[[Claude Code]]"
+sourceURL: https://x.com/affaanmustafa/status/2012378465664745795
+sourceType: thread
 author: "@affaanmustafa"
+addedDate: "2026-02-04"
 level: advanced
 hot: true
-addedDate: "2026-02-04"
 ---
 
 ![Header Image](/images/knowledge/shorthand-guide-everything-claude-code/header.jpg)
@@ -376,3 +387,13 @@ Zeigt User, Verzeichnis, Git Branch mit Dirty-Indikator, Kontext verbleibend %, 
 5.  **Scope deine Subagents**: Limitierte Tools = Fokussierte Ausführung.
 
 ```
+
+## Verbindungen
+- [[Claude Code]]
+- [[Prompt Engineering]]
+- [[Workflow Design]]
+- [[Context Engineering]]
+- [[Hooks]]
+- [[Subagents]]
+- [[Tool Calling]]
+- [[Agent Workflows]]

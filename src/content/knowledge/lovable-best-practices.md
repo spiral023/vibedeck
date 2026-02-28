@@ -1,18 +1,28 @@
 ---
 title: Best Practices für Lovable
-description: >-
-  Erfahren Sie, wie Sie Knowledge-Dateien, den Plan-Modus, visuelle Edits und
-  die Versionskontrolle effektiv nutzen, um mit Lovable schneller und
-  fehlerfreier zu bauen.
+description: Erfahren Sie, wie Sie Knowledge-Dateien, den Plan-Modus, visuelle Edits und die Versionskontrolle effektiv nutzen, um mit Lovable schneller und fehlerfreier zu bauen.
+type: source
+status: seed
 category: fundamentals
 icon: Rocket
-readTime: 6 Min
-tags: ["lovable", "best-practices", "workflows", "docs"]
-sourceURL: "https://docs.lovable.dev/tips-tricks/best-practice"
-sourceType: "docs"
-author: "Lovable Docs"
-level: intermediate
+readTime: 6
+tags:
+  - tooling/lovable
+  - patterns/best-practices
+  - workflows/general
+  - tooling/docs
+aliases:
+  - Best Practices für Lovable
+topics:
+  - "[[Lovable]]"
+  - "[[Prompt Engineering]]"
+  - "[[Workflow Design]]"
+up: "[[Lovable]]"
+sourceURL: https://docs.lovable.dev/tips-tricks/best-practice
+sourceType: docs
+author: Lovable Docs
 addedDate: "2026-02-04"
+level: intermediate
 ---
 
 Dieser Leitfaden hilft sowohl neuen als auch erfahrenen Nutzern, Lovable optimal zu nutzen und häufige Fallstricke bei der App-Entwicklung zu vermeiden.
@@ -116,3 +126,12 @@ Warten Sie nicht auf Perfektion.
 *   [ ] In "Bricks" bauen (1 Feature nach dem anderen).
 *   [ ] Backend erst verbinden, wenn nötig.
 *   [ ] Feedback einholen, bevor das Projekt "live" geht.
+
+## Verbindungen
+- [[Lovable]]
+- [[Prompt Engineering]]
+- [[Workflow Design]]
+- [[UI Design]]
+- [[Rapid Prototyping]]
+- [[Design Systems]]
+- [[Product Discovery]]

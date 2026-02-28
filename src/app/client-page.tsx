@@ -6,12 +6,14 @@ import {
   ArrowRight,
   BookOpen,
   Box,
+  Clock3,
   ExternalLink,
   Github,
   Newspaper,
   Rocket,
   Sparkles,
 } from 'lucide-react';
+import { formatDurationMinutes } from '@/lib/read-time';
 
 const coreSections = [
   {
@@ -72,6 +74,8 @@ const soonFeatures = [
 interface HomePageClientProps {
   knowledgeCount: number;
   blogCount: number;
+  knowledgeReadTimeMinutes: number;
+  blogReadTimeMinutes: number;
   uiLibraryCount: number;
   githubRepoCount: number;
 }
@@ -79,9 +83,13 @@ interface HomePageClientProps {
 export default function HomePageClient({
   knowledgeCount,
   blogCount,
+  knowledgeReadTimeMinutes,
+  blogReadTimeMinutes,
   uiLibraryCount,
   githubRepoCount,
 }: HomePageClientProps) {
+  const totalReadTimeMinutes = knowledgeReadTimeMinutes + blogReadTimeMinutes;
+
   return (
     <div className="space-y-16 py-8">
       <motion.section
@@ -134,22 +142,50 @@ export default function HomePageClient({
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.1 }}
-        className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4"
+        className="space-y-4"
       >
-        {[
-          { label: 'Wissensartikel', value: knowledgeCount },
-          { label: 'UI Bibliotheken', value: uiLibraryCount },
-          { label: 'GitHub Repos', value: githubRepoCount },
-          { label: 'Blog-Artikel', value: blogCount },
-        ].map((stat) => (
-          <div
-            key={stat.label}
-            className="rounded-2xl border border-border/50 bg-card/50 p-6 text-center"
-          >
-            <div className="text-4xl font-bold text-primary">{stat.value}</div>
-            <div className="mt-1 text-sm text-muted-foreground">{stat.label}</div>
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {[
+            { label: 'Wissensartikel', value: knowledgeCount },
+            { label: 'UI Bibliotheken', value: uiLibraryCount },
+            { label: 'GitHub Repos', value: githubRepoCount },
+            { label: 'Blog-Artikel', value: blogCount },
+          ].map((stat) => (
+            <div
+              key={stat.label}
+              className="rounded-2xl border border-border/50 bg-card/50 p-6 text-center"
+            >
+              <div className="text-4xl font-bold text-primary">{stat.value}</div>
+              <div className="mt-1 text-sm text-muted-foreground">{stat.label}</div>
+            </div>
+          ))}
+        </div>
+
+        <div className="rounded-2xl border border-primary/20 bg-gradient-to-br from-primary/10 via-card/70 to-card/50 p-6">
+          <div className="flex flex-wrap items-center justify-between gap-3">
+            <div className="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-wide text-primary">
+              <Clock3 className="h-4 w-4" />
+              Gesamte Lesezeit
+            </div>
+            <div className="text-xl font-semibold text-foreground sm:text-2xl">
+              {formatDurationMinutes(totalReadTimeMinutes)}
+            </div>
           </div>
-        ))}
+          <div className="mt-4 grid gap-3 sm:grid-cols-2">
+            <div className="rounded-xl border border-border/50 bg-card/60 px-4 py-3">
+              <div className="text-xs uppercase tracking-wide text-muted-foreground">Wissensbasis</div>
+              <div className="mt-1 text-lg font-semibold text-foreground">
+                {formatDurationMinutes(knowledgeReadTimeMinutes)}
+              </div>
+            </div>
+            <div className="rounded-xl border border-border/50 bg-card/60 px-4 py-3">
+              <div className="text-xs uppercase tracking-wide text-muted-foreground">Blog</div>
+              <div className="mt-1 text-lg font-semibold text-foreground">
+                {formatDurationMinutes(blogReadTimeMinutes)}
+              </div>
+            </div>
+          </div>
+        </div>
       </motion.section>
 
       <motion.section

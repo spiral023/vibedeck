@@ -1,13 +1,28 @@
 ---
-title: "Der Software Development Lifecycle (SDLC) ist tot"
-description: "KI-Agenten beschleunigen den SDLC nicht nur – sie bringen ihn zum Einsturz. Ein Blick auf die neue Ära der Softwareentwicklung."
+title: Der Software Development Lifecycle (SDLC) ist tot
+description: KI-Agenten beschleunigen den SDLC nicht nur – sie bringen ihn zum Einsturz. Ein Blick auf die neue Ära der Softwareentwicklung.
+type: source
+status: seed
 category: fundamentals
 icon: Skull
-readTime: 8 Min
-tags: ["sdlc", "ai-agents", "devops", "software-engineering", "future-of-work"]
-sourceURL: "https://boristane.com/blog/the-software-development-lifecycle-is-dead/"
-sourceType: "blog"
-author: "Boris Tane"
+readTime: 8
+tags:
+  - workflows/sdlc
+  - patterns/ai-agents
+  - workflows/devops
+  - workflows/software-engineering
+  - workflows/future-of-work
+aliases:
+  - Der Software Development Lifecycle (SDLC) ist tot
+topics:
+  - "[[AI Engineering]]"
+  - "[[DevOps]]"
+  - "[[Prompt Engineering]]"
+  - "[[Workflow Design]]"
+up: "[[AI Engineering]]"
+sourceURL: https://boristane.com/blog/the-software-development-lifecycle-is-dead/
+sourceType: blog
+author: Boris Tane
 sourceDate: "2026-02-20"
 addedDate: "2026-02-25"
 ---
@@ -67,3 +82,13 @@ Keine Tickets, keine Story Points, keine Warteschlangen. Nur noch eine Person mi
 Die Qualität dessen, was du mit Agenten baust, ist direkt proportional zur Qualität des Kontextes, den du ihnen gibst. Der neue Skill ist **Context Engineering**, das neue Sicherheitsnetz ist **Observability**.
 
 *Quelle: Basierend auf einem Blogartikel von [Boris Tane](https://boristane.com/blog/the-software-development-lifecycle-is-dead/).*
+
+## Verbindungen
+- [[AI Engineering]]
+- [[DevOps]]
+- [[Prompt Engineering]]
+- [[Workflow Design]]
+- [[Agent Workflows]]
+- [[Tool Calling]]
+- [[Context Engineering]]
+- [[Knowledge Management]]

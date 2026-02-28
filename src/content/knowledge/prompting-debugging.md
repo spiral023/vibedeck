@@ -1,17 +1,28 @@
 ---
-title: 'Prompting Debugging: Systematische Fehlerbehebung'
-description: >-
-  Strategien und Best Practices zum Debuggen von Prompts und zur Behebung
-  komplexer Probleme in Lovable.
+title: "Prompting Debugging: Systematische Fehlerbehebung"
+description: Strategien und Best Practices zum Debuggen von Prompts und zur Behebung komplexer Probleme in Lovable.
+type: source
+status: seed
 category: fundamentals
 icon: Bug
-readTime: 6 Min
-tags: ["lovable", "prompt-engineering", "testing", "docs"]
-sourceURL: "https://docs.lovable.dev/prompting/prompting-debugging"
-sourceType: "docs"
-author: "Lovable Docs"
-level: intermediate
+readTime: 6
+tags:
+  - tooling/lovable
+  - patterns/prompt-engineering
+  - patterns/testing
+  - tooling/docs
+aliases:
+  - "Prompting Debugging: Systematische Fehlerbehebung"
+topics:
+  - "[[Lovable]]"
+  - "[[Prompt Engineering]]"
+  - "[[Testing]]"
+up: "[[Lovable]]"
+sourceURL: https://docs.lovable.dev/prompting/prompting-debugging
+sourceType: docs
+author: Lovable Docs
 addedDate: "2026-02-04"
+level: intermediate
 ---
 
 Die Entwicklung mit KI ist schnell und effizient, aber Fehler oder unerwartetes Verhalten sind Teil des Prozesses. Dieser Leitfaden hilft Ihnen, systematische Debugging-Workflows in Lovable zu etablieren.
@@ -104,3 +115,13 @@ Fragen Sie immer nach dem "Warum":
 ---
 **Tipp:** Nutzen Sie Dev-Tools! Kopieren Sie Konsolenfehler direkt in Lovable:
 `My app screen is blank. Here's the console error: [Error Text]. Can you fix this?`
+
+## Verbindungen
+- [[Lovable]]
+- [[Prompt Engineering]]
+- [[Testing]]
+- [[UI Design]]
+- [[Rapid Prototyping]]
+- [[Design Systems]]
+- [[Workflow Design]]
+- [[Product Discovery]]

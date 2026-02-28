@@ -1,13 +1,27 @@
 ---
 title: "Die Vibe Coding Roadmap: Vom Einsteiger zum Pro"
 description: "Was jeder Vibe Coder lernen sollte: Eine strukturierte Roadmap von den Grundlagen über fortgeschrittene Patterns bis hin zu Profi-Skills und häufigen Fehlern."
+type: source
+status: seed
 category: fundamentals
 icon: Rocket
-readTime: 5 Min
-tags: ["vibe-coding", "roadmap", "career", "basics", "workflow"]
-sourceURL: "https://x.com/Hartdrawss/status/2019433363287806243"
-sourceType: "tweet"
-author: "Harshil Tomar"
+readTime: 5
+tags:
+  - workflows/vibe-coding
+  - workflows/roadmap
+  - workflows/career
+  - fundamentals/basics
+  - workflows/general
+aliases:
+  - "Die Vibe Coding Roadmap: Vom Einsteiger zum Pro"
+topics:
+  - "[[Vibe Coding]]"
+  - "[[Prompt Engineering]]"
+  - "[[Workflow Design]]"
+up: "[[Vibe Coding]]"
+sourceURL: https://x.com/Hartdrawss/status/2019433363287806243
+sourceType: tweet
+author: Harshil Tomar
 sourceDate: "2026-02-05"
 addedDate: "2026-02-06"
 level: beginner
@@ -69,3 +83,12 @@ Vermeide diese Stolperfallen, die viele Projekte scheitern lassen:
 *   **AI-Abhängigkeit:** Denken, die AI erledigt absolut alles für Dich.
 
 > **Master 1-2 Skills pro Woche. Ship while you learn. So wirst Du zum Experten.**
+
+## Verbindungen
+- [[Vibe Coding]]
+- [[Prompt Engineering]]
+- [[Workflow Design]]
+- [[Agentic Coding]]
+- [[Rapid Prototyping]]
+- [[Debugging]]
+- [[Product Iteration]]

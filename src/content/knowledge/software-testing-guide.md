@@ -1,12 +1,25 @@
 ---
 title: Software-Testing von A bis "läuft wirklich"
-description: 'Ein praxisnaher Überblick über Testebenen, Ziele und typische Fallstricke.'
+description: Ein praxisnaher Überblick über Testebenen, Ziele und typische Fallstricke.
+type: source
+status: seed
 category: fundamentals
 icon: Code2
-readTime: 4 Min
-tags: ["testing", "best-practices", "workflows"]
-level: intermediate
+readTime: 4
+tags:
+  - patterns/testing
+  - patterns/best-practices
+  - workflows/general
+aliases:
+  - Software-Testing von A bis "läuft wirklich"
+topics:
+  - "[[Testing]]"
+  - "[[Prompt Engineering]]"
+  - "[[Workflow Design]]"
+up: "[[Testing]]"
+sourceType: blog
 addedDate: "2026-02-01"
+level: intermediate
 ---
 
 ## Warum Testen?
@@ -99,3 +112,13 @@ Wenn du klein starten musst, priorisiere in dieser Reihenfolge:
 ## Merksatz
 
 Unit Tests sparen Zeit, Integrationstests sparen Nerven, System/UAT sparen Ruf, Performance/Security sparen Katastrophen - und Post-Go-Live Validation verhindert, dass "Deploy" mit "Fertig" verwechselt wird.
+
+## Verbindungen
+- [[Testing]]
+- [[Prompt Engineering]]
+- [[Workflow Design]]
+- [[TDD]]
+- [[Regression Testing]]
+- [[Integration Testing]]
+- [[Debugging]]
+- [[Quality Gates]]

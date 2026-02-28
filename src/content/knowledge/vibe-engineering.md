@@ -1,15 +1,27 @@
 ---
-title: 'Vibe Engineering: Erkenntnisse aus der Arbeit mit AI Coding Agents'
-description: >-
-  Ein umfassender Leitfaden von Duncan Ogilvie (mrexodia) über den
-  Mentalitätswandel und die Techniken für effektive Zusammenarbeit mit
-  KI-Coding-Agents.
+title: "Vibe Engineering: Erkenntnisse aus der Arbeit mit AI Coding Agents"
+description: Ein umfassender Leitfaden von Duncan Ogilvie (mrexodia) über den Mentalitätswandel und die Techniken für effektive Zusammenarbeit mit KI-Coding-Agents.
+type: source
+status: seed
 category: patterns
 icon: Sparkles
-readTime: 12 Min
-sourceDate: '2026-01-20'
+readTime: 12
+tags:
+  - workflows/vibe-coding
+  - workflows/agentic-coding
+  - workflows/general
+  - patterns/general
+aliases:
+  - "Vibe Engineering: Erkenntnisse aus der Arbeit mit AI Coding Agents"
+topics:
+  - "[[Vibe Coding]]"
+  - "[[Agentic Coding]]"
+  - "[[Workflow Design]]"
+up: "[[Vibe Coding]]"
+sourceURL: https://x.com/mrexodia/status/2010157660885176767
+sourceType: tweet
+sourceDate: "2026-01-20"
 addedDate: "2026-02-01"
-tags: ["vibe-coding", "agentic-coding", "workflows", "patterns"]
 level: advanced
 ---
 
@@ -179,3 +191,12 @@ Der einzige Weg, gut darin zu werden, ist es auszuprobieren. Im ersten Monat wir
 
 ---
 *Quelle: [Duncan Ogilvie auf X](https://x.com/mrexodia/status/2010157660885176767)*
+
+## Verbindungen
+- [[Vibe Coding]]
+- [[Agentic Coding]]
+- [[Workflow Design]]
+- [[Prompt Engineering]]
+- [[Rapid Prototyping]]
+- [[Debugging]]
+- [[Product Iteration]]

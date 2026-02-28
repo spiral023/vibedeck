@@ -1,13 +1,27 @@
 ---
-title: "Andrej Karpathys AI Coding Prinzipien als System Prompt"
-description: "Ein Senior Software Engineer System Prompt für Claude Code und andere Agenten, basierend auf Andrej Karpathys Erkenntnissen zum KI-gestützten Programmieren."
+title: Andrej Karpathys AI Coding Prinzipien als System Prompt
+description: Ein Senior Software Engineer System Prompt für Claude Code und andere Agenten, basierend auf Andrej Karpathys Erkenntnissen zum KI-gestützten Programmieren.
+type: source
+status: seed
 category: workflows
 icon: BrainCircuit
-readTime: 7 Min
-tags: ["karpathy", "claude-code", "system-prompt", "ai-coding", "best-practices"]
-sourceURL: "https://x.com/godofprompt/status/2018482335130296381?s=20"
-sourceType: "tweet"
-author: "God of Prompt"
+readTime: 7
+tags:
+  - people/karpathy
+  - tooling/claude-code
+  - patterns/system-prompt
+  - workflows/ai-coding
+  - patterns/best-practices
+aliases:
+  - Andrej Karpathys AI Coding Prinzipien als System Prompt
+topics:
+  - "[[Claude Code]]"
+  - "[[System Prompts]]"
+  - "[[Workflow Design]]"
+up: "[[Claude Code]]"
+sourceURL: https://x.com/godofprompt/status/2018482335130296381?s=20
+sourceType: tweet
+author: God of Prompt
 sourceDate: "2026-02-03"
 addedDate: "2026-02-05"
 level: advanced
@@ -179,3 +193,13 @@ POTENTIAL CONCERNS:
 The human is monitoring you in an IDE. They can see everything. They will catch your mistakes. Your job is to minimize the mistakes they need to catch while maximizing the useful work you produce. You have unlimited stamina. The human does not. Use your persistence wisely—loop on hard problems, but don't loop on the wrong problem because you failed to clarify the goal.
 </meta>
 </system_prompt>
+
+## Verbindungen
+- [[Claude Code]]
+- [[System Prompts]]
+- [[Workflow Design]]
+- [[Context Engineering]]
+- [[Hooks]]
+- [[Subagents]]
+- [[Tool Calling]]
+- [[Agent Workflows]]

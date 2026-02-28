@@ -1,18 +1,29 @@
 ---
 title: Writing a good CLAUDE.md
-description: >-
-  Best Practices für das Erstellen einer effektiven CLAUDE.md Datei für Claude
-  Code und andere Agenten.
+description: Best Practices für das Erstellen einer effektiven CLAUDE.md Datei für Claude Code und andere Agenten.
+type: source
+status: seed
 category: fundamentals
 icon: FileText
-readTime: 6 Min
-tags: ["claude-code", "prompt-engineering", "best-practices", "docs"]
-sourceURL: 'https://www.humanlayer.dev/blog/writing-a-good-claude-md'
+readTime: 6
+tags:
+  - tooling/claude-code
+  - patterns/prompt-engineering
+  - patterns/best-practices
+  - tooling/docs
+aliases:
+  - Writing a good CLAUDE.md
+topics:
+  - "[[Claude Code]]"
+  - "[[Prompt Engineering]]"
+  - "[[Workflow Design]]"
+up: "[[Claude Code]]"
+sourceURL: https://www.humanlayer.dev/blog/writing-a-good-claude-md
 sourceType: blog
 author: Kyle (HumanLayer)
+addedDate: "2026-02-01"
 level: advanced
 hot: true
-addedDate: "2026-02-01"
 ---
 
 ## Prinzip: LLMs sind (meistens) zustandslos
@@ -120,3 +131,13 @@ Eine schlechte Zeile in der `CLAUDE.md` kann zu vielen schlechten Zeilen Code f�
 *   Nutze **Progressive Disclosure** (Verweise auf andere Docs).
 *   Claude ist kein Linter.
 *   Schreibe die Datei von Hand, generiere sie nicht automatisch.
+
+## Verbindungen
+- [[Claude Code]]
+- [[Prompt Engineering]]
+- [[Workflow Design]]
+- [[Context Engineering]]
+- [[Hooks]]
+- [[Subagents]]
+- [[Tool Calling]]
+- [[Agent Workflows]]
