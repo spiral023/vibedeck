@@ -396,9 +396,9 @@ export function KnowledgeClient({ articles }: KnowledgeClientProps) {
           const visibleTags = tags.slice(0, 3);
           const extraTagCount = tags.length - visibleTags.length;
           const levelInfo = article.level ? levelConfig[article.level] : null;
-          const isFav = isFavorite('knowledge', article.id);
-          const articleDone = isDone('knowledge', article.id);
-          const viewed = isViewed('knowledge', article.id);
+          const isFav = isLoaded && isFavorite('knowledge', article.id);
+          const articleDone = isLoaded && isDone('knowledge', article.id);
+          const viewed = isLoaded && isViewed('knowledge', article.id);
 
           return (
             <motion.div

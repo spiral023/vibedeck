@@ -1,6 +1,6 @@
 'use client';
 
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { ArrowUpDown, Calendar, Check, ExternalLink, Eye, Filter, Heart, Newspaper, Search, Tag } from 'lucide-react';
@@ -67,6 +67,11 @@ export function BlogClient({ articles }: BlogClientProps) {
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
   const [sortBy, setSortBy] = useState<SortBy>('added-date-desc');
   const [sourceType, setSourceType] = useState<SourceTypeFilter>('all');
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const tagStats = useMemo(() => {
     return articles.reduce<Record<string, number>>((acc, article) => {
@@ -252,6 +257,9 @@ export function BlogClient({ articles }: BlogClientProps) {
         <div className="grid gap-5 md:grid-cols-2">
           {filtered.map((article, index) => {
             const points = (article.keyPoints ?? []).slice(0, 3);
+            const articleDone = mounted && isDone('blog', article.id);
+            const articleViewed = mounted && isViewed('blog', article.id);
+            const articleFavorite = mounted && isFavorite('blog', article.id);
 
             return (
               <motion.article
@@ -261,7 +269,7 @@ export function BlogClient({ articles }: BlogClientProps) {
                 transition={{ delay: index * 0.04 }}
                 className={cn(
                   'rounded-2xl border border-border/50 bg-card/50 p-6 transition-all hover:border-primary/30 hover:bg-card',
-                  isDone('blog', article.id) && 'opacity-80'
+                  articleDone && 'opacity-80'
                 )}
               >
                 <div className="flex items-start justify-between gap-4">
@@ -269,7 +277,7 @@ export function BlogClient({ articles }: BlogClientProps) {
                     <h2 className="text-xl font-semibold leading-tight">
                       <Link href={`/blog/${article.id}`} className="transition-colors hover:text-primary">
                         {article.title}
-                        {isDone('blog', article.id) && <span className="ml-2 text-xs text-green-500">✓</span>}
+                        {articleDone && <span className="ml-2 text-xs text-green-500">✓</span>}
                       </Link>
                     </h2>
                     <Link
@@ -288,7 +296,7 @@ export function BlogClient({ articles }: BlogClientProps) {
                           {article.sourceType}
                         </span>
                       )}
-                      {isViewed('blog', article.id) && (
+                      {articleViewed && (
                         <span className="inline-flex items-center gap-1 rounded-full border border-blue-200/50 bg-blue-500/10 px-2 py-0.5 font-medium text-blue-600 dark:border-blue-800/50 dark:text-blue-400">
                           <Eye className="h-3 w-3" />
                           Gesehen
@@ -301,19 +309,19 @@ export function BlogClient({ articles }: BlogClientProps) {
                       type="button"
                       onClick={() => toggleDone('blog', article.id)}
                       className="inline-flex h-8 w-8 items-center justify-center rounded-lg border border-border/70 text-muted-foreground transition-colors hover:text-foreground"
-                      title={isDone('blog', article.id) ? 'Als offen markieren' : 'Als erledigt markieren'}
-                      aria-label={isDone('blog', article.id) ? 'Als offen markieren' : 'Als erledigt markieren'}
+                      title={articleDone ? 'Als offen markieren' : 'Als erledigt markieren'}
+                      aria-label={articleDone ? 'Als offen markieren' : 'Als erledigt markieren'}
                     >
-                      <Check className={cn('h-4 w-4', isDone('blog', article.id) && 'text-green-500 stroke-[3]')} />
+                      <Check className={cn('h-4 w-4', articleDone && 'text-green-500 stroke-[3]')} />
                     </button>
                     <button
                       type="button"
                       onClick={() => toggleFavorite('blog', article.id)}
                       className="inline-flex h-8 w-8 items-center justify-center rounded-lg border border-border/70 text-muted-foreground transition-colors hover:text-foreground"
-                      title={isFavorite('blog', article.id) ? 'Aus Favoriten entfernen' : 'Zu Favoriten hinzufügen'}
-                      aria-label={isFavorite('blog', article.id) ? 'Aus Favoriten entfernen' : 'Zu Favoriten hinzufügen'}
+                      title={articleFavorite ? 'Aus Favoriten entfernen' : 'Zu Favoriten hinzufügen'}
+                      aria-label={articleFavorite ? 'Aus Favoriten entfernen' : 'Zu Favoriten hinzufügen'}
                     >
-                      <Heart className={cn('h-4 w-4', isFavorite('blog', article.id) && 'fill-red-500 text-red-500')} />
+                      <Heart className={cn('h-4 w-4', articleFavorite && 'fill-red-500 text-red-500')} />
                     </button>
                     {article.sourceURL && (
                       <a

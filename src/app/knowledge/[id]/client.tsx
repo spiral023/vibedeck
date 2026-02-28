@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
@@ -61,6 +61,7 @@ export function ArticleView({ article }: ArticleViewProps) {
     toggleDone,
     runLegacyMigration,
   } = useContentStatusStore();
+  const [mounted, setMounted] = useState(false);
   const Icon = iconMap[article.icon] || BookOpen;
   const formattedDate = formatSourceDate(article.sourceDate);
   const sourceLabel = article.sourceType
@@ -85,14 +86,18 @@ export function ArticleView({ article }: ArticleViewProps) {
     : null;
   const tags = article.tags ?? [];
   const tagLine = tags.length > 0 ? `Tags: ${tags.join(', ')}` : null;
-  const viewed = isViewed('knowledge', article.id);
-  const favorite = isFavorite('knowledge', article.id);
-  const done = isDone('knowledge', article.id);
+  const viewed = mounted && isViewed('knowledge', article.id);
+  const favorite = mounted && isFavorite('knowledge', article.id);
+  const done = mounted && isDone('knowledge', article.id);
 
   useEffect(() => {
     runLegacyMigration();
     markViewed('knowledge', article.id);
   }, [article.id, markViewed, runLegacyMigration]);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const handleCopyMarkdown = async () => {
     const success = await copyToClipboard(formatKnowledgeArticleMarkdown(article));

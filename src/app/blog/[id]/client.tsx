@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import ReactMarkdown from 'react-markdown';
@@ -40,13 +40,18 @@ interface BlogArticleViewProps {
 
 export function BlogArticleView({ article }: BlogArticleViewProps) {
   const { markViewed, isViewed, isFavorite, isDone, toggleFavorite, toggleDone } = useContentStatusStore();
+  const [mounted, setMounted] = useState(false);
   const formattedDate = formatDate(article.sourceDate);
   const sourceLabel = article.sourceType
     ? sourceTypeLabels[article.sourceType] ?? article.sourceType
     : null;
-  const viewed = isViewed('blog', article.id);
-  const favorite = isFavorite('blog', article.id);
-  const done = isDone('blog', article.id);
+  const viewed = mounted && isViewed('blog', article.id);
+  const favorite = mounted && isFavorite('blog', article.id);
+  const done = mounted && isDone('blog', article.id);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     markViewed('blog', article.id);
