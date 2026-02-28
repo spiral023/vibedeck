@@ -6,6 +6,7 @@ icon: Image
 readTime: 5 Min
 tags: ["gemini", "image-generation", "prompts", "tooling"]
 level: intermediate
+addedDate: "2026-02-01"
 ---
 
 # Gemini Image Generation Guide

@@ -11,6 +11,7 @@ sourceURL: "https://docs.lovable.dev/prompting/prompting-debugging"
 sourceType: "docs"
 author: "Lovable Docs"
 level: intermediate
+addedDate: "2026-02-04"
 ---
 
 Die Entwicklung mit KI ist schnell und effizient, aber Fehler oder unerwartetes Verhalten sind Teil des Prozesses. Dieser Leitfaden hilft Ihnen, systematische Debugging-Workflows in Lovable zu etablieren.

@@ -13,6 +13,7 @@ sourceURL: "https://x.com/karpathy/status/2026731645169185220"
 sourceType: tweet
 author: "Andrej Karpathy"
 sourceDate: "2026-02-25"
+addedDate: "2026-02-27"
 ---
 
 Andrej Karpathy beschreibt in seinem Post vom 25. Februar 2026 einen Bruch, nicht bloß eine graduelle Verbesserung: Programmieren habe sich in den letzten zwei Monaten drastisch verändert, mit einem klaren Kipppunkt im Dezember.

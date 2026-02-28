@@ -6,6 +6,7 @@ icon: Code2
 readTime: 4 Min
 tags: ["testing", "best-practices", "workflows"]
 level: intermediate
+addedDate: "2026-02-01"
 ---
 
 ## Warum Testen?

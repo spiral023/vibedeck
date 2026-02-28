@@ -13,6 +13,7 @@ sourceType: "thread"
 author: "@Meer_AIIT"
 level: advanced
 hot: true
+addedDate: "2026-02-04"
 ---
 
 ![Claude Skills Explained](/images/knowledge/claude-skills-complete-guide/header.jpg)

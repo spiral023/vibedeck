@@ -11,6 +11,7 @@ sourceURL: "https://code.claude.com/docs/en/best-practices"
 sourceType: "docs"
 author: "Anthropic Docs"
 level: intermediate
+addedDate: "2026-02-01"
 ---
 
 Claude Code ist eine agentenbasierte Coding-Umgebung. Im Gegensatz zu einem Chatbot, der Fragen beantwortet und wartet, kann Claude Code deine Dateien lesen, Befehle ausführen, Änderungen vornehmen und autonom an Problemen arbeiten, während du zuschaust, korrigierst oder dich ganz zurückziehst.

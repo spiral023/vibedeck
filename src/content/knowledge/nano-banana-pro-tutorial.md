@@ -11,6 +11,7 @@ sourceURL: 'https://x.com/GoogleAIStudio/status/1992267030050083091'
 sourceType: thread
 author: Google AI Studio
 level: advanced
+addedDate: "2026-02-01"
 ---
 
 > **Hinweis:** "Nano Banana" ist der Codename für Gemini 2.5 Flash Image Generation. "Nano Banana Pro" bezieht sich auf **Gemini 3 Pro Image Preview**.

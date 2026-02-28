@@ -9,6 +9,7 @@ sourceURL: "https://dev.to/wasp/claude-code-for-fullstack-development-the-3-thin
 sourceType: "blog"
 author: "vincanger"
 sourceDate: "2026-02-13"
+addedDate: "2026-02-26"
 ---
 
 ![Claude Code Fullstack Essentials](/images/knowledge/claude-code-fullstack-essentials/header.png)

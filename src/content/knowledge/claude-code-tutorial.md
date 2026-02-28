@@ -11,6 +11,7 @@ sourceURL: 'https://x.com/eyad_khrais/status/2010076957938188661'
 sourceType: tweet
 author: Eyad Khrais
 sourceDate: '2026-01-10'
+addedDate: "2026-02-01"
 level: intermediate
 ---
 

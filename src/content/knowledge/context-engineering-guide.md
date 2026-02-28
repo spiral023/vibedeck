@@ -10,6 +10,7 @@ readTime: 8 Min
 tags: ["context-engineering", "prompt-engineering", "agents", "patterns"]
 level: advanced
 hot: true
+addedDate: "2026-02-01"
 ---
 
 > Ursprünglich veröffentlicht von [Jarrod Watts auf X](https://x.com/jarrodwatts/status/2008495347115630701).

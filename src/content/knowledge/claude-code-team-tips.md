@@ -9,6 +9,7 @@ sourceURL: "https://x.com/bcherny/status/2017742741636321619"
 sourceType: "thread"
 author: "Boris Cherny"
 sourceDate: "2026-01-31"
+addedDate: "2026-02-05"
 level: advanced
 ---
 

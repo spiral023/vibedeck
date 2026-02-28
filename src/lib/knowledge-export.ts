@@ -39,6 +39,9 @@ export const formatKnowledgeArticleMarkdown = (article: KnowledgeArticle) => {
   if (article.sourceDate) {
     lines.push(`sourceDate: ${formatYamlString(article.sourceDate)}`);
   }
+  if (article.addedDate) {
+    lines.push(`addedDate: ${formatYamlString(article.addedDate)}`);
+  }
 
   const frontmatter = ['---', ...lines, '---'].join('\n');
   const body = article.content.trim();

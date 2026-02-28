@@ -43,6 +43,9 @@ export const formatBlogArticleMarkdown = (article: BlogArticle) => {
   if (article.sourceDate) {
     lines.push(`sourceDate: ${formatYamlString(article.sourceDate)}`);
   }
+  if (article.addedDate) {
+    lines.push(`addedDate: ${formatYamlString(article.addedDate)}`);
+  }
 
   const frontmatter = ['---', ...lines, '---'].join('\n');
   const body = article.content.trim();
@@ -52,4 +55,3 @@ export const formatBlogArticleMarkdown = (article: BlogArticle) => {
 export const formatBlogCollectionMarkdown = (articles: BlogArticle[]) => {
   return articles.map((article) => formatBlogArticleMarkdown(article)).join('\n\n\n');
 };
-

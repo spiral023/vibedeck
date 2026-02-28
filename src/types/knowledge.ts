@@ -12,6 +12,7 @@ export interface KnowledgeArticle {
   sourceType?: 'tweet' | 'blog' | 'thread' | 'docs';
   author?: string;
   sourceDate?: string;
+  addedDate?: string;
   content: string; // Markdown content
   level?: 'beginner' | 'intermediate' | 'advanced';
   hot?: boolean;
@@ -29,6 +30,7 @@ export const KnowledgeArticleSchema = z.object({
   sourceType: z.enum(['tweet', 'blog', 'thread', 'docs']).optional(),
   author: z.string().optional(),
   sourceDate: z.string().optional(),
+  addedDate: z.string().optional(),
   content: z.string(),
   level: z.enum(['beginner', 'intermediate', 'advanced']).optional(),
   hot: z.boolean().optional(),

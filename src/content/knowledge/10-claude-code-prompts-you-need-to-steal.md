@@ -11,6 +11,7 @@ sourceURL: "https://x.com/aiedge_/status/2018356670070718614"
 sourceType: "tweet"
 author: "@aiedge_"
 level: beginner
+addedDate: "2026-02-04"
 ---
 
 ![Header Image](/images/knowledge/10-claude-code-prompts-you-need-to-steal/header.jpg)

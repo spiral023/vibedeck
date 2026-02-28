@@ -12,6 +12,7 @@ sourceURL: "https://docs.lovable.dev/tips-tricks/best-practice"
 sourceType: "docs"
 author: "Lovable Docs"
 level: intermediate
+addedDate: "2026-02-04"
 ---
 
 Dieser Leitfaden hilft sowohl neuen als auch erfahrenen Nutzern, Lovable optimal zu nutzen und häufige Fallstricke bei der App-Entwicklung zu vermeiden.

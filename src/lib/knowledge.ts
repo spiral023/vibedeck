@@ -5,6 +5,15 @@ import { type KnowledgeArticle } from '@/types/knowledge';
 
 const knowledgeDirectory = path.join(process.cwd(), 'src/content/knowledge');
 
+function getTimestamp(dateString?: string): number {
+  if (!dateString) {
+    return 0;
+  }
+
+  const timestamp = new Date(dateString).getTime();
+  return Number.isFinite(timestamp) ? timestamp : 0;
+}
+
 export function getAllKnowledgeArticles(): KnowledgeArticle[] {
   if (!fs.existsSync(knowledgeDirectory)) {
     return [];
@@ -27,13 +36,16 @@ export function getAllKnowledgeArticles(): KnowledgeArticle[] {
     });
 
   return allArticles.sort((a, b) => {
-    if (a.sourceDate || b.sourceDate) {
-      const dateA = a.sourceDate ? new Date(a.sourceDate).getTime() : 0;
-      const dateB = b.sourceDate ? new Date(b.sourceDate).getTime() : 0;
-      if (dateA !== dateB) {
-        return dateB - dateA;
-      }
+    const addedDiff = getTimestamp(b.addedDate) - getTimestamp(a.addedDate);
+    if (addedDiff !== 0) {
+      return addedDiff;
     }
+
+    const sourceDiff = getTimestamp(b.sourceDate) - getTimestamp(a.sourceDate);
+    if (sourceDiff !== 0) {
+      return sourceDiff;
+    }
+
     return a.title.localeCompare(b.title);
   });
 }

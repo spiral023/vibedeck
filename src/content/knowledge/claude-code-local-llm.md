@@ -9,6 +9,7 @@ sourceURL: "https://unsloth.ai/docs/basics/claude-codex"
 sourceType: "docs"
 author: "Unsloth Team"
 sourceDate: "2026-02-02"
+addedDate: "2026-02-06"
 level: advanced
 ---
 

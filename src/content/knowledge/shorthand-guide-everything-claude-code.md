@@ -12,6 +12,7 @@ sourceType: "thread"
 author: "@affaanmustafa"
 level: advanced
 hot: true
+addedDate: "2026-02-04"
 ---
 
 ![Header Image](/images/knowledge/shorthand-guide-everything-claude-code/header.jpg)

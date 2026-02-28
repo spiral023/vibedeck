@@ -9,6 +9,7 @@ sourceURL: "https://www.reddit.com/r/ClaudeCode/comments/1id7vzv/what_i_learned_
 sourceType: "thread"
 author: "dhruv1103"
 sourceDate: "2026-01-12"
+addedDate: "2026-02-05"
 level: advanced
 ---
 

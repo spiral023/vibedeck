@@ -9,6 +9,7 @@ sourceURL: "https://x.com/omarsar0/status/2027025098578727353"
 sourceType: "thread"
 author: "elvis (@omarsar0)"
 sourceDate: "2026-02-26"
+addedDate: "2026-02-27"
 ---
 
 ![Header Image](/images/knowledge/agents-md-evaluation/header.jpg)

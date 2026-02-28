@@ -9,6 +9,7 @@ sourceURL: "https://x.com/elvissun/status/2025920521871716562"
 sourceType: "article"
 author: "Elvis"
 sourceDate: "2026-02-23"
+addedDate: "2026-02-25"
 ---
 
 ![OpenClaw Agent Swarm Header](/images/knowledge/openclaw-codex-agent-swarm/header.jpg)

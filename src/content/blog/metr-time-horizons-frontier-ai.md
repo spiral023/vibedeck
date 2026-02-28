@@ -13,6 +13,7 @@ sourceURL: "https://metr.org/time-horizons/"
 sourceType: docs
 author: "METR"
 sourceDate: "2026-02-20"
+addedDate: "2026-02-25"
 ---
 
 ![Header](/images/blog/metr-time-horizons-frontier-ai/header.png)

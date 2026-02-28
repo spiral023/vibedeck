@@ -52,10 +52,16 @@ export function getAllBlogArticles(): BlogArticle[] {
     });
 
   return allArticles.sort((a, b) => {
-    const dateDiff = getTimestamp(b.sourceDate) - getTimestamp(a.sourceDate);
-    if (dateDiff !== 0) {
-      return dateDiff;
+    const addedDiff = getTimestamp(b.addedDate) - getTimestamp(a.addedDate);
+    if (addedDiff !== 0) {
+      return addedDiff;
     }
+
+    const sourceDiff = getTimestamp(b.sourceDate) - getTimestamp(a.sourceDate);
+    if (sourceDiff !== 0) {
+      return sourceDiff;
+    }
+
     return a.title.localeCompare(b.title);
   });
 }

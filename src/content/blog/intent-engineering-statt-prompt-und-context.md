@@ -13,6 +13,7 @@ sourceURL: "https://www.youtube.com/watch?v=QWzLPn164w0"
 sourceType: blog
 author: "AI News & Strategy Daily | Nate B. Jones"
 sourceDate: "2026-02-24"
+addedDate: "2026-02-26"
 ---
 
 ![Header](/images/blog/intent-engineering-statt-prompt-und-context/header.jpg)

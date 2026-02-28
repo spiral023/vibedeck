@@ -9,6 +9,7 @@ sourceURL: "https://aseemshrey.in/blog/claude-codex-iterative-plan-review/"
 sourceType: "blog"
 author: "Aseem Shrey"
 sourceDate: "2026-02-20"
+addedDate: "2026-02-25"
 ---
 
 Ich nutze Claude Code täglich. Es plant Features, schreibt Code und erstellt PRs. Aber ich stieß immer wieder auf das gleiche Problem: **Claudes Pläne waren gut, wurden aber nie herausgefordert.** Es fehlte eine zweite Meinung, die architektonische blinde Flecken, fehlende Edge Cases oder Sicherheitslücken aufdeckt.

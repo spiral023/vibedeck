@@ -9,6 +9,7 @@ sourceURL: "https://x.com/heynavtoor/status/2026717574776631556"
 sourceType: "article"
 author: "Nav Toor"
 sourceDate: "2026-02-25"
+addedDate: "2026-02-25"
 ---
 
 ![Claude Cowork Setup Guide](/images/knowledge/claude-cowork-setup-guide/header.jpg)

@@ -11,6 +11,7 @@ sourceURL: "https://code.claude.com/docs/en/skills"
 sourceType: "docs"
 author: "Anthropic Docs"
 level: advanced
+addedDate: "2026-02-01"
 ---
 
 Skills erweitern das, was Claude tun kann. Erstelle eine `SKILL.md`-Datei mit Anweisungen, und Claude fügt sie seinem Werkzeugkasten hinzu. Claude nutzt Skills, wenn sie relevant sind, oder du rufst sie direkt mit `/skill-name` auf.

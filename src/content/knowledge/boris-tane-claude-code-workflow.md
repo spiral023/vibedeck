@@ -9,6 +9,7 @@ sourceURL: "https://boristane.com/blog/how-i-use-claude-code/"
 sourceType: "blog"
 author: "Boris Tane"
 sourceDate: "2026-02-10"
+addedDate: "2026-02-14"
 level: intermediate
 hot: true
 ---

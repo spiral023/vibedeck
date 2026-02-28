@@ -9,6 +9,7 @@ sourceURL: "https://unsloth.ai/docs/models/kimi-k2.5"
 sourceType: "blog"
 author: "Unsloth Team"
 sourceDate: "2026-01-31"
+addedDate: "2026-02-06"
 level: advanced
 ---
 

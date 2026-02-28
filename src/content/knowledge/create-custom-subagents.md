@@ -12,6 +12,7 @@ sourceType: "docs"
 author: "Anthropic Docs"
 level: advanced
 hot: true
+addedDate: "2026-02-01"
 ---
 
 Subagents sind spezialisierte KI-Assistenten, die in einem eigenen Kontextfenster laufen. Jeder Subagent hat einen eigenen System-Prompt, eigene Tool-Rechte und eigene Permissions. Claude delegiert Aufgaben automatisch, wenn die Subagent-Description zum Task passt.

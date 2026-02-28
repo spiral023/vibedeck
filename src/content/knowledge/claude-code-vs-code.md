@@ -11,6 +11,7 @@ sourceURL: "https://code.claude.com/docs/en/vs-code"
 sourceType: "docs"
 author: "Anthropic Docs"
 level: beginner
+addedDate: "2026-02-01"
 ---
 
 Die VS Code Erweiterung bietet eine native grafische Oberfläche für Claude Code, direkt integriert in deine IDE. Dies ist der empfohlene Weg, Claude Code in VS Code zu nutzen.

@@ -11,6 +11,7 @@ sourceURL: 'https://x.com/godofprompt/status/1991930251715440762'
 sourceType: tweet
 author: God of Prompt
 level: advanced
+addedDate: "2026-02-01"
 ---
 
 Dieser Mega-Prompt verwandelt Gemini 3.0 (oder andere fähige Modelle wie Claude 3.5/3.7) in einen **"Elite Web Designer"**.

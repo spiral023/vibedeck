@@ -13,6 +13,7 @@ sourceURL: "https://www.citriniresearch.com/p/2028gic"
 sourceType: blog
 author: "Citrini Research, Alap Shah"
 sourceDate: "2026-02-22"
+addedDate: "2026-02-25"
 ---
 
 ![Header](/images/blog/global-intelligence-crisis-2028/header.jpg)

@@ -12,6 +12,7 @@ export interface BlogArticle {
   sourceType?: 'tweet' | 'blog' | 'thread' | 'docs';
   author?: string;
   sourceDate?: string;
+  addedDate?: string;
   keyPoints?: string[];
   content: string;
 }
@@ -28,6 +29,7 @@ export const BlogArticleSchema = z.object({
   sourceType: z.enum(['tweet', 'blog', 'thread', 'docs']).optional(),
   author: z.string().optional(),
   sourceDate: z.string().optional(),
+  addedDate: z.string().optional(),
   keyPoints: z.array(z.string()).optional(),
   content: z.string(),
 });

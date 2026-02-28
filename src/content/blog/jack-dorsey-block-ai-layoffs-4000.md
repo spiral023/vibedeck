@@ -13,6 +13,7 @@ sourceURL: "https://x.com/jack/status/2027129697092731343"
 sourceType: tweet
 author: "Jack Dorsey"
 sourceDate: "2026-02-26"
+addedDate: "2026-02-27"
 ---
 
 Jack Dorseys Mitteilung markiert einen der deutlichsten AI-getriebenen Umbau-Schritte eines großen US-Unternehmens in diesem Jahr. Die Kernaussage ist hart und eindeutig: Block verkleinert die Organisation drastisch, weil mit AI heute deutlich mehr Output pro Team möglich ist.

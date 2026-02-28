@@ -13,6 +13,7 @@ sourceURL: "https://www.anthropic.com/engineering/building-c-compiler"
 sourceType: blog
 author: "Nicholas Carlini"
 sourceDate: "2026-02-05"
+addedDate: "2026-02-26"
 ---
 
 ![Header](/images/blog/anthropic-building-c-compiler/header.png)

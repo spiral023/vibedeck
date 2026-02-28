@@ -9,6 +9,7 @@ sourceURL: "https://x.com/Av1dlive/status/2023086925817729306"
 sourceType: "thread"
 author: "Avid"
 sourceDate: "2026-02-15"
+addedDate: "2026-02-26"
 ---
 
 ![AI Design Workflow 2026](/images/knowledge/ai-design-workflow-2026/header.jpg)

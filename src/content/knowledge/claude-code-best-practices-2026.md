@@ -9,6 +9,7 @@ sourceURL: "https://x.com/Meer_AIIT/status/2027509711722188976"
 sourceType: "thread"
 author: "Meer | AI Tools & News"
 sourceDate: "2026-02-27"
+addedDate: "2026-02-28"
 ---
 
 ![Claude Code Best Practices Header](/images/knowledge/claude-code-best-practices-2026/header.jpg)

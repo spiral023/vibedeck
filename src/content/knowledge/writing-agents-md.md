@@ -7,6 +7,7 @@ readTime: 11 Min
 tags: ["agents", "prompt-engineering", "best-practices", "claude-code"]
 level: advanced
 hot: true
+addedDate: "2026-02-01"
 ---
 
 # Eine gute AGENTS.md schreiben

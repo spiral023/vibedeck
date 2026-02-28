@@ -12,6 +12,7 @@ sourceType: "docs"
 author: "Anthropic Docs"
 level: intermediate
 hot: true
+addedDate: "2026-02-01"
 ---
 
 Claude Code kombiniert ein Modell, das über deinen Code nachdenkt, mit eingebauten Tools. Die "Extension Layer" ermöglicht es dir, Claude an deine Bedürfnisse anzupassen.

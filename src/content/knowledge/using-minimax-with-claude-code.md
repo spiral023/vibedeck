@@ -11,6 +11,7 @@ sourceURL: "https://x.com/rudrank/status/2018272804966449209"
 sourceType: "thread"
 author: "@rudrank"
 level: advanced
+addedDate: "2026-02-04"
 ---
 
 ![Header Image](/images/knowledge/using-minimax-with-claude-code/header.jpg)

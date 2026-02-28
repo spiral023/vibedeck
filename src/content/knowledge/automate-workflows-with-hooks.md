@@ -12,6 +12,7 @@ sourceType: "docs"
 author: "Anthropic Docs"
 level: advanced
 hot: true
+addedDate: "2026-02-01"
 ---
 Hooks sind benutzerdefinierte Shell-Befehle, die an bestimmten Punkten im Lebenszyklus von Claude Code ausgeführt werden. Sie bieten deterministische Kontrolle über das Verhalten von Claude Code.
 

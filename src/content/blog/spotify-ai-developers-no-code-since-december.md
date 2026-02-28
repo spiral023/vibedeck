@@ -13,6 +13,7 @@ sourceURL: "https://techcrunch.com/2026/02/12/spotify-says-its-best-developers-h
 sourceType: blog
 author: "Sarah Perez"
 sourceDate: "2026-02-12"
+addedDate: "2026-02-26"
 ---
 
 ![Header](/images/blog/spotify-ai-developers-no-code-since-december/header.jpg)

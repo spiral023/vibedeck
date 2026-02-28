@@ -19,7 +19,12 @@ interface BlogClientProps {
   articles: BlogArticle[];
 }
 
-type SortBy = 'date-desc' | 'date-asc' | 'title';
+type SortBy =
+  | 'added-date-desc'
+  | 'added-date-asc'
+  | 'source-date-desc'
+  | 'source-date-asc'
+  | 'title';
 type SourceTypeFilter = 'all' | 'blog' | 'tweet' | 'thread' | 'docs';
 
 const sourceTypeLabels: Record<SourceTypeFilter, string> = {
@@ -60,7 +65,7 @@ export function BlogClient({ articles }: BlogClientProps) {
   const { isFavorite, isDone, isViewed, toggleFavorite, toggleDone } = useContentStatusStore();
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
-  const [sortBy, setSortBy] = useState<SortBy>('date-desc');
+  const [sortBy, setSortBy] = useState<SortBy>('added-date-desc');
   const [sourceType, setSourceType] = useState<SourceTypeFilter>('all');
 
   const tagStats = useMemo(() => {
@@ -107,7 +112,21 @@ export function BlogClient({ articles }: BlogClientProps) {
       if (sortBy === 'title') {
         return a.title.localeCompare(b.title);
       }
-      if (sortBy === 'date-asc') {
+      if (sortBy === 'added-date-asc') {
+        const diff = dateValue(a.addedDate) - dateValue(b.addedDate);
+        if (diff !== 0) return diff;
+        const sourceDiff = dateValue(a.sourceDate) - dateValue(b.sourceDate);
+        if (sourceDiff !== 0) return sourceDiff;
+        return a.title.localeCompare(b.title);
+      }
+      if (sortBy === 'added-date-desc') {
+        const diff = dateValue(b.addedDate) - dateValue(a.addedDate);
+        if (diff !== 0) return diff;
+        const sourceDiff = dateValue(b.sourceDate) - dateValue(a.sourceDate);
+        if (sourceDiff !== 0) return sourceDiff;
+        return a.title.localeCompare(b.title);
+      }
+      if (sortBy === 'source-date-asc') {
         const diff = dateValue(a.sourceDate) - dateValue(b.sourceDate);
         if (diff !== 0) return diff;
         return a.title.localeCompare(b.title);
@@ -170,8 +189,10 @@ export function BlogClient({ articles }: BlogClientProps) {
                 </div>
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="date-desc">Datum (Neu zuerst)</SelectItem>
-                <SelectItem value="date-asc">Datum (Alt zuerst)</SelectItem>
+                <SelectItem value="added-date-desc">Hinzugefügt (Neu zuerst)</SelectItem>
+                <SelectItem value="added-date-asc">Hinzugefügt (Alt zuerst)</SelectItem>
+                <SelectItem value="source-date-desc">Originaldatum (Neu zuerst)</SelectItem>
+                <SelectItem value="source-date-asc">Originaldatum (Alt zuerst)</SelectItem>
                 <SelectItem value="title">Titel (A-Z)</SelectItem>
               </SelectContent>
             </Select>

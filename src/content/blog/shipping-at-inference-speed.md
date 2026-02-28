@@ -13,6 +13,7 @@ sourceURL: "https://steipete.me/posts/2025/shipping-at-inference-speed"
 sourceType: blog
 author: "Peter Steinberger"
 sourceDate: "2025-12-28"
+addedDate: "2026-02-26"
 ---
 
 ![Header](/images/blog/shipping-at-inference-speed/header.png)

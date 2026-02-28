@@ -12,6 +12,7 @@ sourceType: thread
 author: AI Edge
 level: beginner
 hot: true
+addedDate: "2026-02-01"
 ---
 
 ![Claude Code Starter Pack Header](/images/knowledge/claude-starter-pack/header-p1.jpg)

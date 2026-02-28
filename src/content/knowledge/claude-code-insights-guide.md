@@ -9,6 +9,7 @@ sourceURL: "https://x.com/tomcrawshaw01/status/2020866308230009189"
 sourceType: "thread"
 author: "Tom Crawshaw"
 sourceDate: "2026-02-09"
+addedDate: "2026-02-26"
 ---
 
 ![Claude Code Insights Header](/images/knowledge/claude-code-insights-guide/header.jpg)

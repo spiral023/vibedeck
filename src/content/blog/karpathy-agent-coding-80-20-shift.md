@@ -13,6 +13,7 @@ sourceURL: "https://x.com/karpathy/status/2015883857489522876"
 sourceType: tweet
 author: "Andrej Karpathy"
 sourceDate: "2026-01-26"
+addedDate: "2026-02-26"
 ---
 
 Andrej Karpathys Tweet zu seinem aktuellen Coding-Workflow wurde so stark geteilt, weil er einen Punkt trifft, den viele Teams 2026 gerade live erleben: AI ist nicht mehr nur Auto-Complete, sondern zunehmend ein operativer Copilot für ganze Umsetzungsblöcke.

@@ -38,7 +38,13 @@ interface KnowledgeClientProps {
   articles: KnowledgeArticle[];
 }
 
-type SortBy = 'date' | 'title' | 'level';
+type SortBy =
+  | 'added-date-desc'
+  | 'added-date-asc'
+  | 'source-date-desc'
+  | 'source-date-asc'
+  | 'title'
+  | 'level';
 type LevelFilter = 'all' | 'beginner' | 'intermediate' | 'advanced';
 
 const levelWeight: Record<string, number> = {
@@ -46,6 +52,26 @@ const levelWeight: Record<string, number> = {
   intermediate: 2,
   advanced: 3,
 };
+
+function isSortBy(value: string): value is SortBy {
+  return [
+    'added-date-desc',
+    'added-date-asc',
+    'source-date-desc',
+    'source-date-asc',
+    'title',
+    'level',
+  ].includes(value);
+}
+
+function dateValue(date?: string): number {
+  if (!date) {
+    return 0;
+  }
+
+  const parsed = new Date(date).getTime();
+  return Number.isFinite(parsed) ? parsed : 0;
+}
 
 export function KnowledgeClient({ articles }: KnowledgeClientProps) {
   const {
@@ -58,7 +84,7 @@ export function KnowledgeClient({ articles }: KnowledgeClientProps) {
   } = useContentStatusStore();
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
   const [searchQuery, setSearchQuery] = useState('');
-  const [sortBy, setSortBy] = useState<SortBy>('level');
+  const [sortBy, setSortBy] = useState<SortBy>('added-date-desc');
   const [selectedLevel, setSelectedLevel] = useState<LevelFilter>('all');
   const [showHotOnly, setShowHotOnly] = useState(true);
   const [showAllTags, setShowAllTags] = useState(false);
@@ -74,7 +100,13 @@ export function KnowledgeClient({ articles }: KnowledgeClientProps) {
   // Load from local storage on mount
   useEffect(() => {
     const savedSortBy = localStorage.getItem('vibedeck-knowledge-sortBy');
-    if (savedSortBy) setSortBy(savedSortBy as SortBy);
+    if (savedSortBy === 'date') {
+      setSortBy('source-date-desc');
+    } else if (savedSortBy && isSortBy(savedSortBy)) {
+      setSortBy(savedSortBy);
+    } else if (savedSortBy) {
+      setSortBy('added-date-desc');
+    }
 
     const savedLevel = localStorage.getItem('vibedeck-knowledge-selectedLevel');
     if (savedLevel) setSelectedLevel(savedLevel as LevelFilter);
@@ -134,14 +166,46 @@ export function KnowledgeClient({ articles }: KnowledgeClientProps) {
       return matchesTags && matchesSearch && matchesLevel && matchesHot;
     })
     .sort((a, b) => {
-      if (sortBy === 'date') {
-        const dateA = a.sourceDate ? new Date(a.sourceDate).getTime() : 0;
-        const dateB = b.sourceDate ? new Date(b.sourceDate).getTime() : 0;
-        if (dateA !== dateB) {
-          return dateB - dateA; // Newest first
+      if (sortBy === 'added-date-desc') {
+        const diff = dateValue(b.addedDate) - dateValue(a.addedDate);
+        if (diff !== 0) {
+          return diff;
+        }
+        const sourceDiff = dateValue(b.sourceDate) - dateValue(a.sourceDate);
+        if (sourceDiff !== 0) {
+          return sourceDiff;
         }
         return a.title.localeCompare(b.title);
       }
+
+      if (sortBy === 'added-date-asc') {
+        const diff = dateValue(a.addedDate) - dateValue(b.addedDate);
+        if (diff !== 0) {
+          return diff;
+        }
+        const sourceDiff = dateValue(a.sourceDate) - dateValue(b.sourceDate);
+        if (sourceDiff !== 0) {
+          return sourceDiff;
+        }
+        return a.title.localeCompare(b.title);
+      }
+
+      if (sortBy === 'source-date-desc') {
+        const diff = dateValue(b.sourceDate) - dateValue(a.sourceDate);
+        if (diff !== 0) {
+          return diff;
+        }
+        return a.title.localeCompare(b.title);
+      }
+
+      if (sortBy === 'source-date-asc') {
+        const diff = dateValue(a.sourceDate) - dateValue(b.sourceDate);
+        if (diff !== 0) {
+          return diff;
+        }
+        return a.title.localeCompare(b.title);
+      }
+
       if (sortBy === 'level') {
         const weightA = a.level ? levelWeight[a.level] ?? 4 : 4;
         const weightB = b.level ? levelWeight[b.level] ?? 4 : 4;
@@ -252,7 +316,10 @@ export function KnowledgeClient({ articles }: KnowledgeClientProps) {
                 </div>
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="date">Datum (Neu)</SelectItem>
+                <SelectItem value="added-date-desc">Hinzugefügt (Neu zuerst)</SelectItem>
+                <SelectItem value="added-date-asc">Hinzugefügt (Alt zuerst)</SelectItem>
+                <SelectItem value="source-date-desc">Originaldatum (Neu zuerst)</SelectItem>
+                <SelectItem value="source-date-asc">Originaldatum (Alt zuerst)</SelectItem>
                 <SelectItem value="title">Titel (A-Z)</SelectItem>
                 <SelectItem value="level">Level (Aufsteigend)</SelectItem>
               </SelectContent>

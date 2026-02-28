@@ -9,6 +9,7 @@ sourceURL: "https://boristane.com/blog/the-software-development-lifecycle-is-dea
 sourceType: "blog"
 author: "Boris Tane"
 sourceDate: "2026-02-20"
+addedDate: "2026-02-25"
 ---
 
 KI-Agenten haben den Software Development Lifecycle (SDLC) nicht einfach nur schneller gemacht. Sie haben ihn getötet.

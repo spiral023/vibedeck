@@ -9,6 +9,7 @@ sourceURL: "https://x.com/eyad_khrais/status/2010810802023141688"
 sourceType: "thread"
 author: "Eyad"
 sourceDate: "2026-01-12"
+addedDate: "2026-02-26"
 ---
 
 ![Claude Code Level 2 Header](/images/knowledge/claude-code-tutorial-level-2/header.jpg)

@@ -9,6 +9,7 @@ sourceURL: "https://x.com/damienghader/status/2023780178128728201"
 sourceType: "thread"
 author: "Damien"
 sourceDate: "2026-02-17"
+addedDate: "2026-02-25"
 ---
 
 ![Lovable Proposals Guide](/images/knowledge/lovable-proposals-guide/header.jpg)

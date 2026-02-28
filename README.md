@@ -227,6 +227,24 @@ Hier können weitere Erklärungen stehen.
 
 Kein Code-Change nötig - Prompt wird automatisch erkannt!
 
+### Frontmatter für Blog- und Wissensartikel
+
+Für Dateien in `src/content/blog/` und `src/content/knowledge/` gelten zwei Datumsfelder:
+
+- `sourceDate`: Original-Veröffentlichungsdatum der Quelle
+- `addedDate`: Datum der Aufnahme in VibeDeck
+
+Empfohlenes Format für beide Felder: `YYYY-MM-DD`
+
+```yaml
+---
+title: "Beispielartikel"
+description: "Kurzbeschreibung"
+sourceDate: "2025-12-28"
+addedDate: "2026-02-28"
+---
+```
+
 ### Globale Variablen setzen
 
 1. Gehe zu **Einstellungen**
