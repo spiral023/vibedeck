@@ -83,6 +83,7 @@ export const toolCategories: ToolCategory[] = [
       { name: 'CodeWiki', description: 'Gemini-generierte Repo-Dokumentation, stets aktuell.', url: 'https://codewiki.google/', icon: Code2 },
       { name: 'DeepWiki', description: 'Talk-to-docs fuer jedes Repo, AI-Dokumentation auf Abruf.', url: 'https://deepwiki.com/', icon: Brain },
       { name: 'LM Arena (WebDev)', description: 'Leaderboard zum Vergleich von WebDev-Modellen in der Code Arena.', url: 'https://lmarena.ai/de/leaderboard/webdev', icon: Brain },
+      { name: 'Amplifying AI Tech Directory', description: 'Toolauswahl von Claude Code mit Kategorie-Prozentwerten.', url: 'https://amplifying.ai/tech', icon: Terminal },
     ],
   },
   {

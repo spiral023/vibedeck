@@ -1,14 +1,18 @@
 'use client';
 
+import { useEffect } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
-import { ArrowLeft, Calendar, Copy, ExternalLink, Newspaper } from 'lucide-react';
+import { ArrowLeft, Calendar, Check, Copy, ExternalLink, Eye, Heart, Newspaper } from 'lucide-react';
 import { toast } from 'sonner';
 import { copyToClipboard } from '@/lib/copy-utils';
 import { Mermaid } from '@/components/Mermaid';
 import { type BlogArticle } from '@/types/blog';
+import { useContentStatusStore } from '@/stores/content-status-store';
+import { cn } from '@/lib/utils';
+import { formatBlogArticleMarkdown } from '@/lib/blog-export';
 
 const sourceTypeLabels: Record<NonNullable<BlogArticle['sourceType']>, string> = {
   tweet: 'Tweet',
@@ -30,56 +34,23 @@ const formatDate = (value?: string) => {
   return parsed.toLocaleDateString('de-DE');
 };
 
-const formatYamlString = (value: string) => {
-  const sanitized = value
-    .replace(/\\/g, '\\\\')
-    .replace(/"/g, '\\"')
-    .replace(/\n/g, '\\n');
-
-  return `"${sanitized}"`;
-};
-
-const formatYamlArray = (values: string[]) => `[${values.map((value) => formatYamlString(value)).join(', ')}]`;
-
-const formatBlogArticleMarkdown = (article: BlogArticle) => {
-  const lines: string[] = [
-    `title: ${formatYamlString(article.title)}`,
-    `description: ${formatYamlString(article.description)}`,
-    `category: ${formatYamlString(article.category)}`,
-    `icon: ${formatYamlString(article.icon)}`,
-    `readTime: ${formatYamlString(article.readTime)}`,
-  ];
-
-  if (article.tags && article.tags.length > 0) {
-    lines.push(`tags: ${formatYamlArray(article.tags)}`);
-  }
-
-  if (article.keyPoints && article.keyPoints.length > 0) {
-    lines.push('keyPoints:');
-    article.keyPoints.slice(0, 3).forEach((point) => {
-      lines.push(`  - ${formatYamlString(point)}`);
-    });
-  }
-
-  if (article.sourceURL) lines.push(`sourceURL: ${formatYamlString(article.sourceURL)}`);
-  if (article.sourceType) lines.push(`sourceType: ${formatYamlString(article.sourceType)}`);
-  if (article.author) lines.push(`author: ${formatYamlString(article.author)}`);
-  if (article.sourceDate) lines.push(`sourceDate: ${formatYamlString(article.sourceDate)}`);
-
-  const frontmatter = ['---', ...lines, '---'].join('\n');
-  const body = article.content.trim();
-  return body ? `${frontmatter}\n\n${body}` : frontmatter;
-};
-
 interface BlogArticleViewProps {
   article: BlogArticle;
 }
 
 export function BlogArticleView({ article }: BlogArticleViewProps) {
+  const { markViewed, isViewed, isFavorite, isDone, toggleFavorite, toggleDone } = useContentStatusStore();
   const formattedDate = formatDate(article.sourceDate);
   const sourceLabel = article.sourceType
     ? sourceTypeLabels[article.sourceType] ?? article.sourceType
     : null;
+  const viewed = isViewed('blog', article.id);
+  const favorite = isFavorite('blog', article.id);
+  const done = isDone('blog', article.id);
+
+  useEffect(() => {
+    markViewed('blog', article.id);
+  }, [article.id, markViewed]);
 
   const handleCopyMarkdown = async () => {
     const success = await copyToClipboard(formatBlogArticleMarkdown(article));
@@ -114,6 +85,15 @@ export function BlogArticleView({ article }: BlogArticleViewProps) {
               <h1 className="mb-2 text-3xl font-bold">{article.title}</h1>
               <p className="flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-muted-foreground">
                 <span>{article.readTime} Lesezeit</span>
+                {viewed && (
+                  <>
+                    <span className="text-muted-foreground/50">•</span>
+                    <span className="inline-flex items-center gap-1 rounded-full border border-blue-200/50 bg-blue-500/10 px-2 py-0.5 text-xs font-medium text-blue-600 dark:border-blue-800/50 dark:text-blue-400">
+                      <Eye className="h-3 w-3" />
+                      Bereits aufgerufen
+                    </span>
+                  </>
+                )}
                 {(sourceLabel || article.author || formattedDate) && (
                   <span className="text-muted-foreground/50">•</span>
                 )}
@@ -141,7 +121,33 @@ export function BlogArticleView({ article }: BlogArticleViewProps) {
                 )}
               </p>
             </div>
-            <div className="w-full sm:ml-auto sm:w-auto">
+            <div className="w-full sm:ml-auto sm:w-auto flex flex-wrap items-center gap-2">
+              <button
+                type="button"
+                onClick={() => toggleFavorite('blog', article.id)}
+                className={cn(
+                  'inline-flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium focus-ring',
+                  favorite
+                    ? 'bg-red-500/10 text-red-500 hover:bg-red-500/20'
+                    : 'bg-secondary text-secondary-foreground hover:bg-secondary/80'
+                )}
+              >
+                <Heart className={cn('h-4 w-4', favorite && 'fill-current')} />
+                {favorite ? 'Favorit' : 'Favorisieren'}
+              </button>
+              <button
+                type="button"
+                onClick={() => toggleDone('blog', article.id)}
+                className={cn(
+                  'inline-flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium focus-ring',
+                  done
+                    ? 'bg-green-500/10 text-green-500 hover:bg-green-500/20'
+                    : 'bg-secondary text-secondary-foreground hover:bg-secondary/80'
+                )}
+              >
+                <Check className={cn('h-4 w-4', done && 'stroke-[3]')} />
+                {done ? 'Erledigt' : 'Erledigen'}
+              </button>
               <button
                 type="button"
                 onClick={handleCopyMarkdown}

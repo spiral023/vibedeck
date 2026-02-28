@@ -17,6 +17,18 @@ describe('export-utils', () => {
       done: {},
       agentRoleOverrides: {},
     },
+    contentStatus: {
+      knowledge: {
+        viewed: { 'k-1': true },
+        favorites: { 'k-2': true },
+        done: {},
+      },
+      blog: {
+        viewed: {},
+        favorites: { 'b-1': true },
+        done: { 'b-2': true },
+      },
+    },
     history: [],
   };
 
@@ -25,6 +37,16 @@ describe('export-utils', () => {
     expect(result.isValid).toBe(true);
     expect(result.settingsCount).toBe(1);
     expect(result.favoritesCount).toBe(1);
+    expect(result.knowledgeViewedCount).toBe(1);
+    expect(result.blogDoneCount).toBe(1);
+  });
+
+  it('accepts legacy export without contentStatus', () => {
+    const { contentStatus, ...legacyExport } = validExport;
+    const result = validateImportData(legacyExport);
+    expect(result.isValid).toBe(true);
+    expect(result.knowledgeViewedCount).toBe(0);
+    expect(result.blogFavoritesCount).toBe(0);
   });
 
   it('rejects invalid schema version', () => {
@@ -48,10 +70,15 @@ describe('export-utils', () => {
       globalVariables: { global_stack: 'React' },
     };
     const status = { favorites: {}, done: {}, agentRoleOverrides: {} };
+    const contentStatus = {
+      knowledge: { viewed: { a: true }, favorites: {}, done: {} },
+      blog: { viewed: {}, favorites: { b: true }, done: {} },
+    };
     const history: any[] = [];
 
-    const data = createExportData(settings, status, history);
+    const data = createExportData(settings, status, contentStatus, history);
     expect(data.schemaVersion).toBe(1);
     expect(data.settings).toEqual(settings);
+    expect(data.contentStatus).toEqual(contentStatus);
   });
 });

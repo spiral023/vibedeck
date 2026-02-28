@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useRef } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { toast } from 'sonner';
 import {
@@ -14,25 +14,37 @@ import { uiLibraries } from '@/data/ui-libraries';
 import { toolCategories } from '@/data/tool-directory';
 import { githubRepos } from '@/data/github-repos';
 import { setupItems } from '@/data/setup-items';
+import type { KnowledgeArticle } from '@/types/knowledge';
+import type { BlogArticle } from '@/types/blog';
 import { useHistoryStore } from '@/stores/history-store';
 import { useSettingsStore } from '@/stores/settings-store';
 import { usePromptStatusStore } from '@/stores/prompt-status-store';
+import { useContentStatusStore, type ContentDomain, type ContentStatusData } from '@/stores/content-status-store';
 import { copyToClipboard } from '@/lib/copy-utils';
 import { createExportData, validateImportData, downloadJson, readJsonFile, type ExportData } from '@/lib/export-utils';
+import { formatKnowledgeCollectionMarkdown } from '@/lib/knowledge-export';
+import { formatBlogCollectionMarkdown } from '@/lib/blog-export';
 import { cn } from '@/lib/utils';
 
 interface SettingsClientProps {
-  knowledgeExport: string;
-  knowledgeCount: number;
+  knowledgeArticles: KnowledgeArticle[];
+  blogArticles: BlogArticle[];
 }
 
-export function SettingsClient({ knowledgeExport, knowledgeCount }: SettingsClientProps) {
+type StatusCopyFilter = 'all' | 'favorites' | 'non_favorites' | 'done' | 'not_done';
+
+export function SettingsClient({ knowledgeArticles, blogArticles }: SettingsClientProps) {
   const settings = useSettingsStore();
   const promptStatus = usePromptStatusStore();
+  const contentStatus = useContentStatusStore();
   const history = useHistoryStore();
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [importPreview, setImportPreview] = useState<ReturnType<typeof validateImportData> | null>(null);
   const [pendingImport, setPendingImport] = useState<unknown>(null);
+
+  useEffect(() => {
+    contentStatus.runLegacyMigration();
+  }, [contentStatus.runLegacyMigration]);
 
   const handleExport = () => {
     const data = createExportData(
@@ -47,6 +59,10 @@ export function SettingsClient({ knowledgeExport, knowledgeCount }: SettingsClie
         favorites: promptStatus.favorites,
         done: promptStatus.done,
         agentRoleOverrides: promptStatus.agentRoleOverrides,
+      },
+      {
+        knowledge: contentStatus.knowledge,
+        blog: contentStatus.blog,
       },
       history.entries
     );
@@ -95,6 +111,12 @@ export function SettingsClient({ knowledgeExport, knowledgeCount }: SettingsClie
     Object.entries(data.promptStatus.agentRoleOverrides).forEach(([id, role]) => {
       promptStatus.setAgentRoleOverride(id, role);
     });
+
+    const importedContentStatus: ContentStatusData = data.contentStatus ?? {
+      knowledge: { viewed: {}, favorites: {}, done: {} },
+      blog: { viewed: {}, favorites: {}, done: {} },
+    };
+    contentStatus.replaceAll(importedContentStatus);
 
     history.clearAll();
     data.history.forEach((entry) => {
@@ -164,14 +186,54 @@ export function SettingsClient({ knowledgeExport, knowledgeCount }: SettingsClie
     }
   };
 
-  const handleCopyKnowledge = async () => {
-    await handleCopyStaticContent('Wissensbasis', knowledgeExport, knowledgeCount);
+  const filterByStatus = <T extends { id: string }>(
+    items: T[],
+    domain: ContentDomain,
+    filter: StatusCopyFilter
+  ) => {
+    const domainStatus = contentStatus[domain];
+    return items.filter((item) => {
+      const isFav = !!domainStatus.favorites[item.id];
+      const isDone = !!domainStatus.done[item.id];
+
+      if (filter === 'favorites') return isFav;
+      if (filter === 'non_favorites') return !isFav;
+      if (filter === 'done') return isDone;
+      if (filter === 'not_done') return !isDone;
+      return true;
+    });
+  };
+
+  const copyKnowledgeByStatus = async (filter: StatusCopyFilter) => {
+    const filtered = filterByStatus(knowledgeArticles, 'knowledge', filter);
+    if (filtered.length === 0) {
+      toast.info('Keine passenden Wissensartikel gefunden');
+      return;
+    }
+    await handleCopyStaticContent('Wissensbasis', formatKnowledgeCollectionMarkdown(filtered), filtered.length);
+  };
+
+  const copyBlogByStatus = async (filter: StatusCopyFilter) => {
+    const filtered = filterByStatus(blogArticles, 'blog', filter);
+    if (filtered.length === 0) {
+      toast.info('Keine passenden Blogartikel gefunden');
+      return;
+    }
+    await handleCopyStaticContent('Blog', formatBlogCollectionMarkdown(filtered), filtered.length);
   };
 
   const uiLibraryCount = uiLibraries.length;
   const toolCount = toolCategories.reduce((sum, category) => sum + category.tools.length, 0);
   const repoCount = githubRepos.length;
   const setupCount = setupItems.length;
+  const knowledgeCount = knowledgeArticles.length;
+  const blogCount = blogArticles.length;
+  const knowledgeViewedCount = Object.keys(contentStatus.knowledge.viewed).length;
+  const knowledgeFavoriteCount = Object.keys(contentStatus.knowledge.favorites).length;
+  const knowledgeDoneCount = Object.keys(contentStatus.knowledge.done).length;
+  const blogViewedCount = Object.keys(contentStatus.blog.viewed).length;
+  const blogFavoriteCount = Object.keys(contentStatus.blog.favorites).length;
+  const blogDoneCount = Object.keys(contentStatus.blog.done).length;
 
   return (
     <div className="space-y-8 max-w-3xl">
@@ -313,6 +375,8 @@ export function SettingsClient({ knowledgeExport, knowledgeCount }: SettingsClie
                   <li>Einstellungen: {importPreview.settingsCount} globale Variablen</li>
                   <li>Favoriten: {importPreview.favoritesCount}</li>
                   <li>Erledigt: {importPreview.doneCount}</li>
+                  <li>Knowledge: Gesehen {importPreview.knowledgeViewedCount}, Favoriten {importPreview.knowledgeFavoritesCount}, Erledigt {importPreview.knowledgeDoneCount}</li>
+                  <li>Blog: Gesehen {importPreview.blogViewedCount}, Favoriten {importPreview.blogFavoritesCount}, Erledigt {importPreview.blogDoneCount}</li>
                   <li>Verlauf: {importPreview.historyCount} Einträge</li>
                 </ul>
                 <div className="flex gap-2">
@@ -343,7 +407,7 @@ export function SettingsClient({ knowledgeExport, knowledgeCount }: SettingsClie
         )}
 
         <p className="text-xs text-muted-foreground">
-          Export enthält: Einstellungen, Favoriten, erledigte Prompts und Verlauf.
+          Export enthält: Einstellungen, Prompt-Status, Artikelstatus für Knowledge/Blog und Verlauf.
         </p>
       </motion.section>
 
@@ -363,15 +427,89 @@ export function SettingsClient({ knowledgeExport, knowledgeCount }: SettingsClie
           <div className="rounded-xl border border-border/50 bg-background/60 p-4 space-y-3">
             <div>
               <h3 className="font-semibold">Wissensbasis</h3>
-              <p className="text-sm text-muted-foreground">Alle Artikel als Markdown.</p>
+              <p className="text-sm text-muted-foreground">{knowledgeCount} Artikel mit Status-Filtern.</p>
             </div>
-            <button
-              onClick={handleCopyKnowledge}
-              className="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:bg-primary/90 focus-ring"
-            >
-              <Copy className="h-4 w-4" />
-              Wissensbasis kopieren
-            </button>
+            <div className="grid gap-2">
+              <button
+                onClick={() => copyKnowledgeByStatus('all')}
+                className="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:bg-primary/90 focus-ring"
+              >
+                <Copy className="h-4 w-4" />
+                Alle kopieren
+              </button>
+              <button
+                onClick={() => copyKnowledgeByStatus('favorites')}
+                className="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-secondary px-4 py-2 text-sm font-medium text-secondary-foreground hover:bg-secondary/80 focus-ring"
+              >
+                <Copy className="h-4 w-4" />
+                Nur favorisierte
+              </button>
+              <button
+                onClick={() => copyKnowledgeByStatus('non_favorites')}
+                className="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-secondary px-4 py-2 text-sm font-medium text-secondary-foreground hover:bg-secondary/80 focus-ring"
+              >
+                <Copy className="h-4 w-4" />
+                Nur nicht favorisierte
+              </button>
+              <button
+                onClick={() => copyKnowledgeByStatus('done')}
+                className="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-secondary px-4 py-2 text-sm font-medium text-secondary-foreground hover:bg-secondary/80 focus-ring"
+              >
+                <Copy className="h-4 w-4" />
+                Nur erledigte
+              </button>
+              <button
+                onClick={() => copyKnowledgeByStatus('not_done')}
+                className="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-secondary px-4 py-2 text-sm font-medium text-secondary-foreground hover:bg-secondary/80 focus-ring"
+              >
+                <Copy className="h-4 w-4" />
+                Nur nicht erledigte
+              </button>
+            </div>
+          </div>
+
+          <div className="rounded-xl border border-border/50 bg-background/60 p-4 space-y-3">
+            <div>
+              <h3 className="font-semibold">Blog</h3>
+              <p className="text-sm text-muted-foreground">{blogCount} Artikel mit Status-Filtern.</p>
+            </div>
+            <div className="grid gap-2">
+              <button
+                onClick={() => copyBlogByStatus('all')}
+                className="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:bg-primary/90 focus-ring"
+              >
+                <Copy className="h-4 w-4" />
+                Alle kopieren
+              </button>
+              <button
+                onClick={() => copyBlogByStatus('favorites')}
+                className="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-secondary px-4 py-2 text-sm font-medium text-secondary-foreground hover:bg-secondary/80 focus-ring"
+              >
+                <Copy className="h-4 w-4" />
+                Nur favorisierte
+              </button>
+              <button
+                onClick={() => copyBlogByStatus('non_favorites')}
+                className="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-secondary px-4 py-2 text-sm font-medium text-secondary-foreground hover:bg-secondary/80 focus-ring"
+              >
+                <Copy className="h-4 w-4" />
+                Nur nicht favorisierte
+              </button>
+              <button
+                onClick={() => copyBlogByStatus('done')}
+                className="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-secondary px-4 py-2 text-sm font-medium text-secondary-foreground hover:bg-secondary/80 focus-ring"
+              >
+                <Copy className="h-4 w-4" />
+                Nur erledigte
+              </button>
+              <button
+                onClick={() => copyBlogByStatus('not_done')}
+                className="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-secondary px-4 py-2 text-sm font-medium text-secondary-foreground hover:bg-secondary/80 focus-ring"
+              >
+                <Copy className="h-4 w-4" />
+                Nur nicht erledigte
+              </button>
+            </div>
           </div>
 
           <div className="rounded-xl border border-border/50 bg-background/60 p-4 space-y-3">
@@ -437,7 +575,7 @@ export function SettingsClient({ knowledgeExport, knowledgeCount }: SettingsClie
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.35 }}
-        className="grid gap-4 sm:grid-cols-3"
+        className="grid gap-4 sm:grid-cols-2 lg:grid-cols-5"
       >
         <div className="rounded-2xl border border-border/50 bg-card/50 p-5 text-center">
           <div className="text-3xl font-bold text-primary">
@@ -456,6 +594,18 @@ export function SettingsClient({ knowledgeExport, knowledgeCount }: SettingsClie
             {history.entries.length}
           </div>
           <div className="text-sm text-muted-foreground">Verlauf</div>
+        </div>
+        <div className="rounded-2xl border border-border/50 bg-card/50 p-5 text-center">
+          <div className="text-lg font-bold text-primary">
+            {knowledgeFavoriteCount}/{knowledgeDoneCount}/{knowledgeViewedCount}
+          </div>
+          <div className="text-sm text-muted-foreground">Knowledge F/E/G</div>
+        </div>
+        <div className="rounded-2xl border border-border/50 bg-card/50 p-5 text-center">
+          <div className="text-lg font-bold text-primary">
+            {blogFavoriteCount}/{blogDoneCount}/{blogViewedCount}
+          </div>
+          <div className="text-sm text-muted-foreground">Blog F/E/G</div>
         </div>
       </motion.section>
     </div>

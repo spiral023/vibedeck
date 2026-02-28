@@ -3,9 +3,10 @@
 import { useMemo, useState } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { ArrowUpDown, Calendar, ExternalLink, Filter, Newspaper, Search, Tag } from 'lucide-react';
+import { ArrowUpDown, Calendar, Check, ExternalLink, Eye, Filter, Heart, Newspaper, Search, Tag } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { type BlogArticle } from '@/types/blog';
+import { useContentStatusStore } from '@/stores/content-status-store';
 import {
   Select,
   SelectContent,
@@ -56,6 +57,7 @@ function dateValue(date?: string): number {
 }
 
 export function BlogClient({ articles }: BlogClientProps) {
+  const { isFavorite, isDone, isViewed, toggleFavorite, toggleDone } = useContentStatusStore();
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
   const [sortBy, setSortBy] = useState<SortBy>('date-desc');
@@ -236,13 +238,17 @@ export function BlogClient({ articles }: BlogClientProps) {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.04 }}
-                className="rounded-2xl border border-border/50 bg-card/50 p-6 transition-all hover:border-primary/30 hover:bg-card"
+                className={cn(
+                  'rounded-2xl border border-border/50 bg-card/50 p-6 transition-all hover:border-primary/30 hover:bg-card',
+                  isDone('blog', article.id) && 'opacity-80'
+                )}
               >
                 <div className="flex items-start justify-between gap-4">
                   <div className="space-y-2">
                     <h2 className="text-xl font-semibold leading-tight">
                       <Link href={`/blog/${article.id}`} className="transition-colors hover:text-primary">
                         {article.title}
+                        {isDone('blog', article.id) && <span className="ml-2 text-xs text-green-500">✓</span>}
                       </Link>
                     </h2>
                     <Link
@@ -261,19 +267,45 @@ export function BlogClient({ articles }: BlogClientProps) {
                           {article.sourceType}
                         </span>
                       )}
+                      {isViewed('blog', article.id) && (
+                        <span className="inline-flex items-center gap-1 rounded-full border border-blue-200/50 bg-blue-500/10 px-2 py-0.5 font-medium text-blue-600 dark:border-blue-800/50 dark:text-blue-400">
+                          <Eye className="h-3 w-3" />
+                          Gesehen
+                        </span>
+                      )}
                     </div>
                   </div>
-                  {article.sourceURL && (
-                    <a
-                      href={article.sourceURL}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex shrink-0 items-center gap-1 rounded-lg border border-border/70 px-2.5 py-1.5 text-xs font-medium text-muted-foreground transition-colors hover:text-foreground"
+                  <div className="flex shrink-0 items-center gap-1.5">
+                    <button
+                      type="button"
+                      onClick={() => toggleDone('blog', article.id)}
+                      className="inline-flex h-8 w-8 items-center justify-center rounded-lg border border-border/70 text-muted-foreground transition-colors hover:text-foreground"
+                      title={isDone('blog', article.id) ? 'Als offen markieren' : 'Als erledigt markieren'}
+                      aria-label={isDone('blog', article.id) ? 'Als offen markieren' : 'Als erledigt markieren'}
                     >
-                      Original
-                      <ExternalLink className="h-3.5 w-3.5" />
-                    </a>
-                  )}
+                      <Check className={cn('h-4 w-4', isDone('blog', article.id) && 'text-green-500 stroke-[3]')} />
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => toggleFavorite('blog', article.id)}
+                      className="inline-flex h-8 w-8 items-center justify-center rounded-lg border border-border/70 text-muted-foreground transition-colors hover:text-foreground"
+                      title={isFavorite('blog', article.id) ? 'Aus Favoriten entfernen' : 'Zu Favoriten hinzufügen'}
+                      aria-label={isFavorite('blog', article.id) ? 'Aus Favoriten entfernen' : 'Zu Favoriten hinzufügen'}
+                    >
+                      <Heart className={cn('h-4 w-4', isFavorite('blog', article.id) && 'fill-red-500 text-red-500')} />
+                    </button>
+                    {article.sourceURL && (
+                      <a
+                        href={article.sourceURL}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1 rounded-lg border border-border/70 px-2.5 py-1.5 text-xs font-medium text-muted-foreground transition-colors hover:text-foreground"
+                      >
+                        Original
+                        <ExternalLink className="h-3.5 w-3.5" />
+                      </a>
+                    )}
+                  </div>
                 </div>
 
                 <p className="mt-4 text-sm leading-relaxed text-muted-foreground">

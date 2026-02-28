@@ -1,15 +1,15 @@
 import { getAllKnowledgeArticles } from '@/lib/knowledge';
-import { formatKnowledgeCollectionMarkdown } from '@/lib/knowledge-export';
+import { getAllBlogArticles } from '@/lib/blog';
 import { SettingsClient } from './client';
 
 export default function SettingsPage() {
-  const articles = getAllKnowledgeArticles();
-  const knowledgeExport = formatKnowledgeCollectionMarkdown(articles);
+  const knowledgeArticles = getAllKnowledgeArticles();
+  const blogArticles = getAllBlogArticles();
 
   return (
     <SettingsClient
-      knowledgeExport={knowledgeExport}
-      knowledgeCount={articles.length}
+      knowledgeArticles={knowledgeArticles}
+      blogArticles={blogArticles}
     />
   );
 }

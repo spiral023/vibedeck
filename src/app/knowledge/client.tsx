@@ -3,10 +3,10 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import { BookOpen, Code2, Database, FileCode, Layers, Lock, Rocket, Search, Zap, Image, Calendar, ArrowUpDown, BarChart, Flame, Heart } from 'lucide-react';
+import { BookOpen, Code2, Database, FileCode, Layers, Lock, Rocket, Search, Zap, Image, Calendar, ArrowUpDown, BarChart, Flame, Heart, Check, Eye } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { type KnowledgeArticle } from '@/types/knowledge';
-import { useFavorites } from '@/hooks/use-favorites';
+import { useContentStatusStore } from '@/stores/content-status-store';
 import {
   Select,
   SelectContent,
@@ -48,7 +48,14 @@ const levelWeight: Record<string, number> = {
 };
 
 export function KnowledgeClient({ articles }: KnowledgeClientProps) {
-  const { isFavorite, toggleFavorite } = useFavorites('knowledge');
+  const {
+    isFavorite,
+    isDone,
+    isViewed,
+    toggleFavorite,
+    toggleDone,
+    runLegacyMigration,
+  } = useContentStatusStore();
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [sortBy, setSortBy] = useState<SortBy>('level');
@@ -59,6 +66,10 @@ export function KnowledgeClient({ articles }: KnowledgeClientProps) {
   const [collapsedTagHeight, setCollapsedTagHeight] = useState<number | null>(null);
   const tagContainerRef = useRef<HTMLDivElement | null>(null);
   const [isLoaded, setIsLoaded] = useState(false);
+
+  useEffect(() => {
+    runLegacyMigration();
+  }, [runLegacyMigration]);
 
   // Load from local storage on mount
   useEffect(() => {
@@ -318,7 +329,9 @@ export function KnowledgeClient({ articles }: KnowledgeClientProps) {
           const visibleTags = tags.slice(0, 3);
           const extraTagCount = tags.length - visibleTags.length;
           const levelInfo = article.level ? levelConfig[article.level] : null;
-          const isFav = isFavorite(article.id);
+          const isFav = isFavorite('knowledge', article.id);
+          const articleDone = isDone('knowledge', article.id);
+          const viewed = isViewed('knowledge', article.id);
 
           return (
             <motion.div
@@ -329,12 +342,21 @@ export function KnowledgeClient({ articles }: KnowledgeClientProps) {
               className="group relative"
             >
               <Link href={`/knowledge/${article.id}`} className="block h-full">
-                <div className="h-full rounded-2xl border border-border/50 bg-card/50 p-5 transition-all hover:border-primary/30 hover:bg-card flex flex-col relative">
+                <div className={cn(
+                  'h-full rounded-2xl border border-border/50 bg-card/50 p-5 transition-all hover:border-primary/30 hover:bg-card flex flex-col relative',
+                  articleDone && 'opacity-80'
+                )}>
                   <div className="mb-4 flex items-start justify-between">
                     <div className="rounded-xl bg-primary/10 p-2.5">
                       <Icon className="h-5 w-5 text-primary" />
                     </div>
-                    <div className="flex gap-2 pr-8">
+                    <div className="flex gap-2 pr-16">
+                      {viewed && (
+                        <span className="flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-medium border uppercase tracking-wider bg-blue-500/10 text-blue-600 dark:text-blue-400 border-blue-200/50 dark:border-blue-800/50">
+                          <Eye className="h-3 w-3" />
+                          Gesehen
+                        </span>
+                      )}
                       {article.hot && (
                         <span className="flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-medium border uppercase tracking-wider bg-red-500/10 text-red-600 dark:text-red-400 border-red-200/50 dark:border-red-800/50">
                           <Flame className="h-3 w-3" />
@@ -355,6 +377,7 @@ export function KnowledgeClient({ articles }: KnowledgeClientProps) {
                   <div className="space-y-2 mb-2">
                     <h3 className="font-semibold group-hover:text-primary transition-colors line-clamp-2">
                       {article.title}
+                      {articleDone && <span className="ml-2 text-xs text-green-500">✓</span>}
                     </h3>
                     <div className="flex items-center gap-3 text-xs text-muted-foreground">
                       <span>{article.readTime}</span>
@@ -395,20 +418,42 @@ export function KnowledgeClient({ articles }: KnowledgeClientProps) {
                   </div>
                 </div>
               </Link>
-              <button
-                onClick={(e) => {
-                  e.preventDefault();
-                  toggleFavorite(article.id);
-                }}
-                className="absolute top-4 right-4 z-20 p-1.5 rounded-full hover:bg-muted/50 transition-colors"
-              >
-                <Heart
-                  className={cn(
-                    "h-5 w-5 transition-colors",
-                    isFav ? "fill-red-500 text-red-500" : "text-muted-foreground hover:text-foreground"
-                  )}
-                />
-              </button>
+              <div className="absolute top-4 right-4 z-20 flex items-center gap-1">
+                <button
+                  onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    toggleDone('knowledge', article.id);
+                  }}
+                  className="p-1.5 rounded-full hover:bg-muted/50 transition-colors"
+                  title={articleDone ? 'Als offen markieren' : 'Als erledigt markieren'}
+                  aria-label={articleDone ? 'Als offen markieren' : 'Als erledigt markieren'}
+                >
+                  <Check
+                    className={cn(
+                      'h-5 w-5 transition-colors',
+                      articleDone ? 'text-green-500 stroke-[3]' : 'text-muted-foreground hover:text-foreground'
+                    )}
+                  />
+                </button>
+                <button
+                  onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    toggleFavorite('knowledge', article.id);
+                  }}
+                  className="p-1.5 rounded-full hover:bg-muted/50 transition-colors"
+                  title={isFav ? 'Aus Favoriten entfernen' : 'Zu Favoriten hinzufügen'}
+                  aria-label={isFav ? 'Aus Favoriten entfernen' : 'Zu Favoriten hinzufügen'}
+                >
+                  <Heart
+                    className={cn(
+                      'h-5 w-5 transition-colors',
+                      isFav ? 'fill-red-500 text-red-500' : 'text-muted-foreground hover:text-foreground'
+                    )}
+                  />
+                </button>
+              </div>
             </motion.div>
           );
         })}

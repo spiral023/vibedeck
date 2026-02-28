@@ -4,6 +4,16 @@ export const ExportSchemaVersion = 1;
 
 // Schema for validation
 const GlobalVariablesSchema = z.record(z.string().optional());
+const StatusRecordSchema = z.record(z.literal(true));
+const DomainStatusSchema = z.object({
+  viewed: StatusRecordSchema,
+  favorites: StatusRecordSchema,
+  done: StatusRecordSchema,
+});
+const ContentStatusSchema = z.object({
+  knowledge: DomainStatusSchema,
+  blog: DomainStatusSchema,
+});
 
 const ExportDataSchema = z.object({
   schemaVersion: z.literal(ExportSchemaVersion),
@@ -20,6 +30,7 @@ const ExportDataSchema = z.object({
     done: z.record(z.literal(true)),
     agentRoleOverrides: z.record(z.string()),
   }),
+  contentStatus: ContentStatusSchema.optional(),
   history: z.array(z.object({
     id: z.string(),
     timestamp: z.number(),
@@ -44,6 +55,12 @@ export interface ExportPreview {
   settingsCount: number;
   favoritesCount: number;
   doneCount: number;
+  knowledgeViewedCount: number;
+  knowledgeFavoritesCount: number;
+  knowledgeDoneCount: number;
+  blogViewedCount: number;
+  blogFavoritesCount: number;
+  blogDoneCount: number;
   historyCount: number;
   exportedAt?: string;
 }
@@ -54,6 +71,7 @@ export interface ExportPreview {
 export function createExportData(
   settings: any,
   promptStatus: any,
+  contentStatus: any,
   history: any[]
 ): ExportData {
   return {
@@ -71,6 +89,18 @@ export function createExportData(
       done: promptStatus.done,
       agentRoleOverrides: promptStatus.agentRoleOverrides,
     },
+    contentStatus: {
+      knowledge: {
+        viewed: contentStatus.knowledge?.viewed ?? {},
+        favorites: contentStatus.knowledge?.favorites ?? {},
+        done: contentStatus.knowledge?.done ?? {},
+      },
+      blog: {
+        viewed: contentStatus.blog?.viewed ?? {},
+        favorites: contentStatus.blog?.favorites ?? {},
+        done: contentStatus.blog?.done ?? {},
+      },
+    },
     history,
   };
 }
@@ -87,6 +117,12 @@ export function validateImportData(data: unknown): ExportPreview {
       settingsCount: Object.keys(parsed.settings.globalVariables).length,
       favoritesCount: Object.keys(parsed.promptStatus.favorites).length,
       doneCount: Object.keys(parsed.promptStatus.done).length,
+      knowledgeViewedCount: Object.keys(parsed.contentStatus?.knowledge.viewed ?? {}).length,
+      knowledgeFavoritesCount: Object.keys(parsed.contentStatus?.knowledge.favorites ?? {}).length,
+      knowledgeDoneCount: Object.keys(parsed.contentStatus?.knowledge.done ?? {}).length,
+      blogViewedCount: Object.keys(parsed.contentStatus?.blog.viewed ?? {}).length,
+      blogFavoritesCount: Object.keys(parsed.contentStatus?.blog.favorites ?? {}).length,
+      blogDoneCount: Object.keys(parsed.contentStatus?.blog.done ?? {}).length,
       historyCount: parsed.history.length,
       exportedAt: parsed.exportedAt,
     };
@@ -99,6 +135,12 @@ export function validateImportData(data: unknown): ExportPreview {
       settingsCount: 0,
       favoritesCount: 0,
       doneCount: 0,
+      knowledgeViewedCount: 0,
+      knowledgeFavoritesCount: 0,
+      knowledgeDoneCount: 0,
+      blogViewedCount: 0,
+      blogFavoritesCount: 0,
+      blogDoneCount: 0,
       historyCount: 0,
     };
   }
