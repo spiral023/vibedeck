@@ -245,6 +245,44 @@ export function BlogArticleView({ article }: BlogArticleViewProps) {
             {contentWithoutVerbindungen}
           </ReactMarkdown>
         </div>
+        <div className="not-prose mt-8 rounded-xl border border-border/60 bg-card/40 p-4">
+          <div className="flex flex-wrap items-center gap-2">
+            <button
+              type="button"
+              onClick={() => toggleDone('blog', article.id)}
+              className={cn(
+                'inline-flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium focus-ring',
+                done
+                  ? 'bg-green-500/10 text-green-500 hover:bg-green-500/20'
+                  : 'bg-secondary text-secondary-foreground hover:bg-secondary/80'
+              )}
+            >
+              <Check className={cn('h-4 w-4', done && 'stroke-[3]')} />
+              {done ? 'Als gelesen markiert' : 'Als gelesen markieren'}
+            </button>
+            <button
+              type="button"
+              onClick={() => toggleFavorite('blog', article.id)}
+              className={cn(
+                'inline-flex items-center gap-2 rounded-lg px-3 py-2 text-sm font-medium focus-ring',
+                favorite
+                  ? 'bg-red-500/10 text-red-500 hover:bg-red-500/20'
+                  : 'bg-secondary text-secondary-foreground hover:bg-secondary/80'
+              )}
+            >
+              <Heart className={cn('h-4 w-4', favorite && 'fill-current')} />
+              {favorite ? 'Favorisiert' : 'Favorisieren'}
+            </button>
+            <button
+              type="button"
+              onClick={handleCopyMarkdown}
+              className="inline-flex items-center gap-2 rounded-lg bg-primary px-3 py-2 text-sm font-medium text-primary-foreground hover:bg-primary/90 focus-ring"
+            >
+              <Copy className="h-4 w-4" />
+              Als Markdown kopieren
+            </button>
+          </div>
+        </div>
       </motion.article>
     </div>
   );

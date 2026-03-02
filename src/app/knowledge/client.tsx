@@ -4,14 +4,16 @@ import { useState, useEffect, useRef, useCallback, useMemo } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
-import { BookOpen, Code2, Database, FileCode, Layers, Lock, Rocket, Search, Zap, Image, Calendar, ArrowUpDown, BarChart, Flame, Heart, Check, Eye } from 'lucide-react';
+import { BookOpen, Code2, Database, FileCode, Layers, Lock, Rocket, Search, Zap, Image, Calendar, ArrowUpDown, BarChart, Flame, Heart, Check, Eye, Copy } from 'lucide-react';
+import { toast } from 'sonner';
 import { cn } from '@/lib/utils';
 import { type KnowledgeArticle } from '@/types/knowledge';
 import { useContentStatusStore } from '@/stores/content-status-store';
-import { stripMarkdown } from '@/lib/copy-utils';
+import { copyToClipboard, stripMarkdown } from '@/lib/copy-utils';
 import { createSearchFuse, normalizeSearchInput, searchDocuments as runSearchDocuments } from '@/lib/article-search';
 import { type SearchDocument } from '@/types/search';
 import { articleHasConnection } from '@/lib/knowledge-connections';
+import { formatKnowledgeArticleMarkdown } from '@/lib/knowledge-export';
 import {
   Select,
   SelectContent,
@@ -276,6 +278,15 @@ export function KnowledgeClient({ articles }: KnowledgeClientProps) {
     articleById,
   ]);
 
+  const handleCopyMarkdown = useCallback(async (article: KnowledgeArticle) => {
+    const success = await copyToClipboard(formatKnowledgeArticleMarkdown(article));
+    if (success) {
+      toast.success('Markdown kopiert');
+    } else {
+      toast.error('Kopieren fehlgeschlagen');
+    }
+  }, []);
+
   const updateTagLayout = useCallback(() => {
     const container = tagContainerRef.current;
     if (!container) {
@@ -475,120 +486,122 @@ export function KnowledgeClient({ articles }: KnowledgeClientProps) {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.05 }}
-              className="group relative"
+              className="group"
             >
-              <Link href={`/knowledge/${article.id}`} className="block h-full">
-                <div className={cn(
-                  'h-full rounded-2xl border border-border/50 bg-card/50 p-5 transition-all hover:border-primary/30 hover:bg-card flex flex-col relative',
-                  articleDone && 'opacity-80'
-                )}>
-                  <div className="mb-4 flex items-start justify-between">
-                    <div className="rounded-xl bg-primary/10 p-2.5">
-                      <Icon className="h-5 w-5 text-primary" />
-                    </div>
-                    <div className="flex gap-2 pr-16">
-                      {viewed && (
-                        <span className="flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-medium border uppercase tracking-wider bg-blue-500/10 text-blue-600 dark:text-blue-400 border-blue-200/50 dark:border-blue-800/50">
-                          <Eye className="h-3 w-3" />
-                          Gesehen
-                        </span>
-                      )}
-                      {article.hot && (
-                        <span className="flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-medium border uppercase tracking-wider bg-red-500/10 text-red-600 dark:text-red-400 border-red-200/50 dark:border-red-800/50">
-                          <Flame className="h-3 w-3" />
-                          Hot
-                        </span>
-                      )}
-                      {levelInfo && (
-                        <span className={cn(
-                          "px-2.5 py-0.5 rounded-full text-[10px] font-medium border uppercase tracking-wider",
-                          levelInfo.color
-                        )}>
-                          {levelInfo.label}
-                        </span>
-                      )}
-                    </div>
-                  </div>
-                  
-                  <div className="space-y-2 mb-2">
-                    <h3 className="font-semibold group-hover:text-primary transition-colors line-clamp-2">
-                      {article.title}
-                      {articleDone && <span className="ml-2 text-xs text-green-500">✓</span>}
-                    </h3>
-                    <div className="flex items-center gap-3 text-xs text-muted-foreground">
-                      <span>{typeof article.readTime === 'number' ? `${article.readTime} Min` : article.readTime}</span>
-                      {article.sourceDate && (
-                        <>
-                          <span className="w-1 h-1 rounded-full bg-muted-foreground/30" />
-                          <div className="flex items-center gap-1">
-                            <Calendar className="h-3 w-3" />
-                            <span>{new Date(article.sourceDate).toLocaleDateString('de-DE', { day: '2-digit', month: '2-digit', year: 'numeric' })}</span>
-                          </div>
-                        </>
-                      )}
-                    </div>
-                  </div>
-
-                  <p className="text-sm text-muted-foreground line-clamp-2 mb-4">
-                    {article.description}
-                  </p>
-
-                  <div className="mt-auto">
-                    {visibleTags.length > 0 && (
-                      <div className="flex flex-wrap gap-1.5">
-                        {visibleTags.map((tag) => (
-                          <span
-                            key={tag}
-                            className="rounded-full bg-secondary/70 px-2.5 py-1 text-[11px] font-medium text-secondary-foreground"
-                          >
-                            {tag}
+              <div className={cn(
+                'h-full rounded-2xl border border-border/50 bg-card/50 p-5 transition-all hover:border-primary/30 hover:bg-card flex flex-col',
+                articleDone && 'opacity-80'
+              )}>
+                <Link href={`/knowledge/${article.id}`} className="block flex-1">
+                  <div className="h-full flex flex-col">
+                    <div className="mb-4 flex items-start justify-between">
+                      <div className="rounded-xl bg-primary/10 p-2.5">
+                        <Icon className="h-5 w-5 text-primary" />
+                      </div>
+                      <div className="flex gap-2">
+                        {viewed && (
+                          <span className="flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-medium border uppercase tracking-wider bg-blue-500/10 text-blue-600 dark:text-blue-400 border-blue-200/50 dark:border-blue-800/50">
+                            <Eye className="h-3 w-3" />
+                            Gesehen
                           </span>
-                        ))}
-                        {extraTagCount > 0 && (
-                          <span className="rounded-full border border-border/60 px-2.5 py-1 text-[11px] font-medium text-muted-foreground">
-                            +{extraTagCount}
+                        )}
+                        {article.hot && (
+                          <span className="flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-medium border uppercase tracking-wider bg-red-500/10 text-red-600 dark:text-red-400 border-red-200/50 dark:border-red-800/50">
+                            <Flame className="h-3 w-3" />
+                            Hot
+                          </span>
+                        )}
+                        {levelInfo && (
+                          <span className={cn(
+                            "px-2.5 py-0.5 rounded-full text-[10px] font-medium border uppercase tracking-wider",
+                            levelInfo.color
+                          )}>
+                            {levelInfo.label}
                           </span>
                         )}
                       </div>
-                    )}
+                    </div>
+                    
+                    <div className="space-y-2 mb-2">
+                      <h3 className="font-semibold group-hover:text-primary transition-colors line-clamp-2">
+                        {article.title}
+                        {articleDone && <span className="ml-2 text-xs text-green-500">✓</span>}
+                      </h3>
+                      <div className="flex items-center gap-3 text-xs text-muted-foreground">
+                        <span>{typeof article.readTime === 'number' ? `${article.readTime} Min` : article.readTime}</span>
+                        {article.sourceDate && (
+                          <>
+                            <span className="w-1 h-1 rounded-full bg-muted-foreground/30" />
+                            <div className="flex items-center gap-1">
+                              <Calendar className="h-3 w-3" />
+                              <span>{new Date(article.sourceDate).toLocaleDateString('de-DE', { day: '2-digit', month: '2-digit', year: 'numeric' })}</span>
+                            </div>
+                          </>
+                        )}
+                      </div>
+                    </div>
+
+                    <p className="text-sm text-muted-foreground line-clamp-2 mb-4">
+                      {article.description}
+                    </p>
+
+                    <div className="mt-auto">
+                      {visibleTags.length > 0 && (
+                        <div className="flex flex-wrap gap-1.5">
+                          {visibleTags.map((tag) => (
+                            <span
+                              key={tag}
+                              className="rounded-full bg-secondary/70 px-2.5 py-1 text-[11px] font-medium text-secondary-foreground"
+                            >
+                              {tag}
+                            </span>
+                          ))}
+                          {extraTagCount > 0 && (
+                            <span className="rounded-full border border-border/60 px-2.5 py-1 text-[11px] font-medium text-muted-foreground">
+                              +{extraTagCount}
+                            </span>
+                          )}
+                        </div>
+                      )}
+                    </div>
                   </div>
+                </Link>
+                <div className="mt-4 grid gap-2 sm:grid-cols-3">
+                  <button
+                    type="button"
+                    onClick={() => toggleDone('knowledge', article.id)}
+                    className={cn(
+                      'inline-flex items-center justify-center gap-2 rounded-lg px-3 py-2 text-xs font-medium focus-ring transition-colors',
+                      articleDone
+                        ? 'bg-green-500/10 text-green-600 hover:bg-green-500/20 dark:text-green-400'
+                        : 'bg-secondary text-secondary-foreground hover:bg-secondary/80'
+                    )}
+                  >
+                    <Check className={cn('h-4 w-4', articleDone && 'stroke-[3]')} />
+                    {articleDone ? 'Als gelesen markiert' : 'Als gelesen markieren'}
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => toggleFavorite('knowledge', article.id)}
+                    className={cn(
+                      'inline-flex items-center justify-center gap-2 rounded-lg px-3 py-2 text-xs font-medium focus-ring transition-colors',
+                      isFav
+                        ? 'bg-red-500/10 text-red-600 hover:bg-red-500/20 dark:text-red-400'
+                        : 'bg-secondary text-secondary-foreground hover:bg-secondary/80'
+                    )}
+                  >
+                    <Heart className={cn('h-4 w-4', isFav && 'fill-current')} />
+                    {isFav ? 'Favorisiert' : 'Favorisieren'}
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => void handleCopyMarkdown(article)}
+                    className="inline-flex items-center justify-center gap-2 rounded-lg bg-primary px-3 py-2 text-xs font-medium text-primary-foreground hover:bg-primary/90 focus-ring"
+                  >
+                    <Copy className="h-4 w-4" />
+                    Als Markdown kopieren
+                  </button>
                 </div>
-              </Link>
-              <div className="absolute top-4 right-4 z-20 flex items-center gap-1">
-                <button
-                  onClick={(e) => {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    toggleDone('knowledge', article.id);
-                  }}
-                  className="p-1.5 rounded-full hover:bg-muted/50 transition-colors"
-                  title={articleDone ? 'Als offen markieren' : 'Als erledigt markieren'}
-                  aria-label={articleDone ? 'Als offen markieren' : 'Als erledigt markieren'}
-                >
-                  <Check
-                    className={cn(
-                      'h-5 w-5 transition-colors',
-                      articleDone ? 'text-green-500 stroke-[3]' : 'text-muted-foreground hover:text-foreground'
-                    )}
-                  />
-                </button>
-                <button
-                  onClick={(e) => {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    toggleFavorite('knowledge', article.id);
-                  }}
-                  className="p-1.5 rounded-full hover:bg-muted/50 transition-colors"
-                  title={isFav ? 'Aus Favoriten entfernen' : 'Zu Favoriten hinzufügen'}
-                  aria-label={isFav ? 'Aus Favoriten entfernen' : 'Zu Favoriten hinzufügen'}
-                >
-                  <Heart
-                    className={cn(
-                      'h-5 w-5 transition-colors',
-                      isFav ? 'fill-red-500 text-red-500' : 'text-muted-foreground hover:text-foreground'
-                    )}
-                  />
-                </button>
               </div>
             </motion.div>
           );

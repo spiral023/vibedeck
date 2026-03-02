@@ -4,15 +4,17 @@ import { useCallback, useEffect, useMemo, useState } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
-import { ArrowUpDown, Calendar, Check, ExternalLink, Eye, Filter, Heart, Newspaper, Search, Tag } from 'lucide-react';
+import { ArrowUpDown, Calendar, Check, Copy, ExternalLink, Eye, Filter, Heart, Newspaper, Search, Tag } from 'lucide-react';
+import { toast } from 'sonner';
 import { cn } from '@/lib/utils';
 import { type BlogArticle } from '@/types/blog';
 import { useContentStatusStore } from '@/stores/content-status-store';
-import { stripMarkdown } from '@/lib/copy-utils';
+import { copyToClipboard, stripMarkdown } from '@/lib/copy-utils';
 import { createSearchFuse, normalizeSearchInput, searchDocuments as runSearchDocuments } from '@/lib/article-search';
 import { type SearchDocument } from '@/types/search';
 import { getBlogTagLabel } from '@/lib/blog-tags';
 import { articleHasConnection } from '@/lib/knowledge-connections';
+import { formatBlogArticleMarkdown } from '@/lib/blog-export';
 import {
   Select,
   SelectContent,
@@ -185,6 +187,15 @@ export function BlogClient({ articles }: BlogClientProps) {
       })
       .map((entry) => entry.article);
   }, [articles, searchQuery, selectedTags, sourceType, activeConnection, compareBySort, searchFuse, articleById]);
+
+  const handleCopyMarkdown = useCallback(async (article: BlogArticle) => {
+    const success = await copyToClipboard(formatBlogArticleMarkdown(article));
+    if (success) {
+      toast.success('Markdown kopiert');
+    } else {
+      toast.error('Kopieren fehlgeschlagen');
+    }
+  }, []);
 
   return (
     <div className="space-y-8">
@@ -359,24 +370,6 @@ export function BlogClient({ articles }: BlogClientProps) {
                     </div>
                   </div>
                   <div className="flex shrink-0 items-center gap-1.5">
-                    <button
-                      type="button"
-                      onClick={() => toggleDone('blog', article.id)}
-                      className="inline-flex h-8 w-8 items-center justify-center rounded-lg border border-border/70 text-muted-foreground transition-colors hover:text-foreground"
-                      title={articleDone ? 'Als offen markieren' : 'Als erledigt markieren'}
-                      aria-label={articleDone ? 'Als offen markieren' : 'Als erledigt markieren'}
-                    >
-                      <Check className={cn('h-4 w-4', articleDone && 'text-green-500 stroke-[3]')} />
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() => toggleFavorite('blog', article.id)}
-                      className="inline-flex h-8 w-8 items-center justify-center rounded-lg border border-border/70 text-muted-foreground transition-colors hover:text-foreground"
-                      title={articleFavorite ? 'Aus Favoriten entfernen' : 'Zu Favoriten hinzufügen'}
-                      aria-label={articleFavorite ? 'Aus Favoriten entfernen' : 'Zu Favoriten hinzufügen'}
-                    >
-                      <Heart className={cn('h-4 w-4', articleFavorite && 'fill-red-500 text-red-500')} />
-                    </button>
                     {article.sourceURL && (
                       <a
                         href={article.sourceURL}
@@ -424,6 +417,42 @@ export function BlogClient({ articles }: BlogClientProps) {
                     ))}
                   </div>
                 )}
+                <div className="mt-5 grid gap-2 sm:grid-cols-3">
+                  <button
+                    type="button"
+                    onClick={() => toggleDone('blog', article.id)}
+                    className={cn(
+                      'inline-flex items-center justify-center gap-2 rounded-lg px-3 py-2 text-xs font-medium focus-ring transition-colors',
+                      articleDone
+                        ? 'bg-green-500/10 text-green-600 hover:bg-green-500/20 dark:text-green-400'
+                        : 'bg-secondary text-secondary-foreground hover:bg-secondary/80'
+                    )}
+                  >
+                    <Check className={cn('h-4 w-4', articleDone && 'stroke-[3]')} />
+                    {articleDone ? 'Als gelesen markiert' : 'Als gelesen markieren'}
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => toggleFavorite('blog', article.id)}
+                    className={cn(
+                      'inline-flex items-center justify-center gap-2 rounded-lg px-3 py-2 text-xs font-medium focus-ring transition-colors',
+                      articleFavorite
+                        ? 'bg-red-500/10 text-red-600 hover:bg-red-500/20 dark:text-red-400'
+                        : 'bg-secondary text-secondary-foreground hover:bg-secondary/80'
+                    )}
+                  >
+                    <Heart className={cn('h-4 w-4', articleFavorite && 'fill-current')} />
+                    {articleFavorite ? 'Favorisiert' : 'Favorisieren'}
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => void handleCopyMarkdown(article)}
+                    className="inline-flex items-center justify-center gap-2 rounded-lg bg-primary px-3 py-2 text-xs font-medium text-primary-foreground hover:bg-primary/90 focus-ring"
+                  >
+                    <Copy className="h-4 w-4" />
+                    Als Markdown kopieren
+                  </button>
+                </div>
               </motion.article>
             );
           })}

@@ -10,6 +10,14 @@ export default function HomePage() {
   const blogArticles = getAllBlogArticles();
   const knowledgeReadTimeMinutes = sumReadTimes(knowledgeArticles.map((article) => article.readTime));
   const blogReadTimeMinutes = sumReadTimes(blogArticles.map((article) => article.readTime));
+  const knowledgeReadTimeEntries = knowledgeArticles.map((article) => ({
+    id: article.id,
+    readTime: article.readTime,
+  }));
+  const blogReadTimeEntries = blogArticles.map((article) => ({
+    id: article.id,
+    readTime: article.readTime,
+  }));
 
   return (
     <HomePageClient
@@ -17,6 +25,8 @@ export default function HomePage() {
       blogCount={blogArticles.length}
       knowledgeReadTimeMinutes={knowledgeReadTimeMinutes}
       blogReadTimeMinutes={blogReadTimeMinutes}
+      knowledgeReadTimeEntries={knowledgeReadTimeEntries}
+      blogReadTimeEntries={blogReadTimeEntries}
       uiLibraryCount={uiLibraries.length}
       githubRepoCount={githubRepos.length}
     />

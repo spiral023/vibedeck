@@ -1,5 +1,6 @@
 'use client';
 
+import { useMemo } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import {
@@ -13,7 +14,8 @@ import {
   Rocket,
   Sparkles,
 } from 'lucide-react';
-import { formatDurationMinutes } from '@/lib/read-time';
+import { formatDurationMinutes, sumReadTimes } from '@/lib/read-time';
+import { useContentStatusStore } from '@/stores/content-status-store';
 
 const coreSections = [
   {
@@ -76,6 +78,8 @@ interface HomePageClientProps {
   blogCount: number;
   knowledgeReadTimeMinutes: number;
   blogReadTimeMinutes: number;
+  knowledgeReadTimeEntries: { id: string; readTime: string | number }[];
+  blogReadTimeEntries: { id: string; readTime: string | number }[];
   uiLibraryCount: number;
   githubRepoCount: number;
 }
@@ -85,10 +89,45 @@ export default function HomePageClient({
   blogCount,
   knowledgeReadTimeMinutes,
   blogReadTimeMinutes,
+  knowledgeReadTimeEntries,
+  blogReadTimeEntries,
   uiLibraryCount,
   githubRepoCount,
 }: HomePageClientProps) {
+  const knowledgeDone = useContentStatusStore((state) => state.knowledge.done);
+  const blogDone = useContentStatusStore((state) => state.blog.done);
   const totalReadTimeMinutes = knowledgeReadTimeMinutes + blogReadTimeMinutes;
+  const doneReadTimeMinutes = useMemo(() => {
+    const knowledgeDoneReadTimes = knowledgeReadTimeEntries
+      .filter((article) => knowledgeDone[article.id])
+      .map((article) => article.readTime);
+    const blogDoneReadTimes = blogReadTimeEntries
+      .filter((article) => blogDone[article.id])
+      .map((article) => article.readTime);
+
+    return sumReadTimes([...knowledgeDoneReadTimes, ...blogDoneReadTimes]);
+  }, [blogDone, blogReadTimeEntries, knowledgeDone, knowledgeReadTimeEntries]);
+  const knowledgeDoneReadTimeMinutes = useMemo(
+    () =>
+      sumReadTimes(
+        knowledgeReadTimeEntries
+          .filter((article) => knowledgeDone[article.id])
+          .map((article) => article.readTime)
+      ),
+    [knowledgeDone, knowledgeReadTimeEntries]
+  );
+  const blogDoneReadTimeMinutes = useMemo(
+    () =>
+      sumReadTimes(
+        blogReadTimeEntries
+          .filter((article) => blogDone[article.id])
+          .map((article) => article.readTime)
+      ),
+    [blogDone, blogReadTimeEntries]
+  );
+  const readingProgressPercent =
+    totalReadTimeMinutes > 0 ? Math.min(100, Math.round((doneReadTimeMinutes / totalReadTimeMinutes) * 100)) : 0;
+  const remainingReadTimeMinutes = Math.max(0, totalReadTimeMinutes - doneReadTimeMinutes);
 
   return (
     <div className="space-y-16 py-8">
@@ -171,11 +210,14 @@ export default function HomePageClient({
               {formatDurationMinutes(totalReadTimeMinutes)}
             </div>
           </div>
-          <div className="mt-4 grid gap-3 sm:grid-cols-2">
+          <div className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             <div className="rounded-xl border border-border/50 bg-card/60 px-4 py-3">
               <div className="text-xs uppercase tracking-wide text-muted-foreground">Wissensbasis</div>
               <div className="mt-1 text-lg font-semibold text-foreground">
                 {formatDurationMinutes(knowledgeReadTimeMinutes)}
+              </div>
+              <div className="mt-2 text-xs text-muted-foreground">
+                Gelesen: {formatDurationMinutes(knowledgeDoneReadTimeMinutes)}
               </div>
             </div>
             <div className="rounded-xl border border-border/50 bg-card/60 px-4 py-3">
@@ -183,6 +225,31 @@ export default function HomePageClient({
               <div className="mt-1 text-lg font-semibold text-foreground">
                 {formatDurationMinutes(blogReadTimeMinutes)}
               </div>
+              <div className="mt-2 text-xs text-muted-foreground">
+                Gelesen: {formatDurationMinutes(blogDoneReadTimeMinutes)}
+              </div>
+            </div>
+            <div className="rounded-xl border border-primary/30 bg-primary/10 px-4 py-3">
+              <div className="text-xs uppercase tracking-wide text-primary">Gelesen</div>
+              <div className="mt-1 text-lg font-semibold text-foreground">
+                {formatDurationMinutes(doneReadTimeMinutes)}
+              </div>
+            </div>
+          </div>
+          <div className="mt-3 rounded-xl border border-border/50 bg-card/60 px-4 py-3">
+            <div className="flex items-center justify-between gap-2 text-xs uppercase tracking-wide text-muted-foreground">
+              <span>Lesefortschritt</span>
+              <span className="font-semibold text-primary">{readingProgressPercent}%</span>
+            </div>
+            <div className="mt-2 h-2 w-full overflow-hidden rounded-full bg-secondary/80">
+              <div
+                className="h-full rounded-full bg-gradient-to-r from-primary to-primary/80 transition-all duration-500"
+                style={{ width: `${readingProgressPercent}%` }}
+              />
+            </div>
+            <div className="mt-2 flex flex-wrap items-center justify-between gap-2 text-xs text-muted-foreground">
+              <span>Gelesen: {formatDurationMinutes(doneReadTimeMinutes)}</span>
+              <span>Offen: {formatDurationMinutes(remainingReadTimeMinutes)}</span>
             </div>
           </div>
         </div>
