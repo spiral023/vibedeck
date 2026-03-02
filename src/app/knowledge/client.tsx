@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef, useCallback, useMemo } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import { useSearchParams } from 'next/navigation';
 import { BookOpen, Code2, Database, FileCode, Layers, Lock, Rocket, Search, Zap, Image, Calendar, ArrowUpDown, BarChart, Flame, Heart, Check, Eye } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { type KnowledgeArticle } from '@/types/knowledge';
@@ -10,6 +11,7 @@ import { useContentStatusStore } from '@/stores/content-status-store';
 import { stripMarkdown } from '@/lib/copy-utils';
 import { createSearchFuse, normalizeSearchInput, searchDocuments as runSearchDocuments } from '@/lib/article-search';
 import { type SearchDocument } from '@/types/search';
+import { articleHasConnection } from '@/lib/knowledge-connections';
 import {
   Select,
   SelectContent,
@@ -77,6 +79,7 @@ function dateValue(date?: string): number {
 }
 
 export function KnowledgeClient({ articles }: KnowledgeClientProps) {
+  const searchParams = useSearchParams();
   const {
     isFavorite,
     isDone,
@@ -90,6 +93,7 @@ export function KnowledgeClient({ articles }: KnowledgeClientProps) {
   const [sortBy, setSortBy] = useState<SortBy>('added-date-desc');
   const [selectedLevel, setSelectedLevel] = useState<LevelFilter>('all');
   const [showHotOnly, setShowHotOnly] = useState(true);
+  const activeConnection = (searchParams.get('connection') ?? '').trim();
   const [showAllTags, setShowAllTags] = useState(false);
   const [canExpandTags, setCanExpandTags] = useState(false);
   const [collapsedTagHeight, setCollapsedTagHeight] = useState<number | null>(null);
@@ -231,7 +235,8 @@ export function KnowledgeClient({ articles }: KnowledgeClientProps) {
       );
       const matchesLevel = selectedLevel === 'all' || article.level === selectedLevel;
       const matchesHot = !showHotOnly || article.hot;
-      return matchesTags && matchesLevel && matchesHot;
+      const matchesConnection = !activeConnection || articleHasConnection(article.connections, activeConnection);
+      return matchesTags && matchesLevel && matchesHot && matchesConnection;
     });
 
     if (!normalizedQuery) {
@@ -265,6 +270,7 @@ export function KnowledgeClient({ articles }: KnowledgeClientProps) {
     selectedTags,
     selectedLevel,
     showHotOnly,
+    activeConnection,
     compareBySort,
     searchFuse,
     articleById,
@@ -317,6 +323,16 @@ export function KnowledgeClient({ articles }: KnowledgeClientProps) {
         <p className="mt-2 text-lg text-muted-foreground">
           Dokumentation und Best Practices für AI-gestützte Entwicklung.
         </p>
+        {activeConnection && (
+          <div className="mt-3 flex flex-wrap items-center gap-2 text-sm">
+            <span className="rounded-full border border-primary/30 bg-primary/10 px-3 py-1 font-medium text-primary">
+              Verbindung: {activeConnection}
+            </span>
+            <Link href="/knowledge" className="text-muted-foreground underline decoration-dotted underline-offset-4 hover:text-foreground">
+              Filter zurücksetzen
+            </Link>
+          </div>
+        )}
       </motion.div>
 
       {/* Search & Sort & Filter */}

@@ -2,6 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
 import { type KnowledgeArticle } from '@/types/knowledge';
+import { extractKnowledgeConnections } from '@/lib/knowledge-connections';
 
 const knowledgeDirectory = path.join(process.cwd(), 'src/content/knowledge');
 
@@ -27,10 +28,15 @@ export function getAllKnowledgeArticles(): KnowledgeArticle[] {
       const fullPath = path.join(knowledgeDirectory, fileName);
       const fileContents = fs.readFileSync(fullPath, 'utf8');
       const matterResult = matter(fileContents);
+      const connections = extractKnowledgeConnections({
+        content: matterResult.content,
+        topics: Array.isArray(matterResult.data.topics) ? matterResult.data.topics : undefined,
+      });
 
       return {
         id,
         ...matterResult.data,
+        connections,
         content: matterResult.content,
       } as KnowledgeArticle;
     });
@@ -59,10 +65,15 @@ export function getKnowledgeArticle(id: string): KnowledgeArticle | null {
 
   const fileContents = fs.readFileSync(fullPath, 'utf8');
   const matterResult = matter(fileContents);
+  const connections = extractKnowledgeConnections({
+    content: matterResult.content,
+    topics: Array.isArray(matterResult.data.topics) ? matterResult.data.topics : undefined,
+  });
 
   return {
     id,
     ...matterResult.data,
+    connections,
     content: matterResult.content,
   } as KnowledgeArticle;
 }

@@ -3,6 +3,7 @@ import path from 'path';
 import matter from 'gray-matter';
 import { type BlogArticle } from '@/types/blog';
 import { normalizeBlogTags } from '@/lib/blog-tags';
+import { extractConnectionsFromVerbindungenSection } from '@/lib/knowledge-connections';
 
 const blogDirectory = path.join(process.cwd(), 'src/content/blog');
 
@@ -42,11 +43,13 @@ export function getAllBlogArticles(): BlogArticle[] {
       const matterResult = matter(fileContents);
       const tags = normalizeBlogTags(normalizeArrayValue(matterResult.data.tags));
       const keyPoints = normalizeArrayValue(matterResult.data.keyPoints)?.slice(0, 3);
+      const connections = extractConnectionsFromVerbindungenSection(matterResult.content);
 
       return {
         id,
         ...matterResult.data,
         tags,
+        connections,
         keyPoints,
         content: matterResult.content,
       } as BlogArticle;
@@ -76,11 +79,13 @@ export function getBlogArticle(id: string): BlogArticle | null {
 
   const fileContents = fs.readFileSync(fullPath, 'utf8');
   const matterResult = matter(fileContents);
+  const connections = extractConnectionsFromVerbindungenSection(matterResult.content);
 
   return {
     id,
     ...matterResult.data,
     tags: normalizeBlogTags(normalizeArrayValue(matterResult.data.tags)),
+    connections,
     keyPoints: normalizeArrayValue(matterResult.data.keyPoints)?.slice(0, 3),
     content: matterResult.content,
   } as BlogArticle;

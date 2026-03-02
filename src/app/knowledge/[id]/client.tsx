@@ -13,6 +13,7 @@ import { type KnowledgeArticle } from '@/types/knowledge';
 import { Mermaid } from '@/components/Mermaid';
 import { cn } from '@/lib/utils';
 import { useContentStatusStore } from '@/stores/content-status-store';
+import { removeVerbindungenSection } from '@/lib/knowledge-connections';
 
 const iconMap: Record<string, React.ElementType> = {
   BookOpen,
@@ -84,6 +85,8 @@ export function ArticleView({ article }: ArticleViewProps) {
   const sourceLine = sourceParts.length
     ? sourceParts.join(' ')
     : null;
+  const connections = article.connections ?? [];
+  const contentWithoutVerbindungen = removeVerbindungenSection(article.content);
   const tags = article.tags ?? [];
   const tagLine = tags.length > 0 ? `Tags: ${tags.join(', ')}` : null;
   const viewed = mounted && isViewed('knowledge', article.id);
@@ -203,6 +206,22 @@ export function ArticleView({ article }: ArticleViewProps) {
               </button>
             </div>
           </div>
+          {connections.length > 0 && (
+            <div className="rounded-xl border border-border/60 bg-card/40 p-4">
+              <h2 className="mb-2 text-sm font-semibold">Verbindungen</h2>
+              <div className="flex flex-wrap gap-2">
+                {connections.map((connection) => (
+                  <Link
+                    key={connection}
+                    href={`/knowledge?connection=${encodeURIComponent(connection)}`}
+                    className="rounded-full bg-secondary/70 px-3 py-1 text-xs font-medium text-secondary-foreground transition-colors hover:bg-secondary"
+                  >
+                    {connection}
+                  </Link>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
         <div className="prose prose-sm prose-neutral dark:prose-invert max-w-none">
           <ReactMarkdown
@@ -233,7 +252,7 @@ export function ArticleView({ article }: ArticleViewProps) {
               },
             }}
           >
-            {article.content}
+            {contentWithoutVerbindungen}
           </ReactMarkdown>
         </div>
       </motion.article>

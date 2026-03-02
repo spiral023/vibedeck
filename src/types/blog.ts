@@ -8,6 +8,7 @@ export interface BlogArticle {
   icon: string;
   readTime: string;
   tags?: string[];
+  connections?: string[];
   sourceURL?: string;
   sourceType?: 'tweet' | 'blog' | 'thread' | 'docs';
   author?: string;
@@ -25,6 +26,7 @@ export const BlogArticleSchema = z.object({
   icon: z.string(),
   readTime: z.string(),
   tags: z.array(z.string()).optional(),
+  connections: z.array(z.string()).optional(),
   sourceURL: z.string().optional(),
   sourceType: z.enum(['tweet', 'blog', 'thread', 'docs']).optional(),
   author: z.string().optional(),

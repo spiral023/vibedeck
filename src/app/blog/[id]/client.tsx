@@ -14,6 +14,7 @@ import { useContentStatusStore } from '@/stores/content-status-store';
 import { cn } from '@/lib/utils';
 import { formatBlogArticleMarkdown } from '@/lib/blog-export';
 import { getBlogTagLabel } from '@/lib/blog-tags';
+import { removeVerbindungenSection } from '@/lib/knowledge-connections';
 
 const sourceTypeLabels: Record<NonNullable<BlogArticle['sourceType']>, string> = {
   tweet: 'Tweet',
@@ -49,6 +50,8 @@ export function BlogArticleView({ article }: BlogArticleViewProps) {
   const viewed = mounted && isViewed('blog', article.id);
   const favorite = mounted && isFavorite('blog', article.id);
   const done = mounted && isDone('blog', article.id);
+  const connections = article.connections ?? [];
+  const contentWithoutVerbindungen = removeVerbindungenSection(article.content);
 
   useEffect(() => {
     setMounted(true);
@@ -191,6 +194,23 @@ export function BlogArticleView({ article }: BlogArticleViewProps) {
               </ul>
             </div>
           )}
+
+          {connections.length > 0 && (
+            <div className="rounded-xl border border-border/60 bg-card/40 p-4">
+              <h2 className="mb-2 text-sm font-semibold">Verbindungen</h2>
+              <div className="flex flex-wrap gap-2">
+                {connections.map((connection) => (
+                  <Link
+                    key={connection}
+                    href={`/blog?connection=${encodeURIComponent(connection)}`}
+                    className="rounded-full bg-secondary/70 px-3 py-1 text-xs font-medium text-secondary-foreground transition-colors hover:bg-secondary"
+                  >
+                    {connection}
+                  </Link>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
 
         <div className="prose prose-sm prose-neutral dark:prose-invert max-w-none">
@@ -222,7 +242,7 @@ export function BlogArticleView({ article }: BlogArticleViewProps) {
               },
             }}
           >
-            {article.content}
+            {contentWithoutVerbindungen}
           </ReactMarkdown>
         </div>
       </motion.article>

@@ -8,6 +8,7 @@ export interface KnowledgeArticle {
   icon: string; // Name of the icon, mapped in client
   readTime: string | number;
   tags?: string[];
+  connections?: string[];
   aliases?: string[]; // Obsidian alias support
   topics?: string[]; // Obsidian topic links
   type?: 'source' | 'concept'; // Obsidian note type
@@ -31,6 +32,7 @@ export const KnowledgeArticleSchema = z.object({
   icon: z.string(),
   readTime: z.union([z.string(), z.number()]),
   tags: z.array(z.string()).optional(),
+  connections: z.array(z.string()).optional(),
   aliases: z.array(z.string()).optional(),
   topics: z.array(z.string()).optional(),
   type: z.enum(['source', 'concept']).optional(),

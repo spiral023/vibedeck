@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import { useSearchParams } from 'next/navigation';
 import { ArrowUpDown, Calendar, Check, ExternalLink, Eye, Filter, Heart, Newspaper, Search, Tag } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { type BlogArticle } from '@/types/blog';
@@ -11,6 +12,7 @@ import { stripMarkdown } from '@/lib/copy-utils';
 import { createSearchFuse, normalizeSearchInput, searchDocuments as runSearchDocuments } from '@/lib/article-search';
 import { type SearchDocument } from '@/types/search';
 import { getBlogTagLabel } from '@/lib/blog-tags';
+import { articleHasConnection } from '@/lib/knowledge-connections';
 import {
   Select,
   SelectContent,
@@ -66,12 +68,14 @@ function dateValue(date?: string): number {
 }
 
 export function BlogClient({ articles }: BlogClientProps) {
+  const searchParams = useSearchParams();
   const { isFavorite, isDone, isViewed, toggleFavorite, toggleDone } = useContentStatusStore();
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
   const [sortBy, setSortBy] = useState<SortBy>('added-date-desc');
   const [sourceType, setSourceType] = useState<SourceTypeFilter>('all');
   const [mounted, setMounted] = useState(false);
+  const activeConnection = (searchParams.get('connection') ?? '').trim();
 
   useEffect(() => {
     setMounted(true);
@@ -151,7 +155,8 @@ export function BlogClient({ articles }: BlogClientProps) {
       const matchesTags = selectedTags.length === 0 || selectedTags.every((tag) =>
         (article.tags ?? []).includes(tag)
       );
-      return matchesSourceType && matchesTags;
+      const matchesConnection = !activeConnection || articleHasConnection(article.connections, activeConnection);
+      return matchesSourceType && matchesTags && matchesConnection;
     });
 
     if (!normalizedSearch) {
@@ -179,7 +184,7 @@ export function BlogClient({ articles }: BlogClientProps) {
         return compareBySort(a.article, b.article);
       })
       .map((entry) => entry.article);
-  }, [articles, searchQuery, selectedTags, sourceType, compareBySort, searchFuse, articleById]);
+  }, [articles, searchQuery, selectedTags, sourceType, activeConnection, compareBySort, searchFuse, articleById]);
 
   return (
     <div className="space-y-8">
@@ -191,6 +196,16 @@ export function BlogClient({ articles }: BlogClientProps) {
         <p className="mt-2 text-lg text-muted-foreground">
           Kuratierte deutsche Blogartikel mit Kernaussagen, Quellenlink und Tag-Filter.
         </p>
+        {activeConnection && (
+          <div className="mt-3 flex flex-wrap items-center gap-2 text-sm">
+            <span className="rounded-full border border-primary/30 bg-primary/10 px-3 py-1 font-medium text-primary">
+              Verbindung: {activeConnection}
+            </span>
+            <Link href="/blog" className="text-muted-foreground underline decoration-dotted underline-offset-4 hover:text-foreground">
+              Filter zurücksetzen
+            </Link>
+          </div>
+        )}
       </motion.div>
 
       <div className="relative">
