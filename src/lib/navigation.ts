@@ -1,4 +1,4 @@
-export const SIDEBAR_SOON_MODE_ENABLED = true;
+export const SIDEBAR_SOON_MODE_ENABLED = false;
 
 export const SOON_LOCKED_PATHS = new Set<string>([
   '/prompt-builder',

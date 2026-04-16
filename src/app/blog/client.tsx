@@ -15,6 +15,7 @@ import { type SearchDocument } from '@/types/search';
 import { getBlogTagLabel } from '@/lib/blog-tags';
 import { articleHasConnection } from '@/lib/knowledge-connections';
 import { formatBlogArticleMarkdown } from '@/lib/blog-export';
+import { parseReadTimeToMinutes } from '@/lib/read-time';
 import {
   Select,
   SelectContent,
@@ -32,6 +33,8 @@ type SortBy =
   | 'added-date-asc'
   | 'source-date-desc'
   | 'source-date-asc'
+  | 'read-time-desc'
+  | 'read-time-asc'
   | 'title';
 type SourceTypeFilter = 'all' | 'blog' | 'tweet' | 'thread' | 'docs';
 
@@ -141,6 +144,16 @@ export function BlogClient({ articles }: BlogClientProps) {
     }
     if (sortBy === 'source-date-asc') {
       const diff = dateValue(a.sourceDate) - dateValue(b.sourceDate);
+      if (diff !== 0) return diff;
+      return a.title.localeCompare(b.title);
+    }
+    if (sortBy === 'read-time-desc') {
+      const diff = parseReadTimeToMinutes(b.readTime) - parseReadTimeToMinutes(a.readTime);
+      if (diff !== 0) return diff;
+      return a.title.localeCompare(b.title);
+    }
+    if (sortBy === 'read-time-asc') {
+      const diff = parseReadTimeToMinutes(a.readTime) - parseReadTimeToMinutes(b.readTime);
       if (diff !== 0) return diff;
       return a.title.localeCompare(b.title);
     }
@@ -263,6 +276,8 @@ export function BlogClient({ articles }: BlogClientProps) {
                 <SelectItem value="added-date-asc">Hinzugefügt (Alt zuerst)</SelectItem>
                 <SelectItem value="source-date-desc">Originaldatum (Neu zuerst)</SelectItem>
                 <SelectItem value="source-date-asc">Originaldatum (Alt zuerst)</SelectItem>
+                <SelectItem value="read-time-desc">Lesezeit (Lang zuerst)</SelectItem>
+                <SelectItem value="read-time-asc">Lesezeit (Kurz zuerst)</SelectItem>
                 <SelectItem value="title">Titel (A-Z)</SelectItem>
               </SelectContent>
             </Select>

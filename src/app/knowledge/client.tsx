@@ -14,6 +14,7 @@ import { createSearchFuse, normalizeSearchInput, searchDocuments as runSearchDoc
 import { type SearchDocument } from '@/types/search';
 import { articleHasConnection } from '@/lib/knowledge-connections';
 import { formatKnowledgeArticleMarkdown } from '@/lib/knowledge-export';
+import { parseReadTimeToMinutes } from '@/lib/read-time';
 import {
   Select,
   SelectContent,
@@ -50,6 +51,8 @@ type SortBy =
   | 'added-date-asc'
   | 'source-date-desc'
   | 'source-date-asc'
+  | 'read-time-desc'
+  | 'read-time-asc'
   | 'title'
   | 'level';
 type LevelFilter = 'all' | 'beginner' | 'intermediate' | 'advanced';
@@ -66,6 +69,8 @@ function isSortBy(value: string): value is SortBy {
     'added-date-asc',
     'source-date-desc',
     'source-date-asc',
+    'read-time-desc',
+    'read-time-asc',
     'title',
     'level',
   ].includes(value);
@@ -211,6 +216,22 @@ export function KnowledgeClient({ articles }: KnowledgeClientProps) {
 
     if (sortBy === 'source-date-asc') {
       const diff = dateValue(a.sourceDate) - dateValue(b.sourceDate);
+      if (diff !== 0) {
+        return diff;
+      }
+      return a.title.localeCompare(b.title);
+    }
+
+    if (sortBy === 'read-time-desc') {
+      const diff = parseReadTimeToMinutes(b.readTime) - parseReadTimeToMinutes(a.readTime);
+      if (diff !== 0) {
+        return diff;
+      }
+      return a.title.localeCompare(b.title);
+    }
+
+    if (sortBy === 'read-time-asc') {
+      const diff = parseReadTimeToMinutes(a.readTime) - parseReadTimeToMinutes(b.readTime);
       if (diff !== 0) {
         return diff;
       }
@@ -400,6 +421,8 @@ export function KnowledgeClient({ articles }: KnowledgeClientProps) {
                 <SelectItem value="added-date-asc">Hinzugefügt (Alt zuerst)</SelectItem>
                 <SelectItem value="source-date-desc">Originaldatum (Neu zuerst)</SelectItem>
                 <SelectItem value="source-date-asc">Originaldatum (Alt zuerst)</SelectItem>
+                <SelectItem value="read-time-desc">Lesezeit (Lang zuerst)</SelectItem>
+                <SelectItem value="read-time-asc">Lesezeit (Kurz zuerst)</SelectItem>
                 <SelectItem value="title">Titel (A-Z)</SelectItem>
                 <SelectItem value="level">Level (Aufsteigend)</SelectItem>
               </SelectContent>

@@ -20,7 +20,7 @@ import { useHistoryStore } from '@/stores/history-store';
 import { useSettingsStore } from '@/stores/settings-store';
 import { usePromptStatusStore } from '@/stores/prompt-status-store';
 import { useContentStatusStore, type ContentDomain, type ContentStatusData } from '@/stores/content-status-store';
-import { copyToClipboard } from '@/lib/copy-utils';
+import { copyToClipboard, stripMarkdown } from '@/lib/copy-utils';
 import { createExportData, validateImportData, downloadJson, readJsonFile, type ExportData } from '@/lib/export-utils';
 import { formatKnowledgeCollectionMarkdown } from '@/lib/knowledge-export';
 import { formatBlogCollectionMarkdown } from '@/lib/blog-export';
@@ -41,10 +41,22 @@ export function SettingsClient({ knowledgeArticles, blogArticles }: SettingsClie
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [importPreview, setImportPreview] = useState<ReturnType<typeof validateImportData> | null>(null);
   const [pendingImport, setPendingImport] = useState<unknown>(null);
+  const [exportArticlesAsPlainText, setExportArticlesAsPlainText] = useState(false);
 
   useEffect(() => {
     contentStatus.runLegacyMigration();
   }, [contentStatus.runLegacyMigration]);
+
+  useEffect(() => {
+    const saved = localStorage.getItem('vibedeck-export-articles-plain-text');
+    if (saved !== null) {
+      setExportArticlesAsPlainText(saved === 'true');
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem('vibedeck-export-articles-plain-text', String(exportArticlesAsPlainText));
+  }, [exportArticlesAsPlainText]);
 
   const handleExport = () => {
     const data = createExportData(
@@ -204,13 +216,24 @@ export function SettingsClient({ knowledgeArticles, blogArticles }: SettingsClie
     });
   };
 
+  const formatCollectionPlainText = <T extends { title: string; content: string }>(items: T[]) =>
+    items
+      .map((item) => {
+        const content = stripMarkdown(item.content).trim();
+        return content ? `# ${item.title}\n\n${content}` : `# ${item.title}`;
+      })
+      .join('\n\n\n');
+
   const copyKnowledgeByStatus = async (filter: StatusCopyFilter) => {
     const filtered = filterByStatus(knowledgeArticles, 'knowledge', filter);
     if (filtered.length === 0) {
       toast.info('Keine passenden Wissensartikel gefunden');
       return;
     }
-    await handleCopyStaticContent('Wissensbasis', formatKnowledgeCollectionMarkdown(filtered), filtered.length);
+    const content = exportArticlesAsPlainText
+      ? formatCollectionPlainText(filtered)
+      : formatKnowledgeCollectionMarkdown(filtered);
+    await handleCopyStaticContent('Wissensbasis', content, filtered.length);
   };
 
   const copyBlogByStatus = async (filter: StatusCopyFilter) => {
@@ -219,7 +242,10 @@ export function SettingsClient({ knowledgeArticles, blogArticles }: SettingsClie
       toast.info('Keine passenden Blogartikel gefunden');
       return;
     }
-    await handleCopyStaticContent('Blog', formatBlogCollectionMarkdown(filtered), filtered.length);
+    const content = exportArticlesAsPlainText
+      ? formatCollectionPlainText(filtered)
+      : formatBlogCollectionMarkdown(filtered);
+    await handleCopyStaticContent('Blog', content, filtered.length);
   };
 
   const uiLibraryCount = uiLibraries.length;
@@ -420,8 +446,19 @@ export function SettingsClient({ knowledgeArticles, blogArticles }: SettingsClie
       >
         <h2 className="text-xl font-semibold">Inhalte kopieren</h2>
         <p className="text-sm text-muted-foreground">
-          Kopiere komplette Sammlungen als Markdown direkt in die Zwischenablage.
+          Kopiere komplette Sammlungen als Markdown oder Plain Text direkt in die Zwischenablage.
         </p>
+        <label className="flex items-center gap-3 rounded-lg border border-border/60 bg-background/40 px-3 py-2">
+          <input
+            type="checkbox"
+            checked={exportArticlesAsPlainText}
+            onChange={(e) => setExportArticlesAsPlainText(e.target.checked)}
+            className="h-4 w-4 rounded border-border accent-primary"
+          />
+          <span className="text-sm">
+            Artikel als Plain Text exportieren (nur Überschrift und Textinhalt)
+          </span>
+        </label>
 
         <div className="grid gap-4 sm:grid-cols-2">
           <div className="rounded-xl border border-border/50 bg-background/60 p-4 space-y-3">
