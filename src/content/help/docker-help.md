@@ -1,5 +1,5 @@
 ---
-title: 'Docker HowTo fuer das Dev-Setup'
+title: 'Docker HowTo für das Dev-Setup'
 domain: 'DevOps'
 tags: ['Docker', 'Compose', 'Development']
 variables:
@@ -19,13 +19,13 @@ variables:
     label: 'Working Directory'
     default: '/app'
     placeholder: 'z.B. /app'
-notes: 'Sammlung haeufig genutzter Docker-Befehle fuer lokales Development. Passe Variablen an dein Projekt an.'
+notes: 'Sammlung häufig genutzter Docker-Befehle für lokales Development. Passe Variablen an dein Projekt an.'
 updatedDate: '2025-12-20'
 ---
 
-# Docker-HowTo fuer das Dev-Setup
+# Docker-HowTo für das Dev-Setup
 
-Kurze Sammlung der wichtigsten Docker- und Compose-Befehle fuer das lokale
+Kurze Sammlung der wichtigsten Docker- und Compose-Befehle für das lokale
 Backend-Development mit `{{compose_file}}`.
 
 ---
@@ -34,12 +34,12 @@ Backend-Development mit `{{compose_file}}`.
 
 - Docker und Docker Compose sind installiert.
 - `{{compose_file}}` liegt im Projekt-Root.
-- Backend-Service in Compose heisst `{{service_name}}`.
-- Optionaler Container-Name direkt ueber Docker: `{{container_name}}`.
+- Backend-Service in Compose heißt `{{service_name}}`.
+- Optionaler Container-Name direkt über Docker: `{{container_name}}`.
 
 ---
 
-## 1. Container- und Service-Uebersicht
+## 1. Container- und Service-Übersicht
 
 ### Laufende Container
 
@@ -91,7 +91,7 @@ docker compose -f {{compose_file}} down
 
 ## 3. Logs, Shell und Debugging
 
-### Logs des Backend-Services (ueber Compose)
+### Logs des Backend-Services (über Compose)
 
 ```bash
 docker compose -f {{compose_file}} logs -f {{service_name}}
@@ -107,10 +107,10 @@ docker compose -f {{compose_file}} logs -f --tail=100 {{service_name}}
 docker compose -f {{compose_file}} exec {{service_name}} sh
 ```
 
-> `exec` nutzt den laufenden Container. Fuer einmalige Tasks kannst du auch
+> `exec` nutzt den laufenden Container. Für einmalige Tasks kannst du auch
 > `run --rm` einsetzen.
 
-### Direkt ueber Docker (ohne Compose)
+### Direkt über Docker (ohne Compose)
 
 ```bash
 docker logs -f {{container_name}}
@@ -214,7 +214,7 @@ docker volume ls
 docker volume inspect <volume-name>
 ```
 
-### Aufraeumen und Platzverbrauch
+### Aufräumen und Platzverbrauch
 
 ```bash
 docker system df
@@ -250,7 +250,7 @@ docker compose -f {{compose_file}} exec {{service_name}} alembic revision --auto
 
 ## 9. Datenbank-Migration erstellen - PROD
 
-Wenn ihr eine separate Compose-Datei fuer Prod habt, ersetze `{{compose_file}}`
+Wenn ihr eine separate Compose-Datei für Prod habt, ersetze `{{compose_file}}`
 entsprechend.
 
 ```bash
