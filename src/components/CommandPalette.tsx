@@ -4,6 +4,7 @@ import { Command } from 'cmdk';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useQuery } from '@tanstack/react-query';
 import {
+  Blocks,
   BookOpen,
   Compass,
   Copy,
@@ -48,6 +49,7 @@ const navigationItems = [
   { icon: Sparkles, label: 'Rules Generator', path: '/rules-generator', keywords: 'rules cursor windsurf' },
   { icon: FileText, label: 'Help Bibliothek', path: '/help-library', keywords: 'help documentation' },
   { icon: Compass, label: 'Tool Directory', path: '/tool-directory', keywords: 'tools resources' },
+  { icon: Blocks, label: 'Skills', path: '/skills', keywords: 'skills plugins coding agents' },
   { icon: BookOpen, label: 'Wissensbasis', path: '/knowledge', keywords: 'knowledge docs' },
   { icon: Newspaper, label: 'Blog', path: '/blog', keywords: 'blog artikel posts' },
   { icon: Server, label: 'Hosting', path: '/hosting', keywords: 'deploy hosting' },
