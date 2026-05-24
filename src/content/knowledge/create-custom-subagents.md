@@ -75,7 +75,7 @@ Mit `/agents` kannst du:
 
 ### Scope und Priorität
 
-| Ort | Scope | Prioritaet |
+| Ort | Scope | Priorität |
 | --- | --- | --- |
 | `--agents` CLI Flag | aktuelle Session | 1 (hoch) |
 | `.claude/agents/` | Projekt | 2 |

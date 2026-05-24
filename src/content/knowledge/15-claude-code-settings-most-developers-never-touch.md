@@ -119,7 +119,7 @@ Der nützlichste Block im ganzen Post ist die Kombination aus erlaubten und verb
 
 Das ist ein gutes Pattern, weil es zwei Probleme gleichzeitig löst:
 
-1. Zu viele Rueckfragen bei harmlosen Standardaktionen.
+1. Zu viele Rückfragen bei harmlosen Standardaktionen.
 2. Zu viel implizites Vertrauen bei sensiblen Dateien oder destruktiven Befehlen.
 
 ## 3. Modellwahl und Session-Kontext aktiv steuern

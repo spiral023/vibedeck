@@ -59,7 +59,7 @@ Mnimiy zerlegt jede Anfrage in mehrere Kostenbloecke:
 
 Damit verschiebt sich der Blick von Prompt-Qualität zu **Systemkosten pro Turn**. Genau dieses mentale Modell ist der eigentliche Wert des Posts.
 
-## 1. Zu grosse `CLAUDE.md` erzeugt permanente Grundsteuer
+## 1. Zu große `CLAUDE.md` erzeugt permanente Grundsteuer
 
 Das erste Pattern ist die klassische schleichende Überkonfiguration: eine `CLAUDE.md`, die über Monate wächst, bis sie bei jedem Turn mehrere tausend Tokens kostet.
 
