@@ -1,14 +1,18 @@
 import type { ElementType } from 'react';
 import {
   BookMarked,
+  Bot,
   Brain,
   Code2,
+  Database,
   Lightbulb,
   Paintbrush,
   Palette,
   Rocket,
+  Target,
   Terminal,
   TrendingUp,
+  Wand2,
   Zap,
 } from 'lucide-react';
 
@@ -69,6 +73,22 @@ export const skillCategories: SkillCategory[] = [
         icon: Rocket,
         author: 'Jesse Vincent',
       },
+      {
+        name: 'affaan-m/ECC',
+        description:
+          '60 spezialisierte Subagenten, 232 Skills und 75 Legacy-Shims für Claude Code, Cursor, Codex und Co. — von Code Review bis Security Scanning.',
+        url: 'https://github.com/affaan-m/ECC',
+        icon: Bot,
+        author: 'Affaan Mustafa',
+      },
+      {
+        name: 'get-shit-done',
+        description:
+          'Meta-Prompting-System gegen Context Rot: strukturierte Artefakte (Vision, Roadmap, State) und ein sechsstufiger Loop — Initialize → Discuss → Plan → Execute → Verify → Ship.',
+        url: 'https://github.com/gsd-build/get-shit-done',
+        icon: Target,
+        author: 'open-gsd',
+      },
     ],
   },
   {
@@ -98,6 +118,14 @@ export const skillCategories: SkillCategory[] = [
         icon: Paintbrush,
         author: 'Anthropic',
       },
+      {
+        name: 'make-interfaces-feel-better',
+        description:
+          'Skill für kleine aber wirkungsvolle UI-Details: nested Border Radius, Ein-/Ausgangsanimationen, Shadow-Einsatz und Text-Wrapping — die Design-Engineering-Details, die Interfaces polieren.',
+        url: 'https://github.com/jakubkrehel/make-interfaces-feel-better',
+        icon: Wand2,
+        author: 'Jakub Krehel',
+      },
     ],
   },
   {
@@ -118,6 +146,14 @@ export const skillCategories: SkillCategory[] = [
         url: 'https://github.com/teng-lin/notebooklm-py',
         icon: Brain,
         author: 'Teng Lin',
+      },
+      {
+        name: 'context7',
+        description:
+          'MCP-Server und CLI, der versionsgenaue Bibliotheks-Dokumentation (React, Next.js, Prisma u.v.m.) direkt in den LLM-Kontext lädt — keine veralteten Trainingsdaten, keine halluzinierten APIs.',
+        url: 'https://github.com/upstash/context7',
+        icon: Database,
+        author: 'Upstash',
       },
     ],
   },
