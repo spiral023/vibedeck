@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
+  Blocks,
   BookOpen,
   Box,
   Compass,
@@ -47,6 +48,7 @@ const navItems: NavItem[] = [
   { label: 'Help Bibliothek', href: '/help-library', icon: FileText },
   { label: 'UI Bibliotheken', href: '/ui-libraries', icon: Box },
   { label: 'Tool Directory', href: '/tool-directory', icon: Compass },
+  { label: 'Skills', href: '/skills', icon: Blocks },
   { label: 'GitHub Repos', href: '/github', icon: Github },
   { label: 'Wissensbasis', href: '/knowledge', icon: BookOpen },
   { label: 'Blog', href: '/blog', icon: Newspaper },
