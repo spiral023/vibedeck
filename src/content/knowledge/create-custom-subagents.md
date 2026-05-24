@@ -32,15 +32,15 @@ Subagents sind spezialisierte KI-Assistenten, die in einem eigenen Kontextfenste
 
 * Kontext bewahren: Exploration und laute Outputs bleiben aus dem Haupt-Thread.
 * Regeln erzwingen: Tools und Permissions lassen sich fein begrenzen.
-* Wiederverwenden: User-Level-Agents gelten projektuebergreifend.
-* Spezialisieren: Fokus-Prompts fuer klare Verantwortungen.
+* Wiederverwenden: User-Level-Agents gelten projektübergreifend.
+* Spezialisieren: Fokus-Prompts für klare Verantwortungen.
 * Kosten steuern: Leichtere Tasks an Haiku auslagern.
 
 ## Built-in Subagents
 
 Claude Code bringt mehrere Subagents mit, die automatisch verwendet werden:
 
-* **Explore** (Haiku, read-only): fuer Code-Suche, Discovery, Analyse ohne Aenderungen.
+* **Explore** (Haiku, read-only): für Code-Suche, Discovery, Analyse ohne Änderungen.
 * **Plan** (inherits, read-only): Recherche im Plan-Mode, keine Edits.
 * **General-purpose** (inherits, alle Tools): komplexe Aufgaben mit mehreren Schritten und Edits.
 * **Weitere**: z.B. `Bash`, `statusline-setup`, `Claude Code Guide`.
@@ -53,8 +53,8 @@ Claude Code bringt mehrere Subagents mit, die automatisch verwendet werden:
    ```
 2. **Create new agent** -> **User-level** (speichert in `~/.claude/agents/`).
 3. **Generate with Claude** und beschreibe den Agent kurz und klar.
-4. Tools auswaehlen (z.B. nur Read-only Tools fuer Reviews).
-5. Modell waehlen (z.B. Sonnet fuer Analyse).
+4. Tools auswählen (z.B. nur Read-only Tools für Reviews).
+5. Modell wählen (z.B. Sonnet für Analyse).
 6. Farbe setzen, speichern.
 7. Verwenden:
    ```
@@ -70,10 +70,10 @@ Mit `/agents` kannst du:
 * alle Subagents ansehen (built-in, user, project, plugin)
 * neue Subagents erstellen oder generieren
 * Tools/Permissions editieren
-* Subagents loeschen
+* Subagents löschen
 * aktive Agenten bei Namens-Konflikten sehen
 
-### Scope und Prioritaet
+### Scope und Priorität
 
 | Ort | Scope | Prioritaet |
 | --- | --- | --- |
@@ -104,7 +104,7 @@ You are a code reviewer. Provide actionable feedback on quality and security.
 * `model`: `sonnet`, `opus`, `haiku`, `inherit`
 * `permissionMode`: `default`, `acceptEdits`, `dontAsk`, `bypassPermissions`, `plan`
 * `skills`: Skills, die beim Start geladen werden
-* `hooks`: Lifecycle Hooks fuer den Subagent
+* `hooks`: Lifecycle Hooks für den Subagent
 
 ### CLI-Variante
 
@@ -121,7 +121,7 @@ claude --agents '{
 
 ### Modellwahl
 
-* `inherit`: uebernimmt das Modell der Haupt-Session (Default)
+* `inherit`: übernimmt das Modell der Haupt-Session (Default)
 * `sonnet`, `opus`, `haiku`: explizites Modell pro Subagent
 
 ### Tools und Permissions steuern
@@ -144,10 +144,10 @@ disallowedTools: Write, Edit
 | `default` | normale Prompts |
 | `acceptEdits` | Edits auto-accept |
 | `dontAsk` | Prompts auto-deny |
-| `bypassPermissions` | keine Prompts, volle Ausfuehrung |
+| `bypassPermissions` | keine Prompts, volle Ausführung |
 | `plan` | read-only Exploration |
 
-> **Hinweis:** `bypassPermissions` ist riskant und kann nicht ueberschrieben werden, wenn der Parent es nutzt.
+> **Hinweis:** `bypassPermissions` ist riskant und kann nicht überschrieben werden, wenn der Parent es nutzt.
 
 ### Skills vorladen
 
@@ -163,9 +163,9 @@ skills:
 
 Skills werden als Inhalt injiziert. Subagents erben keine Skills vom Parent.
 
-### Hooks fuer Subagents
+### Hooks für Subagents
 
-Hooks koennen direkt im Frontmatter definiert werden:
+Hooks können direkt im Frontmatter definiert werden:
 
 ```yaml
 ---
@@ -181,7 +181,7 @@ hooks:
 ---
 ```
 
-Project-Level Hooks fuer Subagent-Events (in `settings.json`):
+Project-Level Hooks für Subagent-Events (in `settings.json`):
 
 ```json
 {
@@ -228,7 +228,7 @@ Use the test-runner subagent to fix failing tests
 ### Foreground vs Background
 
 * **Foreground**: blockiert, Fragen und Permissions kommen zu dir durch.
-* **Background**: laeuft parallel, braucht vorher genehmigte Permissions. MCP Tools sind hier nicht verfuegbar.
+* **Background**: läuft parallel, braucht vorher genehmigte Permissions. MCP Tools sind hier nicht verfügbar.
 
 Background komplett deaktivieren:
 
@@ -239,18 +239,18 @@ setx CLAUDE_CODE_DISABLE_BACKGROUND_TASKS 1
 ### Bewaehrte Patterns
 
 * **Lautes Output isolieren:** Tests, Logs, Docs in Subagent auslagern.
-* **Parallel research:** getrennte Subagents fuer unabhhaengige Module.
+* **Parallel research:** getrennte Subagents für unabhängige Module.
 * **Chain:** Subagents nacheinander in Workflows.
 
-> **Achtung:** Viele Subagents mit grossen Ergebnissen koennen Kontext kosten.
+> **Achtung:** Viele Subagents mit großen Ergebnissen können Kontext kosten.
 
 ### Subagents vs Haupt-Thread
 
 **Haupt-Thread, wenn:**
 
-* viel Hin-und-Her noetig ist
+* viel Hin-und-Her nötig ist
 * mehrere Phasen eng verbunden sind
-* du schnelle Aenderungen brauchst
+* du schnelle Änderungen brauchst
 
 **Subagent, wenn:**
 
@@ -260,7 +260,7 @@ setx CLAUDE_CODE_DISABLE_BACKGROUND_TASKS 1
 
 ### Kontext und Resume
 
-Subagents haben eigene Transkripte und koennen resumed werden. Pfad:
+Subagents haben eigene Transkripte und können resumed werden. Pfad:
 
 ```
 ~/.claude/projects/{project}/{sessionId}/subagents/

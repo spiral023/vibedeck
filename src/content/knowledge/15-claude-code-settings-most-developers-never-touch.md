@@ -33,9 +33,9 @@ level: intermediate
 
 ![Claude Code Settings Header](/images/knowledge/15-claude-code-settings-most-developers-never-touch/header.jpg)
 
-Der Post von darkzodchi ist eine kompakte, aber ziemlich dichte Checkliste fuer Claude Code. Der rote Faden: Viele Qualitaetsprobleme sehen auf den ersten Blick wie ein Modellproblem aus, sind in der Praxis aber schlicht schlechte Defaults, zu lockere Permissions oder fehlende Automation.
+Der Post von darkzodchi ist eine kompakte, aber ziemlich dichte Checkliste für Claude Code. Der rote Faden: Viele Qualitätsprobleme sehen auf den ersten Blick wie ein Modellproblem aus, sind in der Praxis aber schlicht schlechte Defaults, zu lockere Permissions oder fehlende Automation.
 
-Besonders stark ist der Artikel dort, wo er zwischen drei Ebenen trennt: **Reasoning-Steuerung**, **Arbeitsflaechen-Sicherheit** und **Token-/Kosten-Disziplin**. Genau daraus entsteht ein brauchbares Operating Model fuer den Alltag.
+Besonders stark ist der Artikel dort, wo er zwischen drei Ebenen trennt: **Reasoning-Steuerung**, **Arbeitsflächen-Sicherheit** und **Token-/Kosten-Disziplin**. Genau daraus entsteht ein brauchbares Operating Model für den Alltag.
 
 > Die Kernthese: Claude Code wird oft nicht wegen des Modells "schlechter", sondern weil die Umgebung nicht bewusst konfiguriert ist.
 
@@ -45,9 +45,9 @@ Die ersten beiden Einstellungen drehen sich komplett um das Denkbudget.
 
 ### 1) Default Effort hochsetzen
 
-Der Autor beschreibt als Hauptproblem, dass Claude Code mit einem zu niedrigen Default-Reasoning startet und dadurch weniger gruendlich plant, weniger Tool Calls ausfuehrt und schneller zu oberflaechlichen Aenderungen springt.
+Der Autor beschreibt als Hauptproblem, dass Claude Code mit einem zu niedrigen Default-Reasoning startet und dadurch weniger gründlich plant, weniger Tool Calls ausführt und schneller zu oberflächlichen Änderungen springt.
 
-Empfohlene Sofortmassnahme:
+Empfohlene Sofortmaßnahme:
 
 ```bash
 /effort high
@@ -59,7 +59,7 @@ Oder dauerhaft:
 export CLAUDE_CODE_DEFAULT_EFFORT=high
 ```
 
-Die praktische Aussage dahinter ist wichtig: Wenn Du Claude Code fuer echte Refactors oder Debugging einsetzt, ist ein aggressives Latenz-Optimieren fast immer die falsche Voreinstellung.
+Die praktische Aussage dahinter ist wichtig: Wenn Du Claude Code für echte Refactors oder Debugging einsetzt, ist ein aggressives Latenz-Optimieren fast immer die falsche Voreinstellung.
 
 ### 2) Adaptive Thinking abschalten
 
@@ -69,15 +69,15 @@ Der zweite Hebel ist noch direkter:
 export CLAUDE_CODE_DISABLE_ADAPTIVE_THINKING=1
 ```
 
-Laut Autor verhindert das, dass Claude bei vermeintlich "einfachen" Tasks zu frueh abkuerzt. Das ist vor allem in Codebases relevant, in denen kleine Aenderungen leicht Seiteneffekte haben.
+Laut Autor verhindert das, dass Claude bei vermeintlich "einfachen" Tasks zu früh abkürzt. Das ist vor allem in Codebases relevant, in denen kleine Änderungen leicht Seiteneffekte haben.
 
-> Ein fixer Reasoning-Budget ist oft teurer pro Turn, aber billiger pro geloestem Problem.
+> Ein fixer Reasoning-Budget ist oft teurer pro Turn, aber billiger pro gelöstem Problem.
 
-## 2. Permissions als Produktivitaets- und Sicherheitslayer behandeln
+## 2. Permissions als Produktivitäts- und Sicherheitslayer behandeln
 
-Ein grosser Teil des Artikels dreht sich nicht um Prompting, sondern um Zugriffskontrolle.
+Ein großer Teil des Artikels dreht sich nicht um Prompting, sondern um Zugriffskontrolle.
 
-### 3) `defaultMode` aktiv waehlen
+### 3) `defaultMode` aktiv wählen
 
 Statt im konservativen Standardmodus zu bleiben, empfiehlt der Autor in bekannten Repos:
 
@@ -91,15 +91,15 @@ Statt im konservativen Standardmodus zu bleiben, empfiehlt der Autor in bekannte
 
 Das Ziel ist nicht maximale Freiheit, sondern weniger Reibung bei wiederkehrenden Tasks. Interessant ist dabei die Einordnung der Modi:
 
-- `acceptEdits` fuer bekannte Projekte
-- `plan` fuer unbekannte Repos
+- `acceptEdits` für bekannte Projekte
+- `plan` für unbekannte Repos
 - aggressivere Modi nur mit klarer Absicht
 
 Damit behandelt der Artikel Permissions nicht als Sicherheitsdetail, sondern als Teil des Workflows.
 
 ### 4) Allow- und Deny-Regeln explizit pflegen
 
-Der nuetzlichste Block im ganzen Post ist die Kombination aus erlaubten und verbotenen Aktionen:
+Der nützlichste Block im ganzen Post ist die Kombination aus erlaubten und verbotenen Aktionen:
 
 ```json
 {
@@ -117,7 +117,7 @@ Der nuetzlichste Block im ganzen Post ist die Kombination aus erlaubten und verb
 }
 ```
 
-Das ist ein gutes Pattern, weil es zwei Probleme gleichzeitig loest:
+Das ist ein gutes Pattern, weil es zwei Probleme gleichzeitig löst:
 
 1. Zu viele Rueckfragen bei harmlosen Standardaktionen.
 2. Zu viel implizites Vertrauen bei sensiblen Dateien oder destruktiven Befehlen.
@@ -136,7 +136,7 @@ Der Autor empfiehlt eine einfache Verteilung:
 /model haiku      -> quick questions, formatting
 ```
 
-Die Aussage ist banal, aber wichtig: Ein einziges Modell fuer alles ist fast immer ein Kostenfehler.
+Die Aussage ist banal, aber wichtig: Ein einziges Modell für alles ist fast immer ein Kostenfehler.
 
 ### 6) `/compact` mit Erhaltungsinstruktionen nutzen
 
@@ -161,7 +161,7 @@ Das reduziert Wiederholung und macht Sessions konsistenter, vor allem wenn Claud
 
 ## 4. Wiederkehrende Arbeit in Hooks auslagern
 
-Hier wird der Artikel am praktischsten, weil er konkrete Hook-Muster fuer Post- und Pre-Processing zeigt.
+Hier wird der Artikel am praktischsten, weil er konkrete Hook-Muster für Post- und Pre-Processing zeigt.
 
 ### 8) Formatierung nach Writes automatisieren
 
@@ -182,9 +182,9 @@ Beispiel:
 
 Das ist ein klassischer Fall von "einmal konfigurieren, dauerhaft Reibung entfernen".
 
-### 9) Grosse Logs vorfiltern
+### 9) Große Logs vorfiltern
 
-Fuer Log-Dateien schlaegt der Autor einen vorgeschalteten Filter vor:
+Für Log-Dateien schlägt der Autor einen vorgeschalteten Filter vor:
 
 ```json
 {
@@ -213,7 +213,7 @@ Der letzte Teil des Artikels sammelt die Settings, die eher operativ als modellb
 claude -w
 ```
 
-Der Nutzen ist klar: Die Haupt-Working-Copy bleibt sauber, waehrend der Agent in einer isolierten Umgebung arbeitet. Gerade bei groesseren Refactors ist das ein sehr brauchbarer Guardrail.
+Der Nutzen ist klar: Die Haupt-Working-Copy bleibt sauber, während der Agent in einer isolierten Umgebung arbeitet. Gerade bei größeren Refactors ist das ein sehr brauchbarer Guardrail.
 
 ### 11) Mit `--bare` schneller starten
 
@@ -221,7 +221,7 @@ Der Nutzen ist klar: Die Haupt-Working-Copy bleibt sauber, waehrend der Agent in
 claude --bare
 ```
 
-Das ist kein Feature fuer tiefe Arbeit, sondern fuer kurze Fragen und schnelle Einmal-Tasks. Der Punkt ist legitim: Startkosten summieren sich.
+Das ist kein Feature für tiefe Arbeit, sondern für kurze Fragen und schnelle Einmal-Tasks. Der Punkt ist legitim: Startkosten summieren sich.
 
 ### 12) Budgets in Headless-Runs begrenzen
 
@@ -229,7 +229,7 @@ Das ist kein Feature fuer tiefe Arbeit, sondern fuer kurze Fragen und schnelle E
 claude -p "refactor auth module" --max-budget-usd 5.00
 ```
 
-Sobald Claude Code ohne direkte Aufsicht laeuft, wird Budgetkontrolle zum Pflicht-Guardrail, nicht zum Nice-to-have.
+Sobald Claude Code ohne direkte Aufsicht läuft, wird Budgetkontrolle zum Pflicht-Guardrail, nicht zum Nice-to-have.
 
 ### 13) Full Thinking sichtbar machen
 
@@ -249,15 +249,15 @@ Die Empfehlung ist weniger eine Setting-Datei als ein Prompting-Pattern:
 
 `Spawn exactly 3 subagents: one for style review, one for bug detection, one for security scan. No more.`
 
-Der Punkt ist richtig: Parallelisierung ohne Obergrenze fuehlt sich nach Geschwindigkeit an, ist aber oft nur unkontrollierter Token-Verbrauch.
+Der Punkt ist richtig: Parallelisierung ohne Obergrenze fühlt sich nach Geschwindigkeit an, ist aber oft nur unkontrollierter Token-Verbrauch.
 
-### 15) MCP-Overhead regelmaessig ausmisten
+### 15) MCP-Overhead regelmäßig ausmisten
 
-Zum Schluss verweist der Autor auf `/mcp`, um aktive Server und ihre Tool-Last sichtbar zu machen. Die These: Jeder unnötige MCP-Server erzeugt Overhead, bevor die eigentliche Aufgabe ueberhaupt beginnt.
+Zum Schluss verweist der Autor auf `/mcp`, um aktive Server und ihre Tool-Last sichtbar zu machen. Die These: Jeder unnötige MCP-Server erzeugt Overhead, bevor die eigentliche Aufgabe überhaupt beginnt.
 
-Selbst wenn die konkrete Tokenzahl je Server vom Setup abhaengt, ist das Muster sinnvoll: Tooling sollte aktiv kuratiert werden, nicht einfach dauerhaft angeschlossen bleiben.
+Selbst wenn die konkrete Tokenzahl je Server vom Setup abhängt, ist das Muster sinnvoll: Tooling sollte aktiv kuratiert werden, nicht einfach dauerhaft angeschlossen bleiben.
 
-## Was an diesem Artikel wirklich haengen bleibt
+## Was an diesem Artikel wirklich hängen bleibt
 
 Der Wert des Posts liegt nicht in einzelnen Geheimtricks. Er liegt darin, dass Claude Code hier wie eine **konfigurierbare Entwicklungsumgebung** behandelt wird und nicht wie ein Chatfenster mit etwas mehr Werkzeugen.
 
@@ -265,9 +265,9 @@ Daraus lassen sich drei robuste Prinzipien ableiten:
 
 1. Reasoning ist ein Budget, kein Mysterium.
 2. Permissions sind Workflow-Design und Security zugleich.
-3. Hooks, Memory, Worktrees und MCP-Auswahl entscheiden stark ueber Qualitaet und Kosten.
+3. Hooks, Memory, Worktrees und MCP-Auswahl entscheiden stark über Qualität und Kosten.
 
-Wenn Du Claude Code produktiv im Alltag nutzt, dann ist genau diese Ebene der Konfiguration oft der Unterschied zwischen "nett fuer Demos" und "tragfaehig fuer echte Projektarbeit".
+Wenn Du Claude Code produktiv im Alltag nutzt, dann ist genau diese Ebene der Konfiguration oft der Unterschied zwischen "nett für Demos" und "tragfähig für echte Projektarbeit".
 
 ## Verbindungen
 - [[Claude Code]]
