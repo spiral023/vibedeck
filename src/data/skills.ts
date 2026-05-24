@@ -4,7 +4,9 @@ import {
   Brain,
   Code2,
   Lightbulb,
+  Paintbrush,
   Palette,
+  Rocket,
   Terminal,
   TrendingUp,
   Zap,
@@ -59,6 +61,14 @@ export const skillCategories: SkillCategory[] = [
         icon: Zap,
         author: 'Vercel Labs',
       },
+      {
+        name: 'obra/superpowers',
+        description:
+          'Agentic Skills-Framework mit strukturierten Workflows für Brainstorming, Planung, TDD, Subagent-Koordination und Code-Reviews.',
+        url: 'https://github.com/obra/superpowers',
+        icon: Rocket,
+        author: 'Jesse Vincent',
+      },
     ],
   },
   {
@@ -79,6 +89,14 @@ export const skillCategories: SkillCategory[] = [
         url: 'https://github.com/coreyhaines31/marketingskills',
         icon: TrendingUp,
         author: 'Corey Haines',
+      },
+      {
+        name: 'anthropics/skills · frontend-design',
+        description:
+          'Offizieller Anthropic-Skill für produktionsreife Frontend-Interfaces — mutige Typografie, Farbpaletten, Animationen und räumliche Komposition statt generischer AI-Optik.',
+        url: 'https://github.com/anthropics/skills',
+        icon: Paintbrush,
+        author: 'Anthropic',
       },
     ],
   },
