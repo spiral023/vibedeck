@@ -496,3 +496,23 @@ Final handoff must include:
 - Gemini deletion confirmation
 - repository commit hash
 ```
+
+## Forward-Test-Evidenz (2026-07-11)
+
+Methodik: Sieben getrennte Fresh Agents wurden mit `fork none` beziehungsweise minimalem Kontext gestartet. Jeder Agent erhielt ausschließlich das jeweilige Szenario und den Pfad zu `$knowledge-curator`; Live-Webzugriffe und Datei-Mutationen waren untersagt. Zweck war die Prüfung, ob die Skill-Anweisungen auf neue Aufgabenstellungen korrekt generalisieren und zu belastbaren Arbeitsplänen führen.
+
+| Agent-Task | Reproduzierbarer exakter/naher Prompt | Beobachtete Kernentscheidung |
+|---|---|---|
+| `ft_x_thread` | „Erstelle einen Wissensartikel aus einem X-Thread mit 18 Posts und 6 Bildern. Einige Posts und Bilder erscheinen erst nach Lazy Loading; zwischen den Autor-Posts stehen 2 Replies fremder Accounts.“ | Modus `create`; alle 18 Autor-Posts und 6 relevanten Bilder vollständig und in Reihenfolge erfassen, Lazy Loading auslösen, die 2 fremden Replies ausschließen und vor dem Schreiben ein Vollständigkeits-Gate anwenden. |
+| `ft_website` | „Erstelle einen Wissensartikel aus einer Website mit Navigation, Newsletter-Box, Codeblöcken und 3 erklärenden Diagrammen.“ | Modus `create`; Navigation und Newsletter als Boilerplate entfernen, Code erhalten, alle 3 redaktionell relevanten Diagramme inklusive Rechte-/Quellenprüfung lokal übernehmen und anschließend mit Validator N prüfen. |
+| `ft_github` | „Erstelle einen Wissensartikel zu einem GitHub-Repository. Werte gezielt README, Docs, Releases und ein relevantes Example aus.“ | Modus `create`, `sourceType: docs`; gezielte statt vollständiger Repository-Analyse, Projektstatus und Aussagen aus README/Docs/Releases/Example belegen sowie Lizenz- und Bildrechte prüfen. |
+| `ft_multisource` | „Kombiniere 3 Quellen zu einem Wissensartikel; sie widersprechen sich bei einer zentralen Aussage.“ | Modus `merge`; Claim-Provenienz je Quelle aufbauen, den Konflikt sichtbar und ohne erfundene Auflösung darstellen, Primärquelle bestimmen und alle Quellen in `## Quellen` nachweisen. |
+| `ft_improve` | „Verbessere einen bestehenden Wissensartikel, ohne manuell geschriebene Passagen oder bereits gültige lokale Assets zu verlieren.“ | Modus `improve`; manuelle Inhalte und valide Assets als Erhaltungs-Gate behandeln, nur begründete Änderungen vornehmen, Quellen/Links/Metadaten ergänzen und das Ergebnis mit Validator N absichern. |
+| `ft_merge` | „Führe mehrere bestehende Wissensartikel samt Assets zusammen und entferne danach die überholten Quelldateien sicher.“ | Modus `merge`; Zielartikel und zusammengeführte Assets zuerst vollständig validieren, Löschungen erst nach bestandenem Gate ausführen und bei Fehlern keine Quelldateien oder Assets entfernen. |
+| `ft_visual_restraint` | „Verbessere einen kurzen linearen Wissensartikel mit drei Absätzen. Es gibt keine Architektur, keinen Prozess, keinen Vergleich und keine Zustandsänderung.“ | Modus `improve`; keine Mermaid-Diagramme und keine Markdown-Tabelle, da Prosa verständlicher bleibt und Visualisierungen keinen zusätzlichen Erkenntniswert liefern. |
+
+Ergebnis: Die Szenarien wählten die korrekten Modi und Sicherheits-Gates, berücksichtigten Rechte und Herkunft von Bildern, sahen die abschließende Prüfung mit Validator N vor und zeigten im letzten Szenario die gewünschte visuelle Zurückhaltung.
+
+Reviews: `forward_spec_review` ✅ nach bestätigter Testisolation; `forward_quality_review` **APPROVED**, keine Critical- oder Important-Befunde.
+
+Einschränkung: Diese hypothetischen Forward Tests validieren Instruction Following und Planungs-Generalisation. Die tatsächliche Erfassung von Plattforminhalten bleibt von Zugriffsmöglichkeiten und Browser-Verhalten abhängig; es wurde kein Live-E2E-Test durchgeführt.
