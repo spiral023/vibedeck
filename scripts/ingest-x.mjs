@@ -53,6 +53,9 @@ function formatApiError(err) {
       : '';
     return `✖ 429 Rate-Limit erreicht.${reset} Kein Auto-Retry (Pay-per-use).`;
   }
+  if (typeof code === 'number' && code >= 500) {
+    return `✖ ${code} — temporärer Serverfehler bei X. Kein Code-Problem; in ein paar Minuten erneut versuchen.`;
+  }
   return `✖ API-Fehler: ${err?.message ?? String(err)}`;
 }
 
