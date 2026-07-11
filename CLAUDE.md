@@ -297,6 +297,17 @@ When adding/modifying prompts:
 - Pre-prompt and variants support multiline with YAML `|` syntax
 - Test variable substitution in UI before committing
 
+### Knowledge-Artikel aus X-Posts
+
+Wenn ein Knowledge-Artikel aus einer X-URL angelegt werden soll:
+
+1. `npm run ingest:x -- <url>` ausführen. Bei Threads `--thread` ergänzen; ist der Thread älter als ~7 Tage, die URL des **letzten** Tweets verwenden (Rückwärts-Auflösung ohne Search-Endpoint).
+2. Dump aus `scripts/.ingest/<id>.md` lesen (Roh-JSON liegt daneben als `<id>.json`).
+3. Artikel nach dem Frontmatter-Schema (`src/types/knowledge.ts`) in `src/content/knowledge/` schreiben; `sourceURL`, `author`, `sourceDate` aus dem Dump übernehmen.
+4. `npm run content:generate-search-index` ausführen.
+
+Voraussetzung: `X_BEARER_TOKEN` in `.env.local` (Vorlage: `.env.example`). Ersetzt den früheren fxtwitter-Workaround.
+
 ## Technology Stack
 
 - **Framework**: Next.js 16.0.10 (App Router, React 18.3.1)
