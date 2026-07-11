@@ -61,7 +61,7 @@ Kein einzelner API-Weg deckt alle Fälle ab. Das Script nutzt daher eine gestuft
 
 **Fall A — URL zeigt auf den Thread-Start** (`tweet.id === tweet.conversation_id`):
 
-1. **Kanonisch: `client.v2.search()`** (Recent Search) mit Query `conversation_id:<id> from:<author> -is:reply` — X' dokumentierter Weg zur Thread-Auflösung. Deckt Threads der letzten ~7 Tage ab. Paginierung über die Paginator-Utility des Clients.
+1. **Kanonisch: `client.v2.search()`** (Recent Search) mit Query `conversation_id:<id> from:<author>` — X' dokumentierter Weg zur Thread-Auflösung. Deckt Threads der letzten ~7 Tage ab. Nur die erste Ergebnisseite (max 100) wird gelesen (Kostenkontrolle). Hinweis: **kein** `-is:reply`-Filter, da die Thread-Fortsetzungen selbst Self-Replies sind und sonst wegfielen.
 2. **Liefert Recent Search nichts** (Thread >7 Tage): automatischer Versuch **`client.v2.searchAll()`** (Full-Archive) mit derselben Query. Wirft die API `403`/kein Zugang → sauber abfangen und zu Schritt 3 übergehen.
 3. **Kein Search-Zugang / >7 Tage & kein Full-Archive**: klare Meldung mit Handlungsempfehlung — „Für ältere Threads die URL des **letzten** Tweets übergeben (Rückwärts-Auflösung)." Der Einzel-Tweet wird trotzdem verarbeitet.
 
