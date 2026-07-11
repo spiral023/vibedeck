@@ -41,6 +41,10 @@ function findAuthor(includes, authorId) {
 function formatApiError(err) {
   const code = err?.code ?? err?.data?.status;
   if (code === 401) return '✖ 401 Unauthorized — Bearer Token ungültig oder abgelaufen.';
+  if (code === 402) {
+    const detail = err?.data?.detail ? ` (${err.data.detail})` : '';
+    return `✖ 402 Payment Required — Guthaben der X-API aufgebraucht${detail}. Im X Developer Portal Credits aufladen und erneut versuchen.`;
+  }
   if (code === 403) return '✖ 403 Forbidden — App fehlt die Berechtigung für diesen Endpoint/Tweet.';
   if (code === 404) return '✖ 404 — Tweet gelöscht, privat oder ID falsch.';
   if (code === 429) {
