@@ -11,7 +11,14 @@ export const TWEET_FIELDS = [
   'referenced_tweets',
   'attachments',
 ];
-export const EXPANSIONS = ['author_id', 'referenced_tweets.id', 'attachments.media_keys'];
+export const EXPANSIONS = [
+  'author_id',
+  'referenced_tweets.id',
+  'attachments.media_keys',
+  // Native X-Artikel hängen ihre Bilder nicht am Tweet, sondern am Artikel.
+  'article.cover_media',
+  'article.media_entities',
+];
 export const USER_FIELDS = ['name', 'username', 'verified'];
 export const MEDIA_FIELDS = ['type', 'alt_text', 'url', 'preview_image_url'];
 

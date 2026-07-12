@@ -6,6 +6,7 @@ import {
   extractArticleText,
   extractLinks,
   extractMedia,
+  extractArticleMedia,
   isThreadStart,
   orderThreadChronologically,
   formatDump,
@@ -96,6 +97,45 @@ describe('extractMedia', () => {
   });
 });
 
+describe('extractArticleMedia', () => {
+  const includes = [
+    { media_key: '3_cover', type: 'photo', url: 'https://img/cover.jpg', alt_text: 'Titelbild' },
+    { media_key: '3_a', type: 'photo', url: 'https://img/a.jpg', alt_text: 'Bild A' },
+    { media_key: '3_b', type: 'video', preview_image_url: 'https://img/b.jpg' },
+  ];
+  it('löst cover_media und media_entities gegen includes.media auf', () => {
+    const tweet = {
+      article: { cover_media: '3_cover', media_entities: ['3_a', '3_b'] },
+    };
+    expect(extractArticleMedia(tweet, includes)).toEqual([
+      { type: 'photo', alt: 'Titelbild', url: 'https://img/cover.jpg', cover: true },
+      { type: 'photo', alt: 'Bild A', url: 'https://img/a.jpg', cover: false },
+      { type: 'video', alt: '', url: 'https://img/b.jpg', cover: false },
+    ]);
+  });
+  it('akzeptiert media_entities als Objekte mit media_key', () => {
+    const tweet = { article: { media_entities: [{ media_key: '3_a' }] } };
+    expect(extractArticleMedia(tweet, includes)).toEqual([
+      { type: 'photo', alt: 'Bild A', url: 'https://img/a.jpg', cover: false },
+    ]);
+  });
+  it('dedupliziert wiederkehrende Keys', () => {
+    const tweet = { article: { cover_media: '3_a', media_entities: ['3_a'] } };
+    expect(extractArticleMedia(tweet, includes)).toEqual([
+      { type: 'photo', alt: 'Bild A', url: 'https://img/a.jpg', cover: true },
+    ]);
+  });
+  it('gibt leeres Array ohne Artikel', () => {
+    expect(extractArticleMedia({}, includes)).toEqual([]);
+  });
+  it('behält den Key als Fallback, wenn er in includes fehlt', () => {
+    const tweet = { article: { media_entities: ['3_missing'] } };
+    expect(extractArticleMedia(tweet, includes)).toEqual([
+      { type: 'unknown', alt: '', url: '', cover: false, key: '3_missing' },
+    ]);
+  });
+});
+
 describe('isThreadStart', () => {
   it('true wenn id === conversation_id', () => {
     expect(isThreadStart({ id: '5', conversation_id: '5' })).toBe(true);
@@ -153,6 +193,22 @@ describe('formatDump', () => {
     expect(md).toContain('## Artikel: Mein Artikel');
     expect(md).toContain('Das ist der komplette Artikeltext.');
     expect(md).not.toContain('nicht über die API verfügbar');
+  });
+  it('rendert eine Artikel-Media-Sektion mit Cover-Markierung und Bild-Markdown', () => {
+    const md = formatDump({
+      tweet: { id: '7', text: 'x', article: { title: 'Mit Bildern', plain_text: 'Text.' } },
+      author: { name: 'A', username: 'a' },
+      media: [],
+      articleMedia: [
+        { type: 'photo', alt: 'Titelbild', url: 'https://img/cover.jpg', cover: true },
+        { type: 'photo', alt: '', url: 'https://img/a.jpg', cover: false },
+      ],
+      thread: null,
+    });
+    expect(md).toContain('## Artikel-Media');
+    expect(md).toContain('Cover');
+    expect(md).toContain('![Titelbild](https://img/cover.jpg)');
+    expect(md).toContain('![](https://img/a.jpg)');
   });
   it('warnt, wenn ein Artikel ohne plain_text vorliegt', () => {
     const md = formatDump({

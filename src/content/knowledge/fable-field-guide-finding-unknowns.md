@@ -33,6 +33,8 @@ addedDate: "2026-07-12"
 level: intermediate
 ---
 
+![A Field Guide to Fable: Finding Your Unknowns](/images/knowledge/fable-field-guide-finding-unknowns/header.jpg)
+
 Thariq Shihipar arbeitet bei Anthropic am Claude-Code-Team und hat mit diesem X-Artikel einen der meistgeteilten Praxis-Guides zum Arbeiten mit Claude Fable 5 geschrieben (über 3,6 Millionen Views in den ersten Tagen). Der Guide ist kein Feature-Überblick, sondern eine Methodik: **Wie finde ich heraus, was ich dem Modell nicht gesagt habe — bevor es teuer wird?**
 
 Die zentrale These steckt in einem alten Aphorismus:
@@ -40,6 +42,8 @@ Die zentrale These steckt in einem alten Aphorismus:
 > The map is not the territory.
 
 Prompts, Skills und Kontext sind nur eine **Karte** der Arbeit. Das **Territorium** ist die echte Codebasis, ihre Geschichte und die undokumentierten Constraints im Kopf des Entwicklers. Die Differenz zwischen Karte und Territorium sind die **Unknowns** — und immer wenn Fable auf ein Unknown trifft, muss es raten.
+
+![Gegenüberstellung: die glatte, gerade Linie der Karte gegen das verschlungene Territorium voller Fragezeichen — dazwischen „your unknowns"](/images/knowledge/fable-field-guide-finding-unknowns/map-territory.jpg)
 
 ## Warum das gerade bei Fable 5 wichtig wird
 
@@ -63,9 +67,15 @@ Thariq zerlegt die Lücke zwischen Karte und Territorium in vier Quadranten (nac
 | **Unknown Knowns** | Was so offensichtlich ist, dass man es nie aufschreiben würde — es aber sofort erkennt, wenn es fehlt |
 | **Unknown Unknowns** | Faktoren, an die man überhaupt nicht gedacht hat |
 
+![Vier-Quadranten-Matrix der Unknowns: Known knowns, Known unknowns, Unknown knowns und Unknown unknowns mit je einem Icon und Kurzbeschreibung](/images/knowledge/fable-field-guide-finding-unknowns/four-quadrants.jpg)
+
 Die gefährlichsten Kategorien sind die unteren beiden: implizites Wissen, das nie in den Kontext gelangt, und blinde Flecken, die erst beim Review auffallen. Der gesamte Guide ist eine Sammlung von Techniken, um genau diese beiden Quadranten systematisch auszuleuchten.
 
 ## Vor der Implementierung: Unknowns aufdecken
+
+Der Guide gliedert die Techniken entlang der Zeitachse eines Tasks — vor, während und nach der Implementierung. Was man dabei lernt, wird zur Karte für den nächsten Durchlauf.
+
+![Übersicht der Techniken entlang dreier Phasen: „Before implementation" (Blind spot pass, Brainstorms & prototypes, Interviews, References, Implementation plan), „During implementation" (Implementation notes) und „After implementation" (Pitches & explainers, Quizzes)](/images/knowledge/fable-field-guide-finding-unknowns/techniques-overview.jpg)
 
 ### 1. Blind Spot Pass
 
@@ -97,6 +107,8 @@ Fable führt ein laufendes Protokoll: getroffene Entscheidungen, Abweichungen vo
 
 Spezifikation, Prototyp und Implementation Notes werden zu einem einzigen Dokument konsolidiert, das mit Demos beginnt und Experten-Fragen vorwegnimmt. Das zwingt zu einer kohärenten Erzählung der Änderung statt eines rohen Diffs.
 
+![Diagramm: prototype, spec und notes fließen in „one doc" zusammen, das mit einer Demo startet und so das Buy-in der Reviewer erzeugt](/images/knowledge/fable-field-guide-finding-unknowns/pitches-explainers.jpg)
+
 ### Der Change Quiz
 
 Die vielleicht ungewöhnlichste Technik: Vor dem Merge lässt man sich von Fable einen Report mit Kontext und Intuition zu den Änderungen erklären — und **absolviert am Ende ein Quiz über den eigenen Code**. Wer das Quiz nicht besteht, hat die Änderung nicht verstanden und sollte nicht mergen. Das ist Verification nicht für das Modell, sondern für den Menschen.
@@ -106,6 +118,8 @@ Die vielleicht ungewöhnlichste Technik: Vor dem Merge lässt man sich von Fable
 Thariq demonstriert die Methodik an einer Domäne, in der er selbst Laie ist: dem Schnitt des Fable-Launch-Videos. Statt Video-Editing zu lernen, klärte er iterativ mit Claude seine Unknowns — Transkriptionsgenauigkeit, Timing, Color Grading — und kam so zu einem Ergebnis, das ohne die systematische Unknown-Jagd nicht möglich gewesen wäre. Die Pointe: Die Methodik funktioniert gerade dann, wenn die eigene Expertise fehlt.
 
 ## Einordnung
+
+![Eisberg-Vergleich „before" und „after finding your unknowns": vorher liegt fast alles unter der Wasserlinie voller Fragezeichen, nachher ist der sichtbare Teil deutlich größer](/images/knowledge/fable-field-guide-finding-unknowns/iceberg-before-after.jpg)
 
 Der Guide ist deshalb so stark, weil er das Prompting-Problem umdreht. Die übliche Frage lautet „Wie schreibe ich einen besseren Prompt?". Thariqs Frage lautet: **„Was weiß ich, das ich nicht aufgeschrieben habe — und was weiß ich nicht, das ich wissen müsste?"**
 

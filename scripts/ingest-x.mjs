@@ -4,6 +4,7 @@ import {
   parseArgs,
   parseTweetId,
   extractMedia,
+  extractArticleMedia,
   extractTweetText,
   extractArticleText,
   isThreadStart,
@@ -152,7 +153,8 @@ async function main() {
   const tweet = payload.tweet;
   const author = findAuthor(payload.includes, tweet.author_id);
   const media = extractMedia(payload.includes?.media);
-  const md = formatDump({ tweet, author, media, thread: payload.thread });
+  const articleMedia = extractArticleMedia(tweet, payload.includes?.media);
+  const md = formatDump({ tweet, author, media, articleMedia, thread: payload.thread });
   fs.writeFileSync(mdPath, md, 'utf8');
 
   const articleText = extractArticleText(tweet);

@@ -56,6 +56,43 @@ export function extractMedia(mediaList) {
   }));
 }
 
+// Native X-Artikel referenzieren ihre Bilder über cover_media + media_entities
+// als bloße media_keys. Diese Keys gegen includes.media auflösen (Expansions
+// article.cover_media / article.media_entities liefern die Objekte dort).
+export function extractArticleMedia(tweet, mediaIncludes) {
+  const article = tweet?.article;
+  if (!article) return [];
+  const byKey = new Map(
+    (Array.isArray(mediaIncludes) ? mediaIncludes : []).map((m) => [m.media_key, m]),
+  );
+  const refs = [];
+  if (typeof article.cover_media === 'string') refs.push({ key: article.cover_media, cover: true });
+  const entities = Array.isArray(article.media_entities) ? article.media_entities : [];
+  for (const e of entities) {
+    const key = typeof e === 'string' ? e : e?.media_key;
+    if (key) refs.push({ key, cover: false });
+  }
+  const seen = new Set();
+  const out = [];
+  for (const { key, cover } of refs) {
+    if (seen.has(key)) continue;
+    seen.add(key);
+    const m = byKey.get(key);
+    if (m) {
+      out.push({
+        type: m.type ?? 'unknown',
+        alt: m.alt_text ?? '',
+        url: m.url ?? m.preview_image_url ?? '',
+        cover,
+      });
+    } else {
+      // Key ohne aufgelöstes Media-Objekt behalten, damit nichts still verschwindet.
+      out.push({ type: 'unknown', alt: '', url: '', cover, key });
+    }
+  }
+  return out;
+}
+
 export function isThreadStart(tweet) {
   return Boolean(tweet?.id && tweet.id === tweet.conversation_id);
 }
@@ -68,7 +105,7 @@ export function orderThreadChronologically(tweets) {
   });
 }
 
-export function formatDump({ tweet, author, media, thread }) {
+export function formatDump({ tweet, author, media, articleMedia, thread }) {
   const handle = author?.username ? `@${author.username}` : 'unbekannt';
   const name = author?.name ?? 'Unbekannt';
   const lines = [`# X-Ingest: ${name} (${handle})`, ''];
@@ -93,6 +130,18 @@ export function formatDump({ tweet, author, media, thread }) {
         '',
       );
     }
+  }
+  if (Array.isArray(articleMedia) && articleMedia.length) {
+    lines.push('## Artikel-Media', '');
+    for (const am of articleMedia) {
+      const label = am.cover ? 'Cover' : am.type ?? 'media';
+      if (am.url) {
+        lines.push(`- **${label}**${am.alt ? ` — ${am.alt}` : ''}: ![${am.alt ?? ''}](${am.url})`);
+      } else {
+        lines.push(`- **${label}** — nicht aufgelöst (media_key: ${am.key ?? '?'})`);
+      }
+    }
+    lines.push('');
   }
   lines.push('## Text', '', extractTweetText(tweet), '');
   const links = extractLinks(tweet);
