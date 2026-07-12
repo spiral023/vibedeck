@@ -5,6 +5,7 @@ import {
   parseTweetId,
   extractMedia,
   extractTweetText,
+  extractArticleText,
   isThreadStart,
   orderThreadChronologically,
   formatDump,
@@ -154,13 +155,15 @@ async function main() {
   const md = formatDump({ tweet, author, media, thread: payload.thread });
   fs.writeFileSync(mdPath, md, 'utf8');
 
-  const text = extractTweetText(tweet);
+  const articleText = extractArticleText(tweet);
+  const contentLen = articleText ? articleText.length : extractTweetText(tweet).length;
+  const contentNote = articleText ? ` Zeichen (Artikel)` : ` Zeichen`;
   const threadNote = payload.thread
     ? ` · Thread: ${payload.thread.length} Posts (${payload.threadMethod})`
     : '';
   console.log(`✔ Dump: ${path.relative(rootDir, mdPath)}`);
   console.log(
-    `  Autor: ${author?.name ?? '?'} (@${author?.username ?? '?'}) · ${text.length} Zeichen${threadNote}`,
+    `  Autor: ${author?.name ?? '?'} (@${author?.username ?? '?'}) · ${contentLen}${contentNote}${threadNote}`,
   );
 }
 
