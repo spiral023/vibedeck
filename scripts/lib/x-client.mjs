@@ -59,6 +59,11 @@ export async function resolveThreadForward(client, tweet, username) {
   return null;
 }
 
+// Hinweis: Das zurückgegebene `includes` aus search()/searchAll() ist eine
+// TwitterV2IncludesHelper-Instanz (keine reine Struktur wie bei singleTweet).
+// Der Aufrufer nutzt nur `tweets`/`method` — `includes` NICHT in die JSON-
+// Payload schreiben, sonst geht die Form beim Serialisieren verloren.
+
 // Fall B: URL zeigt auf späteren Tweet. Rückwärts der replied_to-Kette folgen,
 // ein Request pro Tweet, gedeckelt auf maxTweets.
 export async function resolveThreadBackward(client, tweet, maxTweets) {

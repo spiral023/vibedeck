@@ -61,7 +61,10 @@ function formatApiError(err) {
 
 async function resolveThread(client, tweet, author, maxThread) {
   if (isThreadStart(tweet)) {
-    if (!author?.username) return { thread: null, method: null };
+    if (!author?.username) {
+      console.warn('⚠ Thread-Start ohne auflösbaren Autor-Username — Thread wird nicht aufgelöst.');
+      return { thread: null, method: null };
+    }
     const fwd = await resolveThreadForward(client, tweet, author.username);
     if (fwd) return { thread: orderThreadChronologically(fwd.tweets), method: fwd.method };
     console.warn(
@@ -70,8 +73,10 @@ async function resolveThread(client, tweet, author, maxThread) {
     return { thread: null, method: null };
   }
   const chain = await resolveThreadBackward(client, tweet, maxThread);
-  if (chain.length >= maxThread) {
-    console.warn(`⚠ Rückwärts-Walk bei --max-thread=${maxThread} gekappt.`);
+  const oldest = chain[chain.length - 1];
+  const hasMoreParents = (oldest?.referenced_tweets ?? []).some((r) => r.type === 'replied_to');
+  if (chain.length >= maxThread && hasMoreParents) {
+    console.warn(`⚠ Rückwärts-Walk bei --max-thread=${maxThread} gekappt (weitere Vorgänger vorhanden).`);
   }
   return { thread: orderThreadChronologically(chain), method: 'backward-walk' };
 }
