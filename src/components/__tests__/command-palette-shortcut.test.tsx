@@ -67,7 +67,7 @@ describe('command palette shortcuts', () => {
     expect(screen.getByTestId('palette-state')).toHaveTextContent('closed');
   });
 
-  it('hides soon-locked pages in navigation results', () => {
+  it('shows pages when soon mode is disabled', () => {
     render(<PaletteHarness />);
 
     act(() => {
@@ -75,8 +75,8 @@ describe('command palette shortcuts', () => {
     });
 
     expect(screen.getByTestId('palette-state')).toHaveTextContent('open');
-    expect(screen.queryByText('Prompt Builder')).not.toBeInTheDocument();
-    expect(screen.queryByText('Prompt Factory')).not.toBeInTheDocument();
+    expect(screen.getByText('Prompt Builder')).toBeInTheDocument();
+    expect(screen.getByText('Prompt Factory')).toBeInTheDocument();
     expect(screen.getByText('Help Bibliothek')).toBeInTheDocument();
   });
 });

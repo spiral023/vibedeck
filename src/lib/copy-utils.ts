@@ -46,7 +46,7 @@ export function stripMarkdown(md: string): string {
   text = text.replace(/^>\s+/gm, '');
   
   // Remove horizontal rules
-  text = text.replace(/^[-*_]{3,}$/gm, '');
+  text = text.replace(/\n^[-*_]{3,}$\n?/gm, '\n');
   
   // Remove list markers
   text = text.replace(/^\s*[-*+]\s+/gm, '');
