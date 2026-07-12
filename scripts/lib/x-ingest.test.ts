@@ -3,6 +3,7 @@ import {
   parseArgs,
   parseTweetId,
   extractTweetText,
+  extractArticleText,
   extractLinks,
   extractMedia,
   isThreadStart,
@@ -137,5 +138,41 @@ describe('formatDump', () => {
     expect(md).toContain('## Thread');
     expect(md).toContain('1/2');
     expect(md).toContain('zweiter');
+  });
+  it('rendert den Artikel-Volltext statt der Warnung, wenn plain_text vorhanden ist', () => {
+    const md = formatDump({
+      tweet: {
+        id: '5',
+        text: 'https://t.co/x',
+        article: { title: 'Mein Artikel', plain_text: 'Das ist der komplette Artikeltext.' },
+      },
+      author: { name: 'A', username: 'a' },
+      media: [],
+      thread: null,
+    });
+    expect(md).toContain('## Artikel: Mein Artikel');
+    expect(md).toContain('Das ist der komplette Artikeltext.');
+    expect(md).not.toContain('nicht über die API verfügbar');
+  });
+  it('warnt, wenn ein Artikel ohne plain_text vorliegt', () => {
+    const md = formatDump({
+      tweet: { id: '6', text: 'https://t.co/y', article: { title: 'Nur Titel' } },
+      author: { name: 'A', username: 'a' },
+      media: [],
+      thread: null,
+    });
+    expect(md).toContain('nicht über die API verfügbar');
+    expect(md).toContain('Nur Titel');
+    expect(md).not.toContain('## Artikel:');
+  });
+});
+
+describe('extractArticleText', () => {
+  it('gibt article.plain_text zurück', () => {
+    expect(extractArticleText({ article: { plain_text: 'Volltext' } })).toBe('Volltext');
+  });
+  it('gibt leeren String ohne Artikel oder plain_text', () => {
+    expect(extractArticleText({})).toBe('');
+    expect(extractArticleText({ article: { title: 'x' } })).toBe('');
   });
 });

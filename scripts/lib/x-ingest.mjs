@@ -29,6 +29,10 @@ export function extractTweetText(tweet) {
   return tweet?.note_tweet?.text ?? tweet?.text ?? '';
 }
 
+export function extractArticleText(tweet) {
+  return tweet?.article?.plain_text ?? '';
+}
+
 export function extractLinks(tweet) {
   const entities = tweet?.note_tweet?.entities ?? tweet?.entities ?? {};
   const urls = Array.isArray(entities.urls) ? entities.urls : [];
@@ -78,11 +82,17 @@ export function formatDump({ tweet, author, media, thread }) {
     );
   }
   lines.push('');
-  if (tweet.article?.title) {
-    lines.push(
-      `> ⚠️ Nativer X-Artikel „${tweet.article.title}" — Volltext ggf. nicht über die API verfügbar; bei Bedarf Sekundärquelle prüfen.`,
-      '',
-    );
+  if (tweet.article) {
+    const title = tweet.article.title ?? '(ohne Titel)';
+    const articleText = extractArticleText(tweet);
+    if (articleText) {
+      lines.push(`## Artikel: ${title}`, '', articleText, '');
+    } else {
+      lines.push(
+        `> ⚠️ Nativer X-Artikel „${title}" — Volltext nicht über die API verfügbar; bei Bedarf Sekundärquelle prüfen.`,
+        '',
+      );
+    }
   }
   lines.push('## Text', '', extractTweetText(tweet), '');
   const links = extractLinks(tweet);
