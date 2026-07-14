@@ -5,10 +5,11 @@ import { motion } from 'framer-motion';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import Link from 'next/link';
-import { BookOpen, Code2, Database, FileCode, Layers, Lock, Rocket, Search, Zap, Image, ArrowLeft, Copy, Check, Eye, Heart } from 'lucide-react';
+import { BookOpen, Code2, Database, FileCode, Layers, Lock, Rocket, Search, Zap, Image, ArrowLeft, Copy, Check, Eye, Heart, Download } from 'lucide-react';
 import { toast } from 'sonner';
 import { copyToClipboard } from '@/lib/copy-utils';
 import { formatKnowledgeArticleMarkdown } from '@/lib/knowledge-export';
+import { downloadKnowledgeArticlePdf } from '@/lib/knowledge-pdf-download';
 import { type KnowledgeArticle } from '@/types/knowledge';
 import { Mermaid } from '@/components/Mermaid';
 import { cn } from '@/lib/utils';
@@ -63,6 +64,7 @@ export function ArticleView({ article }: ArticleViewProps) {
     runLegacyMigration,
   } = useContentStatusStore();
   const [mounted, setMounted] = useState(false);
+  const [isGeneratingPdf, setIsGeneratingPdf] = useState(false);
   const Icon = iconMap[article.icon] || BookOpen;
   const formattedDate = formatSourceDate(article.sourceDate);
   const sourceLabel = article.sourceType
@@ -108,6 +110,20 @@ export function ArticleView({ article }: ArticleViewProps) {
       toast.success('Markdown kopiert');
     } else {
       toast.error('Kopieren fehlgeschlagen');
+    }
+  };
+
+  const handleDownloadPdf = async () => {
+    setIsGeneratingPdf(true);
+
+    try {
+      await downloadKnowledgeArticlePdf(article);
+      toast.success('PDF heruntergeladen');
+    } catch (error) {
+      console.error('PDF-Export fehlgeschlagen:', error);
+      toast.error('PDF konnte nicht erstellt werden');
+    } finally {
+      setIsGeneratingPdf(false);
     }
   };
 
@@ -198,6 +214,15 @@ export function ArticleView({ article }: ArticleViewProps) {
               </button>
               <button
                 type="button"
+                onClick={handleDownloadPdf}
+                disabled={isGeneratingPdf}
+                className="inline-flex items-center gap-2 rounded-lg bg-secondary px-3 py-2 text-sm font-medium text-secondary-foreground hover:bg-secondary/80 disabled:cursor-not-allowed disabled:opacity-60 focus-ring"
+              >
+                <Download className="h-4 w-4" />
+                {isGeneratingPdf ? 'PDF wird erstellt…' : 'PDF herunterladen'}
+              </button>
+              <button
+                type="button"
                 onClick={handleCopyMarkdown}
                 className="inline-flex items-center gap-2 rounded-lg bg-primary px-3 py-2 text-sm font-medium text-primary-foreground hover:bg-primary/90 focus-ring"
               >
@@ -282,6 +307,15 @@ export function ArticleView({ article }: ArticleViewProps) {
             >
               <Heart className={cn('h-4 w-4', favorite && 'fill-current')} />
               {favorite ? 'Favorisiert' : 'Favorisieren'}
+            </button>
+            <button
+              type="button"
+              onClick={handleDownloadPdf}
+              disabled={isGeneratingPdf}
+              className="inline-flex items-center gap-2 rounded-lg bg-secondary px-3 py-2 text-sm font-medium text-secondary-foreground hover:bg-secondary/80 disabled:cursor-not-allowed disabled:opacity-60 focus-ring"
+            >
+              <Download className="h-4 w-4" />
+              {isGeneratingPdf ? 'PDF wird erstellt…' : 'PDF herunterladen'}
             </button>
             <button
               type="button"
