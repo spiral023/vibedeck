@@ -248,15 +248,39 @@ function isSupportedImageResponse(response: Response): boolean {
   return contentType !== undefined && SUPPORTED_IMAGE_CONTENT_TYPES.has(contentType);
 }
 
-async function fetchImageWithTimeout(src: string): Promise<Response> {
+async function fetchSupportedImageBlob(src: string): Promise<Blob | undefined> {
   const controller = new AbortController();
   const timeoutId = setTimeout(() => controller.abort(), IMAGE_FETCH_TIMEOUT_MS);
 
   try {
-    return await fetch(src, { signal: controller.signal });
+    const response = await fetch(src, { signal: controller.signal });
+    if (controller.signal.aborted || !response.ok || !isSupportedImageResponse(response)) {
+      return undefined;
+    }
+
+    const blob = await response.blob();
+    return controller.signal.aborted ? undefined : blob;
   } finally {
     clearTimeout(timeoutId);
   }
+}
+
+function isDecodableImageDataUrl(dataUrl: string): Promise<boolean> {
+  if (typeof Image === 'undefined') {
+    return Promise.resolve(false);
+  }
+
+  const image = new Image();
+  if (typeof image.decode === 'function') {
+    image.src = dataUrl;
+    return image.decode().then(() => true, () => false);
+  }
+
+  return new Promise((resolve) => {
+    image.onload = () => resolve(true);
+    image.onerror = () => resolve(false);
+    image.src = dataUrl;
+  });
 }
 
 export async function prepareKnowledgePdfImages(blocks: KnowledgePdfBlock[]): Promise<Map<string, string>> {
@@ -265,12 +289,15 @@ export async function prepareKnowledgePdfImages(blocks: KnowledgePdfBlock[]): Pr
 
   await Promise.all(sources.map(async (src) => {
     try {
-      const response = await fetchImageWithTimeout(src);
-      if (!response.ok || !isSupportedImageResponse(response)) {
+      const blob = await fetchSupportedImageBlob(src);
+      if (!blob) {
         return;
       }
 
-      imageSources.set(src, await blobToDataUrl(await response.blob()));
+      const dataUrl = await blobToDataUrl(blob);
+      if (await isDecodableImageDataUrl(dataUrl)) {
+        imageSources.set(src, dataUrl);
+      }
     } catch {
       // A missing or inaccessible image should not prevent PDF creation.
     }
