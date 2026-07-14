@@ -15,6 +15,7 @@ import {
   type KnowledgePdfBlock,
   type KnowledgePdfInline,
 } from '@/lib/knowledge-pdf';
+import { partitionKnowledgePdfBlocks } from '@/lib/knowledge-pdf-pages';
 import type { KnowledgeArticle } from '@/types/knowledge';
 
 const styles = StyleSheet.create({
@@ -43,6 +44,11 @@ const styles = StyleSheet.create({
   },
   metadataRow: {
     marginBottom: 2,
+  },
+  continuationTitle: {
+    marginBottom: 12,
+    color: '#6b7280',
+    fontSize: 8.5,
   },
   heading: {
     marginTop: 12,
@@ -106,6 +112,34 @@ const styles = StyleSheet.create({
     color: '#2563eb',
     textDecoration: 'underline',
   },
+  table: {
+    marginBottom: 10,
+    borderColor: '#d1d5db',
+    borderWidth: 0.5,
+  },
+  tableHeader: {
+    flexDirection: 'row',
+    backgroundColor: '#e5e7eb',
+  },
+  tableRow: {
+    flexDirection: 'row',
+    borderTopColor: '#d1d5db',
+    borderTopWidth: 0.5,
+  },
+  tableCell: {
+    flexBasis: 0,
+    flexGrow: 1,
+    borderRightColor: '#d1d5db',
+    borderRightWidth: 0.5,
+    padding: 5,
+  },
+  tableHeaderCell: {
+    fontWeight: 700,
+  },
+  compactTableCell: {
+    fontSize: 7.5,
+    padding: 3,
+  },
 });
 
 type KnowledgeArticlePdfProps = {
@@ -149,6 +183,8 @@ function getBlockKey(block: KnowledgePdfBlock): string {
       return `code:${block.language ?? ''}:${block.text}`;
     case 'image':
       return `image:${block.src}:${block.alt}`;
+    case 'table':
+      return `table:${block.headers.join('|')}:${block.rows.map((row) => row.join('|')).join('||')}`;
     case 'dynamic-content-notice':
       return 'dynamic-content-notice';
   }
@@ -185,57 +221,100 @@ function Heading({ level, text }: { level: number; text: string }) {
   return <Text style={[styles.heading, size]}><InlineContent value={text} /></Text>;
 }
 
+function PdfTable({ block, compact }: { block: Extract<KnowledgePdfBlock, { type: 'table' }>; compact: boolean }) {
+  const columnWidth = `${100 / block.headers.length}%`;
+  const cellStyle = [
+    styles.tableCell,
+    ...(compact ? [styles.compactTableCell] : []),
+    { width: columnWidth },
+  ];
+
+  return (
+    <View style={styles.table}>
+      <View style={styles.tableHeader}>
+        {withStableKeys(block.headers, (header) => `table-header:${header}`).map(({ item: header, key }) => (
+          <Text key={key} style={[...cellStyle, styles.tableHeaderCell]}><InlineContent value={header} /></Text>
+        ))}
+      </View>
+      {withStableKeys(block.rows, (row) => `table-row:${row.join('|')}`).map(({ item: row, key: rowKey }) => (
+        <View key={rowKey} style={styles.tableRow} wrap={false}>
+          {withStableKeys(row, (cell) => `table-cell:${cell}`).map(({ item: cell, key }) => (
+            <Text key={`${rowKey}:${key}`} style={cellStyle}><InlineContent value={cell} /></Text>
+          ))}
+        </View>
+      ))}
+    </View>
+  );
+}
+
+function PdfBlock({ block, blockKey, compact, imageSources }: {
+  block: KnowledgePdfBlock;
+  blockKey: string;
+  compact: boolean;
+  imageSources: Map<string, string>;
+}) {
+  switch (block.type) {
+    case 'heading':
+      return <Heading key={blockKey} level={block.level} text={block.text} />;
+    case 'paragraph':
+      return <Text key={blockKey} style={styles.paragraph}><InlineContent value={block.text} /></Text>;
+    case 'unordered-list':
+      return withStableKeys(block.items, (item) => `unordered-list-item:${item}`).map(({ item, key }) => (
+        <View key={`${blockKey}:${key}`} style={styles.listItem}>
+          <Text style={styles.listMarker}>•</Text>
+          <Text style={styles.listText}><InlineContent value={item} /></Text>
+        </View>
+      ));
+    case 'ordered-list':
+      return withStableKeys(block.items, (item) => `ordered-list-item:${item}`).map(({ item, key, position }) => (
+        <View key={`${blockKey}:${key}`} style={styles.listItem}>
+          <Text style={styles.listMarker}>{position + 1}.</Text>
+          <Text style={styles.listText}><InlineContent value={item} /></Text>
+        </View>
+      ));
+    case 'blockquote':
+      return <Text key={blockKey} style={styles.blockquote}><InlineContent value={block.text} /></Text>;
+    case 'code':
+      return <Text key={blockKey} style={styles.code}>{block.text}</Text>;
+    case 'image': {
+      const source = imageSources.get(block.src);
+      return source
+        ? <Image key={blockKey} src={source} style={styles.image} />
+        : <Text key={blockKey} style={styles.muted}>Bild konnte nicht eingebettet werden: {block.alt || 'ohne Beschreibung'}.</Text>;
+    }
+    case 'table':
+      return <PdfTable key={blockKey} block={block} compact={compact} />;
+    case 'dynamic-content-notice':
+      return <Text key={blockKey} style={styles.muted}>Dynamischer Inhalt ist im PDF nicht enthalten.</Text>;
+  }
+}
+
 export function KnowledgeArticlePdf({ article, imageSources }: KnowledgeArticlePdfProps) {
   const blocks = parseKnowledgePdfBlocks(article.content);
+  const pageGroups = partitionKnowledgePdfBlocks(blocks);
 
   return (
     <Document title={article.title} author={article.author ?? 'VibeDeck'}>
-      <Page size="A4" style={styles.page}>
-        <Text style={styles.title}>{article.title}</Text>
-        <Text style={styles.description}>{article.description}</Text>
-        <View style={styles.metadata}>
-          <Text style={styles.metadataRow}>Lesezeit: {article.readTime}</Text>
-          {article.sourceURL && <Link src={article.sourceURL} style={[styles.metadataRow, styles.link]}>{article.sourceURL}</Link>}
-          {article.author && <Text style={styles.metadataRow}>Autor: {article.author}</Text>}
-          {article.sourceDate && <Text style={styles.metadataRow}>Quelle: {article.sourceDate}</Text>}
-          {article.tags?.length ? <Text style={styles.metadataRow}>Tags: {article.tags.join(', ')}</Text> : null}
-        </View>
-
-        {withStableKeys(blocks, getBlockKey).map(({ item: block, key: blockKey }) => {
-          switch (block.type) {
-            case 'heading':
-              return <Heading key={blockKey} level={block.level} text={block.text} />;
-            case 'paragraph':
-              return <Text key={blockKey} style={styles.paragraph}><InlineContent value={block.text} /></Text>;
-            case 'unordered-list':
-              return withStableKeys(block.items, (item) => `unordered-list-item:${item}`).map(({ item, key }) => (
-                <View key={`${blockKey}:${key}`} style={styles.listItem}>
-                  <Text style={styles.listMarker}>•</Text>
-                  <Text style={styles.listText}><InlineContent value={item} /></Text>
-                </View>
-              ));
-            case 'ordered-list':
-              return withStableKeys(block.items, (item) => `ordered-list-item:${item}`).map(({ item, key, position }) => (
-                <View key={`${blockKey}:${key}`} style={styles.listItem}>
-                  <Text style={styles.listMarker}>{position + 1}.</Text>
-                  <Text style={styles.listText}><InlineContent value={item} /></Text>
-                </View>
-              ));
-            case 'blockquote':
-              return <Text key={blockKey} style={styles.blockquote}><InlineContent value={block.text} /></Text>;
-            case 'code':
-              return <Text key={blockKey} style={styles.code}>{block.text}</Text>;
-            case 'image': {
-              const source = imageSources.get(block.src);
-              return source
-                ? <Image key={blockKey} src={source} style={styles.image} />
-                : <Text key={blockKey} style={styles.muted}>Bild konnte nicht eingebettet werden: {block.alt || 'ohne Beschreibung'}.</Text>;
-            }
-            case 'dynamic-content-notice':
-              return <Text key={blockKey} style={styles.muted}>Dynamischer Inhalt ist im PDF nicht enthalten.</Text>;
-          }
-        })}
-      </Page>
+      {pageGroups.map((group, pageIndex) => (
+        <Page key={`page:${pageIndex}:${group.orientation}`} size="A4" orientation={group.orientation} style={styles.page}>
+          {pageIndex === 0 ? (
+            <>
+              <Text style={styles.title}>{article.title}</Text>
+              <Text style={styles.description}>{article.description}</Text>
+              <View style={styles.metadata}>
+                <Text style={styles.metadataRow}>Lesezeit: {article.readTime}</Text>
+                {article.sourceURL && <Link src={article.sourceURL} style={[styles.metadataRow, styles.link]}>{article.sourceURL}</Link>}
+                {article.author && <Text style={styles.metadataRow}>Autor: {article.author}</Text>}
+                {article.sourceDate && <Text style={styles.metadataRow}>Quelle: {article.sourceDate}</Text>}
+                {article.tags?.length ? <Text style={styles.metadataRow}>Tags: {article.tags.join(', ')}</Text> : null}
+              </View>
+            </>
+          ) : <Text style={styles.continuationTitle}>{article.title}</Text>}
+          {withStableKeys(group.blocks, getBlockKey).map(({ item: block, key: blockKey }) => (
+            <PdfBlock key={blockKey} block={block} blockKey={blockKey} compact={group.compact} imageSources={imageSources} />
+          ))}
+        </Page>
+      ))}
     </Document>
   );
 }
