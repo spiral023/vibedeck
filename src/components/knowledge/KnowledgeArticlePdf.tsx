@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
   },
   title: {
     marginBottom: 8,
-    fontFamily: 'Helvetica-Bold',
+    fontWeight: 700,
     fontSize: 24,
     lineHeight: 1.2,
   },
@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
   heading: {
     marginTop: 12,
     marginBottom: 5,
-    fontFamily: 'Helvetica-Bold',
+    fontWeight: 700,
   },
   headingOne: { fontSize: 20 },
   headingTwo: { fontSize: 16 },
@@ -94,7 +94,7 @@ const styles = StyleSheet.create({
     fontSize: 8.5,
   },
   bold: {
-    fontFamily: 'Helvetica-Bold',
+    fontWeight: 700,
   },
   italic: {
     fontStyle: 'italic',

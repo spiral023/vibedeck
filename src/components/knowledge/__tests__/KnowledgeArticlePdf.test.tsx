@@ -19,7 +19,7 @@ describe('KnowledgeArticlePdf', () => {
           category: 'Tools',
           icon: 'BookOpen',
           readTime: 8,
-          content: `${longContent}\n\n![Nicht verfügbar](/fehlend.png)\n\n\`\`\`mermaid\ngraph TD\nA --> B\n\`\`\``,
+          content: `${longContent}\n\n> **Fett formatiertes Zitat**\n\n![Nicht verfügbar](/fehlend.png)\n\n\`\`\`mermaid\ngraph TD\nA --> B\n\`\`\``,
         }}
         imageSources={new Map()}
       />,
