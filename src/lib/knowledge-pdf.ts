@@ -8,6 +8,7 @@ export type KnowledgePdfBlock =
   | { type: 'blockquote'; text: string }
   | { type: 'code'; language?: string; text: string }
   | { type: 'image'; alt: string; src: string }
+  | { type: 'table'; headers: string[]; rows: string[][] }
   | { type: 'dynamic-content-notice' };
 
 export type KnowledgePdfInline = {
@@ -25,6 +26,7 @@ const QUOTE_PATTERN = /^>\s?(.*)$/;
 const IMAGE_PATTERN = /^!\[([^\]]*)\]\(([^\s)]+)(?:\s+['"][^)]*['"])?\)$/;
 const HORIZONTAL_RULE_PATTERN = /^([-*_])(?:\s*\1){2,}\s*$/;
 const FENCED_CODE_PATTERN = /^```\s*([^`]*)\s*$/;
+const TABLE_SEPARATOR_CELL_PATTERN = /^:?-{3,}:?$/;
 const INLINE_PATTERN = /\[([^\]]+)\]\(([^\s)]+)\)|\*\*([\s\S]+?)\*\*|\*([^*\n]+?)\*|`([^`\n]+?)`/g;
 const IMAGE_FETCH_TIMEOUT_MS = 10_000;
 const SUPPORTED_IMAGE_CONTENT_TYPES = new Set([
@@ -32,6 +34,63 @@ const SUPPORTED_IMAGE_CONTENT_TYPES = new Set([
   'image/jpeg',
   'image/svg+xml',
 ]);
+
+function splitTableRow(line: string): string[] {
+  const trimmed = line.trim();
+  const cells = trimmed.split('|').map((cell) => cell.trim());
+
+  if (trimmed.startsWith('|')) {
+    cells.shift();
+  }
+
+  if (trimmed.endsWith('|')) {
+    cells.pop();
+  }
+
+  return cells;
+}
+
+function isTableSeparator(cells: string[], columnCount: number): boolean {
+  return cells.length === columnCount
+    && cells.every((cell) => TABLE_SEPARATOR_CELL_PATTERN.test(cell));
+}
+
+function parseTableAt(lines: string[], startIndex: number): {
+  headers: string[];
+  rows: string[][];
+  endIndex: number;
+} | undefined {
+  const headerLine = lines[startIndex]?.trim();
+  const separatorLine = lines[startIndex + 1]?.trim();
+
+  if (!headerLine?.includes('|') || !separatorLine) {
+    return undefined;
+  }
+
+  const headers = splitTableRow(headerLine);
+  const separatorCells = splitTableRow(separatorLine);
+  if (headers.length === 0 || headers.every((header) => !header) || !isTableSeparator(separatorCells, headers.length)) {
+    return undefined;
+  }
+
+  const rows: string[][] = [];
+  let rowIndex = startIndex + 2;
+  while (rowIndex < lines.length && lines[rowIndex].trim().includes('|')) {
+    const cells = splitTableRow(lines[rowIndex]);
+    if (cells.length === 0) {
+      break;
+    }
+
+    rows.push([...cells.slice(0, headers.length), ...Array(Math.max(0, headers.length - cells.length)).fill('')]);
+    rowIndex += 1;
+  }
+
+  if (rows.length === 0) {
+    return undefined;
+  }
+
+  return { headers, rows, endIndex: rowIndex - 1 };
+}
 
 export function parseKnowledgePdfBlocks(content: string): KnowledgePdfBlock[] {
   const blocks: KnowledgePdfBlock[] = [];
@@ -90,7 +149,8 @@ export function parseKnowledgePdfBlocks(content: string): KnowledgePdfBlock[] {
     codeLines = undefined;
   };
 
-  for (const line of lines) {
+  for (let lineIndex = 0; lineIndex < lines.length; lineIndex += 1) {
+    const line = lines[lineIndex];
     if (codeLines) {
       const closingFence = line.match(FENCED_CODE_PATTERN);
       if (closingFence) {
@@ -112,6 +172,14 @@ export function parseKnowledgePdfBlocks(content: string): KnowledgePdfBlock[] {
 
     if (!trimmed) {
       flushText();
+      continue;
+    }
+
+    const table = parseTableAt(lines, lineIndex);
+    if (table) {
+      flushText();
+      blocks.push({ type: 'table', headers: table.headers, rows: table.rows });
+      lineIndex = table.endIndex;
       continue;
     }
 

@@ -68,6 +68,38 @@ Der verbleibende Absatz.`);
     ]);
   });
 
+  it('parses a GFM table into headers and normalized rows', () => {
+    expect(parseKnowledgePdfBlocks(`| Fehlanwendung | Warum sie schadet | Bessere Vorgehensweise |
+| --- | --- | --- |
+| Für jede Kleinigkeit einen Tracker | Verliert Kontext | Direkt entscheiden |
+| Alles gleichzeitig ändern | Erzeugt Risiken | Kleine Schritte |`)).toEqual([
+      {
+        type: 'table',
+        headers: ['Fehlanwendung', 'Warum sie schadet', 'Bessere Vorgehensweise'],
+        rows: [
+          ['Für jede Kleinigkeit einen Tracker', 'Verliert Kontext', 'Direkt entscheiden'],
+          ['Alles gleichzeitig ändern', 'Erzeugt Risiken', 'Kleine Schritte'],
+        ],
+      },
+    ]);
+  });
+
+  it('supports optional outer table pipes and pads short rows', () => {
+    expect(parseKnowledgePdfBlocks(`A | B | C
+--- | --- | ---
+eins | zwei`)).toEqual([
+      { type: 'table', headers: ['A', 'B', 'C'], rows: [['eins', 'zwei', '']] },
+    ]);
+  });
+
+  it('leaves an invalid table-looking block as a paragraph', () => {
+    expect(parseKnowledgePdfBlocks(`A | B
+not a separator
+eins | zwei`)).toEqual([
+      { type: 'paragraph', text: 'A | B not a separator eins | zwei' },
+    ]);
+  });
+
   it('parses bold, code, and link inline content', () => {
     expect(parseKnowledgePdfInline('**fett** und `code` bei [VibeDeck](https://vibedeck.app)')).toEqual([
       { text: 'fett', bold: true },
