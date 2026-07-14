@@ -1,3 +1,4 @@
+// react-doctor-disable-next-line react-doctor/prefer-dynamic-import -- This module is loaded only through import() in knowledge-pdf-download.
 import {
   Document,
   Image,
@@ -8,7 +9,12 @@ import {
   View,
 } from '@react-pdf/renderer';
 
-import { parseKnowledgePdfBlocks, parseKnowledgePdfInline, type KnowledgePdfInline } from '@/lib/knowledge-pdf';
+import {
+  parseKnowledgePdfBlocks,
+  parseKnowledgePdfInline,
+  type KnowledgePdfBlock,
+  type KnowledgePdfInline,
+} from '@/lib/knowledge-pdf';
 import type { KnowledgeArticle } from '@/types/knowledge';
 
 const styles = StyleSheet.create({
@@ -107,8 +113,50 @@ type KnowledgeArticlePdfProps = {
   imageSources: Map<string, string>;
 };
 
+type KeyedItem<T> = {
+  item: T;
+  key: string;
+  position: number;
+};
+
+function withStableKeys<T>(items: T[], getBaseKey: (item: T) => string): KeyedItem<T>[] {
+  const occurrences = new Map<string, number>();
+
+  return items.map((item, position) => {
+    const baseKey = getBaseKey(item);
+    const occurrence = occurrences.get(baseKey) ?? 0;
+    occurrences.set(baseKey, occurrence + 1);
+
+    return { item, key: `${baseKey}:${occurrence}`, position };
+  });
+}
+
+function getInlineKey(token: KnowledgePdfInline): string {
+  return [token.text, token.bold, token.italic, token.code, token.href].join('|');
+}
+
+function getBlockKey(block: KnowledgePdfBlock): string {
+  switch (block.type) {
+    case 'heading':
+      return `heading:${block.level}:${block.text}`;
+    case 'paragraph':
+    case 'blockquote':
+      return `${block.type}:${block.text}`;
+    case 'unordered-list':
+    case 'ordered-list':
+      return `${block.type}:${block.items.join('|')}`;
+    case 'code':
+      return `code:${block.language ?? ''}:${block.text}`;
+    case 'image':
+      return `image:${block.src}:${block.alt}`;
+    case 'dynamic-content-notice':
+      return 'dynamic-content-notice';
+  }
+}
+
 function InlineContent({ value }: { value: string }) {
-  return parseKnowledgePdfInline(value).map((token, index) => <InlineToken key={index} token={token} />);
+  return withStableKeys(parseKnowledgePdfInline(value), getInlineKey)
+    .map(({ item: token, key }) => <InlineToken key={key} token={token} />);
 }
 
 function InlineToken({ token }: { token: KnowledgePdfInline }) {
@@ -153,38 +201,38 @@ export function KnowledgeArticlePdf({ article, imageSources }: KnowledgeArticleP
           {article.tags?.length ? <Text style={styles.metadataRow}>Tags: {article.tags.join(', ')}</Text> : null}
         </View>
 
-        {blocks.map((block, index) => {
+        {withStableKeys(blocks, getBlockKey).map(({ item: block, key: blockKey }) => {
           switch (block.type) {
             case 'heading':
-              return <Heading key={index} level={block.level} text={block.text} />;
+              return <Heading key={blockKey} level={block.level} text={block.text} />;
             case 'paragraph':
-              return <Text key={index} style={styles.paragraph}><InlineContent value={block.text} /></Text>;
+              return <Text key={blockKey} style={styles.paragraph}><InlineContent value={block.text} /></Text>;
             case 'unordered-list':
-              return block.items.map((item, itemIndex) => (
-                <View key={`${index}-${itemIndex}`} style={styles.listItem}>
+              return withStableKeys(block.items, (item) => `unordered-list-item:${item}`).map(({ item, key }) => (
+                <View key={`${blockKey}:${key}`} style={styles.listItem}>
                   <Text style={styles.listMarker}>•</Text>
                   <Text style={styles.listText}><InlineContent value={item} /></Text>
                 </View>
               ));
             case 'ordered-list':
-              return block.items.map((item, itemIndex) => (
-                <View key={`${index}-${itemIndex}`} style={styles.listItem}>
-                  <Text style={styles.listMarker}>{itemIndex + 1}.</Text>
+              return withStableKeys(block.items, (item) => `ordered-list-item:${item}`).map(({ item, key, position }) => (
+                <View key={`${blockKey}:${key}`} style={styles.listItem}>
+                  <Text style={styles.listMarker}>{position + 1}.</Text>
                   <Text style={styles.listText}><InlineContent value={item} /></Text>
                 </View>
               ));
             case 'blockquote':
-              return <Text key={index} style={styles.blockquote}><InlineContent value={block.text} /></Text>;
+              return <Text key={blockKey} style={styles.blockquote}><InlineContent value={block.text} /></Text>;
             case 'code':
-              return <Text key={index} style={styles.code}>{block.text}</Text>;
+              return <Text key={blockKey} style={styles.code}>{block.text}</Text>;
             case 'image': {
               const source = imageSources.get(block.src);
               return source
-                ? <Image key={index} src={source} style={styles.image} />
-                : <Text key={index} style={styles.muted}>Bild konnte nicht eingebettet werden: {block.alt || 'ohne Beschreibung'}.</Text>;
+                ? <Image key={blockKey} src={source} style={styles.image} />
+                : <Text key={blockKey} style={styles.muted}>Bild konnte nicht eingebettet werden: {block.alt || 'ohne Beschreibung'}.</Text>;
             }
             case 'dynamic-content-notice':
-              return <Text key={index} style={styles.muted}>Dynamischer Inhalt ist im PDF nicht enthalten.</Text>;
+              return <Text key={blockKey} style={styles.muted}>Dynamischer Inhalt ist im PDF nicht enthalten.</Text>;
           }
         })}
       </Page>

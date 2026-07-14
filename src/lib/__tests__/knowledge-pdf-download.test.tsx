@@ -27,11 +27,13 @@ describe('downloadKnowledgeArticlePdf', () => {
   const createObjectURL = vi.fn(() => 'blob:pdf');
   const revokeObjectURL = vi.fn();
   const click = vi.fn();
+  const remove = vi.fn();
 
   beforeEach(() => {
     toBlobMock.mockResolvedValue(new Blob(['PDF'], { type: 'application/pdf' }));
     vi.stubGlobal('URL', { createObjectURL, revokeObjectURL });
     vi.spyOn(HTMLAnchorElement.prototype, 'click').mockImplementation(click);
+    vi.spyOn(HTMLAnchorElement.prototype, 'remove').mockImplementation(remove);
   });
 
   afterEach(() => {
@@ -54,6 +56,25 @@ describe('downloadKnowledgeArticlePdf', () => {
     expect(toBlobMock).toHaveBeenCalledOnce();
     expect(createObjectURL).toHaveBeenCalledOnce();
     expect(click).toHaveBeenCalledOnce();
+    expect(revokeObjectURL).toHaveBeenCalledWith('blob:pdf');
+  });
+
+  it('removes the anchor and revokes the blob URL when clicking fails', async () => {
+    click.mockImplementationOnce(() => {
+      throw new Error('Download blocked');
+    });
+
+    await expect(downloadKnowledgeArticlePdf({
+      id: 'test-artikel',
+      title: 'Test',
+      description: 'Test',
+      category: 'Tools',
+      icon: 'BookOpen',
+      readTime: 1,
+      content: 'Inhalt',
+    })).rejects.toThrow('Download blocked');
+
+    expect(remove).toHaveBeenCalledOnce();
     expect(revokeObjectURL).toHaveBeenCalledWith('blob:pdf');
   });
 });

@@ -1,6 +1,3 @@
-import { pdf } from '@react-pdf/renderer';
-
-import { KnowledgeArticlePdf } from '@/components/knowledge/KnowledgeArticlePdf';
 import {
   createKnowledgePdfFilename,
   parseKnowledgePdfBlocks,
@@ -10,16 +7,28 @@ import type { KnowledgeArticle } from '@/types/knowledge';
 
 export async function downloadKnowledgeArticlePdf(article: KnowledgeArticle): Promise<void> {
   const blocks = parseKnowledgePdfBlocks(article.content);
-  const imageSources = await prepareKnowledgePdfImages(blocks);
+  const [imageSources, { pdf }, { KnowledgeArticlePdf }] = await Promise.all([
+    prepareKnowledgePdfImages(blocks),
+    import('@react-pdf/renderer'),
+    import('@/components/knowledge/KnowledgeArticlePdf'),
+  ]);
   const blob = await pdf(
     <KnowledgeArticlePdf article={article} imageSources={imageSources} />,
   ).toBlob();
   const url = URL.createObjectURL(blob);
-  const link = document.createElement('a');
-  link.href = url;
-  link.download = createKnowledgePdfFilename(article.id);
-  document.body.appendChild(link);
-  link.click();
-  link.remove();
-  URL.revokeObjectURL(url);
+  let link: HTMLAnchorElement | undefined;
+
+  try {
+    link = document.createElement('a');
+    link.href = url;
+    link.download = createKnowledgePdfFilename(article.id);
+    document.body.appendChild(link);
+    link.click();
+  } finally {
+    try {
+      link?.remove();
+    } finally {
+      URL.revokeObjectURL(url);
+    }
+  }
 }
