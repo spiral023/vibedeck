@@ -15,7 +15,7 @@
 - src/lib/knowledge-pdf.ts: PDF-Blocktyp und GFM-Tabellenparser.
 - src/lib/__tests__/knowledge-pdf.test.ts: Parser- und Fallbacktests.
 - src/components/knowledge/KnowledgeArticlePdf.tsx: Tabellenlayout und Querformat-Paginierung.
-- src/components/knowledge/__tests__/KnowledgeArticlePdf.test.tsx: echter PDF-Renderfall für breite Tabellen.
+- src/components/knowledge/__tests__/KnowledgeArticlePdf.test.tsx: Seitenaufteilung und echter PDF-Renderfall für breite Tabellen.
 
 ### Task 1: GFM-Tabellen in den PDF-Blockbaum parsen
 
@@ -79,7 +79,9 @@ Run:
 
 - [ ] **Step 1: Fehlenden echten Renderfall schreiben**
 
-Add a real renderer test that creates a KnowledgeArticlePdf for a five-column table. The first data cell must contain more than 80 characters. Generate a blob through pdf(...).toBlob() and assert blob.size is greater than zero.
+Export KnowledgePdfPageGroup and partitionKnowledgePdfBlocks from KnowledgeArticlePdf.tsx. Add a unit test that passes a five-column table whose first cell contains more than 80 characters to partitionKnowledgePdfBlocks. Assert exactly one page group with orientation landscape, compact true and the table block in its blocks array.
+
+Also add a real renderer test that creates a KnowledgeArticlePdf for that table. Generate a blob through pdf(...).toBlob() and assert blob.size is greater than zero.
 
 - [ ] **Step 2: Red-Test ausführen**
 
@@ -87,7 +89,7 @@ Run:
 
     npx vitest run src/components/knowledge/__tests__/KnowledgeArticlePdf.test.tsx
 
-Expected: FAIL because the table block is not yet rendered.
+Expected: FAIL because partitionKnowledgePdfBlocks and the table block do not yet exist.
 
 - [ ] **Step 3: Tabellen-Renderer implementieren**
 
@@ -95,7 +97,7 @@ Add PdfTable, accepting a table block and compact boolean. Its header is a flex 
 
 Add isWideTable. It returns true only when a table has more than four columns or at least one cell longer than 80 characters.
 
-Partition parsed blocks into page groups. When a wide table appears, flush the active portrait group and create a landscape group containing only that table. All other blocks remain portrait. Render one Page per group. The first portrait page retains full article metadata. Later pages contain a small article-title continuation header. Add a table switch case to the existing block renderer.
+Export type KnowledgePdfPageGroup with blocks: KnowledgePdfBlock[], orientation: portrait | landscape and compact: boolean. Export partitionKnowledgePdfBlocks(blocks). When a wide table appears, flush the active portrait group and create a landscape group containing only that table with compact true. All other blocks remain portrait with compact false. Render one Page per returned group. The first portrait page retains full article metadata. Later pages contain a small article-title continuation header. Add a table switch case to the existing block renderer.
 
 - [ ] **Step 4: Realen Renderer-Test bestehen lassen**
 
@@ -124,6 +126,5 @@ Run:
 ## Plan-Selbstprüfung
 
 - Task 1 covers valid GFM parsing, optional outer pipes, row normalization and invalid-table fallback.
-- Task 2 covers header styling, cell wrapping, equal widths, landscape treatment for wide tables, real PDF rendering and static-build verification.
+- Task 2 covers header styling, cell wrapping, equal widths, a unit-tested landscape decision for wide tables, real PDF rendering and static-build verification.
 - The table block uses the same headers and rows shape in parser, PdfTable and isWideTable.
-
