@@ -110,6 +110,27 @@ Der verbleibende Absatz.`);
     expect(imageSources.has('/page.html')).toBe(false);
   });
 
+  it('omits successful WebP and GIF responses for the PDF renderer fallback', async () => {
+    vi.stubGlobal('fetch', vi.fn(async (url: string) => ({
+      ok: true,
+      status: 200,
+      headers: new Headers({
+        'content-type': url === '/animated.gif' ? 'image/gif' : 'image/webp',
+      }),
+      blob: async () => new Blob(['image bytes'], {
+        type: url === '/animated.gif' ? 'image/gif' : 'image/webp',
+      }),
+    })));
+
+    const imageSources = await prepareKnowledgePdfImages(parseKnowledgePdfBlocks(`
+![WebP](/modern.webp)
+![GIF](/animated.gif)
+`));
+
+    expect(imageSources.has('/modern.webp')).toBe(false);
+    expect(imageSources.has('/animated.gif')).toBe(false);
+  });
+
   it('omits images whose Data URL conversion fails', async () => {
     class FailingFileReader {
       result: string | null = null;

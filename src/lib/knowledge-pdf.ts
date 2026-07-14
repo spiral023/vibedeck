@@ -30,8 +30,7 @@ const IMAGE_FETCH_TIMEOUT_MS = 10_000;
 const SUPPORTED_IMAGE_CONTENT_TYPES = new Set([
   'image/png',
   'image/jpeg',
-  'image/webp',
-  'image/gif',
+  'image/svg+xml',
 ]);
 
 export function parseKnowledgePdfBlocks(content: string): KnowledgePdfBlock[] {
