@@ -26,6 +26,13 @@ const IMAGE_PATTERN = /^!\[([^\]]*)\]\(([^\s)]+)(?:\s+['"][^)]*['"])?\)$/;
 const HORIZONTAL_RULE_PATTERN = /^([-*_])(?:\s*\1){2,}\s*$/;
 const FENCED_CODE_PATTERN = /^```\s*([^`]*)\s*$/;
 const INLINE_PATTERN = /\[([^\]]+)\]\(([^\s)]+)\)|\*\*([\s\S]+?)\*\*|\*([^*\n]+?)\*|`([^`\n]+?)`/g;
+const IMAGE_FETCH_TIMEOUT_MS = 10_000;
+const SUPPORTED_IMAGE_CONTENT_TYPES = new Set([
+  'image/png',
+  'image/jpeg',
+  'image/webp',
+  'image/gif',
+]);
 
 export function parseKnowledgePdfBlocks(content: string): KnowledgePdfBlock[] {
   const blocks: KnowledgePdfBlock[] = [];
@@ -237,14 +244,30 @@ function blobToDataUrl(blob: Blob): Promise<string> {
   });
 }
 
+function isSupportedImageResponse(response: Response): boolean {
+  const contentType = response.headers.get('content-type')?.split(';', 1)[0]?.trim().toLowerCase();
+  return contentType !== undefined && SUPPORTED_IMAGE_CONTENT_TYPES.has(contentType);
+}
+
+async function fetchImageWithTimeout(src: string): Promise<Response> {
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), IMAGE_FETCH_TIMEOUT_MS);
+
+  try {
+    return await fetch(src, { signal: controller.signal });
+  } finally {
+    clearTimeout(timeoutId);
+  }
+}
+
 export async function prepareKnowledgePdfImages(blocks: KnowledgePdfBlock[]): Promise<Map<string, string>> {
   const sources = [...new Set(blocks.flatMap((block) => (block.type === 'image' ? [block.src] : [])))];
   const imageSources = new Map<string, string>();
 
   await Promise.all(sources.map(async (src) => {
     try {
-      const response = await fetch(src);
-      if (!response.ok) {
+      const response = await fetchImageWithTimeout(src);
+      if (!response.ok || !isSupportedImageResponse(response)) {
         return;
       }
 

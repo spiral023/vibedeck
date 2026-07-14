@@ -9,6 +9,7 @@ import {
 
 afterEach(() => {
   vi.unstubAllGlobals();
+  vi.useRealTimers();
 });
 
 describe('knowledge PDF data utilities', () => {
@@ -74,6 +75,7 @@ Der verbleibende Absatz.`);
       if (url === '/ok.png') {
         return {
           ok: true,
+          headers: new Headers({ 'content-type': 'image/png' }),
           blob: async () => new Blob(['image bytes'], { type: 'image/png' }),
         };
       }
@@ -94,5 +96,55 @@ Der verbleibende Absatz.`);
     expect(fetchMock).toHaveBeenCalledTimes(2);
     expect(imageSources.get('/ok.png')).toMatch(/^data:image\/png;base64,/);
     expect(imageSources.has('/missing.png')).toBe(false);
+  });
+
+  it('omits successful responses with unsupported content types', async () => {
+    vi.stubGlobal('fetch', vi.fn(async () => ({
+      ok: true,
+      headers: new Headers({ 'content-type': 'text/html' }),
+      blob: async () => new Blob(['not an image'], { type: 'text/html' }),
+    })));
+
+    const imageSources = await prepareKnowledgePdfImages(parseKnowledgePdfBlocks('![HTML](/page.html)'));
+
+    expect(imageSources.has('/page.html')).toBe(false);
+  });
+
+  it('omits images whose Data URL conversion fails', async () => {
+    class FailingFileReader {
+      result: string | null = null;
+      error = new DOMException('Conversion failed.');
+      onload: (() => void) | null = null;
+      onerror: (() => void) | null = null;
+
+      readAsDataURL() {
+        this.onerror?.();
+      }
+    }
+
+    vi.stubGlobal('FileReader', FailingFileReader);
+    vi.stubGlobal('fetch', vi.fn(async () => ({
+      ok: true,
+      headers: new Headers({ 'content-type': 'image/png' }),
+      blob: async () => new Blob(['image bytes'], { type: 'image/png' }),
+    })));
+
+    const imageSources = await prepareKnowledgePdfImages(parseKnowledgePdfBlocks('![Fehler](/broken.png)'));
+
+    expect(imageSources.has('/broken.png')).toBe(false);
+  });
+
+  it('omits images whose fetches time out', async () => {
+    vi.useFakeTimers();
+    const fetchMock = vi.fn((_url: string, init?: RequestInit) => new Promise<Response>((_resolve, reject) => {
+      init?.signal?.addEventListener('abort', () => reject(new DOMException('Timed out.', 'AbortError')));
+    }));
+    vi.stubGlobal('fetch', fetchMock);
+
+    const imageSourcesPromise = prepareKnowledgePdfImages(parseKnowledgePdfBlocks('![Langsam](/slow.png)'));
+    await vi.runAllTimersAsync();
+
+    await expect(imageSourcesPromise).resolves.toEqual(new Map());
+    expect(fetchMock.mock.calls[0][1]?.signal?.aborted).toBe(true);
   });
 });
